@@ -34,6 +34,14 @@ $backups = "F:\Backup"
 [system.io.directory]::CreateDirectory($data)
 [system.io.directory]::CreateDirectory($backups)
 
+Write-Output "Starting SQL"
+
+# Make sure SQL Service is started
+$sqlservice = Get-Service -Name MSSQLServer
+Start-Service $sqlservice
+$sqlservice.WaitForStatus('Running', '00:01:30')
+Write-Output $sqlservice
+
 # Setup the data, backup and log directories as well as mixed mode authentication
 Write-Output "Set up data, backup and log directories in SQL, plus mixed-mode auth"
 Import-Module "sqlps" -DisableNameChecking
@@ -65,35 +73,13 @@ New-NetFirewallRule -DisplayName "SQL Server" -Direction Inbound -Protocol TCP -
 New-NetFirewallRule -DisplayName "SQL AG Endpoint" -Direction Inbound -Protocol TCP -LocalPort 5022 -Action allow 
 New-NetFirewallRule -DisplayName "SQL AG Load Balancer Probe Port" -Direction Inbound -Protocol TCP -LocalPort 59999 -Action allow
 
-# The SPNs seem to end up in the wrong containers (COMPUTERNAME) as opposed to Domain user
-# This is a bit of a hack to make sure it is straight. 
-# See also: https://support.microsoft.com/en-sg/help/811889/how-to-troubleshoot-the-cannot-generate-sspi-context-error-message
-Write-Output "Resetting SPNs"
-$dnsDomain = $env:USERDNSDOMAIN
-If ($dnsDomain -match "\.") {
-    # if user account running is using a domain account with a DNS zone, use the user's domain name as well.
-    $domain = $env:USERDOMAIN
-} else {
-    # if user account running is using a local account witouth a DNS zone, use the default DNS domain and domain passed. 
-    $dnsDomain = $defaultDnsDomain
-    $domain = $defaultDomain
-}
-
-$user = $env:USERNAME
-$computer = $env:COMPUTERNAME
-SetSPN -s "MSOLAPSvc.3/$computer.$dnsDomain"    "$domain\$computer$"
-SetSPN -s "MSOLAPSvc.3/$computer"               "$domain\$computer$"
-SetSPN -d "MSSQLSvc/$computer.$dnsDomain"       "$domain\$computer$"
-SetSPN -s "MSSQLSvc/$computer.$dnsDomain"       "$domain\$user"
-SetSPN -d "MSSQLSvc/$computer.$dnsDomain`:1433" "$domain\$computer$"
-SetSPN -s "MSSQLSvc/$computer.$dnsDomain`:1433" "$domain\$user"
-
 # For secondary servers, we skip restoring the DB. So check first if DB was specified
 if (($null -ne $dbsource) -and ($dbsource -ne "")) {
     # Get the Contoso Insurance database backup 
     $dbdestination = "D:\ContosoInsurance.bak"
     Write-Output "Download $dbsource to $dbdestination"
-    Invoke-WebRequest $dbsource -OutFile $dbdestination
+    #Invoke-WebRequest $dbsource -OutFile $dbdestination
+    powershell -ExecutionPolicy Unrestricted "[Net.ServicePointManager]::SecurityProtocol = 'Tls12'; Invoke-WebRequest -uri  $dbsource -OutFile $dbdestination"
 
     # Restore the database from the backup
     Write-Output "Restore the database from backup"
@@ -109,35 +95,6 @@ if (($null -ne $dbsource) -and ($dbsource -ne "")) {
 } else {
     Write-Output "No source database specified"
 }
-
-# Disable IE Enhanced Security Configuration
-Write-Output "Disable IE Enhanced Security"
-$AdminKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}"
-$UserKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}"
-
-New-Item -Path $adminKey -Force
-New-Item -Path $UserKey -Force
-New-ItemProperty -Path $AdminKey -Name "IsInstalled" -Value 0
-New-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0
-
-$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
-$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
-Set-ItemProperty -Path $HKLM -Name "1803" -Value 0
-Set-ItemProperty -Path $HKCU -Name "1803" -Value 0
-$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2"
-$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2"
-Set-ItemProperty -Path $HKLM -Name "1803" -Value 0
-Set-ItemProperty -Path $HKCU -Name "1803" -Value 0
-$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3"
-$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3"
-Set-ItemProperty -Path $HKLM -Name "1803" -Value 0
-Set-ItemProperty -Path $HKCU -Name "1803" -Value 0
-$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4"
-$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4"
-Set-ItemProperty -Path $HKLM -Name "1803" -Value 0
-Set-ItemProperty -Path $HKCU -Name "1803" -Value 0
-$HKLM = "HKLM:\Software\Microsoft\Internet Explorer\Security"
-New-ItemProperty -Path $HKLM -Name "DisableSecuritySettingsCheck" -Value 1 -PropertyType DWORD
 
 Write-Output "All done"
 

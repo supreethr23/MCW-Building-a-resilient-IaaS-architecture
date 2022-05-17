@@ -39,10 +39,11 @@
         }
     },
     "variables": {
-        "customScriptFolder": "https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/scripts/",
+        "githubBranchName": "master",
+        "customScriptFolder": "[concat('https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/',variables('githubBranchName'),'/Hands-on%20lab/Resources/scripts/')]",
         "customScriptUriScriptFileName": "configure-labvm.ps1",
-        "customScriptUri": "https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/scripts/configure-labvm.ps1",
-        "customScriptDownload": "[concat('powershell -ExecutionPolicy Unrestricted \"[Net.ServicePointManager]::SecurityProtocol = ''Tls12''; Invoke-WebRequest -uri ', variables('customScriptUri') ,' -OutFile ', variables('customScriptUriScriptFileName'), ' \"')]",
+        "customScriptUri": "[concat(variables('customScriptFolder'),variables('customScriptUriScriptFileName'))]",
+        "customScriptDownload": "[concat('powershell -ExecutionPolicy Unrestricted; Invoke-WebRequest -uri ', variables('customScriptUri') ,' -OutFile ', variables('customScriptUriScriptFileName'))]",        
         "imagePublisher": "MicrosoftVisualStudio",
         "imageOffer": "visualstudio2019latest",
         "imageSku": "vs-2019-comm-latest-ws2019",
@@ -209,7 +210,10 @@
                         "typeHandlerVersion": "1.9",
                         "autoUpgradeMinorVersion": false,
                         "settings": {
-                            "commandToExecute": "[concat(variables('customScriptDownload'),'; powershell -ExecutionPolicy Unrestricted -File ', variables('customScriptFolder'), '/', variables('customScriptUriScriptFileName'), ' -sourceFileUrl ', parameters('studentFilesUrl'), ' -destinationFolder ', parameters('studentFilesDestination'))]"
+                                "fileUris": [
+                                    "[variables('customScriptUri')]"
+                                ],
+                                "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('customScriptUriScriptFileName'), ' -sourceFileUrl ', parameters('studentFilesUrl'), ' -destinationFolder ', parameters('studentFilesDestination'))]"
                         },
                         "protectedSettings": {}
                     }
