@@ -74,7 +74,7 @@ New-NetFirewallRule -DisplayName "SQL AG Endpoint" -Direction Inbound -Protocol 
 New-NetFirewallRule -DisplayName "SQL AG Load Balancer Probe Port" -Direction Inbound -Protocol TCP -LocalPort 59999 -Action allow
 
 # For secondary servers, we skip restoring the DB. So check first if DB was specified
-if (($null -ne $dbsource) -and ($dbsource -ne "")) {
+if (($env:COMPUTERNAME) -eq "SQLVM1") {
     # Get the Contoso Insurance database backup 
     $dbdestination = "D:\ContosoInsurance.bak"
     Write-Output "Download $dbsource to $dbdestination"
@@ -93,7 +93,9 @@ if (($null -ne $dbsource) -and ($dbsource -ne "")) {
     Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER DATABASE ContosoInsurance SET RECOVERY FULL"
     Backup-SqlDatabase -ServerInstance Localhost -Database ContosoInsurance
 } else {
-    Write-Output "No source database specified"
+ Write-Output "Secondar server, no database restored"
+
+
 }
 
 Write-Output "All done"
