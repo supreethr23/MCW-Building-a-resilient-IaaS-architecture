@@ -117,15 +117,15 @@ A template will be used to save time. You will configure each tier in subsequent
 2.  Complete the Custom deployment blade as follows:
 
     - Resource Group: **ContosoRG1** (existing)
-    - Location: Central US
+    - Location: This should be same as the region of your *Contoso-RG1* resource group
 
     Select **Review + Create** and then **Create** to deploy resources.
 
-    ![The custom deployment screen with ContosoRG1 as the resource group.](images/ha-deploy1.png "Custom deployment")
+    ![The custom deployment screen with ContosoRG1 as the resource group.](images/Deployment01.png "Custom deployment")
 
 3.  While you wait for the HA resources to deploy, take some time review the template contents. You can review the template by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, selecting any of the deployments, followed by **template**.
 
-    ![Screenshot of the Azure portal showing the HA template contents.](images/ha-template.png "Screenshot of the Azure portal showing the HA template contents.")
+    ![Screenshot of the Azure portal showing the HA template contents.](images/Deployment02.png "Screenshot of the Azure portal showing the HA template contents.")
 
     Note that the template contains four child templates, containing the various resources required for:
 
@@ -161,7 +161,9 @@ In this task, you will reboot all the servers to ensure they have the latest DNS
 In this task, you will build a Windows Failover Cluster and configure SQL Always On Availability Groups to create a high-availability database tier.
 
 
-1. From the Azure portal home page, select **+ Create a resource**. Select **Storage account**.
+1. In the Azure portal's left navigation, select **+ Create a resource**, then search for and select **Storage account**, followed by **Create**.
+
+   ![Screenshot of the Azure portal showing the create storage account navigation.](images/storage-create.png "Create storage account blade")
    
 2. Complete the **Create storage account** form using the following details:
 
