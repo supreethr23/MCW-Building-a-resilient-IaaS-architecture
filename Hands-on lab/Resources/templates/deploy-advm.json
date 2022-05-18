@@ -87,7 +87,7 @@
     "scriptBase": "[concat(parameters('baseUri'), parameters('resourceFolder'), 'scripts/')]",
     "scriptFileName": "[if(parameters('newDomain'), 'deploy-advm-new.ps1', 'deploy-advm-existing.ps1')]",
     "pauseFileName": "deploy-hold-vm-new.ps1",
-    "pauseWait": 120,
+    "pauseWait": 600,
     "scriptUrl": "[concat(variables('scriptBase'), variables('scriptFileName'))]",
     "pauseUrl": "[concat(variables('scriptBase'), variables('pauseFileName'))]",
     "scriptFolder": "[concat('./',parameters('resourceFolder'),'scripts/')]",
