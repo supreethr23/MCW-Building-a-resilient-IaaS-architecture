@@ -289,71 +289,75 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com`.
 
-27. Launch SQL Server Management Studio and expand **Security** and then **Logins**. You'll notice that only `SQLVM2\demouser` is listed.
+27. Select **Connect** to sign on to **SQLVM2**. **Note**: The username for your lab should show **CONTOSO\demouser**.
+
+    ![Screenshot of the Connect to Server dialog box.](images/sqlvm1-login.png "Connect to Server dialog box")
+    
+28. Launch SQL Server Management Studio and expand **Security** and then **Logins**. You'll notice that only `SQLVM2\demouser` is listed.
 
     ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images/perm-checkdomainuser.png)
 
-28. Right-click on **Logins** and then select **New Login...**
+29. Right-click on **Logins** and then select **New Login...**
 
     ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images/perm-newlogin.png)
 
-29. In **Login name:**, type contoso\demouser, then select **Server Roles**.
+30. In **Login name:**, type contoso\demouser, then select **Server Roles**.
 
     ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images/perm-addusername.png)
 
-30. Check the box for **sysadmin** and select **OK**. You'll now see `contoso\demouser` listed in the login list.
+31. Check the box for **sysadmin** and select **OK**. You'll now see `contoso\demouser` listed in the login list.
 
     ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images/perm-addsysadmin.png)
 
-31. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 18** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
+32. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 18** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
     ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
 
-32. Select **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
+33. Select **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images/image173.png "Connect to Server dialog box")
 
-33. Right-click **Always On High Availability**, then select **New Availability Group Wizard**.
+34. Right-click **Always On High Availability**, then select **New Availability Group Wizard**.
 
     ![In Object Explorer, AlwaysOn High Availability is selected, and from its right-click menu, New Availability Group Wizard is selected.](images/image174.png "SQ Server Management Studio, Object Explorer")
 
-34. Select **Next** on the Wizard.
+35. Select **Next** on the Wizard.
 
     ![On the New Availability Group Wizard begin page, Next is selected.](images/image175.png "New Availability Group Wizard ")
 
-35. Provide the name **BCDRAOG** for the **Availability group name**, then select **Next**.
+36. Provide the name **BCDRAOG** for the **Availability group name**, then select **Next**.
 
     ![The Specify availability group options form displays the previous availability group name.](images/image176.png "Specify availability group options page")
 
-36. Select the **ContosoInsurance Database**, then select **Next**.
+37. Select the **ContosoInsurance Database**, then select **Next**.
 
     ![The ContosoInsurance database is selected from the user databases list.](images/image177.png "Select Databases page")
 
-37. On the **Specify Replicas** screen next to **SQLVM1**, select **Automatic Failover**.
+38. On the **Specify Replicas** screen next to **SQLVM1**, select **Automatic Failover**.
 
     ![On the Replicas tab, for SQLVM1, the checkbox for Automatic Failover (Up to 3) is selected.](images/image178.png "Specify Replicas screen")
 
-38. Select **Add Replica**.
+39. Select **Add Replica**.
 
     ![Screenshot of the Add replica button.](images/image179.png "Add replica button")
 
-39. On the **Connect to Server** dialog box enter the Server Name of **SQLVM2** and select **Connect**. **Note**: The username for your lab should show **CONTOSO\demouser**.
+40. On the **Connect to Server** dialog box enter the Server Name of **SQLVM2** and select **Connect**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![Screenshot of the Connect to Server dialog box for SQLVM2.](images/image180.png "Connect to Server dialog box")
 
-40. For **SQLVM2**, select Automatic Failover and Availability Mode of Synchronous commit.
+41. For **SQLVM2**, select Automatic Failover and Availability Mode of Synchronous commit.
 
     ![On the Replicas tab, for SQLVM2, the checkbox for Automatic Failover (Up to 3) is selected, and availability mode is set to synchronous commit.](images/image181.png "Specify Replicas Screen")
 
-41. Select **Endpoints** and review these that the wizard has created.
+42. Select **Endpoints** and review these that the wizard has created.
 
     ![On the Endpoints tab, the three servers are listed.](images/ha-ag-endpoints.png "Specify Endpoints screen")
 
-42. Next, select **Listener**. Then, select the **Create an availability group listener**.
+43. Next, select **Listener**. Then, select the **Create an availability group listener**.
 
     ![On the Listener tab, the radio button for Create an availability group listener is selected.](images/image185.png "Specify Listener screen")
 
-43. Add the following details:
+44. Add the following details:
 
     - **Listener DNS Name**: BCDRAOG
     - **Port**: 1433
@@ -361,55 +365,55 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![Fields for the Listener details are set to the previously defined settings.](images/image186.png "Listener details")
 
-44. Next, select **Add**.
+45. Next, select **Add**.
 
     ![The Add button is selected beneath an empty subnet table.](images/image187.png "Add button")
 
-45. Select the Subnet of **10.0.2.0/24** and then add IPv4 **10.0.2.100** and select **OK**. This is the IP address of the Internal Load Balancer that is in front of the **SQLVM1** and **SQLVM2** in the **Data** subnet running in the **Primary** Site.
+46. Select the Subnet of **10.0.2.0/24** and then add IPv4 **10.0.2.100** and select **OK**. This is the IP address of the Internal Load Balancer that is in front of the **SQLVM1** and **SQLVM2** in the **Data** subnet running in the **Primary** Site.
 
     ![The Add IP Address dialog box fields are set to the previously defined settings.](images/image188.png "Add IP Address dialog box")
 
-46. Select **Next**.
+47. Select **Next**.
 
     ![On the Listener tab, the Next button is selected.](images/ha-ag-listener-next.png "Next button")
 
-47. On the **Select Initial Data Synchronization** screen, make sure that **Automatic seeding** is selected and select **Next**.
+48. On the **Select Initial Data Synchronization** screen, make sure that **Automatic seeding** is selected and select **Next**.
 
     ![On the Select Initial Data Synchronization screen, the radio button for Automatic seeding is selected. The Next button is selected at the bottom of the form.](images/image192.png "Select Initial Data Synchronization screen")
 
-48. On the **Validation** screen, you should see all green. Select **Next**.
+49. On the **Validation** screen, you should see all green. Select **Next**.
 
     ![The Validation screen displays a list of everything it is checking, and the results for each, which all display success. The Next button is selected.](images/ha-ag-valid.png "Validation screen")
 
-49. On the Summary page select **Finish**.
+50. On the Summary page select **Finish**.
 
     ![On the Summary page, the Finish button is selected.](images/image194.png "Summary page")
 
-50. Once the AOG is built, check each task was successful and select **Close**.
+51. Once the AOG is built, check each task was successful and select **Close**.
 
     ![On the New Availability Group Results page, a message says the wizard has completed successfully, and results for all steps is success. The Close button is selected.](images/ha-ag-results.png "New Availability Group Results page")
 
-51. Move back to **SQL Management Studio** on **SQLVM1** and expand the **Always On High Availability** item in the tree view. Under Availability Groups, expand the **BCDRAOG (Primary)** item.
+52. Move back to **SQL Management Studio** on **SQLVM1** and expand the **Always On High Availability** item in the tree view. Under Availability Groups, expand the **BCDRAOG (Primary)** item.
 
     ![In SQL Management Studio, Always On High Availability is expanded in the tree view.](images/ha-ag-explorer.png "SQL Management Studio")
 
-52. Right-click **BCDRAOG (Primary)** and then select **Show Dashboard**. You should see that all the nodes have been added and are now "Green".
+53. Right-click **BCDRAOG (Primary)** and then select **Show Dashboard**. You should see that all the nodes have been added and are now "Green".
 
     ![Screenshot of the BCDRAOG Dashboard indicating the status of all SQL Server VMs as healthy.](images/ha-ag-dashboard.png "BCDRAOG Dashboard")
 
-53. Next, select **Connect** and then **Database Engine** in SQL Management Studio.
+54. Next, select **Connect** and then **Database Engine** in SQL Management Studio.
 
     ![Connect / Database Engine is selected in Object Explorer.](images/image200.png "Object Explorer")
 
-54. Enter **BCDRAOG** as the Server Name. This will be connected to the listener of the group that you created. **Note**: The username for your lab should show **CONTOSO\demouser**.
+55. Enter **BCDRAOG** as the Server Name. This will be connected to the listener of the group that you created. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![In the Connect to Server Dialog box, Server name is BCDRAOG, and the connect button is selected.](images/image201.png "Connect to Server Dialog box")
 
-55. Once connected to the **BCDRAOG**, you can select **Databases** and will be able to see the database there. Notice that you have no knowledge directly of which server this is running on.
+56. Once connected to the **BCDRAOG**, you can select **Databases** and will be able to see the database there. Notice that you have no knowledge directly of which server this is running on.
 
     ![A call out points to ContosoInsurance (Synchronized) in SQL Management Studio.](images/image202.png "SQL Management Studio")
 
-56. Move back to **PowerShell ISE** on **SQLVM1**. Open a new file, paste in the following script, and select the **Play** button. This will update the Failover cluster with the IP address of the Listener that you created for the AOG.
+57. Move back to **PowerShell ISE** on **SQLVM1**. Open a new file, paste in the following script, and select the **Play** button. This will update the Failover cluster with the IP address of the Listener that you created for the AOG.
 
     ```Powershell
     $ClusterNetworkName = "Cluster Network 1"
@@ -423,21 +427,21 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![In the Windows PowerShell ISE window, the play button is selected. The script from the lab guide has been executed.](images/ha-ise-listenerip.png "Windows PowerShell ISE window")
 
-57. Move back to SQL Management Studio and select **Connect** and then **Database Engine**.
+58. Move back to SQL Management Studio and select **Connect** and then **Database Engine**.
 
     ![In Object Explorer, Connect / Database Engine is selected.](images/image200.png "Object Explorer")
 
-58. This time, put the following into the IP address of the Internal Load balancer of the **Primary** Site AOG Load Balancer: **10.0.2.100**. You again will be able to connect to the server which is up and running as the master. **Note**: The username for your lab should show **CONTOSO\demouser**.
+59. This time, put the following into the IP address of the Internal Load balancer of the **Primary** Site AOG Load Balancer: **10.0.2.100**. You again will be able to connect to the server which is up and running as the master. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![Fields in the Connect to Server dialog box are set to the previously defined settings.](images/image205.png "Connect to Server dialog box")
 
-59. Once connected to **10.0.2.100**, you can select **Databases** and will be able to see the database there. Notice that you have no knowledge directly of which server this is running on.
+60. Once connected to **10.0.2.100**, you can select **Databases** and will be able to see the database there. Notice that you have no knowledge directly of which server this is running on.
 
     ![A call out points to the Databases folder in Object Explorer.](images/ha-ssms-ip.png "Object Explorer")
 
     > **Note:** It could take a minute to connect the first time as this is going through the Azure Internal Load Balancer.
 
-60. Move back to Failover Cluster Manager on **SQLVM1**, and you can review the IP Addresses that were added by selecting Roles and **BCDRAOG** and viewing the Resources. Notice how the **10.0.2.100** is Online.
+61. Move back to Failover Cluster Manager on **SQLVM1**, and you can review the IP Addresses that were added by selecting Roles and **BCDRAOG** and viewing the Resources. Notice how the **10.0.2.100** is Online.
 
     ![In the Failover Cluster Manager tree view, Roles is selected. Under Roles, BCDRAOG is selected, and details of the role display.](images/ha-fcm-aogrole.png "Failover Cluster Manager")
 
