@@ -110,7 +110,7 @@ In this task, you will deploy additional web, database and domain controller VMs
 
 A template will be used to save time. You will configure each tier in subsequent exercises in this lab.
 
-1.  Select the **Deploy to Azure** button below to open the Azure portal and launch the template deployment for the additional infrastructure components that will be used to enable high availability for the Contoso application. Log in to the Azure portal using your subscription credentials if you are prompted to do so.
+1.  Select the **Deploy to Azure** button below to open the Azure portal and launch the template deployment for the additional infrastructure components that will be used to enable high availability for the Contoso application. Log in to the Azure portal using your subscription credentials.
 
     [![Button to deploy the Contoso High Availability resource template to Azure.](https://aka.ms/deploytoazurebutton "Deploy the Contoso HA resources to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMCW-Building-a-resilient-IaaS-architecture%2Fmaster%2FHands-on%20lab%2FResources%2Ftemplates%2Fcontoso-iaas-ha.json)
 
@@ -123,31 +123,32 @@ A template will be used to save time. You will configure each tier in subsequent
 
     ![The custom deployment screen with ContosoRG1 as the resource group.](images/Deployment01.png "Custom deployment")
 
-3.  While you wait for the HA resources to deploy, take some time review the template contents. You can review the template by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, selecting any of the deployments, followed by **template**.
+3.  While you wait for the HA resources to deploy, take some time review the template contents. You can review the template by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and selecting any of the deployments, followed by **template**.
 
     ![Screenshot of the Azure portal showing the HA template contents.](images/Deployment02.png "Screenshot of the Azure portal showing the HA template contents.")
 
-    Note that the template contains four child templates, containing the various resources required for:
+    Note that the template contains five child templates, containing the various resources required for:
 
     -   The ADVM2 virtual machine, which will be a second Domain Controller.
     -   The SQLVM2 virtual machine, which will be a second SQL Server.
     -   The WebVM2 virtual machine, which will be a second web server.
     -   Two load balancers, one for the web tier, and one for the SQL tier.
+    -   The virtual network with the proper DNS configuration in place.
 
-4.  You can check the HA resource deployment status by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and checking the status of the deployments. Make sure the deployment status is **Succeeded** for all templates before proceeding the next task.
+4.  You can check the HA resource deployment status by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and checking the status of the deployments. Make sure the deployment status is **Succeeded** for all templates before proceeding to the next task.
 
     ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/ha-success.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
 
 
 ### Task 2: Configure HA for the Domain Controller tier
 
-In this task you will configure the virtual network to use the redundant Domain Controller VMs.
+In this task, you will reboot all the virtual machines to ensure they receive the updated DNS settings.
 
 When using a domain controller VM in Azure, other VMs in the virtual network must be configured to use the domain controller as their DNS server. This is achieved by setting the DNS settings in the virtual network. These settings are then picked up by the VMs when they reboot or renew their DHCP lease.
 
 The initial deployment included a first domain controller VM, **ADVM1**, with static private IP address **10.0.3.100**. The initial deployment also configured this IP address in the VNet DNS settings.
 
-The HA resources template has added a second domain controller **ADVM2**, with static private IP address **10.0.3.101**. This server has already been promoted to be a domain controller using a CustomScriptExtension (you can review this script if you like, you'll find it linked from the ADVM2 deployment template).
+The HA resources template has added a second domain controller **ADVM2**, with static private IP address **10.0.3.101**. This server has already been promoted to be a domain controller using a CustomScriptExtension (you can review this script if you like, you'll find it linked from the ADVM2 deployment template). The template also updated the DNS setting on the virtual network to include the IP address of the second domain controller.
 
 In this task, you will reboot all the servers to ensure they have the latest DNS settings.
 
@@ -182,7 +183,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     > **Note:** To promote use of the latest and most secure standards, by default Azure storage accounts require TLS version 1.2. This storage account will be used as a Cloud Witness for our SQL Server cluster. SQL Server requires TLS version 1.0 for the Cloud Witness.
 
-4.  Once the storage account is created, navigate to the storage account blade. Select **Access keys** under **Security + networking**. Select **Show keys** then copy the **storage account name** and the **first access key** to notepad - you will need these values later.
+4.  Once the storage account is created, navigate to the storage account blade. Select **Access keys** under **Security + networking**. Select **Show keys** then copy the **storage account name** and the **first access key** and paste them into your text editor of choice - you will need these values later.
 
     ![In the Storage account Access keys section, the Storage account name and key1 are called out.](images/ha-storagekey.png "Storage account section")
 
@@ -200,7 +201,8 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     - **Username**: `demouser@contoso.com`
     - **Password**: `Demo!pass123`
-
+    
+    ![Azure portal showing connection to SQLVM1 using Bastion.](images/ha-sqlvm1-bastion1.png)
     
     > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in the format `user@domain-fqdn`, and **not** in the format `domain\user`.
 
@@ -301,7 +303,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images/perm-newlogin.png)
 
-30. In **Login name:**, type contoso\demouser, then select **Server Roles**.
+30. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
 
     ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images/perm-addusername.png)
 
