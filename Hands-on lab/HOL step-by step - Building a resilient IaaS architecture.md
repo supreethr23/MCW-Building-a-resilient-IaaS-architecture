@@ -539,6 +539,8 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 4.  From the Azure portal, select **+Create a resource**, then search for and select **Backup and Site Recovery** then select **Create**.
 
+    ![](images/backup-create.png)
+
 5.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
 
     - **Resource Group**: ContosoRG2
@@ -561,18 +563,19 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 9.  Complete the **Add Automation Account** blade using the following inputs and then select **Create**:
 
+    - **subscription**: Select the default subscription
     - **Name**: Enter a Globally unique name starting with `BCDR`.
     - **Resource group**: Use existing / **ContosoRG2**
     - **Location**: East US 2
-    - **Create Azure Run As account**: Yes
+    
 
-    ![Fields in the Add Automation Account blade are set to the previously defined values.](images/dr-aa.png "Add Automation Account blade")
+    ![Fields in the Add Automation Account blade are set to the previously defined values.](images/automation-create.png "Add Automation Account blade")
 
     > **Note:** Azure Automation accounts are only allowed to be created in certain Azure regions, but they can act on any region in Azure (except Government, China or Germany). It is not a requirement to have your Azure Automation account in the same region as the failover resources, but it **CANNOT** be in your primary region.
 
 10. Once the Azure automation account has been created, open the account and select **Modules gallery** under **Shared Resources**.
 
-    ![Under Shared Resources, Modules gallery is selected.](images/image46.png "Shared Resources section")
+    ![Under Shared Resources, Modules gallery is selected.](images/Ex1-t1-s10.png "Shared Resources section")
 
 11. When the Modules load, search for and select **Az.Accounts**, then select **Import**, then **OK**.
 
@@ -592,9 +595,9 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 > **Note**: You must be connected to the **LABVM** to complete the next steps.
 
-15. Select the **Folder** icon on the Import blade and select the file **ASRRunbookSQL.ps1** from the `C:\HOL\` directory on the **LABVM**. The Runbook type should default to **PowerShell Workflow**. Notice that the Name can't be changed. This is the name of the Workflow inside of the Runbook script. Select **Create**.
+15. Select the **Folder** icon on the Import blade and select the file **ASRRunbookSQL.ps1** from the `C:\HOL\` directory on the **LABVM**. The Runbook type should default to **PowerShell Workflow**. Change the name of the Workflow inside of the Runbook script to **ASRSQLFailover**. Select **Create**.
 
-    ![Fields in the 'Import a runbook' blade are set to the previously defined values.](images/dr-rbimp2.png "Import a runbook")
+    ![Fields in the 'Import a runbook' blade are set to the previously defined values.](images/Ex2-t1-step15.png "Import a runbook")
 
 16. Once the Runbook is imported, the runbook editor will load. If you wish, you can review the comments to better understand the runbook. Once you are ready, select **Publish**, followed by **Yes** at the confirmation prompt. This makes the runbook available for use.
 
@@ -834,7 +837,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 3. On **Step 1 - Source** select the following inputs and then select **Next**:
 
-    - **Source Location**: Central US *(Your Primary region)*
+    - **Source Location**: East US2 *(Your Primary region)*
     - **Azure virtual machine deployment model**: Resource Manager
     - **Source resource group**: ContosoRG1
     - **Disaster Recovery between Availability Zones?**: No (this option is for DR between availability zones *within* a region)
@@ -845,7 +848,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![In the Select virtual machines blade, the check boxes for WebVM1 and WebVM2 are selected.](images/dr-asr-3.png "Select virtual machines blade")
 
-5. On the **Replication settings** tab, select the **Target location** as **East US 2** (your secondary site Azure region). Then, in the 'Resource group, Network, Storage and Availability' section, select **Customize**.
+5. On the **Replication settings** tab, select the **Target location** as **West US 2** (your secondary site Azure region). Then, in the 'Resource group, Network, Storage and Availability' section, select **Customize**.
 
     ![In the Customize target settings blade, the Target location is set to East US 2 and the customize button highlighted](images/dr-asr-4.png "Configure settings blade")
 
@@ -887,8 +890,8 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 13. Fill in the **Create recovery plan** blade as follows:
 
     - **Name**: BCDRIaaSPlan
-    - **Source**: Central US *(This is your primary region)*
-    - **Target**: East US 2 *(This is your secondary region)*
+    - **Source**: East US 2 *(This is your primary region)*
+    - **Target**: West US 2 *(This is your secondary region)*
     - **Allow items with deployment model**: Resource Manager
     - **Select Items**: Select **WebVM1** and **WebVM2**
 
@@ -910,9 +913,9 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![In the Recovery plan blade, the right-click menu for All groups failover displays and Add pre-action is selected.](images/dr-asr-13.png "Recovery plan blade")
 
-17. On the **Insert action** blade, select **Script** and then provide the name `ASRSQLFailover`. Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRRunBookSQL**. Select **OK**.
+17. On the **Insert action** blade, select **Script** and then provide the name `ASRSQLFailover`. Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRSQLFailover**. Select **OK**.
 
-    ![Fields in the Insert action blade are set to the ASRRunBookSQL script.](images/dr-asr-14.png "Insert action blade")
+    ![Fields in the Insert action blade are set to the ASRRunBookSQL script.](images/Ex-2-t3-step17.png "Insert action blade")
 
     > **Note:** As noted on the 'Insert action' blade, the ASRSQLFailover runbook will be executed on both failover and failback. The runbook has been written to support both scenarios.
 
@@ -920,9 +923,9 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![In the Recovery plan blade, the Group 1: Start right-click menu displays, and Add post action is selected.](images/dr-asr-15.png "Recovery plan blade")
 
-19. On the **Insert action** blade, select **Script** and then provide the name: **ASRWEBFailover.** Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRRunBookWEB**. Select **OK**.
+19. On the **Insert action** blade, select **Script** and then provide the name: **ASRWEBFailover.** Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRWEBFailover**. Select **OK**.
 
-    ![Fields in the Insert action blade are set to the ASRWebFailover script.](images/dr-asr-16.png "Insert Action blade")
+    ![Fields in the Insert action blade are set to the ASRWebFailover script.](images/Ex2-t1-step19.png "Insert Action blade")
 
 20. Make sure that your **Pre-steps** are running under **All groups failover** and the **Post-steps** are running under **Group1: Start**. Select **Save**.
 
@@ -942,82 +945,97 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 There is just one step remaining to complete your DR environment. After a failover to the DR site, the IP address for the Contoso application (the web tier load balancer frontend IP address) will change. Users need to be directed to the failover IP address.
 
-This can be achieved in either of two ways:
+The redirection to the failover IP address can be achieved in either of two ways:
 
 -   Update the DNS record for the user endpoint to point to the new IP address. This can be implemented using Azure Traffic Manager.
 -   Direct users to a proxy service and have that service forward traffic to the currently active endpoint. Azure Front Door provides such a service.
 
 In this task, you will use the Front Door approach to configure a highly available endpoint that directs traffic to either your primary or secondary site, depending on which site is currently available.
 
-1.  You will now build a Front Door to direct traffic to your Primary and Secondary Sites. From the Azure portal, select **+Create a resource**, then search for and select **Front Door**. Select **Create**. 
+1.  You will now build a Front Door to direct traffic to your Primary and Secondary Sites. From the Azure portal, select **+Create a resource**, then search for and select **Front Door and CDN profiles**. Select **Create**. 
 
     ![Icon for Azure Front Door.](images/dr-fd-icon.png "Azure Front Door icon")
 
-2. Complete the **Basics** tab of the **Create a Front Door** blade using the following inputs, then select **Next: Configuration >**:
+2. Select **Azure Front Door** and **Custom create**. Then select **Continue to create a  Front Door**.
+
+    ![Screenshot showing compare offerings with Azure Front Door and Custom create both selected.](images/dr-fd-offerings.png "Azure Front Door Compare Offerings")
+    
+3. Complete the **Basics** tab of the **Create a Front Door** blade using the following inputs, then select **Next: Secrets >**.
 
     - **Resource group**: Use existing / **ContosoRG1**
     - **Location**: Automatically assigned based on the region of **ContosoRG1**.
+    - **Profile name**: ContosoFD1
+    - **Tier**: Standard
 
     ![Fields in the Create a Front Door blade are set to the previously defined settings.](images/dr-fd-basics.png "Create Front Door 'basics' blade")
 
-3. Select the **plus** icon on the **Frontend/domains** box to set the host name of Front Door. In the **Add a frontend host** pane, enter the following values, then select **Add**:
+4. Select **Next: Endpoint >**
 
-    - **Host name**: Enter a unique name with the prefix of `contosoiaas`.
-    - **Session affinity**: Disabled
-    - **Web application firewall**: Disabled
+5. Select **Add an endpoint** to set the hostname of Front Door. In the **Add an endpoint** pane, enter the following values, then select **Add**:
+
+    - **Endpoint name**: `contosoiaas`
+    - **Status**: Leave **Enable this endpoint** selected
 
     ![Fields in the Add a frontend host pane are set to the previously defined settings.](images/dr-fd-fe.png "Add a frontend host pane.")
 
-4. Select the **plus** button on the **Backend pools** box to begin adding endpoints to the backend pool. On the **Add a backend pool** pane, enter the following value, then select the **Add a backend** link.
+6. Under **Routes** select **+ Add a route**.
 
-    - **Name**: `ContosoPool`
-    - **Health Probes - Protocol**: HTTP
+    ![Create a front door profile with options to create Routes and Security policies. Add a route is highlighted.](images/dr-fd-addroute.png "Create a front door profile")
+    
+7. Select **Add a new origin group**.
+    
+    ![Under Origin group on the Add a new route screen, the link to Add a new origin group is highlighted.](images/dr-fd-addneworigingroup.png "Add a route")
+    
+8. Give the new origin group the name of `ContosoOrigins`.
 
-    ![The Add a backend pool pane has the Name set and Add a backend link highlighted.](images/dr-fd-pool.png "The Add a backend pool pane has the Name set and Add a backend link highlighted.")
+9. Select **+ Add an origin**.
+    
+   ![Under the Add an origin group pane, + Add an origin is highlighted.](images/dr-fd-addorigin.png "Add an origin group")
+   
+10. For adding an origin, use the following values. Leave all other values set to their default. Then select Add.
 
-5. On the **Add a backend** pane, enter the following values (leave others as defaults), then select **Add**:
+    - Name: `ContosoWebPrimary`
+    - Origin type: Public IP Address
+    - Host name: ContosoWebLBPrimaryIP
+    - Priority: 2
 
-    - **Backend host type**: Public IP Address
-    - **Backend host name**: ContosoWebLBPrimaryIP
-    - **Backend host header**: Paste in the DNS name for the **ContosoWebLBPrimaryIP** Public IP Address (in the **ContosoRG1** resource group).
+    ![Screen shot showing the values entered into the Add an origin pane.](images/dr-fd-neworigin.png "Add an origin")
 
-    ![The Add a backend pane has the previously specified values set.](images/dr-fd-be1.png "Add a backend pane")
+11. Repeat step 10 and change the values to the following.
 
-6. Select **Add a backend** again and add another backend host to the pool. Create it similar to before, but with the following settings:
+    - Name: `ContosoWebSecondary`
+    - Origin type: Public IP Address
+    - Host name
 
-    - **Backend host type**: Public IP Address
-    - **Backend host name**: ContosoWebLBSecondaryIP
-    - **Backend host header**: Paste in the DNS name for the **ContosoWebLBSecondaryIP** Public IP Address (in the **ContosoRG2** resource group).
-    - **Priority**: 2
+12. Update **Interval (in seconds)** to 30. Click Add
 
-    ![The Add a backend pane has the previously specified values set.](images/dr-fd-be2.png "Add a backend pane")
+    ![Showing the completed Add an origin group pane with all fields filled out and ready to select add.](images/dr-fd-addorigingroup.png "Add an origin group")
+    
+13. Enter the following values in **Add a route**. Leave all other values as default. Select **Add**
 
-7. Select **Add** to create the backend pool.
+    - Name: `ContosoRoute`
+    - Accepted protocols: HTTP only
+    - Redirect: Uncheck **Redirect all traffic to use HTTPS**
+    - Origin group: ensure **ContosoOrigins** is selected
+    - Forwarding protocol: HTTP only
 
-8. Select the **plus** button on the **Routing rules** box. On the **Add a rule** pane, enter the following values (leave others as defaults), then select **Add**.
+    ![Screenshot showing the completed add a route pane with all correct values read to select Add.](images/dr-fd-addroutecomplete.png "Add a route")
+    
+14. Select **Review + Create**. Once validation has been completed, select **Create** to provision the Front Door service.
 
-    - **Name**: `ContosoRule`
-    - **Accepted protocol**: HTTP only
-    - **Backend pool**: ContosoPool
-    - **Forwarding protocol**: HTTP Only
-
-    ![Add a rule pane with the previously specified values entered in the fields.](images/dr-fd-rule.png "Add a rule pane")
-
-9. Select **Review + Create**. Once validation has completed, select **Create** to provision the Front Door service.
-
-10. Navigate to the Azure Front Door resource. Select the **Frontend host** URL of Azure Front Door, the Policy Connect web application will load. This is connecting to the **ContosoWebLBPrimary** External Load Balancer that is in front of **WEBVM1** and **WEBVM2** running in the **Primary** Site in **ContosoRG1** resource group and connecting to the SQL Always On Listener at the same location.
+    ![Create a front door profile screen completed and ready to create. Completed route and Review + Create are highlighted.](images/dr-fd-profile.png "Create a front door profile")
+    
+15. Navigate to the Azure Front Door resource. Select the **Frontend host** URL of Azure Front Door, and the Policy Connect web application will load. The web application is routing through the **ContosoWebLBPrimary** External Load Balancer configured in front of **WEBVM1** and **WEBVM2** running in the **Primary** Site in **ContosoRG1** resource group and connecting to the SQL AlwaysOn Listener at the same location.
 
     ![The Frontend host link is selected from the Azure Front Door.](images/dr-fd.png "Frontend host link")
 
     ![The Contoso Insurance PolicyConnect webpage displays from a Front Door URL.](images/dr-fd-app.png "Contoso Insurance PolicyConnect webpage")
 
-    > **Note:** Be sure to use **HTTP** to access the Azure Front Door **frontend host** URL. The lab configurations only supports HTTP for Front Door since WebVM1 and WebVM2 are only set up for HTTP support, not HTTPS (no SSL\TLS).
-
-    > **Note:** If you get a "Our services aren't available right now" error (or a 404-type error) accessing the web application, then continue with the lab and come back to this later. Sometime this can take a ~10 minutes for the routing rules to publish before it's "live".
+    > **Note:** Be sure to use **HTTP** to access the Azure Front Door **frontend host** URL. The lab configurations only support HTTP for Front Door since WebVM1 and WebVM2 are only set up for HTTP support, not HTTPS (no SSL\TLS).
+    > **Note:** If you get an "Our services aren't available right now" error (or a 404-type error) accessing the web application, then continue with the lab and come back to this later. Sometime this can take a ~10 minutes for the routing rules to publish before it's "live".
     >
     > If you continue to have this issue beyond 15 minutes, ensure that you are using the correct backend host header (Step 5) and using HTTP for both the routing rules and the health probes of the backend pools. (Step 4).
     >
-    > ![Error shown displaying Our services aren't available right now.](images/image224-b.png "Error shown displaying Our services aren't available right now")
 
 ## Exercise 3: Enable Backup for the Contoso application
 
