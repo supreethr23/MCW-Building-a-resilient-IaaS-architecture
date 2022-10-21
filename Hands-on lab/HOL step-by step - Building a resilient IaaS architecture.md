@@ -845,10 +845,10 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 3. On **Step 1 - Source** select the following inputs and then select **Next**:
 
-    - **Location**: Central US (or what you select as your Primary region)
-    - **Resource group**: ContosoRG1
-    - **Virtual machine deployment model**: Resource Manager
-    - **Disaster Recovery between Availability Zones?**: No (this option is for DR between availability zones *within* a region)
+    - **Location**: Central US (or what you select as your Primary region).
+    - **Resource group**: ContosoRG1.
+    - **Virtual machine deployment model**: Resource Manager.
+    - **Disaster Recovery between Availability Zones?**: No (this option is for DR between availability zones *within* a region).
 
     ![In the Source blade, fields are set to the previously defined settings.](images/EX2-T4-S3.png "Source blade")
 
@@ -858,84 +858,83 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 5. On the **step 3 - Replication settings** tab, select the following inputs and then select **Next**  
    - **Target location**: East US 2 (or what you selected as your secondary site Azure region).
-   - **Target resource group**: ContosoRG2
-   - **Failover virtual network**: VNet2
+   - **Target resource group**: ContosoRG2.
+   - **Failover virtual network**: VNet2.
 
-    ![In the Customize target settings blade, the Target location is set to East US 2 and the customize button highlighted](images/EX2-T4-ns1.png "Configure settings blade")
+    ![In the Customize target settings blade, the Target location is set to East US 2 and the customize button highlighted](images/EX2-T5-S3.png "Configure settings blade")
 
+6.  On the **step 4 - Manage** tab, select the following inputs and then select **Next**.
 
-7.  On the **step 4 - Manage** tab, select the following inputs and then select **Next**.
-
-    - **Update settings**: Allow ASR to manage 
-    - **Automation Account**: use your existing Automation Account
+    - **Update settings**: Allow ASR to manage .
+    - **Automation Account**: use your existing Automation Account.
     
     ![The Replication Policy settings use default values.](images/EX2-T4-ns3.png "Replication policy")
 
-9. On the **step 5 - Review** tab, select **Enable replication**.
+7. On the **step 5 - Review** tab, select **Enable replication**.
 
     ![Screenshot of the Enable replication button.](images/EX2-T3-S9.png "Enable replication button")
 
-10. The Azure portal will start the deployment. This will take approximately 10 minutes to complete. Wait for replication to complete before moving to the next step.
+8. The Azure portal will start the deployment. This will take approximately 10 minutes to complete. Wait for replication to complete before moving to the next step.
 
     ![A message is displayed indicating Enabling replication for two vm(s) has successfully completed.](images/image234.png "Enabling replication for two vm(s)")
 
-11. The **BCDRRSV** blade should still have the **Site Recovery** option (under 'Getting started') selected. Select **Step 2: Manage Recovery Plans**.
+9. The **BCDRRSV** blade should still have the **Site Recovery** option (under 'Getting started') selected. Select **Step 2: Manage Recovery Plans**.
 
     ![Click path to Manage Recovery Plans.](images/dr-asr-8.png "Manage Recovery Plans")
 
-12. Select **+Recovery plan**.
+10. Select **+Recovery plan**.
 
     ![On the Recovery Services vault blade top menu, Add a recovery plan is selected.](images/dr-asr-9.png "Add recovery plan")
 
-13. Fill in the **Create recovery plan** blade as follows:
+11. Fill in the **Create recovery plan** blade as follows:
 
-    - **Name**: BCDRIaaSPlan
-    - **Source**: East US 2 *(This is your primary region)*
-    - **Target**: West US 2 *(This is your secondary region)*
-    - **Allow items with deployment model**: Resource Manager
-    - **Select Items**: Select **WebVM1** and **WebVM2**
+    - **Name**: BCDRIaaSPlan.
+    - **Source**: East US 2 *(This is your primary region)*.
+    - **Target**: West US 2 *(This is your secondary region)*.
+    - **Allow items with deployment model**: Resource Manager.
+    - **Select Items**: Select **WebVM1** and **WebVM2**.
 
         ![Fields in the Create recovery plan blade are set to the previously defined settings.](images/dr-asr-10a.png "Create recovery plan blade")
 
     > **Note:** It is **critical** to use the correct recovery plan name `BCDRIaaSPlan`. This must match the name of the Azure Automation variable you created in the first task in this exercise.
 
-14. Select **OK** to create the recovery plan. After a moment, the **BCDRIaaSPlan** Recovery plan will appear. Select it to review.
+12. Select **OK** to create the recovery plan. After a moment, the **BCDRIaaSPlan** Recovery plan will appear. Select it to review.
 
     ![In the Recovery Plans blade, BCDRIaaSPlan is selected.](images/dr-asr-11.png "Recovery plans")
 
-15. When the **BCDRIaaSPlan** loads **notice** that it shows **2 VMs in the Source** which is your **Primary** Site.
+13. When the **BCDRIaaSPlan** loads **notice** that it shows **2 VMs in the Source** which is your **Primary** Site.
 
     You will now customize the recovery plan to trigger the SQL failover and configure the web tier load-balancer during the failover process, select **Customize**.
 
     ![On the BCDSRV blade top menu, Customize is selected. Under Items in recovery plan, the source shows two and the VM icon.](images/dr-asr-12.png "BCDSRV blade")
 
-16. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** next to **All groups failover**, then select **Add pre-action** from the context menu.
+14. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** next to **All groups failover**, then select **Add pre-action** from the context menu.
 
     ![In the Recovery plan blade, the right-click menu for All groups failover displays and Add pre-action is selected.](images/dr-asr-13.png "Recovery plan blade")
 
-17. On the **Insert action** blade, select **Script** and then provide the name `ASRSQLFailover`. Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRSQLFailover**. Select **OK**.
+15. On the **Insert action** blade, select **Script** and then provide the name `ASRSQLFailover`. Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRSQLFailover**. Select **OK**.
 
     ![Fields in the Insert action blade are set to the ASRRunBookSQL script.](images/Ex-2-t3-step17.png "Insert action blade")
 
     > **Note:** As noted on the 'Insert action' blade, the ASRSQLFailover runbook will be executed on both failover and failback. The runbook has been written to support both scenarios.
 
-18. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** next to **Group 1: Start**, then select **Add post action** from the context menu.
+17. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** next to **Group 1: Start**, then select **Add post action** from the context menu.
 
     ![In the Recovery plan blade, the Group 1: Start right-click menu displays, and Add post action is selected.](images/dr-asr-15.png "Recovery plan blade")
 
-19. On the **Insert action** blade, select **Script** and then provide the name: **ASRWEBFailover.** Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRWEBFailover**. Select **OK**.
+18. On the **Insert action** blade, select **Script** and then provide the name: **ASRWEBFailover.** Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRWEBFailover**. Select **OK**.
 
     ![Fields in the Insert action blade are set to the ASRWebFailover script.](images/Ex2-t1-step19.png "Insert Action blade")
 
-20. Make sure that your **Pre-steps** are running under **All groups failover** and the **Post-steps** are running under **Group1: Start**. Select **Save**.
+19. Make sure that your **Pre-steps** are running under **All groups failover** and the **Post-steps** are running under **Group1: Start**. Select **Save**.
 
     ![In the Recovery plan blade, both instances of Script: ASRFSQLFailover are called out under both All groups failover: Pre-steps, and Group 1: Post-steps.](images/dr-asr-17.png "Recovery plan blade")
 
-21. After a minute, the portal will provide a successful update notification. This means that your recovery plan is fully configured and ready to failover and back between the primary and secondary regions.
+20. After a minute, the portal will provide a successful update notification. This means that your recovery plan is fully configured and ready to failover and back between the primary and secondary regions.
 
     ![The Updating recovery plan message shows that the update was successfully completed.](images/image253.png "Updating recovery plan message")
 
-22. Return to the Recovery Services Vault **BCDRRSV** blade and select the **Replicated Items** link under **Protected Items**. You should see **WebVM1** and **WebVM2**. The Replication Health should be **Healthy**. The Status will show the replication progress. Once both VMs show status **Protected**, replication is complete and you will be able to test the failover.
+21. Return to the Recovery Services Vault **BCDRRSV** blade and select the **Replicated Items** link under **Protected Items**. You should see **WebVM1** and **WebVM2**. The Replication Health should be **Healthy**. The Status will show the replication progress. Once both VMs show status **Protected**, replication is complete and you will be able to test the failover.
 
     ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images/dr-asr-18.png "Replicated Items")
 
@@ -967,9 +966,9 @@ In this task, you will use the Front Door approach to configure a highly availab
     - **Profile name**: ContosoFD1
     - **Tier**: Standard
 
-    ![Fields in the Create a Front Door blade are set to the previously defined settings.](images/EX2-T5-S3.png "Create Front Door 'basics' blade")
+    ![Fields in the Create a Front Door blade are set to the previously defined settings.](images/E2-t5-s3.png "Create Front Door 'basics' blade")
 
-4. Select **Next: Endpoint >**
+4. Select **Next: Secrets >** leave it as default, and Select **Next: Endpoint >**
 
 5. Select **Add an endpoint** to set the hostname of Front Door. In the **Add an endpoint** pane, enter the following values, then select **Add**:
 
