@@ -854,7 +854,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 4. On **Step 2 - Virtual Machines**, select **WebVM1** and **WebVM2** and then select **Next**.
 
-    ![In the Select virtual machines blade, the check boxes for WebVM1 and WebVM2 are selected.](images/dr-asr-3.png "Select virtual machines blade")
+    ![In the Select virtual machines blade, the check boxes for WebVM1 and WebVM2 are selected.](images/EX2-T4-S4.png "Select virtual machines blade")
 
 5. On the **step 3 - Replication settings** tab, select the following inputs and then select **Next**  
    - **Target location**: assigned based on the region of **ContosoRG2** (your secondary site Azure region). 
