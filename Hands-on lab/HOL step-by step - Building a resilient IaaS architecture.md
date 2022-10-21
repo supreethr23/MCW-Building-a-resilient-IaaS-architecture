@@ -1161,20 +1161,24 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
 3. Register **SQLVM1** with the resource provider by executing the following command in the Cloud Shell window. Ensure that **-Location** matches the location SQLVM1 is deployed.
 
     ```PowerShell
-    New-AzSqlVM -Name 'SQLVM1' -ResourceGroupName 'ContosoRG1' -SqlManagementType Full -Location 'East US2' -LicenseType PAYG
+    New-AzSqlVM -Name 'SQLVM1' -ResourceGroupName 'ContosoRG1' -SqlManagementType Full -Location '[location]' -LicenseType PAYG
     ```
 
     ![Azure Cloud Shell screenshot showing the SQL Virtual Machine resource being create for SQLVM1.](images/bk-sql-rp2.png "Register resource provider")
+    
+    > **Note:** Make sure you replace [location] with the ContosoRG1 resource group location.
 
     > **Note:** This will register the resource provider using the `Full` management mode. This causes the SQL service to restart, which may have an impact on production applications. To avoid this restart in production environments, you can alternatively register the resource provider in `LightWeight` mode, and upgrade later during a scheduled maintenance window.
 
 4. Register **SQLVM2** and **SQLVM3** with the resource provider using the following commands. Ensure you specify the correct locations.
 
     ```PowerShell
-    New-AzSqlVM -Name 'SQLVM2' -ResourceGroupName 'ContosoRG1' -SqlManagementType Full -Location 'East US2' -LicenseType PAYG
-    New-AzSqlVM -Name 'SQLVM3' -ResourceGroupName 'ContosoRG2' -SqlManagementType Full -Location 'West US2' -LicenseType PAYG
+    New-AzSqlVM -Name 'SQLVM2' -ResourceGroupName 'ContosoRG1' -SqlManagementType Full -Location '[location1]' -LicenseType PAYG
+    New-AzSqlVM -Name 'SQLVM3' -ResourceGroupName 'ContosoRG2' -SqlManagementType Full -Location '[location2]' -LicenseType PAYG
     ```
-
+    
+    > **Note:** Make sure you replace [location1] with the ContosoRG1 resource group and [location2] with the ContosoRG2 resource group.
+    
     > **Note:** This lab uses SQL Server under a 'Developer' tier license. When using SQL Server in production at the 'Standard' or 'Enterprise' tier, you can specify `DR` as the license type for failover servers (each full-price server includes a license for 1 DR server). This reduces your licensing cost significantly. Check the SQL Server licensing documentation for full details.
 
 5. In the Azure portal, navigate to the **ContosoRG1** resource group. You should see that in addition to the SQLVM1 and SQLVM2 virtual machines, there are now parallel SQLVM1 and SQLVM2 resources of type 'SQL virtual machine' These additional resources provide additional management capabilities for SQL Server in Azure virtual machines. 
