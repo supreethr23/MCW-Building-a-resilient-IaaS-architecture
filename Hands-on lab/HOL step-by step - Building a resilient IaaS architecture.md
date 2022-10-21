@@ -845,7 +845,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 3. On **Step 1 - Source** select the following inputs and then select **Next**:
 
-    - **Location**: assign based on the region of **ContosoRG1** *(Your Primary region)*
+    - **Location**: Central US (or what you select as your Primary region)
     - **Resource group**: ContosoRG1
     - **Virtual machine deployment model**: Resource Manager
     - **Disaster Recovery between Availability Zones?**: No (this option is for DR between availability zones *within* a region)
@@ -857,16 +857,12 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
     ![In the Select virtual machines blade, the check boxes for WebVM1 and WebVM2 are selected.](images/EX2-T4-S4.png "Select virtual machines blade")
 
 5. On the **step 3 - Replication settings** tab, select the following inputs and then select **Next**  
-   - **Target location**: assigned based on the region of **ContosoRG2** (your secondary site Azure region). 
+   - **Target location**: East US 2 (or what you selected as your secondary site Azure region).
    - **Target resource group**: ContosoRG2
    - **Failover virtual network**: VNet2
-   - click on **View or Edit Capacity reservation group assignment**
 
     ![In the Customize target settings blade, the Target location is set to East US 2 and the customize button highlighted](images/EX2-T4-ns1.png "Configure settings blade")
 
-      - **Capacity Reservation Settings** tab, for both WebWMs set **Capacity Reservation group** to **Standard** from drop-down, and click on **save**.
-
-    ![In the Customize target settings blade, under General Settings and VM Settings fields are set to the previously defined settings.](images/EX2-T4-ns2.png "Configure settings blade")
 
 7.  On the **step 4 - Manage** tab, select the following inputs and then select **Next**.
 
