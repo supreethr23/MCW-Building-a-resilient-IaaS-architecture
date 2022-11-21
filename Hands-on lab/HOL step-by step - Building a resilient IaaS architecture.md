@@ -681,19 +681,17 @@ This task comprises the following steps:
 -   Add SQLVM3 as an asynchronous replica in the existing Always On Availability Group
 -   Update the failover cluster with the Listener IP address
 
+1. Return to the Azure portal and navigate to the **ContosoSQLLBSecondary** load balancer blade in **ContosoRG2**. Select **Backend pools** and open **BackEndPool1**. Note that the pool is connected to the **VNet2** virtual network. Select **+ Add**.
 
-1.  Return to the Azure portal and navigate to the **ContosoSQLLBSecondary** load balancer blade in **ContosoRG2**. Select **Backend pools** and open **BackEndPool1**. Note that the pool is connected to the **VNet2** virtual network. Select **+ Add**.
+   ![Azure portal showing where to select Add on the ContosoSQLLBSecondary load balancer backend pool to add a new VM.](images/EX2-T3-S1.png "Backend pool")
 
-    ![Azure portal showing where to select Add on the ContosoSQLLBSecondary load balancer backend pool to add a new VM.](images/EX2-T3-S1.png "Backend pool")
+2. Select **SQLVM3**. Select **Add**.  Select **Save** on **BackEndPool1 to save changes.
 
-2.   Select **SQLVM3**. Select **Add**.  Select **Save** on **BackEndPool1 to save changes.
+     ![Azure portal showing SQLVM3 being added to the ContosoSQLLBSecondary load balancer backend pool.](images/ha-lb2.png "SQL VM added to backend pool")
 
-        ![Azure portal showing SQLVM3 being added to the ContosoSQLLBSecondary load balancer backend pool.](images/ha-lb2.png "SQL VM added to backend pool")
+>**Note:** For this lab, the DR site is configured with a single SQL Server VM. Using a load balancer is therefore not strictly required. However, it allows the DR site to be extended to include its own HA cluster if required.
 
-
-        >**Note:** For this lab, the DR site is configured with a single SQL Server VM. Using a load balancer is therefore not strictly required. However, it allows the DR site to be extended to include its own HA cluster if required.
-
-3.  Return to your browser tab containing your Bastion session with **SQLVM1**. (If you have closed the tab, reconnect using Azure Bastion with username `demouser@contoso.com` and password `Demo!pass123`.)
+3. Return to your browser tab containing your Bastion session with **SQLVM1**. (If you have closed the tab, reconnect using Azure Bastion with username `demouser@contoso.com` and password `Demo!pass123`.)
 
 4.  On **SQLVM1**, use **Windows PowerShell ISE** to execute the following command. This will add **SQLVM3** as a node in the existing Windows Server Failover Cluster.
 
@@ -704,7 +702,6 @@ This task comprises the following steps:
 5.  Select **Start** and then **Windows Administrative Tools**. Locate and open the **Failover Cluster Manager**. Expand the **AOGCLUSTER** and select **Nodes**. Note that SQLVM3 is now included in the list, with status **Up**.
 
     ![In Failover Cluster Manager, Nodes is selected in the tree view, and three nodes display in the details pane.](images/dr-fcm-3nodes.png "Failover Cluster Manager")
-
 
 6.  Return to the Azure portal. Locate **SQLVM3**, and connect to the VM using Azure Bastion with username `demouser@contoso.com` and password `Demo!pass123`.
 
