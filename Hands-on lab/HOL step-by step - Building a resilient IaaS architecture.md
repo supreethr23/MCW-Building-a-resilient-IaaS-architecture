@@ -1008,7 +1008,7 @@ In this task, you will use the Front Door approach to configure a highly availab
     
 15. Navigate to the Azure Front Door resource. Select the **Frontend host** URL of Azure Front Door, and the Policy Connect web application will load. The web application is routing through the **ContosoWebLBPrimary** External Load Balancer configured in front of **WEBVM1** and **WEBVM2** running in the **Primary** Site in **ContosoRG1** resource group and connecting to the SQL AlwaysOn Listener at the same location.
 
-    ![The Frontend host link is selected from the Azure Front Door.](images/dr-fd.png "Frontend host link")
+    ![The Frontend host link is selected from the Azure Front Door.](images/E2T5S15.png "Frontend host link")
 
     ![The Contoso Insurance PolicyConnect webpage displays from a Front Door URL.](images/dr-fd-app.png "Contoso Insurance PolicyConnect webpage")
 
