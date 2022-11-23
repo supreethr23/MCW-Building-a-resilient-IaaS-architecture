@@ -1375,7 +1375,7 @@ In this task, you will failback the Contoso application from the DR site in West
 
 3.  After the Failover is initiated close the blade and select **Site Recovery Jobs**, then select the **Failover** job to monitor the progress. Once the job has finished, it should show as successful for all tasks.
 
-    ![Under Job, the list of all jobs have a status of successful.](images/v-dr18.png "Job status")
+    ![](images/v-dr18.png "Job status")
 
 4.  Confirm that the Contoso application is once again accessible via the **ContosoWebLBPrimaryIP** public IP address, and is **not** available at the **ContosoWebLBSecondaryIP** address. This test shows it has been returned to the primary site. Open the **Current Policy Offerings** and edit a policy, to confirm database access. 
 
