@@ -1281,8 +1281,19 @@ In this task, you will validate failover of the Contoso application from Central
 4. Select **Failover**.
 
     ![In the BCDRIaaSPlan blade, the Failover button is highlighted.](images/v-dr2.png "BCDRIaaSPlan blade")
+    
+5. If you faced an error while performing the Failover then go to **Replicated items** under Protected items and select **WebVM1** and then click on **Cleanup test              failover**.
 
-5. On the warning about No Test Failover, select **I understand the risk, Skip test failover**.
+      ![](images/updated14.png "Failover blade")
+      
+6. On the Test failover cleanup page, Enter notes as **Test Cleanup** and select the check box and click on **Ok**.
+
+ 
+      ![](images/updated13.png "Failover blade")
+      
+7. Performing the same step from step 5 to 7 as for **WebVM2**.
+
+5. Navigate back on Failover, select **I understand the risk, Skip test failover**.
 
     ![A warning displays that no test failover has been done in the past 180 days, and recommends that you do one before a failover. At the bottom, the I understand and skip test failover checkbox is selected.](images/v-dr3.png "Failover warning")
 
