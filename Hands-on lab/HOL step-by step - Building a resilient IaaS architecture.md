@@ -288,16 +288,12 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 25. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2**. Launch **SQL Server 2017 Configuration Manager** and repeat the steps above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
 
-26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com`.
+26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
 
-27. Launch SQL Server Management Studio, Select **Connect** to sign on to **SQLVM2**. **Note**: The username for your lab should show **CONTOSO\demouser**.
+27. Launch SQL Server Management Studio, a new dialog box is open, Click on **Connect** to sign on to **SQLVM2**. **Note**: The username for your lab should show **SQLVM2\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images/sqlvm1-login.png "Connect to Server dialog box")
     
-28. In the SQL Server Management Studio and expand Databases and you will find **ContosoInsurance**, right click and delete the database. 
-
-    ![Delete ContosoInsurance Database](images/delete_ContosoInsurance.png)
-
 29. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM2\demouser` is listed.
 
     ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images/perm-checkdomainuser.png)
@@ -310,7 +306,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images/perm-addusername.png)
 
-32. Check the box for **sysadmin** and select **OK**. You'll now see `contoso\demouser` listed in the login list.
+32. Check the box for **sysadmin** and select **OK**.
 
     ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images/perm-addsysadmin.png)
 
@@ -510,15 +506,15 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
     ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images/dr-cloudshell.png "Azure Cloud Shell")
 
-2.  Execute the following commands. These will create the DR resource group and deploy the DR resources. 
+2.   Update the **-Location** parameter in each of the commands below to be a different location than **ContosoRG1**.Execute the following commands. These will create the DR resource group and deploy the DR resources. 
     You can proceed to the following tasks while the template deployment is in progress.
 
     ```PowerShell
-    New-AzResourceGroup -Name 'ContosoRG2' -Location 'East US 2'
+    New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
 
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' `
         -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
-        -Location 'East US 2'
+        -Location '<Enter the location>'
     ```
 
     > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
@@ -527,7 +523,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
     # Only run this command if the previous deployment failed with a error that size was not available
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR-SKU' `
         -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
-        -Location 'East US 2' -skuSizeVM 'D2s_v5'
+        -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
     ```
 
 3.  Take a few minutes to review the template while it deploys. To review the template and deployment progress, navigate to the Azure portal home page, select **Subscriptions**, then **Deployments**. Note that the template includes:
@@ -548,9 +544,9 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
     - **Resource Group**: ContosoRG2
     - **Name**: `BCDRRSV`
-    - **Location**: East US 2 *(your secondary region)*
+    - **Location**: your secondary region that you choose in step 2
 
-    ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/dr-rsv.png "Backup and Site Recovery Screen Create Button")
+    ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/updated10.png "Backup and Site Recovery Screen Create Button")
 
 6.  Once the **BCDRRSV** Recovery Service Vault has been created, open it in the Azure portal and select the **Site Recovery** tab.
 
@@ -567,12 +563,12 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 9.  Complete the **Add Automation Account** blade using the following inputs and then select **Create**:
 
     - **subscription**: Select the default subscription
-    - **Name**: Enter a Globally unique name starting with `BCDR`.
+    - **Name**: Enter a Globally unique name starting with `BCDR-DID`.
     - **Resource group**: Use existing / **ContosoRG2**
-    - **Location**: East US 2
+    - **Location**: your secondary region that you choose in step 2
     
 
-    ![Fields in the Add Automation Account blade are set to the previously defined values.](images/automation-create.png "Add Automation Account blade")
+    ![Fields in the Add Automation Account blade are set to the previously defined values.](images/updated11.png "Add Automation Account blade")
 
     > **Note:** Azure Automation accounts are only allowed to be created in certain Azure regions, but they can act on any region in Azure (except Government, China or Germany). It is not a requirement to have your Azure Automation account in the same region as the failover resources, but it **CANNOT** be in your primary region.
 
@@ -591,11 +587,11 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
     ![On the top menu of the Edit PowerShell Workflow Runbook blade, Publish is selected.](images/dr-rbpub.png "Publish runbook")
 
-13. Repeat the above steps to import and publish the **ASRRunbookWEB.ps1** runbook.
+13. Repeat the above steps to import and publish the **ASRRunbookWEB.ps1** runbook and change the name of the Workflow inside of the Runbook script to                     **ASRWEBFailover**
 
 14. Navigate back to **Runbooks**, and make sure that both Runbooks show as **Published**.
 
-    ![Two runbooks have authoring status as published: ASRSQLFailover, and ASRWEBFailover.](images/image70.png "Runbooks")
+    ![Two runbooks have authoring status as published: ASRSQLFailover, and ASRWEBFailover.](images/updated12.png "Runbooks")
 
 > **Note:** When you configure the ASR Recovery Plan for the IaaS deployment you will use the SQL Runbook as a Pre-Failover Action and the Web Runbook as a Post-Failover action. They will run both ways and have been written to take the "Direction", of the failover into account when running.
 
@@ -656,7 +652,7 @@ The configuration of these domain controllers is fully automatic. In this task, 
 
     ![Azure portal showing the Contoso-IaaS-DR template, with the deployment sequence highlighted.](images/dr-ad.png "DR template")
 
-3.  Navigate to the **ContosoRG2** resource group. Inspect network interface (NIC) resources for the **ADVM3** and **ADVM4** VMs to confirm their network settings include the static private IP addresses **10.1.3.100** and **10.1.3.101**, respectively.
+3.  Navigate to the **ContosoRG2** resource group. Click on network interface (NIC) **ADVM3NIC** resources for the ADVM3 and ADVM4 VMs to confirm their network             settings include the static private IP addresses 10.1.3.100 and 10.1.3.101, respectively. On the left hand side Under Settings click on **IP configurations**         and then select ipconfig1 and also change the assignment as **Static** and also update the ip address.
 
     ![Network interface configuration showing a static private IP address for ADVM3.](images/dr-adip.png "Static IPs")
 
@@ -725,10 +721,6 @@ This task comprises the following steps:
 
     ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
     
-11. Launch SQL Server Management Studio and expand Databases and you will find **ContosoInsurance**, right click and delete the database. 
-
-    ![Delete ContosoInsurance Database](images/delete_ContosoInsurance.png)
-
 12. Return to your session with **SQLVM1**. Open **Microsoft SQL Server Management Studio 18** and connect to the local instance of SQL Server.
 
 13. Expand the **Always On High Availability** node. Under **Availability Group Listeners**, right-click on **BCDRAOG** and select **Properties**.
@@ -1247,7 +1239,7 @@ In this task we will validate high availability for both the Web and SQL tiers.
 
 3.  Open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica.
 
-       ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica.](images/v-sql1.png "SQLVM1 as Primary")
+    ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica.](images/v-sql1.png "SQLVM1 as Primary")
 
 4.  Using the Azure portal, stop both **WebVM1** and **SQLVM1**. Wait a minute for the VMs to stop.
 
@@ -1255,7 +1247,7 @@ In this task we will validate high availability for both the Web and SQL tiers.
 
 6.  Open an Azure Bastion session with **SQLVM2** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM2** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM2** as the primary replica, and there is a critical warning about **SQLVM1** not being available.
 
-     ![SQL Server Management Studio screenshot showing SQLVM2 as the primary replica, with warnings.](images/v-sql2.png "SQLVM2 as Primary")
+    ![SQL Server Management Studio screenshot showing SQLVM2 as the primary replica, with warnings.](images/v-sql2.png "SQLVM2 as Primary")
 
 7.  Restart **WebVM1** and **SQLVM1**. **Wait a full two minutes** for the VMs to start - **this is important**, we don't want to test simultaneous failover of SQLVM1 and SQLVM2 at this stage. Then stop **WebVM2** and **SQLVM2**.
 
@@ -1286,8 +1278,19 @@ In this task, you will validate failover of the Contoso application from Central
 4. Select **Failover**.
 
     ![In the BCDRIaaSPlan blade, the Failover button is highlighted.](images/v-dr2.png "BCDRIaaSPlan blade")
+    
+5. If you faced an error while performing the Failover then go to **Replicated items** under Protected items and select **WebVM1** and then click on **Cleanup test              failover**.
 
-5. On the warning about No Test Failover, select **I understand the risk, Skip test failover**.
+      ![](images/updated14.png "Failover blade")
+      
+6. On the Test failover cleanup page, Enter notes as **Test Cleanup** and select the check box and click on **Ok**.
+
+ 
+      ![](images/updated13.png "Failover blade")
+      
+7. Performing the same step from step 5 to 7 as for **WebVM2**.
+
+5. Navigate back on Failover, select **I understand the risk, Skip test failover**.
 
     ![A warning displays that no test failover has been done in the past 180 days, and recommends that you do one before a failover. At the bottom, the I understand and skip test failover checkbox is selected.](images/v-dr3.png "Failover warning")
 
@@ -1369,7 +1372,7 @@ In this task, you will failback the Contoso application from the DR site in West
 
 3.  After the Failover is initiated close the blade and select **Site Recovery Jobs**, then select the **Failover** job to monitor the progress. Once the job has finished, it should show as successful for all tasks.
 
-    ![Under Job, the list of all jobs have a status of successful.](images/v-dr18.png "Job status")
+    ![](images/v-dr18.png "Job status")
 
 4.  Confirm that the Contoso application is once again accessible via the **ContosoWebLBPrimaryIP** public IP address, and is **not** available at the **ContosoWebLBSecondaryIP** address. This test shows it has been returned to the primary site. Open the **Current Policy Offerings** and edit a policy, to confirm database access. 
 
