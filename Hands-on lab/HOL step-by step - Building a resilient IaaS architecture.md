@@ -290,7 +290,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
 
-27. Launch SQL Server Management Studio, a new dialog box is open, Click on **Connect** to sign on to **SQLVM2**. **Note**: The username for your lab should show **SQLVM2\demouser**.
+27. Launch SQL Server Management Studio, a new dialog box will open, Click on **Connect** to sign on to **SQLVM2**. **Note**: The username for your lab should show **SQLVM2\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images/sqlvm1-login.png "Connect to Server dialog box")
     
@@ -587,7 +587,7 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
     ![On the top menu of the Edit PowerShell Workflow Runbook blade, Publish is selected.](images/dr-rbpub.png "Publish runbook")
 
-13. Repeat the above steps to import and publish the **ASRRunbookWEB.ps1** runbook and change the name of the Workflow inside of the Runbook script to                     **ASRWEBFailover**
+13. Repeat the above steps to import and publish the **ASRRunbookWEB.ps1** runbook and change the name of the Workflow inside the Runbook script to **ASRWEBFailover**
 
 14. Navigate back to **Runbooks**, and make sure that both Runbooks show as **Published**.
 
@@ -652,7 +652,7 @@ The configuration of these domain controllers is fully automatic. In this task, 
 
     ![Azure portal showing the Contoso-IaaS-DR template, with the deployment sequence highlighted.](images/dr-ad.png "DR template")
 
-3.  Navigate to the **ContosoRG2** resource group. Click on network interface (NIC) **ADVM3NIC** resources for the ADVM3 and ADVM4 VMs to confirm their network             settings include the static private IP addresses 10.1.3.100 and 10.1.3.101, respectively. On the left hand side Under Settings click on **IP configurations**         and then select ipconfig1 and also change the assignment as **Static** and also update the ip address.
+3.  Navigate to the **ContosoRG2** resource group. Click on network interface (NIC) **ADVM3NIC** resources for the ADVM3 and ADVM4 VMs to confirm their network settings include the static private IP addresses 10.1.3.100 and 10.1.3.101, respectively. On the left hand side Under Settings click on **IP configurations**         and then select ipconfig1 and also change the assignment as **Static** and also update the ip address.
 
     ![Network interface configuration showing a static private IP address for ADVM3.](images/dr-adip.png "Static IPs")
 
@@ -1279,13 +1279,12 @@ In this task, you will validate failover of the Contoso application from Central
 
     ![In the BCDRIaaSPlan blade, the Failover button is highlighted.](images/v-dr2.png "BCDRIaaSPlan blade")
     
-5. If you faced an error while performing the Failover then go to **Replicated items** under Protected items and select **WebVM1** and then click on **Cleanup test              failover**.
+5. If you face an error while performing the Failover then go to **Replicated items** under Protected items and select **WebVM1** and then click on **Cleanup test  failover**.
 
       ![](images/updated14.png "Failover blade")
       
 6. On the Test failover cleanup page, Enter notes as **Test Cleanup** and select the check box and click on **Ok**.
 
- 
       ![](images/updated13.png "Failover blade")
       
 7. Performing the same step from step 5 to 7 as for **WebVM2**.
