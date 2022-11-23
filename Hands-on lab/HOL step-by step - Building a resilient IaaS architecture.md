@@ -1238,7 +1238,7 @@ In this task, we will validate high availability for both the Web and SQL tiers.
 
 3. Open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica.
 
-   ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica.](images/v-sql1.png "SQLVM1 as Primary")
+    ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica.](images/v-sql1.png "SQLVM1 as Primary")
 
 4. Using the Azure portal, stop both **WebVM1** and **SQLVM1**. Wait a minute for the VMs to stop.
 
@@ -1264,7 +1264,7 @@ In this task, you will validate the failover of the Contoso application from Cen
 
 1. Using the Azure portal, open the **ContosoRG1** resource group. Navigate to the Front Door resource, locate Frontend Host URL, and open it in a new browser tab. Navigate to it to ensure that the application is up and running from the Primary Site.
 
-    ![The Frontend host link is called out.](images/image318.png "Frontend host")
+    ![The Frontend host link is called out.](images/E3T1S10.png "Frontend host")
 
     Keep this browser tab open; you will return to it later in the lab.
 
