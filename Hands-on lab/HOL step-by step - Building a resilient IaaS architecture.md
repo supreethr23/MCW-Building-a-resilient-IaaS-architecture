@@ -1242,7 +1242,7 @@ In this task we will validate high availability for both the Web and SQL tiers.
 
 3.  Open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica.
 
-       ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica.](images/v-sql1.png "SQLVM1 as Primary")
+    ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica.](images/v-sql1.png "SQLVM1 as Primary")
 
 4.  Using the Azure portal, stop both **WebVM1** and **SQLVM1**. Wait a minute for the VMs to stop.
 
