@@ -1264,7 +1264,7 @@ In this task, you will validate the failover of the Contoso application from Cen
 
 1. Using the Azure portal, open the **ContosoRG1** resource group. Navigate to the Front Door resource, locate Frontend Host URL, and open it in a new browser tab. Navigate to it to ensure that the application is up and running from the Primary Site.
 
-    ![The Frontend host link is called out.](images/image318.png "Frontend host")
+    ![The Frontend host link is called out.](images/E3T1S10.png "Frontend host")
 
     Keep this browser tab open; you will return to it later in the lab.
 
