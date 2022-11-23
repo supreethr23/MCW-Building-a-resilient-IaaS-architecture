@@ -510,11 +510,11 @@ In this task, you will deploy the resources used by the DR environment. First, y
     You can proceed to the following tasks while the template deployment is in progress.
 
     ```PowerShell
-    New-AzResourceGroup -Name 'ContosoRG2' -Location 'Enter the location'
+    New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
 
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' `
         -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
-        -Location 'Enter the location'
+        -Location '<Enter the location>'
     ```
 
     > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
@@ -523,7 +523,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
     # Only run this command if the previous deployment failed with a error that size was not available
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR-SKU' `
         -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
-        -Location 'Enter the location' -skuSizeVM 'D2s_v5'
+        -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
     ```
 
 3.  Take a few minutes to review the template while it deploys. To review the template and deployment progress, navigate to the Azure portal home page, select **Subscriptions**, then **Deployments**. Note that the template includes:
@@ -544,7 +544,7 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
     - **Resource Group**: ContosoRG2
     - **Name**: `BCDRRSV`
-    - **Location**: East US *(your secondary region that you choose in step 2)*
+    - **Location**: your secondary region that you choose in step 2
 
     ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/updated10.png "Backup and Site Recovery Screen Create Button")
 
@@ -565,7 +565,7 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
     - **subscription**: Select the default subscription
     - **Name**: Enter a Globally unique name starting with `BCDR-DID`.
     - **Resource group**: Use existing / **ContosoRG2**
-    - **Location**: East US *(your secondary region that you choose in step 2)*
+    - **Location**: your secondary region that you choose in step 2
     
 
     ![Fields in the Add Automation Account blade are set to the previously defined values.](images/updated11.png "Add Automation Account blade")
@@ -821,7 +821,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 3. On **Step 1 - Source** select the following inputs and then select **Next**:
 
-    - **Location**: West US 2 (or what you select as your Primary region).
+    - **Location**: Central US (or what you select as your Primary region).
     - **Resource group**: ContosoRG1.
     - **Virtual machine deployment model**: Resource Manager.
     - **Disaster Recovery between Availability Zones?**: No (this option is for DR between availability zones *within* a region).
