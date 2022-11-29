@@ -511,14 +511,13 @@ In this task, you will deploy the resources used by the DR environment. First, y
     You can proceed to the following tasks while the template deployment is in progress.
 
     ```PowerShell
+    
     New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
 
-    New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' `
-        -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
-        -Location '<Enter the location>'
+    New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
     ```
 
-    > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
+   > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
 
     ```powershell
     # Only run this command if the previous deployment failed with a error that size was not available
