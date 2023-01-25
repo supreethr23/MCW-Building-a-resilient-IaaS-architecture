@@ -681,7 +681,7 @@ This task comprises the following steps:
 
    ![Azure portal showing where to select Add on the ContosoSQLLBSecondary load balancer backend pool to add a new VM.](images/EX2-T3-S1.png "Backend pool")
 
-2. Select **SQLVM3**. Select **Add**.  Select **Save** on **BackEndPool1 to save changes.
+2. Select **SQLVM3**. Select **Add**.  Select **Save** on **BackEndPool1** to save changes.
 
      ![Azure portal showing SQLVM3 being added to the ContosoSQLLBSecondary load balancer backend pool.](images/ha-lb2.png "SQL VM added to backend pool")
 
