@@ -138,7 +138,7 @@ A template will be used to save time. You will configure each tier in subsequent
 
 4.  You can check the HA resource deployment status by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and checking the status of the deployments. Make sure the deployment status is **Succeeded** for all templates before proceeding to the next task.
 
-    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/ha-success.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
+    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/E1T1S4.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
 
 
 ### Task 2: Configure HA for the Domain Controller tier
@@ -175,11 +175,11 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     - **Performance**: Standard
     - **Replication**: Zone-redundant storage (ZRS).
 
-    ![Fields in the Create storage account blade are set to the previously defined settings.](images/ha-storage.png "Create storage account blade")
+    ![Fields in the Create storage account blade are set to the previously defined settings.](images1/E1T3S2.png "Create storage account blade")
 
 3.  Switch to the **Advanced** tab. Change the **Minimum TLS version** to **Version 1.0**. Then select **Review + Create**, followed by **Create**.
 
-    ![The 'Advanced' tab of the Create storage account blade shows the minimum TLS version as 1.2](images/ha-tls.png)
+    ![The 'Advanced' tab of the Create storage account blade shows the minimum TLS version as 1.2](images1/E1T3S3.png)
 
     > **Note:** To promote use of the latest and most secure standards, by default Azure storage accounts require TLS version 1.2. This storage account will be used as a Cloud Witness for our SQL Server cluster. SQL Server requires TLS version 1.0 for the Cloud Witness.
 
@@ -206,7 +206,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     
     > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in the format `user@domain-fqdn`, and **not** in the format `domain\user`.
 
-    ![Azure portal showing connection to SQLVM1 using Bastion.](images/ha-sqlvm1-bastion.png "Azure Bastion")
+    ![Azure portal showing connection to SQLVM1 using Bastion.](images1/E1T3S7.png "Azure Bastion")
    
 
 8.  On **SQLVM1**, select **Start** and then choose **Windows PowerShell ISE**.
@@ -219,7 +219,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     New-Cluster -Name AOGCLUSTER -Node SQLVM1,SQLVM2 -StaticAddress 10.0.2.99
     ```
 
-    ![In the PowerShell ISE window, a call out points to AOGCLUSTER.](images/ha-createfailovercluster.png "PowerShell ISE window")
+    ![In the PowerShell ISE window, a call out points to AOGCLUSTER.](images1/E1T3S9.png "PowerShell ISE window")
 
     >**Note:** It is possible to use a wizard for this task, but the resulting cluster will require additional configuration to set the static IP address in Azure.
 
@@ -229,15 +229,15 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 11. When the cluster opens, select **Nodes** and the SQL Server VMs will show as nodes of the cluster and show their status as **Up**.
 
-    ![In Failover Cluster Manager, Nodes is selected in the tree view, and two nodes display in the details pane.](images/ha-fcm-2nodes.png "Failover Cluster Manager")
+    ![In Failover Cluster Manager, Nodes is selected in the tree view, and two nodes display in the details pane.](images1/E1T3S11.png "Failover Cluster Manager")
 
 12. If you select **Roles**, you will notice that currently, there aren't any roles assigned to the cluster.
 
-    ![In Failover Cluster Manager, Roles is selected in the tree view, and zero roles display in the details pane.](images/ha-fcm-0roles.png "Failover Cluster Manager")
+    ![In Failover Cluster Manager, Roles is selected in the tree view, and zero roles display in the details pane.](images1/E1T3S12.png "Failover Cluster Manager")
 
 13. Select Networks, and you will see **Cluster Network 1** with status **Up**. If you navigate to the network, you will see the IP address space, and on the lower tab you can select **Network Connections** and review the nodes.
 
-    ![In Failover Cluster Manager, Networks is selected in the tree view, and the network displays in the details pane.](images/ha-fcm-1network.png "Failover Cluster Manager")
+    ![In Failover Cluster Manager, Networks is selected in the tree view, and the network displays in the details pane.](images1/E1T3S13.png "Failover Cluster Manager")
 
 14. Right-click **AOGCLUSTER,** then select **More Actions**, **Configure Cluster Quorum Settings**.
 
@@ -253,7 +253,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 17. Copy the **storage account name** and **storage account key** values which you noted earlier and paste them into their respective fields on the form. Leave the Azure Service endpoint as configured. Then, select **Next**.
 
-    ![Fields on the Configure cloud witness screen are set to the previously defined settings.](images/ha-cloudwitness-key.png "Configure cloud witness screen")
+    ![Fields on the Configure cloud witness screen are set to the previously defined settings.](images1/E1T3S17.png "Configure cloud witness screen")
 
 18. Select **Next** on the Confirmation screen.
 
@@ -283,7 +283,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 24. On the **Log On** tab, change the service account to `contoso\demouser` with the password `Demo!pass123`. Select **OK** to accept the changes, and then select **Yes** to confirm the restart of the server.
 
-    ![In the SQL Server Properties dialog box, on the Log On tab, fields are set to the previously defined settings. The OK button is selected.](images/ha-sql-logon.png "SQL Server Properties dialog box")
+    ![In the SQL Server Properties dialog box, on the Log On tab, fields are set to the previously defined settings. The OK button is selected.](images1/E1T3S24.png "SQL Server Properties dialog box")
 
     ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
 
@@ -293,23 +293,23 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 27. Launch SQL Server Management Studio, a new dialog box will open, Click on **Connect** to sign on to **SQLVM2**. **Note**: The username for your lab should show **SQLVM2\demouser**.
 
-    ![Screenshot of the Connect to Server dialog box.](images/sqlvm1-login.png "Connect to Server dialog box")
+    ![Screenshot of the Connect to Server dialog box.](images1/E1T3S27.png "Connect to Server dialog box")
     
 29. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM2\demouser` is listed.
 
-    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images/perm-checkdomainuser.png)
+    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/E1T3S28.png)
 
 30. Right-click on **Logins** and then select **New Login...**
 
-    ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images/perm-newlogin.png)
+    ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/E1T3S29.png)
 
 31. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
 
-    ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images/perm-addusername.png)
+    ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
 
 32. Check the box for **sysadmin** and select **OK**.
 
-    ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images/perm-addsysadmin.png)
+    ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
 
 33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 18** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
@@ -317,7 +317,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 34. Select **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
-    ![Screenshot of the Connect to Server dialog box.](images/image173.png "Connect to Server dialog box")
+    ![Screenshot of the Connect to Server dialog box.](images1/E1T3S33.png "Connect to Server dialog box")
 
 35. Right-click **Always On High Availability**, then select **New Availability Group Wizard**.
 
@@ -345,7 +345,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 41. On the **Connect to Server** dialog box enter the Server Name of **SQLVM2** and select **Connect**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
-    ![Screenshot of the Connect to Server dialog box for SQLVM2.](images/image180.png "Connect to Server dialog box")
+    ![Screenshot of the Connect to Server dialog box for SQLVM2.](images1/E1T3S40.png "Connect to Server dialog box")
 
 42. For **SQLVM2**, select Automatic Failover and Availability Mode of Synchronous commit.
 
@@ -353,7 +353,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 43. Select **Endpoints** and review these that the wizard has created.
 
-    ![On the Endpoints tab, the three servers are listed.](images/ha-ag-endpoints.png "Specify Endpoints screen")
+    ![On the Endpoints tab, the three servers are listed.](images1/E1T3S42.png "Specify Endpoints screen")
 
 44. Next, select **Listener**. Then, select the **Create an availability group listener**.
 
@@ -377,7 +377,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 48. Select **Next**.
 
-    ![On the Listener tab, the Next button is selected.](images/ha-ag-listener-next.png "Next button")
+    ![On the Listener tab, the Next button is selected.](images1/E1T3S47.png "Next button")
 
 49. On the **Select Initial Data Synchronization** screen, make sure that **Automatic seeding** is selected and select **Next**.
 
@@ -385,7 +385,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 50. On the **Validation** screen, you should see all green. Select **Next**.
 
-    ![The Validation screen displays a list of everything it is checking, and the results for each, which all display success. The Next button is selected.](images/ha-ag-valid.png "Validation screen")
+    ![The Validation screen displays a list of everything it is checking, and the results for each, which all display success. The Next button is selected.](images1/E1T3S49.png "Validation screen")
 
 51. On the Summary page select **Finish**.
 
@@ -393,15 +393,15 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 52. Once the AOG is built, check each task was successful and select **Close**.
 
-    ![On the New Availability Group Results page, a message says the wizard has completed successfully, and results for all steps is success. The Close button is selected.](images/ha-ag-results.png "New Availability Group Results page")
+    ![On the New Availability Group Results page, a message says the wizard has completed successfully, and results for all steps is success. The Close button is selected.](images1/E1T3S51.png "New Availability Group Results page")
 
 53. Move back to **SQL Management Studio** on **SQLVM1** and expand the **Always On High Availability** item in the tree view. Under Availability Groups, expand the **BCDRAOG (Primary)** item.
 
-    ![In SQL Management Studio, Always On High Availability is expanded in the tree view.](images/ha-ag-explorer.png "SQL Management Studio")
+    ![In SQL Management Studio, Always On High Availability is expanded in the tree view.](images1/E1T3S52.png "SQL Management Studio")
 
 54. Right-click **BCDRAOG (Primary)** and then select **Show Dashboard**. You should see that all the nodes have been added and are now "Green".
 
-    ![Screenshot of the BCDRAOG Dashboard indicating the status of all SQL Server VMs as healthy.](images/ha-ag-dashboard.png "BCDRAOG Dashboard")
+    ![Screenshot of the BCDRAOG Dashboard indicating the status of all SQL Server VMs as healthy.](images1/E1T3S53.png "BCDRAOG Dashboard")
 
 55. Next, select **Connect** and then **Database Engine** in SQL Management Studio.
 
@@ -409,7 +409,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 56. Enter **BCDRAOG** as the Server Name. This will be connected to the listener of the group that you created. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
-    ![In the Connect to Server Dialog box, Server name is BCDRAOG, and the connect button is selected.](images/image201.png "Connect to Server Dialog box")
+    ![In the Connect to Server Dialog box, Server name is BCDRAOG, and the connect button is selected.](images1/E1T3S55.png "Connect to Server Dialog box")
 
 57. Once connected to the **BCDRAOG**, you can select **Databases** and will be able to see the database there. Notice that you have no knowledge directly of which server this is running on.
 
@@ -427,7 +427,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     Start-ClusterResource -Name "BCDRAOG"
     ```
 
-    ![In the Windows PowerShell ISE window, the play button is selected. The script from the lab guide has been executed.](images/ha-ise-listenerip.png "Windows PowerShell ISE window")
+    ![In the Windows PowerShell ISE window, the play button is selected. The script from the lab guide has been executed.](images1/E1T3S57.png "Windows PowerShell ISE window")
 
 59. Move back to SQL Management Studio and select **Connect** and then **Database Engine**.
 
@@ -435,17 +435,17 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 60. This time, put the following into the IP address of the Internal Load balancer of the **Primary** Site AOG Load Balancer: **10.0.2.100**. You again will be able to connect to the server which is up and running as the master. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
-    ![Fields in the Connect to Server dialog box are set to the previously defined settings.](images/image205.png "Connect to Server dialog box")
+    ![Fields in the Connect to Server dialog box are set to the previously defined settings.](images1/E1T3S59.png "Connect to Server dialog box")
 
 61. Once connected to **10.0.2.100**, you can select **Databases** and will be able to see the database there. Notice that you have no knowledge directly of which server this is running on.
 
-    ![A call out points to the Databases folder in Object Explorer.](images/ha-ssms-ip.png "Object Explorer")
+    ![A call out points to the Databases folder in Object Explorer.](images1/E1T3S60.png "Object Explorer")
 
     > **Note:** It could take a minute to connect the first time as this is going through the Azure Internal Load Balancer.
 
 62. Move back to Failover Cluster Manager on **SQLVM1**, and you can review the IP Addresses that were added by selecting Roles and **BCDRAOG** and viewing the Resources. Notice how the **10.0.2.100** is Online.
 
-    ![In the Failover Cluster Manager tree view, Roles is selected. Under Roles, BCDRAOG is selected, and details of the role display.](images/ha-fcm-aogrole.png "Failover Cluster Manager")
+    ![In the Failover Cluster Manager tree view, Roles is selected. Under Roles, BCDRAOG is selected, and details of the role display.](images1/E1T3S61.png "Failover Cluster Manager")
 
 You have now successfully set up the SQL Server VMs to use Always On Availability Groups with a Cloud Witness storage account located in another region.
 
