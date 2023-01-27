@@ -971,7 +971,7 @@ In this task, you will use the Front Door approach to configure a highly availab
     - Host name: ContosoWebLBPrimaryIP
     - Priority: 1
 
-    ![Screen shot showing the values entered into the Add an origin pane.](images1/E2T5S10.png "Add an origin")
+    ![Screen shot showing the values entered into the Add an origin pane.](images1/E2T5S9.png "Add an origin")
 
 11. Repeat step 10 and change the values to the following.
 
