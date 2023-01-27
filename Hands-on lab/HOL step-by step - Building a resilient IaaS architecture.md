@@ -683,7 +683,7 @@ This task comprises the following steps:
 
 2. Select **SQLVM3**. Select **Add**.  Select **Save** on **BackEndPool1** to save changes.
 
-     ![Azure portal showing SQLVM3 being added to the ContosoSQLLBSecondary load balancer backend pool.](images/ha-lb2.png "SQL VM added to backend pool")
+     ![Azure portal showing SQLVM3 being added to the ContosoSQLLBSecondary load balancer backend pool.](images1/E2T3S2.png "SQL VM added to backend pool")
 
 >**Note:** For this lab, the DR site is configured with a single SQL Server VM. Using a load balancer is therefore not strictly required. However, it allows the DR site to be extended to include its own HA cluster if required.
 
@@ -717,7 +717,7 @@ This task comprises the following steps:
 
 10. On the **Log On** tab, change the service account to `contoso\demouser` with the password `Demo!pass123`. Select **OK** to accept the changes, and then select **Yes** to confirm the restart of the server.
 
-    ![In the SQL Server Properties dialog box, on the Log On tab, fields are set to the previously defined settings. The OK button is selected.](images/ha-sql-logon.png "SQL Server Properties dialog box")
+    ![In the SQL Server Properties dialog box, on the Log On tab, fields are set to the previously defined settings. The OK button is selected.](images1/E2T3S10.png "SQL Server Properties dialog box")
 
     ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
     
@@ -725,63 +725,63 @@ This task comprises the following steps:
 
 13. Expand the **Always On High Availability** node. Under **Availability Group Listeners**, right-click on **BCDRAOG** and select **Properties**.
 
-    ![On the BCDRAOG Listener context menu, 'Properties' is selected.](images/dr-sql-l1.png "Listener properties")
+    ![On the BCDRAOG Listener context menu, 'Properties' is selected.](images1/E2T3S12.png "Listener properties")
 
 14. On the BCDRAOG Listener properties dialog, select **Add**.
 
-    ![On the BCDRAOG Listener properties dialog, 'Add' is selected.](images/dr-sql-l2.png "Listener - Add")
+    ![On the BCDRAOG Listener properties dialog, 'Add' is selected.](images1/E2T3S13.png "Listener - Add")
 
 15. On the Add IP Address dialog, check the subnet is **10.1.2.0** (this is the Data subnet in VNet2). Enter the IP address **10.1.2.100** (this is the frontend IP of the SQL load balancer in VNet2). Select **OK**.
 
-    ![On the BCDRAOG Listener Add IP Address dialog, the IP address is entered as specified.](images/dr-sql-l3.png "Listener - IP")
+    ![On the BCDRAOG Listener Add IP Address dialog, the IP address is entered as specified.](images1/E2T3S14.png "Listener - IP")
 
 16. On the BCDRAOG Listener properties dialog, two IP addresses should now be shown. Select **OK** to close the dialog and commit the change.
 
-    ![On the BCDRAOG Listener properties dialog, two IP addresses are shown. 'OK' is selected.](images/dr-sql-l4.png "Listener - two IPs")
+    ![On the BCDRAOG Listener properties dialog, two IP addresses are shown. 'OK' is selected.](images1/E2T3S15.png "Listener - two IPs")
 
 17. Under **Availability Groups**, right-click on **BCDRAOG (Primary)** and select **Add Replica..** to open the Add Replica wizard.
 
-    ![In Object Explorer, under Always On High Availability the BCDRAOG availability group is selected, and from its right-click menu, Add Replica is selected.](images/dr-sql-addreplica.png "SQL Server Management Studio - Add Replica")
+    ![In Object Explorer, under Always On High Availability the BCDRAOG availability group is selected, and from its right-click menu, Add Replica is selected.](images1/E2T3S16.png "SQL Server Management Studio - Add Replica")
 
 18. Select **Next** on the Wizard.
 
-    ![On the Add Replica Wizard 'Introduction' page, Next is selected.](images/dr-sql-r1.png "Add Replica wizard")
+    ![On the Add Replica Wizard 'Introduction' page, Next is selected.](images1/E2T3S17.png "Add Replica wizard")
 
 19. Select **Connect** to connect to SQLVM2, then **Connect** again on the 'Connect to Server' prompt. Then select **Next**.
 
-    ![On the Add Replica Wizard 'Connect to Replicas' page, SQLVM2 is connected and Next is selected.](images/dr-sql-r2.png "Connect to Replicas page")
+    ![On the Add Replica Wizard 'Connect to Replicas' page, SQLVM2 is connected and Next is selected.](images1/E2T3S18.png "Connect to Replicas page")
 
 20. On the **Specify Replicas** page, select **Add Replica...**.
 
-    ![Screenshot of the Add replica button.](images/dr-sql-r3.png "Add replica button")
+    ![Screenshot of the Add replica button.](images1/E2T3S19.png "Add replica button")
 
 21. On the **Connect to Server** dialog box enter the Server Name of **SQLVM3** and select **Connect**.
 
-    ![Screenshot of the Connect to Server dialog box for SQLVM3.](images/dr-sql-connectsqlvm3.png "Connect to Server dialog box")
+    ![Screenshot of the Connect to Server dialog box for SQLVM3.](images1/E2T3S20.png "Connect to Server dialog box")
 
 22. For **SQLVM3**, leave the default settings of 'Asynchronous commit' with 'Automatic Failover' disabled. Select **Next**.
 
-    ![The SQLVM3 replica settings are asynchronous commit with automatic failover disabled. The Next button is highlighted.](images/dr-sql-r4.png "SQLVM3 replica settings")
+    ![The SQLVM3 replica settings are asynchronous commit with automatic failover disabled. The Next button is highlighted.](images1/E2T3S21.png "SQLVM3 replica settings")
 
 23. On the **Select Data Synchronization** page, make sure that **Automatic seeding** is selected and select **Next**.
 
-    ![On the Select Data Synchronization page, the radio button for Automatic seeding is selected. The Next button is selected at the bottom of the form.](images/dr-sql-r5.png "Select Data Synchronization page")
+    ![On the Select Data Synchronization page, the radio button for Automatic seeding is selected. The Next button is selected at the bottom of the form.](images1/E2T3S22.png "Select Data Synchronization page")
 
 24. On the **Validation** screen, you should see all green, except for a warning for 'Checking the listener configuration'. This will be addressed later. Select **Next**.
 
-    ![The Validation screen displays a list of everything it is checking, and the results for each, which all display success except the last one. The Next button is selected.](images/dr-sql-r6.png "Validation screen")
+    ![The Validation screen displays a list of everything it is checking, and the results for each, which all display success except the last one. The Next button is selected.](images1/E2T3S23.png "Validation screen")
 
 24. On the Summary page select **Finish**.
 
-    ![On the Summary page, the Finish button is selected.](images/dr-sql-r7.png "Summary page")
+    ![On the Summary page, the Finish button is selected.](images1/E2T3S24.png "Summary page")
 
 25. Once the AOG is built, check each task was successful and select **Close**.
 
-    ![On the Results page, a message says the wizard has completed successfully, and results for all steps is success. The Close button is selected.](images/dr-sql-r8.png "Results page")
+    ![On the Results page, a message says the wizard has completed successfully, and results for all steps is success. The Close button is selected.](images1/E2T3S25.png "Results page")
 
 26. Under Availability Groups, right-click **BCDRAOG (Primary)** and then select **Show Dashboard**. You should see that the **SQLVM3** node has been added and is synchronizing.
 
-    ![Screenshot of the BCDRAOG Dashboard showing SQLVM3 synchronizing.](images/dr-sql-dash.png "BCDRAOG Dashboard")
+    ![Screenshot of the BCDRAOG Dashboard showing SQLVM3 synchronizing.](images1/E2T3S26.png "BCDRAOG Dashboard")
 
 27. Move back to **PowerShell ISE** on **SQLVM1**. Open a new file, paste in the following script, and select the **Play** button. This will update the Failover cluster with the new Listener IP address that you created.
 
@@ -795,11 +795,11 @@ This task comprises the following steps:
     Start-ClusterResource -Name "BCDRAOG"
     ```
 
-    ![In the Windows PowerShell ISE window, the play button is selected. The script from the lab guide has been executed.](images/dr-ise-listenerip.png "Windows PowerShell ISE window")
+    ![In the Windows PowerShell ISE window, the play button is selected. The script from the lab guide has been executed.](images1/E2T3S27.png "Windows PowerShell ISE window")
 
 28. Move back to Failover Cluster Manager on **SQLVM1**, and select **Roles**, then **BCDRAOG**.  Notice how the **Resources** tab shows that the new IP address **10.1.2.100** has been added, and is currently Offline.
 
-    ![In the Failover Cluster Manager tree view, Roles is selected. Under Roles, BCDRAOG is selected, and details of the role display.](images/dr-fcm-role.png "Failover Cluster Manager")
+    ![In the Failover Cluster Manager tree view, Roles is selected. Under Roles, BCDRAOG is selected, and details of the role display.](images1/E2T3S28.png "Failover Cluster Manager")
 
 
 ### Task 4: Configure DR for the Web tier
