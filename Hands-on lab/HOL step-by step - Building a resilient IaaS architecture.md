@@ -926,11 +926,11 @@ In this task, you will use the Front Door approach to configure a highly availab
 
 1.  You will now build a Front Door to direct traffic to your Primary and Secondary Sites. From the Azure portal, select **+Create a resource**, then search for and select **Front Door and CDN profiles**. Select **Create**. 
 
-    ![Icon for Azure Front Door.](images/dr-fd-icon.png "Azure Front Door icon")
+    ![Icon for Azure Front Door.](images1/E2T5S1.png "Azure Front Door icon")
 
 2. Select **Azure Front Door** and **Custom create**. Then select **Continue to create a  Front Door**.
 
-    ![Screenshot showing compare offerings with Azure Front Door and Custom create both selected.](images/dr-fd-offerings.png "Azure Front Door Compare Offerings")
+    ![Screenshot showing compare offerings with Azure Front Door and Custom create both selected.](images1/E2T5S2.png "Azure Front Door Compare Offerings")
     
 3. Complete the **Basics** tab of the **Create a Front Door** blade using the following inputs, then select **Next: Secrets >**.
 
@@ -952,17 +952,17 @@ In this task, you will use the Front Door approach to configure a highly availab
 
 6. Under **Routes** select **+ Add a route**.
 
-    ![Create a front door profile with options to create Routes and Security policies. Add a route is highlighted.](images/dr-fd-addroute.png "Create a front door profile")
+    ![Create a front door profile with options to create Routes and Security policies. Add a route is highlighted.](images1/E2T5S6.png "Create a front door profile")
     
 7. Select **Add a new origin group**.
     
-    ![Under Origin group on the Add a new route screen, the link to Add a new origin group is highlighted.](images/dr-fd-addneworigingroup.png "Add a route")
+    ![Under Origin group on the Add a new route screen, the link to Add a new origin group is highlighted.](images1/E2T5S7.png "Add a route")
     
 8. Give the new origin group the name of `ContosoOrigins`.
 
 9. Select **+ Add an origin**.
     
-   ![Under the Add an origin group pane, + Add an origin is highlighted.](images/dr-fd-addorigin.png "Add an origin group")
+   ![Under the Add an origin group pane, + Add an origin is highlighted.](images1/E2T5S9.png "Add an origin group")
    
 10. For adding an origin, use the following values. Leave all other values set to their default. Then select Add.
 
@@ -971,7 +971,7 @@ In this task, you will use the Front Door approach to configure a highly availab
     - Host name: ContosoWebLBPrimaryIP
     - Priority: 1
 
-    ![Screen shot showing the values entered into the Add an origin pane.](images/dr-fd-neworigin.png "Add an origin")
+    ![Screen shot showing the values entered into the Add an origin pane.](images1/E2T5S10.png "Add an origin")
 
 11. Repeat step 10 and change the values to the following.
 
@@ -982,7 +982,7 @@ In this task, you will use the Front Door approach to configure a highly availab
 
 12. Update **Interval (in seconds)** to 30. Click Add
 
-    ![Showing the completed Add an origin group pane with all fields filled out and ready to select add.](images/dr-fd-addorigingroup.png "Add an origin group")
+    ![Showing the completed Add an origin group pane with all fields filled out and ready to select add.](images1/E2T5S12.png "Add an origin group")
     
 13. Enter the following values in **Add a route**. Leave all other values as default. Select **Add**
 
@@ -992,17 +992,17 @@ In this task, you will use the Front Door approach to configure a highly availab
     - Origin group: ensure **ContosoOrigins** is selected
     - Forwarding protocol: HTTP only
 
-    ![Screenshot showing the completed add a route pane with all correct values read to select Add.](images/dr-fd-addroutecomplete.png "Add a route")
+    ![Screenshot showing the completed add a route pane with all correct values read to select Add.](images1/E2T5S13.png "Add a route")
     
 14. Select **Review + Create**. Once validation has been completed, select **Create** to provision the Front Door service.
 
-    ![Create a front door profile screen completed and ready to create. Completed route and Review + Create are highlighted.](images/dr-fd-profile.png "Create a front door profile")
+    ![Create a front door profile screen completed and ready to create. Completed route and Review + Create are highlighted.](images1/E2T5S14.png "Create a front door profile")
     
 15. Navigate to the Azure Front Door resource. Select the **Frontend host** URL of Azure Front Door, and the Policy Connect web application will load. The web application is routing through the **ContosoWebLBPrimary** External Load Balancer configured in front of **WEBVM1** and **WEBVM2** running in the **Primary** Site in **ContosoRG1** resource group and connecting to the SQL AlwaysOn Listener at the same location.
 
     ![The Frontend host link is selected from the Azure Front Door.](images/E2T5S15.png "Frontend host link")
 
-    ![The Contoso Insurance PolicyConnect webpage displays from a Front Door URL.](images/dr-fd-app.png "Contoso Insurance PolicyConnect webpage")
+    ![The Contoso Insurance PolicyConnect webpage displays from a Front Door URL.](images1/E2T5S15.png "Contoso Insurance PolicyConnect webpage")
 
     > **Note:** Be sure to use **HTTP** to access the Azure Front Door **frontend host** URL. The lab configurations only support HTTP for Front Door since WebVM1 and WebVM2 are only set up for HTTP support, not HTTPS (no SSL\TLS).
     > **Note:** If you get an "Our services aren't available right now" error (or a 404-type error) accessing the web application, then continue with the lab and come back to this later. Sometime this can take a ~10 minutes for the routing rules to publish before it's "live".
