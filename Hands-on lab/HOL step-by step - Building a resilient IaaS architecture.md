@@ -505,7 +505,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
 1.  In a new browser tab, navigate to **https://shell.azure.com**. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted to do so.
 
-    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images/dr-cloudshell.png "Azure Cloud Shell")
+    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/E2T1S1.png "Azure Cloud Shell")
 
 2.   Update the **-Location** parameter in each of the commands below to be a different location than **ContosoRG1**.Execute the following commands. These will create the DR resource group and deploy the DR resources. 
     You can proceed to the following tasks while the template deployment is in progress.
@@ -532,7 +532,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
     -  An additional SQL Server VM, **SQLVM3**
     -  Azure Bastion, to enable VM access
 
-    ![Screenshot of the disaster recovery resources for the Web application.](images/webdr-deploy.png "Successful deployment of Web DR resources")
+    ![Screenshot of the disaster recovery resources for the Web application.](images1/E2T1S3.png "Successful deployment of Web DR resources")
     
 Next, you will create the Recovery Services Vault used to replicate the Web tier VMs and orchestrate the cross-site failover.
 
@@ -550,11 +550,11 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 6.  Once the **BCDRRSV** Recovery Service Vault has been created, open it in the Azure portal and select the **Site Recovery** tab.
 
-    ![Screenshot of the Backup / Site Recovery tabs with Site Recovery tab selected.](images/image40.png "Backup / Site Recovery tabs")
+    ![Screenshot of the Backup / Site Recovery tabs with Site Recovery tab selected.](images1/E2T1S6.png "Backup / Site Recovery tabs")
 
 7. This is your dashboard for Azure Site Recovery (ASR).
 
-    ![The Azure Site Recovery dashboard displays.](images/image41.png "Azure Site Recovery dashboard")
+    ![The Azure Site Recovery dashboard displays.](images1/E2T1S7.png "Azure Site Recovery dashboard")
 
 > **Important:** Next, you will set up the Azure Automation account that will be used to automate certain failover and fail-back tasks. This will require several PowerShell scripts to be imported as Azure Automation runbooks. **Be sure to execute the following steps from the LabVM, since that is where the scripts are located.**
 
@@ -575,7 +575,7 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 10. In the **Azure Automation Account** blade and select **Runbooks**, then select **Import a runbook**.
 
-    ![The 'Import a runbook' button is highlighted in Azure Automation.](images/dr-rbimp.png "Import a runbook button")
+    ![The 'Import a runbook' button is highlighted in Azure Automation.](images1/E2T1S10.png "Import a runbook button")
 
 > **Note**: You must be connected to the **LABVM** to complete the next steps.
 
@@ -585,7 +585,7 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 12. Once the Runbook is imported, the runbook editor will load. If you wish, you can review the comments to better understand the runbook. Once you are ready, select **Publish**, followed by **Yes** at the confirmation prompt. This makes the runbook available for use.
 
-    ![On the top menu of the Edit PowerShell Workflow Runbook blade, Publish is selected.](images/dr-rbpub.png "Publish runbook")
+    ![On the top menu of the Edit PowerShell Workflow Runbook blade, Publish is selected.](images1/E2T1S12.png "Publish runbook")
 
 13. Repeat the above steps to import and publish the **ASRRunbookWEB.ps1** runbook and change the name of the Workflow inside the Runbook script to **ASRWEBFailover**
 
@@ -599,7 +599,7 @@ Next, you will create a variable in Azure Automation which contains settings (su
 
 15. In your Azure Automation account, select **Variables**, then **Add a variable**.
 
-    ![Azure portal showing variables pane in Azure Automation.](images/dr-addvar.png "Add a variable")
+    ![Azure portal showing variables pane in Azure Automation.](images1/E2T1S15.png "Add a variable")
 
 16. In the **New Variable** blade, enter `BCDRIaaSPlan` as the variable name. The variable type should be **String**. Paste the following into the variable **Value**, then select **Create**.
 
@@ -621,15 +621,15 @@ Next, you will create a variable in Azure Automation which contains settings (su
     }
     ```
 
-    ![The 'New Variable' blade is filled in with the variable name and value.](images/dr-newvar.png "New Variable")
+    ![The 'New Variable' blade is filled in with the variable name and value.](images1/E2T1S16.png "New Variable")
 
 17. Notice that the variable **BCDRIaaSPlan** has been created. 
 
-    ![The 'BCDRIaaSPlan' variable is shown in the Automation Account.](images/dr-var.png "Automation Account variables")
+    ![The 'BCDRIaaSPlan' variable is shown in the Automation Account.](images1/E2T1S17.png "Automation Account variables")
 
 18. Before continuing, check that the template deployment you started at the beginning of this task has been completed. From the Azure portal home page, select **Subscriptions**, select your subscription, then select **Deployments**. 
 
-    ![The 'Contoso-IaaS-DR' template deployment shows as successful.](images/dr-deploy-ok.png "Template status")
+    ![The 'Contoso-IaaS-DR' template deployment shows as successful.](images1/E2T1S18.png "Template status")
 
 ### Task 2: Inspect DR for the Domain Controller tier
 
