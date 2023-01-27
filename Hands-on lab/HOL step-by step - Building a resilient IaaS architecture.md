@@ -639,7 +639,7 @@ The configuration of these domain controllers is fully automatic. In this task, 
 
 1.  From the Azure portal home page, select **Subscriptions**, choose your subscription, and select **Deployments**, then open the **Contoso-IaaS-DR** deployment used for the DR site.
 
-    ![Click path to the 'Contoso-IaaS-DR' deployment.](images/dr-deployment.png "DR deployment")
+    ![Click path to the 'Contoso-IaaS-DR' deployment.](images1/E2T2S1.png "DR deployment")
 
 2.  Select **Template** and review the template contents. Note the use of `dependsOn` to carefully control the deployment sequence. The resources are deployed as follows:
 
@@ -650,19 +650,19 @@ The configuration of these domain controllers is fully automatic. In this task, 
     - The DNS settings in VNet2 are then updated to point to these new domain controllers.
     - Other VMs (such as **SQLVM3**) are now able to be deployed
 
-    ![Azure portal showing the Contoso-IaaS-DR template, with the deployment sequence highlighted.](images/dr-ad.png "DR template")
+    ![Azure portal showing the Contoso-IaaS-DR template, with the deployment sequence highlighted.](images1/E2T2S2.png "DR template")
 
 3.  Navigate to the **ContosoRG2** resource group. Click on network interface (NIC) **ADVM3NIC** resources for the ADVM3 and ADVM4 VMs to confirm their network settings include the static private IP addresses 10.1.3.100 and 10.1.3.101, respectively. On the left hand side Under Settings click on **IP configurations**         and then select ipconfig1 and also change the assignment as **Static** and also update the ip address.
 
-    ![Network interface configuration showing a static private IP address for ADVM3.](images/dr-adip.png "Static IPs")
+    ![Network interface configuration showing a static private IP address for ADVM3.](images1/E2T2S3.png "Static IPs")
 
 4.  Navigate to the **VNet2** virtual network. Select **DNS servers** and confirm that the IP addresses for **ADVM3** and **ADVM4** are configured.
 
-    ![The Azure portal shows the DNS settings for VNet2.](images/dr-dns.png "Template status")
+    ![The Azure portal shows the DNS settings for VNet2.](images1/E2T2S4.png "Template status")
 
 5.  Select **Peerings** and confirm that the network is peered with VNet1.
 
-    ![The Azure portal shows VNet2 is peered with VNet1.](images/dr-peer.png "VNet peering")
+    ![The Azure portal shows VNet2 is peered with VNet1.](images1/E2T2S5.png "VNet peering")
 
 
 ### Task 3: Configure DR for the SQL Server tier
