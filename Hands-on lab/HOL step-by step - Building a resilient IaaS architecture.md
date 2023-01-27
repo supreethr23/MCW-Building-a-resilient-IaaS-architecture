@@ -857,7 +857,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 10. Select **+Recovery plan**.
 
-    ![On the Recovery Services vault blade top menu, Add a recovery plan is selected.](images/dr-asr-9.png "Add recovery plan")
+    ![On the Recovery Services vault blade top menu, Add a recovery plan is selected.](images1/E2T4S10.png "Add recovery plan")
 
 11. Fill in the **Create recovery plan** blade as follows:
 
@@ -867,23 +867,23 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
     - **Allow items with deployment model**: Resource Manager.
     - **Select Items**: Select **WebVM1** and **WebVM2**.
 
-        ![Fields in the Create recovery plan blade are set to the previously defined settings.](images/dr-asr-10a.png "Create recovery plan blade")
+        ![Fields in the Create recovery plan blade are set to the previously defined settings.](images1/E2T4S11.png "Create recovery plan blade")
 
     > **Note:** It is **critical** to use the correct recovery plan name `BCDRIaaSPlan`. This must match the name of the Azure Automation variable you created in the first task in this exercise.
 
 12. Select **OK** to create the recovery plan. After a moment, the **BCDRIaaSPlan** Recovery plan will appear. Select it to review.
 
-    ![In the Recovery Plans blade, BCDRIaaSPlan is selected.](images/dr-asr-11.png "Recovery plans")
+    ![In the Recovery Plans blade, BCDRIaaSPlan is selected.](images1/E2T4S12.png "Recovery plans")
 
 13. When the **BCDRIaaSPlan** loads **notice** that it shows **2 VMs in the Source** which is your **Primary** Site.
 
     You will now customize the recovery plan to trigger the SQL failover and configure the web tier load-balancer during the failover process, select **Customize**.
 
-    ![On the BCDSRV blade top menu, Customize is selected. Under Items in recovery plan, the source shows two and the VM icon.](images/dr-asr-12.png "BCDSRV blade")
+    ![On the BCDSRV blade top menu, Customize is selected. Under Items in recovery plan, the source shows two and the VM icon.](images1/E2T4S13.png "BCDSRV blade")
 
 14. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** next to **All groups failover**, then select **Add pre-action** from the context menu.
 
-    ![In the Recovery plan blade, the right-click menu for All groups failover displays and Add pre-action is selected.](images/dr-asr-13.png "Recovery plan blade")
+    ![In the Recovery plan blade, the right-click menu for All groups failover displays and Add pre-action is selected.](images1/E2T4S14.png "Recovery plan blade")
 
 15. On the **Insert action** blade, select **Script** and then provide the name `ASRSQLFailover`. Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRSQLFailover**. Select **OK**.
 
@@ -893,7 +893,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 17. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** next to **Group 1: Start**, then select **Add post action** from the context menu.
 
-    ![In the Recovery plan blade, the Group 1: Start right-click menu displays, and Add post action is selected.](images/dr-asr-15.png "Recovery plan blade")
+    ![In the Recovery plan blade, the Group 1: Start right-click menu displays, and Add post action is selected.](images1/E2T4S16.png "Recovery plan blade")
 
 18. On the **Insert action** blade, select **Script** and then provide the name: **ASRWEBFailover.** Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRWEBFailover**. Select **OK**.
 
@@ -901,7 +901,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 19. Make sure that your **Pre-steps** are running under **All groups failover** and the **Post-steps** are running under **Group1: Start**. Select **Save**.
 
-    ![In the Recovery plan blade, both instances of Script: ASRFSQLFailover are called out under both All groups failover: Pre-steps, and Group 1: Post-steps.](images/dr-asr-17.png "Recovery plan blade")
+    ![In the Recovery plan blade, both instances of Script: ASRFSQLFailover are called out under both All groups failover: Pre-steps, and Group 1: Post-steps.](images1/E2T4S18.png "Recovery plan blade")
 
 20. After a minute, the portal will provide a successful update notification. This means that your recovery plan is fully configured and ready to failover and back between the primary and secondary regions.
 
@@ -909,7 +909,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 21. Return to the Recovery Services Vault **BCDRRSV** blade and select the **Replicated Items** link under **Protected Items**. You should see **WebVM1** and **WebVM2**. The Replication Health should be **Healthy**. The Status will show the replication progress. Once both VMs show status **Protected**, replication is complete and you will be able to test the failover.
 
-    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images/dr-asr-18.png "Replicated Items")
+    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/E2T4S20.png "Replicated Items")
 
     > **Note**: It can take up to 30 minutes for the replication to complete.
 
