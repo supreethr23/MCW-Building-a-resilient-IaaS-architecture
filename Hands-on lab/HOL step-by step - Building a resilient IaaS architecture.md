@@ -464,25 +464,25 @@ In this task, you will configure a high-availability web tier. This comprises tw
 
 3.  In the **Web.config** file, locate the **\<ConnectionStrings\>** element and replace **SQLVM1** with **BCDRAOG** in the data source. Remember to **Save** the file.
 
-    ![Notepad is editing the Web.config file. The data source is updated to BCDRAOG.contoso.com.](images/ha-webconfig.png "Web.config file")
+    ![Notepad is editing the Web.config file. The data source is updated to BCDRAOG.contoso.com.](images1/E1T4S3.png "Web.config file")
 
 4.  Repeat the above steps to make the same change on **WebVM2**.
 
 5.  Return to the Azure portal and navigate to the **ContosoWebLBPrimary** load balancer blade. Select **Backend pools** and open **BackEndPool1**.
 
-    ![Azure portal showing path to BackEndPool1 on ContosoWebLBPrimary.](images/ha-web-bepool.png "Backend pool select path")
+    ![Azure portal showing path to BackEndPool1 on ContosoWebLBPrimary.](images1/E1T4S5.png "Backend pool select path")
 
 6.  In the **BackendPool1** blade, select **VNet1 (ContosoRG1)** as the Virtual network. Then select **+ Add** and select the two web VMs. Select **Save**.
 
-    ![Azure portal showing WebVM1 and WebVM2 being added to the backend pool.](images/ha-web-poolvms.png "Backend pool VMs")
+    ![Azure portal showing WebVM1 and WebVM2 being added to the backend pool.](images1/E1T4S6.png "Backend pool VMs")
 
 7.  You will now check that the Contoso sample application is working when accessed through the load-balancer. In the Azure portal, navigate to the **ContosoWebLBPrimaryIP** resource. This is the public IP address attached to the web tier load balancer front end. Copy the **DNS name** to the clipboard.
 
-    ![Azure portal showing web load balancer public IP, with DNS name highlighted.](images/ha-pip.png "Public IP DNS name")
+    ![Azure portal showing web load balancer public IP, with DNS name highlighted.](images1/E1T4S7.png "Public IP DNS name")
 
 8.  Open a new browser tab and paste the DNS name. The Contoso Insurance sample app is shown. 
 
-    ![Browser screenshot showing the contoso sample application. The address bar shows the DNS name copied earlier.](images/ha-app.png "Contoso app")
+    ![Browser screenshot showing the contoso sample application. The address bar shows the DNS name copied earlier.](images1/E1T4S8.png "Contoso app")
 
     > **Note:** You will test the HA capabilities later in the lab.
 
