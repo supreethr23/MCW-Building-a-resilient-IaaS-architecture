@@ -1155,37 +1155,37 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
 
 5. In the Azure portal, navigate to the **ContosoRG1** resource group. You should see that in addition to the SQLVM1 and SQLVM2 virtual machines, there are now parallel SQLVM1 and SQLVM2 resources of type 'SQL virtual machine' These additional resources provide additional management capabilities for SQL Server in Azure virtual machines. 
 
-    ![Azure portal screenshot showing the SQLVM1 and SQLVM2 SQL virtual machine resources.](images/bk-sql-rp3.png "SQL virtual machine resources")
+    ![Azure portal screenshot showing the SQLVM1 and SQLVM2 SQL virtual machine resources.](images1/E3T3S5.png "SQL virtual machine resources")
 
 6. Select the **SQLVM1** virtual machine (the standard VM resource, not the SQL virtual machine resource). Then select **Extensions + application**. Note that the **SqlIaaSExtension** has been installed on the virtual machine.
 
-    ![Azure portal screenshot showing the SqlIaaSExtension has been deployed to SQLVM1.](images/EX3-T3-S6.png "SqlIaaSExtension")
+    ![Azure portal screenshot showing the SqlIaaSExtension has been deployed to SQLVM1.](images1/E3T3S6.png "SqlIaaSExtension")
 
 With the SQL virtual machine resources created and the SQL IaaS extension installed, you can now configure Azure Backup for virtual machines.
 
 7. In the Azure portal, navigate to the **BackupRSV** Recovery Services Vault resource in **ContosoRG1**. Under 'Getting started', select **Backup**. Under 'Where is your workload running?', select **Azure**. Under 'What do you want to backup?', select **SQL Server in Azure VM**. Then select **Start Discovery**.
 
-   ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with 'SQL Server in Azure VM' selected.](images/bk-sql1.png "Backup SQL Server in Azure VM")
+   ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with 'SQL Server in Azure VM' selected.](images1/E3T3S7.png "Backup SQL Server in Azure VM")
 
 8. In the 'Select Virtual Machines' blade, select **SQLVM1** and **SQLVM2**, then select **Discover DBs**.
 
-    ![Azure portal screenshot showing the 'Select Virtual Machines' step of enabling backup for SQL Server in Azure VMs. SQLVM1 and SQLVM2 are selected.](images/bk-sql2.png "Select VMs for SQL Server backup")
+    ![Azure portal screenshot showing the 'Select Virtual Machines' step of enabling backup for SQL Server in Azure VMs. SQLVM1 and SQLVM2 are selected.](images1/E3T3S8.png "Select VMs for SQL Server backup")
 
 9. This will trigger a deployment. Wait for the deployment to complete (this may take several minutes).
 
-    ![Azure portal screenshot showing the 'deployment succeeded' notification.](images/bk-sql3.png "Success notification")
+    ![Azure portal screenshot showing the 'deployment succeeded' notification.](images1/E3T3S9.png "Success notification")
 
 10. On the 'BackupRSV' blade, select **Configure Backup**. 
 
-    ![Azure portal screenshot showing the Backup 'Getting Started' settings in the Recovery Services Vault, with 'Configure Backup' highlighted.](images/bk-sql4.png "Configure backup button")
+    ![Azure portal screenshot showing the Backup 'Getting Started' settings in the Recovery Services Vault, with 'Configure Backup' highlighted.](images1/E3T3S10.png "Configure backup button")
 
 11. On the 'Backup' blade, select **Add**.
 
-    ![Azure portal screenshot showing the Backup 'Backup' settings for the SQL backup, with 'Add' highlighted.](images/bk-sql5.png "Add button")
+    ![Azure portal screenshot showing the Backup 'Backup' settings for the SQL backup, with 'Add' highlighted.](images1/E3T3S11.png "Add button")
 
 12. On the 'Select items to backup' blade, select the **\>** icon next to the `BCDRAOG\BCDRAOG` entry to show the databases. Note that the ContosoInsurance database is listed. Change the **AutoProtect** setting for BCDRAOG to **ON**, then select **OK**.
 
-    ![Azure portal screenshot showing available databases to backup. For the BCDRAOG Always On Availability Group, AutoProtect is set to 'ON'.](images/bk-sql6.png "Select items to backup")
+    ![Azure portal screenshot showing available databases to backup. For the BCDRAOG Always On Availability Group, AutoProtect is set to 'ON'.](images1/E3T3S12.png "Select items to backup")
 
     > **Note:** Using AutoProtect backups up the current database and any future databases on this Always On Availability Group.
 
@@ -1193,25 +1193,25 @@ With the SQL virtual machine resources created and the SQL IaaS extension instal
 
 13. On the 'Backup' blade, note that **BCDRAOG\BCDRAOG** is now listed for backup. Leave the policy as the default `HourlyLogBackup` policy. Select **Enable Backup** and wait for the deployment to complete.
 
-    ![Azure portal screenshot showing the BCDRAOG database listed for backup, and the HourlyLogBackup settings. The 'Enable Backup' button is highlighted.](images/bk-sql7.png "Enable Backup button")
+    ![Azure portal screenshot showing the BCDRAOG database listed for backup, and the HourlyLogBackup settings. The 'Enable Backup' button is highlighted.](images1/E3T3S13.png "Enable Backup button")
 
 14. In the **BackupRSV** Recovery Service Vault, navigate to the **Backup Jobs** view. You should see a backup configuration job in progress for the ContosoInsurance database. (If this job does not show immediately, wait a minute and then select **Refresh**.)
 
-    ![Azure portal screenshot showing the backup configuration job for the ContosoInsurance database.](images/bk-sql8.png "Backup configuration job")
+    ![Azure portal screenshot showing the backup configuration job for the ContosoInsurance database.](images1/E3T3S14.png "Backup configuration job")
 
 15.  Wait for the backup configuration job to complete. Use the **Refresh** button to monitor progress. The configuration job will take several minutes.
 
 16. Select **Backup items**, then select **SQL in Azure VM**.
 
-    ![Screenshot showing the path to the SQL in Azure VMs in backup items in the Recovery Services Vault.](images/v-bk-sql1.png "Backup items")
+    ![Screenshot showing the path to the SQL in Azure VMs in backup items in the Recovery Services Vault.](images1/E3T3S16.png "Backup items")
 
 17. From the backup items list, note that the **contosoinsurance** database has status **Warning (Initial backup pending)**.
 
-    ![Azure portal screenshot showing the backup status for the contosoinsurance database.](images/bk-sql10.png "Backup status")
+    ![Azure portal screenshot showing the backup status for the contosoinsurance database.](images1/E3T3S17.png "Backup status")
 
 18. Select **View details** on the **contosoinsurance** database and select **Backup now**
 
-      ![Azure portal screenshot showing the backup now button for the contosoinsurance database.](images/bk-sql11.png "Backup now")
+      ![Azure portal screenshot showing the backup now button for the contosoinsurance database.](images1/E3T3S18.png "Backup now")
 
 19.  Review the default backup settings, then select **OK** to start the backup.
 
@@ -1219,7 +1219,7 @@ With the SQL virtual machine resources created and the SQL IaaS extension instal
 
 20. The backup process starts. You can monitor progress from the **Backup Job** pane.
 
-    ![Azure portal screenshot showing the Backup Job for the contosoinsurance database.](images/bk-sql13.png "Database Backup Job")
+    ![Azure portal screenshot showing the Backup Job for the contosoinsurance database.](images1/E3T3S20.png "Database Backup Job")
 
     > **Note:** You can continue to the next step in the lab without waiting for the backup job to complete.
 
