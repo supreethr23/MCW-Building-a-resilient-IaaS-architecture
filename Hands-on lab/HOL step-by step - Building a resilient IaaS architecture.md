@@ -1054,7 +1054,7 @@ In this task, you will configure Azure Backup for the Web tier virtual machines.
 
 1.  From the **BackupRSV** Recovery Services vault blade, under 'Getting Started', select **Backup**. Under 'Where is your workload running?', select **Azure**. Under 'What do you want to backup?', select **Virtual machine**. Then select **Backup**.
 
-    ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with Azure VMs selected.](images/bk-vm1.png "Backup VMs")
+    ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with Azure VMs selected.](images1/E3T2S1.png "Backup VMs")
 
 2.  On the 'Configure Backup' blade, Leave **Standard** selected and select **Create a new policy** and fill in the Create Policy blade as follows:
 
@@ -1069,29 +1069,29 @@ In this task, you will configure Azure Backup for the Web tier virtual machines.
 
     When finished, select **OK**.
 
-    ![Azure portal screenshot showing the Backup Policy settings, completed as described.](images/bk-vm2.png "Backup Policy")
+    ![Azure portal screenshot showing the Backup Policy settings, completed as described.](images1/E3T2S2.png "Backup Policy")
 
 3.  On the 'Backup' blade, under 'Virtual Machines', select **Add**. Select the **WebVM1** and **WebVM2** virtual machines, then **OK**.
 
-    ![Azure portal screenshot showing the steps to add VMs to the backup.](images/bk-vm3.png "Add VMs")
+    ![Azure portal screenshot showing the steps to add VMs to the backup.](images1/E3T2S3.png "Add VMs")
 
 4.  Select **Enable Backup** and wait for the deployment to complete.
 
-    ![Azure portal notification showing the VM backup deployment is complete.](images/bk-vm4.png "Backup deployment complete")
+    ![Azure portal notification showing the VM backup deployment is complete.](images1/E3T2S4.png "Backup deployment complete")
 
 5.  From the **BackupRSV** Recovery Services vault blade, under 'Protected items', select **Backup items**. The blade should show 2 Azure VMs protected.
 
-    ![Azure portal screenshot showing how many protected items of various types are enabled. There are 2 Azure VMs protected.](images/bk-vm5.png "Backup items")
+    ![Azure portal screenshot showing how many protected items of various types are enabled. There are 2 Azure VMs protected.](images1/E3T2S5.png "Backup items")
 
 6.  Select **Azure Virtual Machine**. The 'Backup Items (Azure Virtual Machine' blade loads, listing **WebVM1** and **WebVM2**. In both cases, the 'Last Backup Status is 'Warning (Initial backup pending)'.
 
-    ![Azure portal screenshot showing WebVM1 and WebVM2 listed for backup, with initial backup pending.](images/bk-vm6.png "Backup items (Azure Virtual Machine)")
+    ![Azure portal screenshot showing WebVM1 and WebVM2 listed for backup, with initial backup pending.](images1/E3T2S6.png "Backup items (Azure Virtual Machine)")
 
 7.  Select **View details** for **WebVM1** to open the 'WebVM1' backup status blade. Select **Backup now**, leave the default backup retention, and select **OK**.
 
-    ![Azure portal screenshot showing the WebVM1 backup status blade, with the 'Backup now' button highlighted.](images/bk-vm7.png "Backup now")
+    ![Azure portal screenshot showing the WebVM1 backup status blade, with the 'Backup now' button highlighted.](images1/E3T2S7.png "Backup now")
 
-    ![Azure portal screenshot the backup retention period for the on-demand backup.](images/bk-vm8.png "Backup now - retention")
+    ![Azure portal screenshot the backup retention period for the on-demand backup.](images1/E3T2S7.1.png "Backup now - retention")
 
     >**Note:** The backup policy created earlier determines the retention period for scheduled backups. For on-demand backups, the retention period is specified separately.
 
@@ -1099,11 +1099,11 @@ In this task, you will configure Azure Backup for the Web tier virtual machines.
 
 9.  From the **BackupRSV** Recovery Services vault blade, under 'Monitoring', select **Backup Jobs** to load the Backup Jobs blade. This shows the current status of each backup job. The blade should show two completed jobs (configuring backup for WebVM1 and WebVM2), and two in-progress jobs (backup for WebVM1 and WebVM2).
 
-    ![Azure portal screenshot showing the backup jobs.](images/bk-vm9.png "Backup Jobs")
+    ![Azure portal screenshot showing the backup jobs.](images1/E3T2S9.png "Backup Jobs")
 
 10.  Select **View Details** for **WebVM1** to open the backup job view. This backup job view shows the detailed status of the tasks within the backup job.
 
-   ![Azure portal screenshot showing the WebVM1 backup job detailed status. The 'Take snapshot' task is 'In progress' and the 'Transfer data to vault' task is 'Not started'.](images/bk-vm10.png "Backup Job - WebVM1")
+   ![Azure portal screenshot showing the WebVM1 backup job detailed status. The 'Take snapshot' task is 'In progress' and the 'Transfer data to vault' task is 'Not started'.](images1/E3T2S10.png "Backup Job - WebVM1")
 
    > **Note**: To restore from a backup, it suffices that the 'Take Snapshot' task is complete. Transferring the data to the vault does not need to be complete, since recent backups can be restored from the snapshot.
 
