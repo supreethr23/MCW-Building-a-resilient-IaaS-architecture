@@ -1022,7 +1022,7 @@ Azure Backup and Azure Site Recovery are implemented using the same Azure resour
 
 1.  From the Azure portal, select **+Create a resource**, then search for and select **Backup and Site Recovery** then select **Create**.
 
-    ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/dr-srv-mktpl2.png "Backup and Site Recovery Screen Create Button")
+    ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images1/E3T1S1.png "Backup and Site Recovery Screen Create Button")
 
 2.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
 
@@ -1030,21 +1030,21 @@ Azure Backup and Azure Site Recovery are implemented using the same Azure resour
     - **Name**: `BackupRSV`
     - **Location**: Central US *(your primary region)*
 
-    ![Azure portal screenshot showing the Create Recovery Services Vault blade, with the settings filled in as described.](images/bk-rsv.png "Create Recovery Services Vault")
+    ![Azure portal screenshot showing the Create Recovery Services Vault blade, with the settings filled in as described.](images1/E3T1S2.png "Create Recovery Services Vault")
 
 3.  Once the deployment completes, navigate to the **BackupRSV** resource, and select **Properties**.
 
-    ![Azure portal screenshot showing the properties blade of the Recovery Services Vault.](images/bk-prop.png "Recovery Services Vault properties")
+    ![Azure portal screenshot showing the properties blade of the Recovery Services Vault.](images1/E3T1S3.png "Recovery Services Vault properties")
 
 4.  Under **Backup Configuration**, select **Update**. In the Backup Configuration blade, check that the storage replication type is set to **Geo-redundant** and set the Cross Region Restore option to **Enable** then **Save** your changes and close the Backup Configuration panel.
 
-    ![Azure portal screenshot showing the backup properties blade of the Recovery Services Vault.](images/bk-config1.png "Recovery Services Vault backup properties")
+    ![Azure portal screenshot showing the backup properties blade of the Recovery Services Vault.](images1/E3T1S4.png "Recovery Services Vault backup properties")
 
     > **Note:** This enables backups from the primary site to be restored in the DR site, if required.
 
 5.  Still in the BackupRSV Properties blade, under **Security Settings**, select **Update**. Under Soft Delete, select **Disabled**, then **Save** your changes and close the Security Settings panel.
 
-    ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images/backup-sec-config.png "Recovery Services Vault security properties")
+    ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images1/E3T1S5.png "Recovery Services Vault security properties")
 
     > **Note:** In a production environment, you should leave Soft Delete enabled. However, for this lab, it is better to disable this feature, since leaving it enabled makes it more difficult to clean up your lab resources once the lab is complete.
 
