@@ -1367,11 +1367,11 @@ In this task, you will failback the Contoso application from the DR site in West
 
 2.  Select **Failover**. At the warning about No Test Failover, select **I understand the risk, Skip test failover**. Notice that **From** is the **Secondary** site and **To** is the **Primary** site. Select **OK**.
 
-    ![Screenshot of the Failover blade, from East US 2 to Central US.](images/v-dr17.png "Failover (failback)")
+    ![Screenshot of the Failover blade, from East US 2 to Central US.](images1/E4T3S2.png "Failover (failback)")
 
 3.  After the Failover is initiated close the blade and select **Site Recovery Jobs**, then select the **Failover** job to monitor the progress. Once the job has finished, it should show as successful for all tasks.
 
-    ![](images/v-dr18.png "Job status")
+    ![](images1/E4T3S3.png "Job status")
 
 4.  Confirm that the Contoso application is once again accessible via the **ContosoWebLBPrimaryIP** public IP address, and is **not** available at the **ContosoWebLBSecondaryIP** address. This test shows it has been returned to the primary site. Open the **Current Policy Offerings** and edit a policy, to confirm database access. 
 
@@ -1383,7 +1383,7 @@ In this task, you will failback the Contoso application from the DR site in West
 
 7.  Notice that now 2 VMs are shown in the **Source**. Select **Re-protect**, review the configuration and select **OK**.
 
-    ![The recovery plan shows 2 VMs in the Source and 0 in the target. The 'Re-protect' button is highlighted.](images/v-dr19.png "BCDRIaaSPlan")
+    ![The recovery plan shows 2 VMs in the Source and 0 in the target. The 'Re-protect' button is highlighted.](images1/E4T3S7.png "BCDRIaaSPlan")
 
 8.  As previously, the portal will submit a deployment. This process will take some time. You can proceed with the lab without waiting.
 
@@ -1419,11 +1419,11 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
 
 3.  Open Windows Explorer and navigate to the `C:\inetpub\wwwroot\Content` folder. Select the three `.PNG` files and delete them.
 
-    ![Windows Explorer is used to delete PNG files from the Contoso application.](images/v-bk-web1.png "Delete PNG files")
+    ![Windows Explorer is used to delete PNG files from the Contoso application.](images1/E4T4S3.png "Delete PNG files")
 
 4.  In the Azure portal, locate the **ContosoWebLBPrimaryIP** public IP address in **ContosoRG1**. Copy the DNS name and open it in a new browser tab. Hold down `CTRL` and refresh the browser, to reload the page without using your local browser cache. The Contoso application should be shown with images missing.
 
-    ![Browser screenshot showing the Contoso application with missing images highlighted.](images/v-bk-web2.png "Contoso application with missing images")
+    ![Browser screenshot showing the Contoso application with missing images highlighted.](images1/E4T4S4.png "Contoso application with missing images")
 
 5.  To restore WebVM1 from backup, Azure Backup requires that a 'staging' storage account be available. To create this account, in the Azure portal select **+ Create a resource**, then search for and select **Storage account**. Select **Create**.
 
@@ -1435,7 +1435,7 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
     -   **Performance:** Standard
     -   **Replication:** Locally-redundant storage (LRS)
 
-    ![Screenshot showing the 'Create storage account' blade in the Azure portal.](images/v-bk-web3.png "Create storage account")
+    ![Screenshot showing the 'Create storage account' blade in the Azure portal.](images1/E4T4S6.png "Create storage account")
 
 7.  Before restoring a VM, the existing VM must be shut down. Use the Azure portal to shut down **WebVM1**.
 
@@ -1443,11 +1443,11 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
 
 8.  In the Azure portal, navigate to the **BackupRSV** Recovery Services Vault. Under 'Protected Items', select **Backup items**, then select **Azure Virtual Machine**.
 
-    ![Screenshot showing the Recovery Services Vault, with the links to the Azure Virtual Machine backup item highlighted.](images/v-bk-web4.png "Backup items")
+    ![Screenshot showing the Recovery Services Vault, with the links to the Azure Virtual Machine backup item highlighted.](images1/E4T4S8.png "Backup items")
 
 9.  On the Backup items page, select **View details** for **WebVM1**. On the **WebVM1** page, select **RestoreVM**.
 
-    ![Screenshot showing the WebVM1 backup status page, with the 'Restore VM' button highlighted.](images/v-bk-web5.png "Restore VM button")
+    ![Screenshot showing the WebVM1 backup status page, with the 'Restore VM' button highlighted.](images1/E4T4S9.png "Restore VM button")
 
 10. Complete the Restore Virtual Machine page as follows, then select **Restore**.
 
@@ -1455,11 +1455,11 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
     -   **Restore Configuration:** Replace existing
     -   **Staging Location**: Choose the storage account you created earlier, starting with `backupstaging`.
 
-    ![Screenshot showing settings to restore WebVM1, replacing the existing VM.](images/v-bk-web6.png "Restore VM options")
+    ![Screenshot showing settings to restore WebVM1, replacing the existing VM.](images1/E4T4S10.png "Restore VM options")
 
 11. In the **BackupRSV** vault, navigate to the **Backup Jobs** view. Note that two new jobs are shown as 'In progress', one to take a backup of the VM and a second to restore the VM.
 
-    ![Screenshot showing both backup and restore jobs for WebVM1.](images/v-bk-web7.png "Restore VM Backup Jobs")
+    ![Screenshot showing both backup and restore jobs for WebVM1.](images1/E4T4S11.png "Restore VM Backup Jobs")
 
 12. It will take several minutes for the VM to be restored. Wait for the restore to complete before proceeding with the lab.
 
@@ -1475,17 +1475,17 @@ In this task, you will validate the ability to restore the Contoso application d
 
 1.  In the Azure portal, navigate to the **BackupRSV** in **ContosoRG1**. Under 'Protected items', select **Backup items**, then select **SQL in Azure VM**.
 
-    ![Screenshot showing the path to the SQL in Azure VMs in backup items in the Recovery Services Vault.](images/v-bk-sql1.png "Backup items")
+    ![Screenshot showing the path to the SQL in Azure VMs in backup items in the Recovery Services Vault.](images1/E4T5S1.png "Backup items")
 
 2.  From the backup items list, select **View details** for the **contosoinsurance** database.
 
 3.  From the **contosoinsurance** blade, select **Restore**.
     
-    ![Screenshot showing the restore button for the contosoinsurance database backup.](images/v-bk-sql2.png "Restore button")
+    ![Screenshot showing the restore button for the contosoinsurance database backup.](images1/E4T5S3.png "Restore button")
 
 4.  Review the default settings on the **Restore** blade. By default, the backup will be restored to a new database alongside the existing database on SQLVM1.
 
-    ![Screenshot showing the settings to restore a SQL database from Azure Backup.](images/v-bk-sql3.png "Restore database settings")
+    ![Screenshot showing the settings to restore a SQL database from Azure Backup.](images1/E4T5S4.png "Restore database settings")
 
     > **Note:** For an Always On Availability Group backup, the option to overwrite the existing database is not available. You must restore to a parallel location.
 
@@ -1493,9 +1493,9 @@ In this task, you will validate the ability to restore the Contoso application d
 
     Choose any restore point and select **OK**.
 
-    ![Screenshot showing the options to select a restore point based on logs.](images/v-bk-sql4.png "Select restore point - Logs")
+    ![Screenshot showing the options to select a restore point based on logs.](images1/E4T5S5.png "Select restore point - Logs")
 
-    ![Screenshot showing the options to select a restore point based on scheduled backups.](images/v-bk-sql5.png "Select restore point - Full & Differential")
+    ![Screenshot showing the options to select a restore point based on scheduled backups.](images1/E4T5S5.1.png "Select restore point - Full & Differential")
 
 6.  Under 'Advanced Configuration', select **Configure**. Review the settings but don't change anything. Select **OK** to accept the default configuration
    
@@ -1503,7 +1503,7 @@ In this task, you will validate the ability to restore the Contoso application d
    
 8.  Navigate to the **Backup Jobs** view. The ContosoInsurance job is 'In progress'. Use the **Refresh** button to monitor the progress and wait for the job to complete.
 
-    ![Screenshot showing the list of backup jobs with the database restore highlighted.](images/v-bk-sql6.png "Database restore backup job")
+    ![Screenshot showing the list of backup jobs with the database restore highlighted.](images1/E4T5S8.png "Database restore backup job")
 
 9.  Navigate to **SQLVM1** and connect to the VM using Azure Bastion, using username `demouser@contoso.com` and password `Demo!pass123`.
 
@@ -1511,7 +1511,7 @@ In this task, you will validate the ability to restore the Contoso application d
 
 11. Note that the restored database is present on the server alongside the production database.
 
-    ![Screenshot showing the restored database in SQL Server Management Studio.](images/v-bk-sql7.png "Restored database")
+    ![Screenshot showing the restored database in SQL Server Management Studio.](images1/E4T5S11.png "Restored database")
 
     > **Note:** You can now either copy data from the restored database to the production database, or add this database to the Always On Availability Group and switch the Web tier to use the restored database.
 
