@@ -1239,7 +1239,7 @@ In this task we will validate high availability for both the Web and SQL tiers.
 
 3.  Open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica.
 
-    ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica.](images/v-sql1.png "SQLVM1 as Primary")
+    ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica.](images1/E4T1S3.png "SQLVM1 as Primary")
 
 4.  Using the Azure portal, stop both **WebVM1** and **SQLVM1**. Wait a minute for the VMs to stop.
 
@@ -1247,7 +1247,7 @@ In this task we will validate high availability for both the Web and SQL tiers.
 
 6.  Open an Azure Bastion session with **SQLVM2** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM2** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM2** as the primary replica, and there is a critical warning about **SQLVM1** not being available.
 
-    ![SQL Server Management Studio screenshot showing SQLVM2 as the primary replica, with warnings.](images/v-sql2.png "SQLVM2 as Primary")
+    ![SQL Server Management Studio screenshot showing SQLVM2 as the primary replica, with warnings.](images1/E4T1S6.png "SQLVM2 as Primary")
 
 7.  Restart **WebVM1** and **SQLVM1**. **Wait a full two minutes** for the VMs to start - **this is important**, we don't want to test simultaneous failover of SQLVM1 and SQLVM2 at this stage. Then stop **WebVM2** and **SQLVM2**.
 
@@ -1255,7 +1255,7 @@ In this task we will validate high availability for both the Web and SQL tiers.
 
 9.  Re-open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica, and there is a critical warning about **SQLVM2** not being available.
 
-    ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica, with warnings.](images/v-sql1b.png "SQLVM1 as Primary")
+    ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica, with warnings.](images1/E4T1S9.png "SQLVM1 as Primary")
 
 10. Re-start **SQLVM2** and **WebVM2**.
 
@@ -1265,7 +1265,7 @@ In this task, you will validate failover of the Contoso application from Central
 
 1.  Using the Azure portal, open the **ContosoRG1** resource group. Navigate to the Front Door resource, locate Frontend Host URL and open it in a new browser tab. Navigate to it to ensure that the application is up and running from the Primary Site.
 
-    ![The Frontend host link is called out.](images/image318.png "Frontend host")
+    ![The Frontend host link is called out.](images1/E4T2S1.png "Frontend host")
 
     Keep this browser tab open, you will return to it later in the lab.
 
@@ -1273,11 +1273,11 @@ In this task, you will validate failover of the Contoso application from Central
 
 3.  Select **Recovery Plans (Site Recovery)** in the **Manage** area, then select **BCDRIaaSPlan**.
 
-    ![In the Recovery Services vault blade, BCDRIaaSPlan is selected in the Recovery Plans view.](images/v-dr1.png "Recovery Plans")
+    ![In the Recovery Services vault blade, BCDRIaaSPlan is selected in the Recovery Plans view.](images1/E4T2S3.png "Recovery Plans")
 
 4. Select **Failover**.
 
-    ![In the BCDRIaaSPlan blade, the Failover button is highlighted.](images/v-dr2.png "BCDRIaaSPlan blade")
+    ![In the BCDRIaaSPlan blade, the Failover button is highlighted.](images1/E4T2S4.png "BCDRIaaSPlan blade")
     
 5. If you face an error while performing the Failover then go to **Replicated items** under Protected items and select **WebVM1** and then click on **Cleanup test  failover**.
 
@@ -1291,31 +1291,31 @@ In this task, you will validate failover of the Contoso application from Central
 
 5. Navigate back on Failover, select **I understand the risk, Skip test failover**.
 
-    ![A warning displays that no test failover has been done in the past 180 days, and recommends that you do one before a failover. At the bottom, the I understand and skip test failover checkbox is selected.](images/v-dr3.png "Failover warning")
+    ![A warning displays that no test failover has been done in the past 180 days, and recommends that you do one before a failover. At the bottom, the I understand and skip test failover checkbox is selected.](images1/E4T2S8.png "Failover warning")
 
 6. Review the Failover direction. Notice that **From** is the **Primary** site, and **To** is the **Secondary** site. Select **OK**.
 
-    ![Call outs in the Failover blade point to the From and To fields.](images/v-dr4.png "Failover blade")
+    ![Call outs in the Failover blade point to the From and To fields.](images1/E4T2S9.png "Failover blade")
 
 7. After the Failover is initiated, close the Failover blade and navigate to **Site Recovery Jobs**. Select the **Failover** job to monitor the progress.
 
-    ![Failover is selected in the Site Recover jobs blade.](images/v-dr5.png "Site Recover jobs blade")
+    ![Failover is selected in the Site Recover jobs blade.](images1/E4T2S10.png "Site Recover jobs blade")
 
 8. You can monitor the progress of the Failover from this panel.
 
-    ![Output is selected on the Job blade, and information displays in the Output blade.](images/v-dr6.png "Job and Output blades")
+    ![Output is selected on the Job blade, and information displays in the Output blade.](images1/E4T2S11.png "Job and Output blades")
 
     > **Note:** Do not make any changes to your VMs in the Azure portal during this process. Allow ASR to take the actions and wait for the failover notification before moving on to the next step. You can open another portal view in a new browser tab and review the output of the Azure Automation Jobs, by opening the jobs and selecting Output.
     >
-    > ![Screenshot of the ASRSQLFailover Azure Automation runbook job. The status of Zero warnings and zero errors is highlighted.](images/v-dr7.png "Automation Job status")
+    > ![Screenshot of the ASRSQLFailover Azure Automation runbook job. The status of Zero warnings and zero errors is highlighted.](images1/E4T2S11.png "Automation Job status")
 
 9.  Once the Failover job has finished, it should show as *Successful* for all tasks. This may take more than 15 minutes.
 
-    ![Under the Site Recovery Job, the status for the job steps all show as successful.](images/v-dr8.png "Job status")
+    ![Under the Site Recovery Job, the status for the job steps all show as successful.](images1/E4T2S12.png "Job status")
 
 10. Select **Resource groups** and select **ContosoRG1**. Open **WebVM1** and notice that it currently shows as **Status: Stopped (deallocated).** This shows that failover automation has stopped the VMs at the **Primary** site.
 
-    ![A call out points to the Status of Stopped (deallocated) in the Virtual machine blade. The VM location is Central US.](images/v-dr9.png "Virtual machine blade")
+    ![A call out points to the Status of Stopped (deallocated) in the Virtual machine blade. The VM location is Central US.](images1/E4T2S13.png "Virtual machine blade")
 
     > **Note:** Do not select Start! The VM will be restarted automatically by ASR during failback.
 
@@ -1323,41 +1323,41 @@ In this task, you will validate failover of the Contoso application from Central
 
 12. In the Azure portal, move to the **ContosoRG2** resource group. Locate the **WebVM1** in the resource group and select to open. Notice that **WebVM1** is running in the **Secondary** site.
 
-    ![In the Virtual Machine blade, a call out points to the status of WebVM1, which is now running.](images/v-dr10.png "Virtual Machine blade")
+    ![In the Virtual Machine blade, a call out points to the status of WebVM1, which is now running.](images1/E4T2S15.png "Virtual Machine blade")
 
 13. Move back to the **ContosoRG2** resource group and select the **ContosoWebLBSecondaryIP** Public IP address. Copy the DNS name and paste it into a new browser tab. The Contoso application is now responding from the **Secondary** site. Make sure to select the current Policy Offerings to ensure connectivity to the SQL Always-On group that was also failed over in the background.
 
 14. Return to the browser tab pointing to the Contoso application at the Front Door URL. Refresh the page. The site loads immediately, from the DR site. Web site users accessing the service via Front Door are automatically routed to the currently available site, so there is no change in how they access the site even though it is failed over. There **will** be downtime as the failover happens, but once the site is back online the experience for them will be no different than when it is running in the **Primary** site.
 
-    ![The Contoso Insurance PolicyConnect webpage displays. The URL is from Azure Front Door.](images/dr-fd-app.png "Contoso Insurance PolicyConnect webpage")
+    ![The Contoso Insurance PolicyConnect webpage displays. The URL is from Azure Front Door.](images1/E4T2S17.png "Contoso Insurance PolicyConnect webpage")
 
     > **Optional task**: you can log in to **SQLVM3** and open the SQL Management Studio to review the Failed over **BCDRAOG**. You will see that **SQLVM3**, which is running in the **Secondary** site is now the Primary Replica.
 
 15. Now that you have successfully tested failover, you need to configure ASR for failback. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Select **Recovery Plans** on the ASR dashboard. The **BCDRIaaSPlan** will show as **Failover completed.** 
 
-    ![Recovery Plans list, with the 'Failover Completed' status of the BCDRIaaSPlan highlighted.](images/v-dr11.png "Recovery Plans")
+    ![Recovery Plans list, with the 'Failover Completed' status of the BCDRIaaSPlan highlighted.](images1/E4T2S18.png "Recovery Plans")
 
 16. Select the BCDRIaasPlan plan. Notice that now two (2) VMs are now shown in the **Target** tile.
 
-    ![In the Recovery blade, the Target tile has the number 2.](images/v-dr12.png "Recovery plan blade")
+    ![In the Recovery blade, the Target tile has the number 2.](images1/E4T2S19.png "Recovery plan blade")
 
 17. Select **Re-protect**.
 
-    ![Recovery Plan blade with Re-protect button highlighted.](images/v-dr13.png "Re-protect button")
+    ![Recovery Plan blade with Re-protect button highlighted.](images1/E4T2S20.png "Re-protect button")
 
 18. On the **Re-protect** screen review the configuration and then select **OK**.
 
-    ![Screenshot of the Re-protect blade.](images/v-dr14.png "Re-protect blade")
+    ![Screenshot of the Re-protect blade.](images1/E4T2S21.png "Re-protect blade")
 
 19. The portal will submit a deployment. This process will take up to 30 minutes to commit the failover and then synchronize WebVM1 and WebVM2 with the Recovery Services Vault. Once this process is complete, you will be able to failback to the primary site.
 
     > **Note:** You need to wait for the re-protect process to complete before continuing with the failback. You can check the status of the Re-protect using the Site Recovery Jobs area of the BCDRSRV.
     >
-    > ![In the Recovery blade, Re-protect has a status of In progress for two jobs, one for WebVM1 and one for WebVM2.](images/v-dr15.png "Site Recovery jobs")
+    > ![In the Recovery blade, Re-protect has a status of In progress for two jobs, one for WebVM1 and one for WebVM2.](images1/E4T2S22.png "Site Recovery jobs")
     >
     > Once the jobs are completed, move to the **Replicated items** blade and wait for the **Status** to show as **Protected**. This status shows the data synchronization is complete and the Web VMs are ready to failback.
     >
-    > ![In the Replicated items, WebVM1 and WebVM2 have status 'Protected'.](images/v-dr16.png "Replicated items")
+    > ![In the Replicated items, WebVM1 and WebVM2 have status 'Protected'.](images1/E4T2S22.1.png "Replicated items")
 
 ### Task 3: Validate Disaster Recovery - Failback IaaS region to region
 
