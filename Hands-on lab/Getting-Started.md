@@ -19,21 +19,7 @@ Duration: 10 mins
 
 1. Lets start by logging into the Azure Portal to check the resources deployed for the lab environment. In the JumpVM on the left, click on the Azure portal shortcut of Microsoft Edge browser which is available on the desktop.
 
-2. When you click on Azure portal, the edge browser welcome screen will pop up, select **Get started**.
-
-   ![](images/edge-get-started-window.png "Get started")
-
-3. On the next window, click on **Confirm**.
-
-   ![](images/edge-confirm.png "Confirm")
-
-4. You can close the popup which is shown below.
-
-   ![](images/edge-continue.png "Confirm")
-
-5. Now, you will see two tabs in the edge browser, close the first tab named **Microsoft Edge** to move to the other tab.
-
-   ![](images/close-tab.png "Close Tab")
+   ![](images/labvm-labguide.1.png)
 
 6. On the **Sign into Microsoft Azure** tab, you will see the login screen, enter the following username, and, then click on **Next**.
 
