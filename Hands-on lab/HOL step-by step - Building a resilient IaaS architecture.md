@@ -287,11 +287,13 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
 
-25. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2**. Launch **SQL Server 2017 Configuration Manager** and repeat the steps above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
+25. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2**. Launch **SQL Server 2017 Configuration Manager** and repeat the steps from 21 to 24 above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
 
 26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
 
-27. Launch SQL Server Management Studio, a new dialog box will open, Click on **Connect** to sign on to **SQLVM2**. **Note**: The username for your lab should show **SQLVM2\demouser**.
+27. Launch SQL Server Management Studio, a new dialog box will open, Click on **Connect** to sign on to **SQLVM2**. 
+
+    > **Note**: The username for your lab should show **SQLVM2\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images1/E1T3S27.png "Connect to Server dialog box")
     
@@ -308,6 +310,30 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
 
 32. Check the box for **sysadmin** and select **OK**.
+
+    ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
+
+26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM1**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
+
+27. Launch SQL Server Management Studio, a new dialog box will open, Click on **Connect** to sign on to **SQLVM1**. 
+
+    > **Note**: The username for your lab should show **SQLVM1\demouser**.
+
+    ![Screenshot of the Connect to Server dialog box.](images1/sqlvm1.png "Connect to Server dialog box")
+    
+29. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM1\demouser` is listed.
+
+    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/sqlvm2.png)
+
+30. Right-click on **Logins** and then select **New Login...**
+
+     ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/sqlvm3.png)
+
+31. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
+
+    ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
+
+32. Check the box for **sysadmin** and select **OK**. Close the bastion session.
 
     ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
 
