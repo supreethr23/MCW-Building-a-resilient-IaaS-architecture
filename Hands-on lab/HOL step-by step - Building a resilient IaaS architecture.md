@@ -536,21 +536,19 @@ In this task, you will deploy the resources used by the DR environment. First, y
 2.   Update the **-Location** parameter in each of the commands below to be a different location than **ContosoRG1**.Execute the following commands. These will create the DR resource group and deploy the DR resources. 
     You can proceed to the following tasks while the template deployment is in progress.
 
-    ```PowerShell
-    
-    New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
-
-    New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
-    ```
+```powershell
+New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
+New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
+```
 
    > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
 
-    ```powershell
+```powershell
     # Only run this command if the previous deployment failed with a error that size was not available
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR-SKU' `
         -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
-        -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
-    ```
+    -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
+ ```
 
 3.  Take a few minutes to review the template while it deploys. To review the template and deployment progress, navigate to the Azure portal home page, select **Subscriptions**, then **Deployments**. Note that the template includes:
     -  A DR virtual network, which is connected using VNet peering to the existing virtual network
