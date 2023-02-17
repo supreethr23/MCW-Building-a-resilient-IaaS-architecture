@@ -337,7 +337,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
 
-33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 18** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
+33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 19** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
     ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
 
@@ -747,7 +747,7 @@ This task comprises the following steps:
 
     ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
     
-12. Return to your session with **SQLVM1**. Open **Microsoft SQL Server Management Studio 18** and connect to the local instance of SQL Server.
+12. Return to your session with **SQLVM1**. Open **Microsoft SQL Server Management Studio 19** and connect to the local instance of SQL Server.
 
 13. Expand the **Always On High Availability** node. Under **Availability Group Listeners**, right-click on **BCDRAOG** and select **Properties**.
 
