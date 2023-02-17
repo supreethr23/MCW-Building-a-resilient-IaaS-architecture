@@ -305,7 +305,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/E1T3S29.png)
 
-31. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
+31. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
 
     ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
 
