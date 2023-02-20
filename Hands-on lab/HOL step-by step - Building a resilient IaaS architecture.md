@@ -305,7 +305,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/E1T3S29.png)
 
-31. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
+31. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
 
     ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
 
@@ -337,7 +337,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
 
-33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 18** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
+33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 19** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
     ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
 
@@ -536,21 +536,19 @@ In this task, you will deploy the resources used by the DR environment. First, y
 2.   Update the **-Location** parameter in each of the commands below to be a different location than **ContosoRG1**.Execute the following commands. These will create the DR resource group and deploy the DR resources. 
     You can proceed to the following tasks while the template deployment is in progress.
 
-    ```PowerShell
-    
-    New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
-
-    New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
-    ```
+```powershell
+New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
+New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
+```
 
    > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
 
-    ```powershell
+```powershell
     # Only run this command if the previous deployment failed with a error that size was not available
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR-SKU' `
         -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
-        -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
-    ```
+    -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
+ ```
 
 3.  Take a few minutes to review the template while it deploys. To review the template and deployment progress, navigate to the Azure portal home page, select **Subscriptions**, then **Deployments**. Note that the template includes:
     -  A DR virtual network, which is connected using VNet peering to the existing virtual network
@@ -747,7 +745,7 @@ This task comprises the following steps:
 
     ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
     
-12. Return to your session with **SQLVM1**. Open **Microsoft SQL Server Management Studio 18** and connect to the local instance of SQL Server.
+12. Return to your session with **SQLVM1**. Open **Microsoft SQL Server Management Studio 19** and connect to the local instance of SQL Server.
 
 13. Expand the **Always On High Availability** node. Under **Availability Group Listeners**, right-click on **BCDRAOG** and select **Properties**.
 
