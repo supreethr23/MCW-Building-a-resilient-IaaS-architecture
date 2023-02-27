@@ -344,6 +344,20 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 34. Select **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images1/E1T3S33.png "Connect to Server dialog box")
+    
+1. Expand Databases and verify that the **ContosoInsurance** is present.  
+
+    > **Note:** Skip on to step-43, if ContosoInsurance is present.
+
+    ![.](images1/upd-1.png)
+    
+1. Right-click on **Databases (1)** and select **New Database (2)**.   
+
+    ![.](images1/upd-2.png)
+
+1. On the New Database window, enter **ContosoInsurance (1)** as Database name and then click on **Ok (2)**.
+
+    ![.](images1/upd-3.png)
 
 35. Right-click **Always On High Availability**, then select **New Availability Group Wizard**.
 
