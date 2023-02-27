@@ -347,17 +347,17 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     
 1. Expand Databases and verify that the **ContosoInsurance** is present.  
 
-    > **Note:** Skip on to step-43, if ContosoInsurance is present.
+    > **Note:** Skip on to step-43, if ContosoInsurance is already present.
 
-    ![.](images1/upd-1.png)
+    ![.](images/upd-1.png)
     
 1. Right-click on **Databases (1)** and select **New Database (2)**.   
 
-    ![.](images1/upd-2.png)
+    ![.](images/upd-2.png)
 
 1. On the New Database window, enter **ContosoInsurance (1)** as Database name and then click on **Ok (2)**.
 
-    ![.](images1/upd-3.png)
+    ![.](images/upd-3.png)
 
 35. Right-click **Always On High Availability**, then select **New Availability Group Wizard**.
 
