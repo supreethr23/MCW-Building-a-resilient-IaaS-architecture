@@ -548,7 +548,7 @@ In this task, you will configure a high-availability web tier. This comprises tw
 
 6.  In the **BackendPool1** blade, select **VNet1 (ContosoRG1)** as the Virtual network. Then select **+ Add** and select the two web VMs. Select **Save**.
 
-    ![Azure portal showing WebVM1 and WebVM2 being added to the backend pool.](images1/E1T4S6.png "Backend pool VMs")
+    ![Azure portal showing WebVM1 and WebVM2 being added to the backend pool.](images1/E1T4S6.1.png "Backend pool VMs")
 
 7.  You will now check that the Contoso sample application is working when accessed through the load-balancer. In the Azure portal, navigate to the **ContosoWebLBPrimaryIP** resource. This is the public IP address attached to the web tier load balancer front end. Copy the **DNS name** to the clipboard.
 
