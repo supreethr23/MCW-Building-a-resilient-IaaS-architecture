@@ -344,6 +344,54 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 34. Select **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images1/E1T3S33.png "Connect to Server dialog box")
+    
+1. Expand Databases and verify that the **ContosoInsurance** is present.  
+
+    > **Note:** Skip on to step-49, if ContosoInsurance is already present.
+
+    ![.](images/upd-1.png)
+    
+1. Right-click on **Databases (1)** and select **New Database (2)**.   
+
+    ![.](images/upd-2.png)
+
+1. On the New Database window, enter **ContosoInsurance (1)** as Database name and then click on **Ok (2)**.
+
+    ![.](images/upd-3.png)
+    
+1.  Right-click on **ContosoInsurance (1)** and select **Tasks (2)**, and then click on **Back Up... (3)**.
+
+    ![.](images/upd-4.png)
+
+1. On the Back Up Database - Contosolnsurance window, click on **Ok**.
+
+    ![.](images/upd-5.png)
+
+1. When prompted with The backup of database 'Contosolnsurance' completed successfully window, click on **Ok**.
+
+    ![.](images/upd-6.png)
+
+1. Click on **New Query**.
+
+    ![.](images/upd-7.png)
+
+1. Copy and **paste (1)** the following query and then click on **Execute (2)**.
+
+    ```
+        GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+        GO
+        GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+        GO
+        GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+        GO
+    ```    
+
+    ![.](images/upd-8.png)
+
+1. Wait until the query runs successfully.
+
+    ![.](images/upd-9.png)
+ 
 
 35. Right-click **Always On High Availability**, then select **New Availability Group Wizard**.
 
