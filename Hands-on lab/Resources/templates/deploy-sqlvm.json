@@ -72,9 +72,10 @@
     "SQLScriptFileName": "deploy-sqlvm-wrapper.ps1",
     "ScriptFolder": "[concat(parameters('baseUri'),parameters('resourceFolder'),'scripts')]",
     "SQLScriptUrl1": "[concat(variables('ScriptFolder'), '/', variables('SQLScriptFileName'))]",
+    "RunCommandScriptFileName": "setspns.ps1",
     "SQLScriptUrl2": "[variables('ScriptFolder')]",
     "SQLScriptDownload": "[concat('powershell -ExecutionPolicy Unrestricted \"[Net.ServicePointManager]::SecurityProtocol = ''Tls12''; Invoke-WebRequest -uri ', variables('SQLScriptUrl1') ,' -OutFile ', variables('SQLScriptFileName'), ' \"')]",
-    "SQLScriptParameters": "[concat(' -user ', parameters('adminUsername'), ' -password ', parameters('adminPassword'),' -domain', parameters('domainToJoin'),' -dbsource \"', parameters('SQLDownloadUrl'), '\" -scripturl \"', variables('SQLScriptUrl2'), '\"')]",
+    "SQLScriptParameters": "[concat(' -user ', parameters('adminUsername'), ' -password ', parameters('adminPassword'),' -domain ', parameters('domainToJoin'),' -dbsource \"', parameters('SQLDownloadUrl'), '\" -scripturl \"', variables('SQLScriptUrl2'), '\"')]",
     "SQLImagePublisher": "MicrosoftSQLServer",
     "SQLImageOffer": "SQL2017-WS2016",
     "SQLSKU": "SQLDEV",
@@ -204,6 +205,25 @@
             "protectedSettings": {
               "Password": "[parameters('adminPassword')]"
             }
+          }
+        },
+        {
+          "type": "runCommands",
+          "apiVersion": "2022-11-01",
+          "name": "setSPNRunCommand",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[parameters('SQLVMName')]"
+          ],
+          "properties": {
+            "errorBlobUri": "https://mcwinfrahalogs.blob.core.windows.net/errorlogs/setspnerror.log",
+            "outputBlobUri": "https://mcwinfrahalogs.blob.core.windows.net/outputlogs/setspnoutput.log",
+            "runAsPassword": "[parameters('adminPassword')]",
+            "runAsUser": "[parameters('adminUsername')]",
+            "source": {
+              "script": "[concat(variables('ScriptFolder'), '/', variables('RunCommandScriptFileName'))]"
+            },
+            "timeoutInSeconds": "900"
           }
         }
       ]

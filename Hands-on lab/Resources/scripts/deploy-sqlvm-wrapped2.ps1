@@ -1,40 +1,15 @@
 param($password,
     $dbsource,
-    $defaultDnsDomain = "contoso.com",
-    $defaultDomain = $dnsDomain)
+    $dnsDomain)
+#    $defaultDnsDomain = "contoso.com",
+#    $defaultDomain = $dnsDomain)
 
 Start-Transcript "C:\deploy-sqlvm-log2.txt"
 
 # The SPNs seem to end up in the wrong containers (COMPUTERNAME) as opposed to Domain user
 # This is a bit of a hack to make sure it is straight. 
 # See also: https://support.microsoft.com/en-sg/help/811889/how-to-troubleshoot-the-cannot-generate-sspi-context-error-message
-Write-Output "Resetting SPNs"
-
-$computer = $env:COMPUTERNAM
-$dnsDomain = $env:USERDOMAIN
-$user = $env:USERNAME
-
-if ($dnsDomain.Contains(".")) {
-	$domain = $dnsDomain.Substring(0,$dnsDomain.IndexOf("."))
-}
-else{
-    $domain = $dnsDomain
-}
-
-$spn1 = "MSOLAPSvc.3/" + $computer + "." + $dnsDomain
-$spn2 = $domain + "\" + $computer + "$"
-SetSPN -s "$spn1" "$spn2"
-$spn1 = "MSOLAPSvc.3/" + $computer
-SetSPN -s "$spn1" "$spn2"
-$spn1 = "MSSQLSvc/" + $computer + "." + $dnsDomain 
-SetSPN -d "$spn1" "$spn2"
-$spn2 = $domain + "\" + $user
-SetSPN -s "$spn1" "$spn2"
-$spn1 = "MSSQLSvc/" + $computer + "." + $dnsDomain + ":1433"
-$spn2 = $domain + "\" + $computer + "$"
-SetSPN -d "$spn1" "$spn2"
-$spn2 = $domain + "\" + $user
-SetSPN -s "$spn1" "$spn2"
+Write-Output "SPNs are reset via a run script"
 
 # Disable IE Enhanced Security Configuration
 Write-Output "Disable IE Enhanced Security"

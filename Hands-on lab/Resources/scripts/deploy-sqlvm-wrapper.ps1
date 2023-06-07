@@ -34,7 +34,7 @@ Write-Output $localCred
 
 # Need to create apprpriate argumentLists
 $ArgumentList = @($password, $dbsource)
-$ArgumentList2 = $ArgumentList = @($password, $dbsource, $dnsDomain)
+$ArgumentList2 = $ArgumentList = @($password, $dbsource, $domain)
 
 Write-Output "Enable remoting and invoke"
 Enable-PSRemoting -force
@@ -42,7 +42,7 @@ Set-NetFirewallRule -Name "WINRM-HTTP-In-TCP-PUBLIC" -RemoteAddress Any
 Invoke-Command -FilePath $script -Credential $localCred -ComputerName $env:COMPUTERNAME -ArgumentList $ArgumentList
 Write-Output "Domain Cred"
 Write-Output $domainCred
-Invoke-Command -FilePath $script2 -Credential $domainCred -ComputerName $env:COMPUTERNAME -ArgumentList $ArgumentList2
+Invoke-Command -FilePath $script2 -Credential $localCred -ComputerName $env:COMPUTERNAME -ArgumentList $ArgumentList2
 Disable-PSRemoting -Force
 
 Stop-Transcript
