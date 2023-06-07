@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-September 2021
+May 2022
 
 </div>
 
@@ -19,7 +19,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2021 Microsoft Corporation. All rights reserved.
+© 2022 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -28,22 +28,22 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 <!-- TOC -->
 
 - [Building a resilient IaaS architecture whiteboard design session student guide](#building-a-resilient-iaas-architecture-whiteboard-design-session-student-guide)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-    - [Customer situation](#customer-situation)
-    - [Customer needs](#customer-needs)
-    - [Customer objections](#customer-objections)
-    - [Infographic for common scenarios](#infographic-for-common-scenarios)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-  - [Step 3: Present the solution](#step-3-present-the-solution)
-  - [Wrap-up](#wrap-up)
-  - [Additional references](#additional-references)
+    - [Abstract and learning objectives](#abstract-and-learning-objectives)
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+        - [Customer situation](#customer-situation)
+        - [Customer needs](#customer-needs)
+        - [Customer objections](#customer-objections)
+        - [Infographic for common scenarios](#infographic-for-common-scenarios)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step 3: Present the solution](#step-3-present-the-solution)
+    - [Wrap-up](#wrap-up)
+    - [Additional references](#additional-references)
 
 <!-- /TOC -->
 
-#  Building a resilient IaaS architecture whiteboard design session student guide
+# Building a resilient IaaS architecture whiteboard design session student guide
 
-## Abstract and learning objectives 
+## Abstract and learning objectives
 
 In this whiteboard design session, you will look at how to design for converting/extending an existing IaaS deployment for resiliency. Throughout the whiteboard design session, you will look at the various configuration options and services to help build resilient architectures.
 
@@ -51,7 +51,7 @@ At the end of the workshop, you will be better able to design and use resiliency
 
 You will also discuss how to achieve a similar level of resiliency for a PaaS-based implementation the same application, based on Azure App Service and Azure SQL Database. Finally, you will consider the costs associated with both approaches.
 
-## Step 1: Review the customer case study 
+## Step 1: Review the customer case study
 
 **Outcome**
 
@@ -61,12 +61,12 @@ Timeframe: 15 minutes
 
 Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-1.  Meet your team members and trainer.
+1. Meet your team members and trainer.
 
-2.  Read all directions for steps 1-3 in the student guide.
+2. Read all directions for steps 1-3 in the student guide.
 
-3.  As a team, review the following customer case study.
- 
+3. As a team, review the following customer case study.
+
 ### Customer situation
 
 Contoso Insurance (CI), headquartered in Miami, provides insurance solutions across North America. Its products include accident and health insurance, life insurance, travel, home, and auto coverage. CI manages data collection services by sending mobile agents directly to the insured to gather information as part of the data collection process for claims from an insured individual. These mobile agents are based all over the US and are residents of the region in which they work. Mobile agents are managed remotely, and each regional corporate office has a support staff responsible for scheduling their time based on requests that arrive to the system. The company's headquarters in in Miami, Florida with a second large location in Seattle, Washington along with three smaller branch offices scatted around the United States.
@@ -83,15 +83,15 @@ Taking their cue from the AD and Web teams, the Database Administrators have als
 
 ![The SQL and Web Server Current Implementation diagram depicts three virtual machines behind a load balancer and availability set, and a single virtual machine for SQL server with two disks for data.](images/Existing-App.png "SQL and Web Server Current Implementation")
 
-Each of the branch offices are small enough to not require an on-site server infrastructure. These locations have connectivity to the Cheyenne headquarters through a Virtual Private Network (VPN). 
+Each of the branch offices are small enough to not require an on-site server infrastructure. These locations have connectivity to the Cheyenne headquarters through a Virtual Private Network (VPN).
 
 While the Azure deployments have served Contoso well so far, they are concerned about their reliability:
 
--  Agents have reported intermittent issues with the reliability of the claims application. These incidents have been correlated with service health issues of the underlying SQL Server VM.
+- Agents have reported intermittent issues with the reliability of the claims application. These incidents have been correlated with service health issues of the underlying SQL Server VM.
 
--  Over a recent three-day holiday weekend, there was an incident with the AD DS Domain Controllers where the disk drive housing the AD database filled up and corrupted the database. This prompted a high-priority support call to Microsoft. While the damage was mitigated, the team was fortunate that the consequences were minimal. Retroactively, checks were made on other Azure VM disk drives and there were several of them that were getting close to capacity due to teams not proactively monitoring their servers. 
+- Over a recent three-day holiday weekend, there was an incident with the AD DS Domain Controllers where the disk drive housing the AD database filled up and corrupted the database. This prompted a high-priority support call to Microsoft. While the damage was mitigated, the team was fortunate that the consequences were minimal. Retroactively, checks were made on other Azure VM disk drives and there were several of them that were getting close to capacity due to teams not proactively monitoring their servers.
 
--  At times, various branch offices have experienced connectivity issues over the VPN to Cheyenne. While there is some understanding of these occurrences, there is a desire to increase the stability of the connection as growth continues. Contoso is connected via a Windows Server Routing and Remote Access Service (RRAS) VPN connection to Azure via a Site-to-Site Gateway. They are looking for options to provide redundancy for the hybrid connectivity to Azure due to recent network issues.
+- At times, various branch offices have experienced connectivity issues over the VPN to Cheyenne. While there is some understanding of these occurrences, there is a desire to increase the stability of the connection as growth continues. Contoso is connected via a Windows Server Routing and Remote Access Service (RRAS) VPN connection to Azure via a Site-to-Site Gateway. They are looking for options to provide redundancy for the hybrid connectivity to Azure due to recent network issues.
 
 These issues prompted Contoso to perform a business impact analysis of the claims application. In the resulting report, Janet Lewis, business continuity team director, says, "It appears that while services have moved to the cloud, the overall paradigm has not moved from the single datacenter model we have always deployed."
 
@@ -99,29 +99,29 @@ As a result, Lewis's team has been given an executive mandate to implement an cl
 
 In parallel with the above, Jordan North, the Senior Development Lead responsible for the claims application, has been working on the next-generation architecture for the claims application. He plans to migrate the application from IaaS to PaaS, using Web Apps for the web tier and Azure SQL Database for the database. Aware of the increased focus on resiliency, he is aware that the PaaS migration project will be stalled if it offers a lower level of resilience than the enhanced IaaS implementation. He is therefore looking to implement an equivalent level of high availability, disaster recovery, and backup.
 
-### Customer needs 
+### Customer needs
 
-1.  Redundancy and resiliency for the AD DS domain controller servers, and the web and database servers for the claims application, to deliver the 99.95% or greater SLA required by the business.
+1. Redundancy and resiliency for the AD DS domain controller servers, and the web and database servers for the claims application, to deliver the 99.95% or greater SLA required by the business.
 
-2.  Improved reliability for their VPN connections from branch offices.
+2. Improved reliability for their VPN connections from branch offices.
 
-3.  An automated mechanism for a quick recovery of the claims application in the event of disaster impacting the entire West Central US Azure region.
+3. An automated mechanism for a quick recovery of the claims application in the event of disaster impacting the entire West Central US Azure region.
 
-4.  A plan for recovery from data corruption or accidental deletion for all critical infrastructure components.
+4. A plan for recovery from data corruption or accidental deletion for all critical infrastructure components.
 
-5.  A comprehensive solution for monitoring the health of Azure VMs, databases and backups, with proactive alerting of any issues.
+5. A comprehensive solution for monitoring the health of Azure VMs, databases and backups, with proactive alerting of any issues.
 
-6.  An understanding of how to achieve an equivalent level of high availability, disaster recovery and backup for the next-generation PaaS-based implementation of the claims application.
+6. An understanding of how to achieve an equivalent level of high availability, disaster recovery and backup for the next-generation PaaS-based implementation of the claims application.
 
 In addition, Contoso require a detailed understanding of the costs associated with each of the above.
 
-### Customer objections 
+### Customer objections
 
-1.  Contoso are uncomfortable with any situation that assumes the cloud provider will handle their fail-over.
+1. Contoso are uncomfortable with any situation that assumes the cloud provider will handle their fail-over.
 
-2.  Contoso want to know their BCDR and backup solutions are secure.
+2. Contoso want to know their BCDR and backup solutions are secure.
 
-3.  Contoso also want to be able to test both the BCDR and Backup solutions regularly.
+3. Contoso also want to be able to test both the BCDR and Backup solutions regularly.
 
 ### Infographic for common scenarios
 
@@ -139,37 +139,37 @@ Timeframe: 60 minutes
 
 Directions:  With your team, answer the following questions and be prepared to present your solution to others:
 
-1.  Who will you present this solution to? Who is your target customer audience? Who are the decision makers?
+1. Who will you present this solution to? Who is your target customer audience? Who are the decision makers?
 
-2.  What customer business needs do you need to address with your solution?
+2. What customer business needs do you need to address with your solution?
 
 **Design**
 
 Directions: With your team, respond to the following questions:
 
-1.  How will you provide an SLA in excess of 99.95% (per month) for the overall claims application?
+1. How will you provide an SLA in excess of 99.95% (per month) for the overall claims application?
   
-    -  Consider each application tier: Web, database, and domain controllers.
+    - Consider each application tier: Web, database, and domain controllers.
 
-2.  How can you improve the reliability for the Contoso branch office VPN connections?
+2. How can you improve the reliability for the Contoso branch office VPN connections?
 
-    -  Identify and eliminate as many single-points-of-failure as you can.
+    - Identify and eliminate as many single-points-of-failure as you can.
 
-3.  Describe how you will implement a disaster recovery solution for the claims application.
+3. Describe how you will implement a disaster recovery solution for the claims application.
 
-    -  Which secondary Azure region will you use?
-    -  How will the DR be configured? Consider each component (web, database, AD, VPN)
-    -  What process is required to fail over to the secondary site? Consider each component (web, database, AD, VPN). Are all process steps automated?
-    -  What is the impact on agents using the application? How are they routed to the DR site after failover?
-    -  Does the solution meet the RPO and RTO requirements?
+    - Which secondary Azure region will you use?
+    - How will the DR be configured? Consider each component (web, database, AD, VPN)
+    - What process is required to fail over to the secondary site? Consider each component (web, database, AD, VPN). Are all process steps automated?
+    - What is the impact on agents using the application? How are they routed to the DR site after failover?
+    - Does the solution meet the RPO and RTO requirements?
 
-4.  How will you protect both VMs and databases from data corruption or accidental deletion?
+4. How will you protect both VMs and databases from data corruption or accidental deletion?
 
-    -  Describe both the solution and the recovery process.
+    - Describe both the solution and the recovery process.
 
-5.  How will you monitor and alert on Azure VMs metrics? Does this approach extend to SQL monitoring? What about backup monitoring?
+5. How will you monitor and alert on Azure VMs metrics? Does this approach extend to SQL monitoring? What about backup monitoring?
 
-6.  How can the PaaS implementation of the claims application achieve an equivalent level of resiliency?
+6. How can the PaaS implementation of the claims application achieve an equivalent level of resiliency?
 
     - How is high availability provided by the Web Application and SQL Database? Can the SLA target be met?
     - How will the PaaS solution recover from a complete failure of the primary Azure region? Can the RPO and RTO targets be met?
@@ -179,19 +179,19 @@ Directions: With your team, respond to the following questions:
 
 Provide an estimate of the costs associated with each aspect of your solution.
 
--  Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, VPN, and monitoring costs
--  Include a comparison of the IaaS solution and the PaaS solution
--  Have you included all appropriate cost-saving measures?
+- Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, VPN, and monitoring costs
+- Include a comparison of the IaaS solution and the PaaS solution
+- Have you included all appropriate cost-saving measures?
 
 **Prepare**
 
 Directions: As a team:
 
-1.  Identify any customer needs that are not addressed with the proposed solution.
+1. Identify any customer needs that are not addressed with the proposed solution.
 
-2.  Identify the benefits of your solution.
+2. Identify the benefits of your solution.
 
-3.  Determine how you will respond to the customer's objections.
+3. Determine how you will respond to the customer's objections.
 
 Prepare a 15-minute chalk-talk style presentation to the customer.
 
@@ -207,21 +207,21 @@ Timeframe: 30 minutes
 
 Directions:
 
-1.  Pair with another team.
+1. Pair with another team.
 
-2.  One group is the Microsoft team, the other is the customer.
+2. One group is the Microsoft team, the other is the customer.
 
-3.  The Microsoft team presents their proposed solution to the customer.
+3. The Microsoft team presents their proposed solution to the customer.
 
-4.  The customer makes one of the objections from the list of objections.
+4. The customer makes one of the objections from the list of objections.
 
-5.  The Microsoft team responds to the objection.
+5. The Microsoft team responds to the objection.
 
-6.  The customer team gives feedback to the Microsoft team.
+6. The customer team gives feedback to the Microsoft team.
 
-7.  Switch roles and repeat Steps 2-6.
+7. Switch roles and repeat Steps 2-6.
 
-##  Wrap-up 
+## Wrap-up
 
 Timeframe: 15 minutes
 

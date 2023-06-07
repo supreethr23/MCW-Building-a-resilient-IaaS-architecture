@@ -4,7 +4,7 @@ Contoso Insurance (CI), headquartered in Miami, provides insurance solutions acr
 
 Several years ago, under the leadership of Lewis Franklin, head of infrastructure and operations, individual departments started migrating their servers into Azure. The Active Directory Domain Services (ADDS) team has deployed several Domain Controller (DC) Virtual Machines (VM) to a virtual network in the West Central US region. This region was chosen due to its proximity to the Cheyenne Headquarters. While the Azure deployments have served Contoso well so far, they are concerned about their reliability.
 
-September 2021
+May 2022
 
 
 ## Target audience
@@ -20,7 +20,7 @@ In this workshop, you will look at how to design for converting/extending an exi
 
 At the end of the workshop, you will be better able to design and use resiliency concepts including High Availability with protection from hardware/rack and datacenter failures with Availability Zones, High Availability and Disaster Recovery for database tiers using SQL Always ON, Disaster Recovery for virtual machines to another region using Azure Site Recovery, and data protection using Azure Backup.
 
-### Whiteboard Design Session
+### Whiteboard design session
 
 In this whiteboard design session, you will look at how to design for converting/extending an existing IaaS deployment for resiliency. Throughout the whiteboard design session, you will look at the various configuration options and services to help build resilient architectures.
 
@@ -28,13 +28,18 @@ At the end of the workshop, you will be better able to design and use resiliency
 
 You will also discuss how to achieve a similar level of resiliency for a PaaS-based implementation the same application, based on Azure App Service and Azure SQL Database. Finally, you will consider the costs associated with both approaches.
 
-### Hands-on Lab
+Continue to the [Whiteboard design session](https://github.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/tree/master/Whiteboard%20design%20session) documents folder.
+
+### Hands-on lab
 
 In this hands-on lab, you will deploy a pre-configured IaaS environment and then redesign and update it to account for resiliency and in general high availability. Throughout the hands-on lab you will use various configuration options and services to help build a resilient architecture.
 
-At the end of the lab, you will be better able to design and use availability zones, SQL Server Always on Availability Groups, Azure Site Recovery, Azure Backup, and Azure Front Door to implement a fully resilient IaaS application, including high availability, disaster recovery, as well as backup of both databases and virtual machines.
+At the end of the lab, you will be better able to design and use availability zones, SQL Server Always On Availability Groups, Azure Site Recovery, Azure Backup, and Azure Front Door to implement a fully resilient IaaS application. The training includes content on high availability, disaster recovery, as well as knowledge on how to back up the databases and virtual machines.
+
+Continue to the [Hands-on lab](https://github.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/tree/master/Hands-on%20lab) documents folder.
 
 ## Azure services and related products
+
 - Azure VMs
 - Availability Sets
 - Availability Zones

@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-September 2021
+May 2022
 
 </div>
 
@@ -19,7 +19,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2021 Microsoft Corporation. All rights reserved.
+© 2022 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -33,26 +33,25 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
   - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
 - [Building a resilient IaaS architecture whiteboard design session student guide](#building-a-resilient-iaas-architecture-whiteboard-design-session-student-guide)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-    - [Customer situation](#customer-situation)
-    - [Customer needs](#customer-needs)
-    - [Customer objections](#customer-objections)
-    - [Infographic for common scenarios](#infographic-for-common-scenarios)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-  - [Step 3: Present the solution](#step-3-present-the-solution)
-  - [Wrap-up](#wrap-up)
-  - [Additional references](#additional-references)
+    - [Abstract and learning objectives](#abstract-and-learning-objectives)
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+        - [Customer situation](#customer-situation)
+        - [Customer needs](#customer-needs)
+        - [Customer objections](#customer-objections)
+        - [Infographic for common scenarios](#infographic-for-common-scenarios)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step 3: Present the solution](#step-3-present-the-solution)
+    - [Wrap-up](#wrap-up)
+    - [Additional references](#additional-references)
 - [Building a resilient IaaS architecture whiteboard design session trainer guide](#building-a-resilient-iaas-architecture-whiteboard-design-session-trainer-guide)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-  - [Step 3: Present the solution](#step-3-present-the-solution-1)
-  - [Wrap-up](#wrap-up-1)
-  - [Preferred target audience](#preferred-target-audience)
-  - [Design](#design)
-  - [Pricing](#pricing)
-  - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
-  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
+    - [Step 3: Present the solution](#step-3-present-the-solution-1)
+    - [Wrap-up](#wrap-up-1)
+    - [Preferred target audience](#preferred-target-audience)
+    - [Preferred solution](#preferred-solution)
+    - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
+    - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
 
 <!-- /TOC -->
 
@@ -64,25 +63,25 @@ Thank you for taking time to support the whiteboard design sessions as a trainer
 
 An amazing trainer:
 
--   Creates a safe environment in which learning can take place.
+- Creates a safe environment in which learning can take place.
 
--   Stimulates the participant's thinking.
+- Stimulates the participant's thinking.
 
--   Involves the participant in the learning process.
+- Involves the participant in the learning process.
 
--   Manages the learning process (on time, on topic, and adjusting to benefit participants).
+- Manages the learning process (on time, on topic, and adjusting to benefit participants).
 
--   Ensures individual participant accountability.
+- Ensures individual participant accountability.
 
--   Ties it all together for the participant.
+- Ties it all together for the participant.
 
--   Provides insight and experience to the learning process.
+- Provides insight and experience to the learning process.
 
--   Effectively leads the whiteboard design session discussion.
+- Effectively leads the whiteboard design session discussion.
 
--   Monitors quality and appropriateness of participant deliverables.
+- Monitors quality and appropriateness of participant deliverables.
 
--   Effectively leads the feedback process.
+- Effectively leads the feedback process.
 
 ## Whiteboard design session flow 
 
@@ -94,25 +93,25 @@ Outcome
 
 Analyze your customer's needs.
 
--   Customer's background, situation, needs and technical requirements
+- Customer's background, situation, needs and technical requirements
 
--   Current customer infrastructure and architecture
+- Current customer infrastructure and architecture
 
--   Potential issues, objectives and blockers
+- Potential issues, objectives and blockers
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
-Outcome 
+Outcome
 
 Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
--   Determine your target customer audience.
+- Determine your target customer audience.
 
--   Determine customer's business needs to address your solution.
+- Determine customer's business needs to address your solution.
 
--   Design and diagram your solution.
+- Design and diagram your solution.
 
--   Prepare to present your solution.
+- Prepare to present your solution.
 
 **Step 3: Present the solution (30 minutes)**
 
@@ -120,29 +119,29 @@ Outcome
 
 Present solution to your customer.
 
--   Present solution
+- Present solution
 
--   Respond to customer objections
+- Respond to customer objections
 
--   Receive feedback
+- Receive feedback
 
 **Wrap-up (15 minutes)**
 
--   Review preferred solution
+- Review preferred solution
 
 ## Before the whiteboard design session: How to prepare
 
 Before conducting your first whiteboard design session:
 
--   Read the Student guide (including the case study) and Trainer guide.
+- Read the Student guide (including the case study) and Trainer guide.
 
--   Become familiar with all key points and activities.
+- Become familiar with all key points and activities.
 
--   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
+- Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
 
--   Prior to the whiteboard design session, discuss the case study to pick up more ideas.
+- Prior to the whiteboard design session, discuss the case study to pick up more ideas.
 
--   Make notes for later.
+- Make notes for later.
 
 ## During the whiteboard design session: Tips for an effective whiteboard design session
 
@@ -152,11 +151,11 @@ Before conducting your first whiteboard design session:
 
 When participants are doing activities, you can **look ahead to refresh your memory**.
 
--   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
+- **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
 
--   **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
+- **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
 
--   **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
+- **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
 
 ***Have fun**! Encourage participants to have fun and share!*
 
@@ -168,9 +167,9 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What is your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-#  Building a resilient IaaS architecture whiteboard design session student guide
+# Building a resilient IaaS architecture whiteboard design session student guide
 
-## Abstract and learning objectives 
+## Abstract and learning objectives
 
 In this whiteboard design session, you will look at how to design for converting/extending an existing IaaS deployment for resiliency. Throughout the whiteboard design session, you will look at the various configuration options and services to help build resilient architectures.
 
@@ -188,12 +187,12 @@ Timeframe: 15 minutes
 
 Directions:  With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-1.  Meet your team members and trainer.
+1. Meet your team members and trainer.
 
-2.  Read all directions for steps 1-3 in the student guide.
+2. Read all directions for steps 1-3 in the student guide.
 
-3.  As a team, review the following customer case study.
- 
+3. As a team, review the following customer case study.
+
 ### Customer situation
 
 Contoso Insurance (CI), headquartered in Miami, provides insurance solutions across North America. Its products include accident and health insurance, life insurance, travel, home, and auto coverage. CI manages data collection services by sending mobile agents directly to the insured to gather information as part of the data collection process for claims from an insured individual. These mobile agents are based all over the US and are residents of the region in which they work. Mobile agents are managed remotely, and each regional corporate office has a support staff responsible for scheduling their time based on requests that arrive to the system. The company's headquarters in in Miami, Florida with a second large location in Seattle, Washington along with three smaller branch offices scatted around the United States.
@@ -214,11 +213,11 @@ Each of the branch offices are small enough to not require an on-site server inf
 
 While the Azure deployments have served Contoso well so far, they are concerned about their reliability:
 
--  Agents have reported intermittent issues with the reliability of the claims application. These incidents have been correlated with service health issues of the underlying SQL Server VM.
+- Agents have reported intermittent issues with the reliability of the claims application. These incidents have been correlated with service health issues of the underlying SQL Server VM.
 
--  Over a recent three-day holiday weekend, there was an incident with the AD DS Domain Controllers where the disk drive housing the AD database filled up and corrupted the database. This prompted a high-priority support call to Microsoft. While the damage was mitigated, the team was fortunate that the consequences were minimal. Retroactively, checks were made on other Azure VM disk drives and there were several of them that were getting close to capacity due to teams not proactively monitoring their servers. 
+- Over a recent three-day holiday weekend, there was an incident with the AD DS Domain Controllers where the disk drive housing the AD database filled up and corrupted the database. This prompted a high-priority support call to Microsoft. While the damage was mitigated, the team was fortunate that the consequences were minimal. Retroactively, checks were made on other Azure VM disk drives and there were several of them that were getting close to capacity due to teams not proactively monitoring their servers. 
 
--  At times, various branch offices have experienced connectivity issues over the VPN to Cheyenne. While there is some understanding of these occurrences, there is a desire to increase the stability of the connection as growth continues. Contoso is connected via a Windows Server Routing and Remote Access Service (RRAS) VPN connection to Azure via a Site-to-Site Gateway. They are looking for options to provide redundancy for the hybrid connectivity to Azure due to recent network issues.
+- At times, various branch offices have experienced connectivity issues over the VPN to Cheyenne. While there is some understanding of these occurrences, there is a desire to increase the stability of the connection as growth continues. Contoso is connected via a Windows Server Routing and Remote Access Service (RRAS) VPN connection to Azure via a Site-to-Site Gateway. They are looking for options to provide redundancy for the hybrid connectivity to Azure due to recent network issues.
 
 These issues prompted Contoso to perform a business impact analysis of the claims application. In the resulting report, Janet Lewis, business continuity team director, says, "It appears that while services have moved to the cloud, the overall paradigm has not moved from the single datacenter model we have always deployed."
 
@@ -228,27 +227,27 @@ In parallel with the above, Jordan North, the Senior Development Lead responsibl
 
 ### Customer needs 
 
-1.  Redundancy and resiliency for the AD DS domain controller servers, and the web and database servers for the claims application, to deliver the 99.95% or greater SLA required by the business.
+1. Redundancy and resiliency for the AD DS domain controller servers, and the web and database servers for the claims application, to deliver the 99.95% or greater SLA required by the business.
 
-2.  Improved reliability for their VPN connections from branch offices.
+2. Improved reliability for their VPN connections from branch offices.
 
-3.  An automated mechanism for a quick recovery of the claims application in the event of disaster impacting the entire West Central US Azure region.
+3. An automated mechanism for a quick recovery of the claims application in the event of disaster impacting the entire West Central US Azure region.
 
-4.  A plan for recovery from data corruption or accidental deletion for all critical infrastructure components.
+4. A plan for recovery from data corruption or accidental deletion for all critical infrastructure components.
 
-5.  A comprehensive solution for monitoring the health of Azure VMs, databases and backups, with proactive alerting of any issues.
+5. A comprehensive solution for monitoring the health of Azure VMs, databases and backups, with proactive alerting of any issues.
 
-6.  An understanding of how to achieve an equivalent level of high availability, disaster recovery and backup for the next-generation PaaS-based implementation of the claims application.
+6. An understanding of how to achieve an equivalent level of high availability, disaster recovery and backup for the next-generation PaaS-based implementation of the claims application.
 
 In addition, Contoso require a detailed understanding of the costs associated with each of the above.
 
 ### Customer objections 
 
-1.  Contoso are uncomfortable with any situation that assumes the cloud provider will handle their fail-over.
+1. Contoso are uncomfortable with any situation that assumes the cloud provider will handle their fail-over.
 
-2.  Contoso want to know their BCDR and backup solutions are secure.
+2. Contoso want to know their BCDR and backup solutions are secure.
 
-3.  Contoso also want to be able to test both the BCDR and Backup solutions regularly.
+3. Contoso also want to be able to test both the BCDR and Backup solutions regularly.
 
 ### Infographic for common scenarios
 
@@ -266,37 +265,37 @@ Timeframe: 60 minutes
 
 Directions: With your team, answer the following questions and be prepared to present your solution to others:
 
-1.  Who will you present this solution to? Who is your target customer audience? Who are the decision makers?
+1. Who will you present this solution to? Who is your target customer audience? Who are the decision makers?
 
-2.  What customer business needs do you need to address with your solution?
+2. What customer business needs do you need to address with your solution?
 
 **Design**
 
 Directions: With your team, respond to the following questions:
 
-1.  How will you provide an SLA in excess of 99.95% (per month) for the overall claims application?
+1. How will you provide an SLA in excess of 99.95% (per month) for the overall claims application?
   
- -  Consider each application tier: Web, database, and domain controllers.
+   - Consider each application tier: Web, database, and domain controllers.
 
-2.  How can you improve the reliability for the Contoso branch office VPN connections?
+2. How can you improve the reliability for the Contoso branch office VPN connections?
 
-    -  Identify and eliminate as many single-points-of-failure as you can.
+   - Identify and eliminate as many single-points-of-failure as you can.
 
-3.  Describe how you will implement a disaster recovery solution for the claims application.
+3. Describe how you will implement a disaster recovery solution for the claims application.
 
-    -  Which secondary Azure region will you use?
-    -  How will the DR be configured? Consider each component (web, database, AD, VPN)
-    -  What process is required to fail over to the secondary site? Consider each component (web, database, AD, VPN). Are all process steps automated?
-    -  What is the impact on agents using the application? How are they routed to the DR site after failover?
-    -  Does the solution meet the RPO and RTO requirements?
+   - Which secondary Azure region will you use?
+   - How will the DR be configured? Consider each component (web, database, AD, VPN)
+   - What process is required to fail over to the secondary site? Consider each component (web, database, AD, VPN). Are all process steps automated?
+   - What is the impact on agents using the application? How are they routed to the DR site after failover?
+   - Does the solution meet the RPO and RTO requirements?
 
-4.  How will you protect both VMs and databases from data corruption or accidental deletion?
+4. How will you protect both VMs and databases from data corruption or accidental deletion?
 
-    -  Describe both the solution and the recovery process.
+    - Describe both the solution and the recovery process.
 
-5.  How will you monitor and alert on Azure VMs metrics? Does this approach extend to SQL monitoring? What about backup monitoring?
+5. How will you monitor and alert on Azure VMs metrics? Does this approach extend to SQL monitoring? What about backup monitoring?
 
-6.  How can the PaaS implementation of the claims application achieve an equivalent level of resiliency?
+6. How can the PaaS implementation of the claims application achieve an equivalent level of resiliency?
 
     - How is high availability provided by the Web Application and SQL Database? Can the SLA target be met?
     - How will the PaaS solution recover from a complete failure of the primary Azure region? Can the RPO and RTO targets be met?
@@ -306,19 +305,19 @@ Directions: With your team, respond to the following questions:
 
 Provide an estimate of the costs associated with each aspect of your solution.
 
--  Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, VPN, and monitoring costs
--  Include a comparison of the IaaS solution and the PaaS solution
--  Have you included all appropriate cost-saving measures?
+- Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, VPN, and monitoring costs
+- Include a comparison of the IaaS solution and the PaaS solution
+- Have you included all appropriate cost-saving measures?
 
 **Prepare**
 
 Directions: As a team:
 
-1.  Identify any customer needs that are not addressed with the proposed solution.
+1. Identify any customer needs that are not addressed with the proposed solution.
 
-2.  Identify the benefits of your solution.
+2. Identify the benefits of your solution.
 
-3.  Determine how you will respond to the customer's objections.
+3. Determine how you will respond to the customer's objections.
 
 Prepare a 15-minute chalk-talk style presentation to the customer.
 
@@ -334,27 +333,27 @@ Timeframe: 30 minutes
 
 Directions:
 
-1.  Pair with another team.
+1. Pair with another team.
 
-2.  One group is the Microsoft team and the other is the customer.
+2. One group is the Microsoft team and the other is the customer.
 
-3.  The Microsoft team presents their proposed solution to the customer.
+3. The Microsoft team presents their proposed solution to the customer.
 
-4.  The customer makes one of the objections from the list of objections.
+4. The customer makes one of the objections from the list of objections.
 
-5.  The Microsoft team responds to the objection.
+5. The Microsoft team responds to the objection.
 
-6.  The customer team gives feedback to the Microsoft team.
+6. The customer team gives feedback to the Microsoft team.
 
-7.  Switch roles and repeat Steps 2-6.
+7. Switch roles and repeat Steps 2-6.
 
-##  Wrap-up 
+## Wrap-up
 
 Timeframe: 15 minutes
 
 Directions: Reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
 
-##  Additional references
+## Additional references
 
 |    |            |
 |----------|:-------------:|
@@ -374,268 +373,265 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 ## Step 1: Review the customer case study
 
--   Check in with your participants to introduce yourself as the trainer.
+- Check in with your participants to introduce yourself as the trainer.
 
--   Ask, "What questions do you have about the customer case study?"
+- Ask, "What questions do you have about the customer case study?"
 
--   Briefly review the steps and timeframes of the whiteboard design session.
+- Briefly review the steps and timeframes of the whiteboard design session.
 
--   Ready, set, go! Let participants begin.
+- Ready, set, go! Let participants begin.
 
 ## Step 2: Design a proof of concept solution
 
--   Check in with your teams to ensure that they are transitioning from step to step on time.
+- Check in with your teams to ensure that they are transitioning from step to step on time.
 
--   Provide feedback on their responses to the business needs and design.
+- Provide feedback on their responses to the business needs and design.
 
-    -   Try asking questions first that will lead the participants to discover the answers on their own.
+  - Try asking questions first that will lead the participants to discover the answers on their own.
 
--   Provide feedback for their responses to the customer's objections.
+- Provide feedback for their responses to the customer's objections.
 
-    -   Try asking questions first that will lead the participants to discover the answers on their own.
+  - Try asking questions first that will lead the participants to discover the answers on their own.
 
 ## Step 3: Present the solution
 
--   Determine which groups will be paired together before Step 3 begins.
+- Determine which groups will be paired together before Step 3 begins.
 
--   For the first round, assign one group as the presenting team and the other as the customer.
+- For the first round, assign one group as the presenting team and the other as the customer.
 
--   Have the presenting team present their solution to the customer team.
+- Have the presenting team present their solution to the customer team.
 
-    -   Have the customer team provide one objection for the presenting team to respond to.
+  - Have the customer team provide one objection for the presenting team to respond to.
 
-    -   The presentation, objections, and feedback should take no longer than 15 minutes.
+  - The presentation, objections, and feedback should take no longer than 15 minutes.
 
-    -   If needed, the trainer may also provide feedback.
+  - If needed, the trainer may also provide feedback.
 
 ## Wrap-up
 
--   Have participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution.
+- Have participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution.
 
-##  Preferred target audience
+## Preferred target audience
 
--   Lewis Franklin, Head of Infrastructure and Operations
--   Janet Lewis, Business Continuity Team Director
--   Jordan North, Principal Software Development Lead
--   You should also aim to identify the business owner of the claims application and the key stakeholders of the business impact analysis that provided the executive mandate for improved resiliency
+- Lewis Franklin, Head of Infrastructure and Operations
+- Janet Lewis, Business Continuity Team Director
+- Jordan North, Principal Software Development Lead
+- You should also aim to identify the business owner of the claims application and the key stakeholders of the business impact analysis that provided the executive mandate for improved resiliency
 
-## Design
+## Preferred solution
 
 1. How will you provide an SLA in excess of 99.95% (per month) for the overall claims application?
   
--  Consider each application tier: Web, database, and domain controllers.
+   - Consider each application tier: Web, database, and domain controllers.
 
-**Solution**
+   **Solution**
 
-Azure provides two approaches to high availability for VM-based applications: availability sets and availability zones. Availability sets provide an SLA of 99.95%, whereas availability zones provide an SLA of 99.99%. To achieve a composite SLA across all application tiers in excess of 99.95%, the application must use availability zones.
+   Azure provides two approaches to high availability for VM-based applications: availability sets and availability zones. Availability sets provide an SLA of 99.95%, whereas availability zones provide an SLA of 99.99%. To achieve a composite SLA across all application tiers in excess of 99.95%, the application must use availability zones.
 
-This will require migrating from the West Central US region to one of the [4 US regions that supports Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-region). The closest supported regions to West Central US are West US 2 and Central US. Central US is recommended, being closer to Contoso's Cheyenne HQ.
+   This will require migrating from the West Central US region to one of the [4 US regions that supports Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-region). The closest supported regions to West Central US are West US 2 and Central US. Central US is recommended, being closer to Contoso's Cheyenne HQ.
 
-![Image showing the high availability architecture for the Contoso claims Application. There are two Web VMs, two SQL VMs and two Domain Controller VMs. Each pair is divided into separate Availability Zones. In the middle are the load balancers for the web and database tier, and the cloud witness used by the database. These are marked as zone redundant.](images/Solution-HA.png "HA Solution")
+   ![Image showing the high availability architecture for the Contoso claims Application. There are two Web VMs, two SQL VMs and two Domain Controller VMs. Each pair is divided into separate Availability Zones. In the middle are the load balancers for the web and database tier, and the cloud witness used by the database. These are marked as zone redundant.](images/Solution-HA.png "HA Solution")
 
-Using Availability Zones will require Standard-tier load-balancer and Standard-tier public IP addresses to be used.
+   Using Availability Zones will require Standard-tier load-balancer and Standard-tier public IP addresses to be used.
 
-Considering each tier in turn:
+   Considering each tier in turn:
 
-*Web Tier*
+   *Web Tier*
 
--  Web VMs should be straightforward to deploy into Availability Zones.
+   - Web VMs should be straightforward to deploy into Availability Zones.
 
--  The Web VM load-balancer currently uses a TCP health probe. This should be changed to a HTTP probe, preferably pointing to a custom health check page that verifies the application is working as expected, including access to the database.
+   - The Web VM load-balancer currently uses a TCP health probe. This should be changed to a HTTP probe, preferably pointing to a custom health check page that verifies the application is working as expected, including access to the database.
 
--  With the change from the Basic to Standard LB SKU required for availability zone, the behavior of the load-balancer in the event of all probes failing (often a result of misconfiguration) changes so TCP flows continue.
+   - With the change from the Basic to Standard LB SKU required for availability zone, the behavior of the load-balancer in the event of all probes failing (often a result of misconfiguration) changes so TCP flows continue.
 
--  Migrating to VM Scale Sets would allow the Web tier to auto-scale based on demand (rather than the current approach of manually adding VMs and forgetting to remove them later). VM Scale sets support regional deployment spanning availability zones.
+   - Migrating to VM Scale Sets would allow the Web tier to auto-scale based on demand (rather than the current approach of manually adding VMs and forgetting to remove them later). VM Scale sets support regional deployment spanning availability zones.
 
-*SQL Server(s)*
+   *SQL Server(s)*
 
--  A second SQL server should be deployed to the primary site, forming a SQL Server Always On Availability Group. This should be configured with synchronous replication and automatic failover. A storage account can be used as the 'cloud witness'.
+   - A second SQL server should be deployed to the primary site, forming a SQL Server Always On Availability Group. This should be configured with synchronous replication and automatic failover. A storage account can be used as the 'cloud witness'.
 
--  The servers should be behind an internal Azure load balancer with Direct Server Return (DSR) enabled.
+   - The servers should be behind an internal Azure load balancer with Direct Server Return (DSR) enabled.
 
--  The SQL Servers will use premium managed disks with a database and log files on separate disks. The TempDB will be housed on the local host SSD drive and split to match the number of cores in the VM.
+   - The SQL Servers will use premium managed disks with a database and log files on separate disks. The TempDB will be housed on the local host SSD drive and split to match the number of cores in the VM.
 
-    SQL Servers will have three drive letters: C:\\, F:\\ and G:\\
+       SQL Servers will have three drive letters: C:\\, F:\\ and G:\\
 
-    | Drive  | Type      |  Purpose | 
-    | ------- | ----------- | ----------------------------------------------------------- |
-    | C:\\   | S10       | OS  | 
-    | D:\\   | Local SSD  | TempDB broken into multiple files (match number of cores) |
-    | F:\\   | P20        | SQL Database Files | 
-    | G:\\   | P20        | SQL Database Log Files |
+       | Drive  | Type      |  Purpose | 
+       | ------- | ----------- | ----------------------------------------------------------- |
+       | C:\\   | S10       | OS  | 
+       | D:\\   | Local SSD  | TempDB broken into multiple files (match number of cores) |
+       | F:\\   | P20        | SQL Database Files | 
+       | G:\\   | P20        | SQL Database Log Files |
 
-    >**Note:** Never use the E:\\ drive on an Azure VM as some Azure Regions have Host machines that contain DVD Drives.
+       >**Note:** Never use the E:\\ drive on an Azure VM as some Azure Regions have Host machines that contain DVD Drives.
 
-*AD DS Domain Controllers*
+   *AD DS Domain Controllers*
 
--  AD DS Domain Controller should be deployed into separate availability zones, with two VMs in the Central US region. These servers should be synchronized with the on-premises AD via the VPN. The virtual network DNS server settings should be updated to point to these servers.
+   - AD DS Domain Controller should be deployed into separate availability zones, with two VMs in the Central US region. These servers should be synchronized with the on-premises AD via the VPN. The virtual network DNS server settings should be updated to point to these servers.
 
--   Storing the AD files on a data disk with caching set to None will keep the AD DS database and SYSVOL from any potential corruption due to caching.
+   - Storing the AD files on a data disk with caching set to None will keep the AD DS database and SYSVOL from any potential corruption due to caching.
 
--   AD native Replication across regions allows for disaster recovery from region wide outage should the need arise and faster recovery of the AD DS database.
-
+   - AD native Replication across regions allows for disaster recovery from region wide outage should the need arise and faster recovery of the AD DS database.
 
 2. How can you improve the reliability for the Contoso branch office VPN connections?
 
--  Identify and eliminate as many single-points-of-failure as you can.
+   - Identify and eliminate as many single-points-of-failure as you can.
 
-**Solution**
+   **Solution**
 
-The current VPN has single points of failure at the on-premises VPN gateway (RRAS server), the Azure Virtual Network Gateway, and the ISP connection from the on-premises site to the Internet. All three of these single points of failure can be eliminated.
+   The current VPN has single points of failure at the on-premises VPN gateway (RRAS server), the Azure Virtual Network Gateway, and the ISP connection from the on-premises site to the Internet. All three of these single points of failure can be eliminated.
 
-![Diagram showing the VPN resiliency design. The branch location shows a pair of RRAS servers in a cluster, with two IP addresses. The Azure location shows a VPN gateway split into two active-active nodes in separate availability zones. Arrows between the RRAS and VPN gateways show full-mesh connectivity spread over two ISPs.](images/Solution-VPN.png "VPN Solution")
+   ![Diagram showing the VPN resiliency design. The branch location shows a pair of RRAS servers in a cluster, with two IP addresses. The Azure location shows a VPN gateway split into two active-active nodes in separate availability zones. Arrows between the RRAS and VPN gateways show full-mesh connectivity spread over two ISPs.](images/Solution-VPN.png "VPN Solution")
 
-*On-premises gateway:*
+   *On-premises gateway:*
 
--   The RRAS VPN servers can be deployed in a cluster ([here's how](https://docs.microsoft.com/windows-server/remote/remote-access/ras/cluster/deploy-remote-access-in-cluster)). Alternatively, the servers could be upgraded to dedicated hardware VPN devices.
+   - The RRAS VPN servers can be deployed in a cluster ([here's how](https://docs.microsoft.com/windows-server/remote/remote-access/ras/cluster/deploy-remote-access-in-cluster)). Alternatively, the servers could be upgraded to dedicated hardware VPN devices.
 
-*ISP Internet connection:* 
+   *ISP Internet connection:* 
 
--   You need to create multiple S2S VPN connections from each on-premises VPN device to Azure. When you connect multiple VPN devices from the same on-premises network to Azure, you need to create one local network gateway for each VPN device, and one connection from your Azure VPN gateway to the local network gateway.
+   - You need to create multiple S2S VPN connections from each on-premises VPN device to Azure. When you connect multiple VPN devices from the same on-premises network to Azure, you need to create one local network gateway for each VPN device, and one connection from your Azure VPN gateway to the local network gateway.
 
--   The local network gateways corresponding to your VPN devices must have unique public IP addresses in the \"GatewayIpAddress\" property. These IP addresses can be provided by different ISPs.
+   - The local network gateways corresponding to your VPN devices must have unique public IP addresses in the \"GatewayIpAddress\" property. These IP addresses can be provided by different ISPs.
 
--   BGP is required for this configuration. Each local network gateway representing a VPN device must have a unique BGP peer IP address specified in the \"BgpPeerIpAddress\" property.
+   - BGP is required for this configuration. Each local network gateway representing a VPN device must have a unique BGP peer IP address specified in the \"BgpPeerIpAddress\" property.
 
--   The AddressPrefix property field in each local network gateway must not overlap. You should specify the \"BgpPeerIpAddress\" in /32 CIDR format in the AddressPrefix field.
+   - The AddressPrefix property field in each local network gateway must not overlap. You should specify the \"BgpPeerIpAddress\" in /32 CIDR format in the AddressPrefix field.
 
--   You should use BGP to advertise the same prefixes of the same on-premises network prefixes to your Azure VPN gateway, and the traffic will be forwarded through these tunnels simultaneously.
+   - You should use BGP to advertise the same prefixes of the same on-premises network prefixes to your Azure VPN gateway, and the traffic will be forwarded through these tunnels simultaneously.
 
--   Each connection is counted against the maximum number of tunnels for your Azure VPN gateway (max 30 for the non-Basic SKUs).
-  
-*Azure VPN Gateway:*
+   - Each connection is counted against the maximum number of tunnels for your Azure VPN gateway (max 30 for the non-Basic SKUs).
 
-- The VPN gateway should be configured for 'active-active' mode rather than the default failover mode.
+   *Azure VPN Gateway:*
 
--  An 'Az' SKU should be used to provide protection against failure of individual data centers in the chosen Azure region.
+   - The VPN gateway should be configured for 'active-active' mode rather than the default failover mode.
+
+   - An 'Az' SKU should be used to provide protection against failure of individual data centers in the chosen Azure region.
 
 3. Describe how you will implement a disaster recovery solution for the claims application.
 
--  Which secondary Azure region will you use?
--  How will the DR be configured? Consider each component (web, database, AD, VPN)
--  What process is required to fail over to the secondary site? Consider each component (web, database, AD, VPN). Are all process steps automated?
--  What is the impact on agents using the application? How are they routed to the DR site after failover?
--  Does the solution meet the RPO and RTO requirements?
+   - Which secondary Azure region will you use?
+   - How will the DR be configured? Consider each component (web, database, AD, VPN)
+   - What process is required to fail over to the secondary site? Consider each component (web, database, AD, VPN). Are all process steps automated?
+   - What is the impact on agents using the application? How are they routed to the DR site after failover?
+   - Does the solution meet the RPO and RTO requirements?
 
-**Solution**
+   **Solution**
 
-![Diagram showing the DR design for the claims application. Two sites, Central US and East US, each show the application footprint, each with web VMs, SQL VMs and domain controller VMs separated into availability zones within each site. Failover for the web VMs is shown using Azure Site Recovery. Failover for the SQL VMs is shown via SQL Server asynchronous replication. The Domain Controller VMs are running active-active.](images/Solution-DR.png "DR Solution")
+   ![Diagram showing the DR design for the claims application. Two sites, Central US and East US, each show the application footprint, each with web VMs, SQL VMs and domain controller VMs separated into availability zones within each site. Failover for the web VMs is shown using Azure Site Recovery. Failover for the SQL VMs is shown via SQL Server asynchronous replication. The Domain Controller VMs are running active-active.](images/Solution-DR.png "DR Solution")
 
-*Which secondary Azure region will you use?*
+   *Which secondary Azure region will you use?*
 
--  The primary region chosen above was Central US (changed from West Central US to gain Availability Zone support). The secondary region should be the appropriate region pair, in this case East US 2.
+   - The primary region chosen above was Central US (changed from West Central US to gain Availability Zone support). The secondary region should be the appropriate region pair, in this case East US 2.
 
+   *How will the DR be configured? Consider each component (web, database, AD, VPN)*.
 
-*How will the DR be configured? Consider each component (web, database, AD, VPN)*.
+   - Web server VMs: These should be configured for replication and failover using Azure Site Recovery (ASR). The underlying 'landing zone' infrastructure in the secondary region (network, load balancer, etc.) should be provisioned in advance, since ASR will only fail over the Web VMs themselves.
 
--  Web server VMs: These should be configured for replication and failover using Azure Site Recovery (ASR). The underlying 'landing zone' infrastructure in the secondary region (network, load balancer, etc.) should be provisioned in advance, since ASR will only fail over the Web VMs themselves.
+   - SQL Server: There are two approaches for extending the SQL Server infrastructure to the secondary region.
 
--  SQL Server: There are two approaches for extending the SQL Server infrastructure to the secondary region.
+      - Additional SQL Server VMs can be provisioned, and configured as asynchronous replicas in the same Always On availability group as the primary site. During failover, a 'forced failover' will promote one of these secondary servers to primary, and the other server should be reconfigured to replicate synchronously from this new primary.
+      - Alternatively, SQL Server VMs in the secondary site can be configured as a second Always On Availability Group, with synchronous replication between servers in the secondary site and asynchronous replication between primary and secondary sites (this is known as a 'distributed Availability Group'). This is more complicated to set up.
 
-   -  Additional SQL Server VMs can be provisioned, and configured as asynchronous replicas in the same Always On availability group as the primary site. During failover, a 'forced failover' will promote one of these secondary servers to primary, and the other server should be reconfigured to replicate synchronously from this new primary.
-   -  Alternatively, SQL Server VMs in the secondary site can be configured as a second Always On Availability Group, with synchronous replication between servers in the secondary site and asynchronous replication between primary and secondary sites (this is known as a 'distributed Availability Group'). This is more complicated to set up.
-  
--  Domain Controller VMs: A pair of domain controller VMs should be provisioned into availability zones in the secondary site, replicating the set up in the primary site. These are required in the event of a failover, and should be kept running rather than only being provisioned in the event of a failover, so they are always up-to-date.
+   - Domain Controller VMs: A pair of domain controller VMs should be provisioned into availability zones in the secondary site, replicating the set up in the primary site. These are required in the event of a failover, and should be kept running rather than only being provisioned in the event of a failover, so they are always up-to-date.
 
--  VPN: The secondary site should implement VPN connections similar to the primary site. This is required for domain controller replication and so that branch offices can access the secondary site in the event of a failover.
+   - VPN: The secondary site should implement VPN connections similar to the primary site. This is required for domain controller replication and so that branch offices can access the secondary site in the event of a failover.
 
-*What process is required to fail over to the secondary site? Consider each component (web, database, AD, VPN). Are all process steps automated?*
+   *What process is required to fail over to the secondary site? Consider each component (web, database, AD, VPN). Are all process steps automated?*
 
--  The AD and VPN components are pre-provisioned in both primary and secondary sites in an active-active configuration. We will therefore focus on the Web VMs and SQL Server database.
+   - The AD and VPN components are pre-provisioned in both primary and secondary sites in an active-active configuration. We will therefore focus on the Web VMs and SQL Server database.
 
--  Provisioning of the Web VMs in the secondary site is carried out by ASR during failover. Once provisioned, the failover VMs must be integrated with the load-balancer in the secondary region. ASR supports load-balancer configuration as part of the failover settings, however, this only supports internal load-balancers. For a public load-balancer, adding the VMs to the backend pool is an additional post-failover step.
-  
--  For the SQL Server database, we will assume the first of the two approaches described earlier is used, with secondary replicas in the failover site replicating asynchronously as part of the same Always On Availability Group. At the start of the failover, one of the secondary replicas must be promoted to primary ('forced failover') and the other configured to act as a synchronous replica of this primary.
+   - Provisioning of the Web VMs in the secondary site is carried out by ASR during failover. Once provisioned, the failover VMs must be integrated with the load-balancer in the secondary region. ASR supports load-balancer configuration as part of the failover settings, however, this only supports internal load-balancers. For a public load-balancer, adding the VMs to the backend pool is an additional post-failover step.
 
--  These failover steps can be automated using Azure Automation Runbooks. The Automation Account should be provisioned to a separate Azure region, so it is not impacted by the failover in any way.
+   - For the SQL Server database, we will assume the first of the two approaches described earlier is used, with secondary replicas in the failover site replicating asynchronously as part of the same Always On Availability Group. At the start of the failover, one of the secondary replicas must be promoted to primary ('forced failover') and the other configured to act as a synchronous replica of this primary.
 
--  The overall failover process should be orchestrated using an ASR Recovery Plan. This plan defines the various failover steps, including scripts/runbooks to execute and VM failover actions. For the claims application, the sequence is:
-    - First, make the secondary SQL as Active using automation script.
-    - Second, failover the web servers and start the machines.
-    - Third, configure the load balancer for the web servers in the secondary region.
+   - These failover steps can be automated using Azure Automation Runbooks. The Automation Account should be provisioned to a separate Azure region, so it is not impacted by the failover in any way.
 
-    ![Recovery Plan for claims application is shown in this image.](images/Recovery-Plan.png "Recovery Plan")
-    
-*What is the impact on agents using the application? How are they routed to the DR site after failover?*
+   - The overall failover process should be orchestrated using an ASR Recovery Plan. This plan defines the various failover steps, including scripts/runbooks to execute and VM failover actions. For the claims application, the sequence is:
+       - First, make the secondary SQL as Active using automation script.
+       - Second, failover the web servers and start the machines.
+       - Third, configure the load balancer for the web servers in the secondary region.
 
-The claims application is an Internet-facing application. The public IP address of the application will change during the failover between Azure regions. Agents using the application must be directed to the new IP address. This can be achieved in one of three ways.
+       ![Recovery Plan for claims application is shown in this image.](images/Recovery-Plan.png "Recovery Plan")
 
--  The DNS entry for the claims application can be updated as a custom step in the ASR recovery plan. The DNS zone can be hosted in Azure DNS, or in a third-party DNS provider (with API access). Be sure to use a suitably short TTL on the DNS entry (both before and after failover), otherwise DNS caching in external systems will continue to route agents to the (failed) primary site, and impair your ability to fail back to the primary once it recovers.
--  Azure Traffic Manager can be used with the '[Priority](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#priority-traffic-routing-method)' traffic routing method to automatically direct users to the secondary site deployment when the primary site fails (detected via health probes)
--  Azure Front Door can be used as a proxy. Front Door will receive the agent request and forward to either the primary or secondary site based on the monitoring status.
+   *What is the impact on agents using the application? How are they routed to the DR site after failover?*
 
-*Does the solution meet the RPO and RTO requirements?*
+   The claims application is an Internet-facing application. The public IP address of the application will change during the failover between Azure regions. Agents using the application must be directed to the new IP address. This can be achieved in one of three ways.
 
--  The recovery time achieved depends on the time required for ASR to execute the failover. For a VM, ASR has an [RTO SLA of 2 hours](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#failover), although usually a recovery is executed in minutes. You can view the recovery plan recovery time for test failovers in the Azure portal. This comfortably exceeds the RTO requirement of 4 hours specified by the business.
+   - The DNS entry for the claims application can be updated as a custom step in the ASR recovery plan. The DNS zone can be hosted in Azure DNS, or in a third-party DNS provider (with API access). Be sure to use a suitably short TTL on the DNS entry (both before and after failover), otherwise DNS caching in external systems will continue to route agents to the (failed) primary site, and impair your ability to fail back to the primary once it recovers.
+   - Azure Traffic Manager can be used with the '[Priority](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#priority-traffic-routing-method)' traffic routing method to automatically direct users to the secondary site deployment when the primary site fails (detected via health probes)
+   - Azure Front Door can be used as a proxy. Front Door will receive the agent request and forward to either the primary or secondary site based on the monitoring status.
 
--  Achieving the 6-hour recovery point objective depends on the replication of data to the secondary site. Of primary concern is the SQL Server database, although the web VMs should also be considered in case they store any state locally. Both ASR replication and SQL Server asynchronous replication occur continuously, and should give an RPO far shorter than the 6 hours specified by the business.
+   *Does the solution meet the RPO and RTO requirements?*
 
--  Automating the recovery plan using ASR and Azure Automation is critical to keeping the RTO as short as possible. It has the added advantage of making the recovery process more testable and less prone to human error.
+   - The recovery time achieved depends on the time required for ASR to execute the failover. For a VM, ASR has an [RTO SLA of 2 hours](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#failover), although usually a recovery is executed in minutes. You can view the recovery plan recovery time for test failovers in the Azure portal. This comfortably exceeds the RTO requirement of 4 hours specified by the business.
+
+   - Achieving the 6-hour recovery point objective depends on the replication of data to the secondary site. Of primary concern is the SQL Server database, although the web VMs should also be considered in case they store any state locally. Both ASR replication and SQL Server asynchronous replication occur continuously, and should give an RPO far shorter than the 6 hours specified by the business.
+
+   - Automating the recovery plan using ASR and Azure Automation is critical to keeping the RTO as short as possible. It has the added advantage of making the recovery process more testable and less prone to human error.
 
 4. How will you protect both VMs and databases from data corruption or accidental deletion?
 
--  Describe both the solution and the recovery process.
+   - Describe both the solution and the recovery process.
 
-**Solution**
+   **Solution**
 
-*Azure Virtual Machines*
+   *Azure Virtual Machines*
 
--  Azure Backup provides a comprehensive backup solution for Azure VMs. To enable Azure Backup, create a Recovery Services Vault, configure the storage settings (geo-redundancy and soft delete), then add VMs either from the Azure Backup or VM experiences in the Azure portal. It can also be configured via the command line. Encrypted disks are supported (ensure the backup service has the required access to the Key Vault). A retention policy determines how long the daily, weekly, monthly and yearly backups are kept.
+   - Azure Backup provides a comprehensive backup solution for Azure VMs. To enable Azure Backup, create a Recovery Services Vault, configure the storage settings (geo-redundancy and soft delete), then add VMs either from the Azure Backup or VM experiences in the Azure portal. It can also be configured via the command line. Encrypted disks are supported (ensure the backup service has the required access to the Key Vault). A retention policy determines how long the daily, weekly, monthly and yearly backups are kept.
 
--  Azure Backup supports several recovery options. Individual files can be recovered by mounting the backup as a file share. Alternatively, the VM disk(s) can be restored in-place (same VM), or as a new VM (the Availability Zone is preserved). You can also restore only the disks, and build the VM yourself from those disks. This is required in a [wide range of scenarios](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations).
+   - Azure Backup supports several recovery options. Individual files can be recovered by mounting the backup as a file share. Alternatively, the VM disk(s) can be restored in-place (same VM), or as a new VM (the Availability Zone is preserved). You can also restore only the disks, and build the VM yourself from those disks. This is required in a [wide range of scenarios](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations).
 
+   *SQL Server in Azure Virtual Machines*
 
-*SQL Server in Azure Virtual Machines*
+   - Azure Backup for SQL Server provides a solution that requires zero-infrastructure: no complex backup server, no management agent, and no backup storage to manage. Azure Backup provides centralized management for your backups across all servers that are running SQL Server, or even different workloads. Businesses can define their backup schedule and retention policy based on their LTR and compliance needs, do point in time restores and automatically detect and protect any new database that gets added in the future. This will help meet Contoso their RPO of 15minutes.
 
--  Azure Backup for SQL Server provides a solution that requires zero-infrastructure: no complex backup server, no management agent, and no backup storage to manage. Azure Backup provides centralized management for your backups across all servers that are running SQL Server, or even different workloads. Businesses can define their backup schedule and retention policy based on their LTR and compliance needs, do point in time restores and automatically detect and protect any new database that gets added in the future. This will help meet Contoso their RPO of 15minutes. 
-      
-	For details on Azure Backup for SQL Server IaaS VMs, see <https://docs.microsoft.com/azure/backup/backup-azure-sql-database>
-  
--  Alternatively, you can also use SQL Server Managed Backup to Azure. It manages and automates SQL Server backups to Microsoft Azure Blob storage. 
+   > For details on Azure Backup for SQL Server IaaS VMs, see <https://docs.microsoft.com/azure/backup/backup-azure-sql-database>
 
-    For details on SQL Server Managed Backup see <https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017> 
-      
-5. How will you monitor and alert on Azure VMs metrics? Does this approach extend to SQL monitoring? What about backup monitoring? 
+   - Alternatively, you can also use SQL Server Managed Backup to Azure. It manages and automates SQL Server backups to Microsoft Azure Blob storage.
 
-**Solution**
+       For details on SQL Server Managed Backup see <https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017>
 
-*VM Monitoring*
+5. How will you monitor and alert on Azure VMs metrics? Does this approach extend to SQL monitoring? What about backup monitoring?
 
--  Azure Monitor for VMs provides in-depth monitoring for Azure VMs, VM scale sets, and non-Azure servers running on-premises or in other clouds.
+    **Solution**
 
--  Azure Monitor for VMs is a Log Analytics-based solution. As such, initial on-boarding requires installing the Log Analytics agent and registering it to send data to a Log Analytics workspace. 
+    *VM Monitoring*
 
--  In addition to the Log Analytics agent, for full functionality the dependency agent should also be installed. This captures process and network connection data from the VM enabling the inbound and outbound VM dependencies to be mapped. This is an optional feature which may not be necessary on all servers.
+    - Azure Monitor for VMs provides in-depth monitoring for Azure VMs, VM scale sets, and non-Azure servers running on-premises or in other clouds.
 
--  Both the Log Analytics agent and the dependency agent can be deployed to Azure VMs using Azure policy, to automate deployment across large VM footprints.
+    - Azure Monitor for VMs is a Log Analytics-based solution. As such, initial on-boarding requires installing the Log Analytics agent and registering it to send data to a Log Analytics workspace. 
 
--  Once the agents are installed, the final deployment step is to configure the VM insights solution on the Log Analytics workspace. This is straightforward from the VM Insights blade in Azure Monitor; it can also be automated via a template.
+    - In addition to the Log Analytics agent, for full functionality the dependency agent should also be installed. This captures process and network connection data from the VM enabling the inbound and outbound VM dependencies to be mapped. This is an optional feature which may not be necessary on all servers.
 
--  Once data is gathered to Log Analytics, it can be used for a wide variety of monitoring scenarios. Azure monitor for VMs includes a number of pre-defined reports, such as 'top N' reports by various metrics such as CPU, memory and disk.
+    - Both the Log Analytics agent and the dependency agent can be deployed to Azure VMs using Azure policy, to automate deployment across large VM footprints.
 
--  Log-based and metric-based alerts can be implemented using Azure Alerts.
+    - Once the agents are installed, the final deployment step is to configure the VM insights solution on the Log Analytics workspace. This is straightforward from the VM Insights blade in Azure Monitor; it can also be automated via a template.
 
-*SQL Monitoring*
+    - Once data is gathered to Log Analytics, it can be used for a wide variety of monitoring scenarios. Azure monitor for VMs includes a number of pre-defined reports, such as 'top N' reports by various metrics such as CPU, memory and disk.
 
--  SQL metrics and logs can be gathered via Log Analytics using the above mechanism, by simply configuring the metrics required. 
-  
--  DB experts should be engaged to define the precise logs and metrics required, and how alerts should be configured (details are out of scope for this exercise).
+    - Log-based and metric-based alerts can be implemented using Azure Alerts.
 
-*Azure Backup*
+    *SQL Monitoring*
 
--  Azure Backup has recently delivered two new monitoring solutions (as preview): Backup Explorer and Backup Reports. Both solutions are built using Azure Monitor Workbooks
+    - SQL metrics and logs can be gathered via Log Analytics using the above mechanism, by simply configuring the metrics required. 
+    
+    - DB experts should be engaged to define the precise logs and metrics required, and how alerts should be configured (details are out of scope for this exercise).
 
-   -  Backup Explorer provides a near-real-time dashboard of backup health. It is powered by the Azure Resource Graph, and hence does not require any additional diagnostics configuration, storage accounts, or Log Analytics workspaces. It is always available, for all Recovery Services Vaults. It only supports data from the past 7 days.
+    *Azure Backup*
 
-   -  Backup Reports provide deeper analysis of backup performance, including storage space consumed and historical trends. This solution is built on Log Analytics. It requires the Recovery Services Vault to be configured to send diagnostic logs to the Log Analytics workspace, and data can take up to 24 hours to surface in the reports.
+    - Azure Backup has recently delivered two new monitoring solutions (as preview): Backup Explorer and Backup Reports. Both solutions are built using Azure Monitor Workbooks
 
--  Backup alerts can be delivered in two ways: alerts configured directly within the Recovery Services Vault (email only), or alerts based on Log Analytics queries and Azure Monitor. The built-in alerts have several limitations. For this reason, Log Analytics/Azure Monitor alerts should be used. These have the additional advantage of supporting Action Groups.
+    - Backup Explorer provides a near-real-time dashboard of backup health. It is powered by the Azure Resource Graph, and hence does not require any additional diagnostics configuration, storage accounts, or Log Analytics workspaces. It is always available, for all Recovery Services Vaults. It only supports data from the past 7 days.
 
--  Log-based alerts should be configured based on the Azure Backup 'V2' diagnostic data schema. Note that V1 schema is planned for deprecation.
+    - Backup Reports provide deeper analysis of backup performance, including storage space consumed and historical trends. This solution is built on Log Analytics. It requires the Recovery Services Vault to be configured to send diagnostic logs to the Log Analytics workspace, and data can take up to 24 hours to surface in the reports.
 
--  This requires that each Recovery Services Vault is configured to send diagnostic data to a Log Analytics workspace.  Diagnostic logging can be configured using Azure Policy (see '\[Preview\]: Deploy Diagnostic Settings for Recovery Services Vault to Log Analytics workspace for resource specific categories.')
+    - Backup alerts can be delivered in two ways: alerts configured directly within the Recovery Services Vault (email only), or alerts based on Log Analytics queries and Azure Monitor. The built-in alerts have several limitations. For this reason, Log Analytics/Azure Monitor alerts should be used. These have the additional advantage of supporting Action Groups.
 
--  For more information, see [https://docs.microsoft.com/en-us/azure/backup/monitor-azure-backup-with-backup-explorer].
+    - Log-based alerts should be configured based on the Azure Backup 'V2' diagnostic data schema. Note that V1 schema is planned for deprecation.
+
+    - This requires that each Recovery Services Vault is configured to send diagnostic data to a Log Analytics workspace. Diagnostic logging can be configured using Azure Policy (see '\[Preview\]: Deploy Diagnostic Settings for Recovery Services Vault to Log Analytics workspace for resource specific categories.')
+
+    - For more information, see [https://docs.microsoft.com/en-us/azure/backup/monitor-azure-backup-with-backup-explorer].
 
 6. How can the PaaS implementation of the claims application achieve an equivalent level of resiliency?
 
@@ -647,22 +643,22 @@ The claims application is an Internet-facing application. The public IP address 
 
 *How is high availability provided by the Web Application and SQL Database?*
 
--  Azure Web Apps provide built-in high availability, natively within the platform. No special configuration is required.
+- Azure Web Apps provide built-in high availability, natively within the platform. No special configuration is required.
   
--  Azure SQL Database also provides built-in high availability. There are two models:
+- Azure SQL Database also provides built-in high availability. There are two models:
 
-   -  Standard availability (used by the Basic, Standard and General Purpose tiers) relies on a stateless compute layer backed by Azure blob storage as a resilient data layer. Heavy workloads can suffer performance degradation during failure due to cold cache process starts.
-   -  Premium availability (used by the Premium and Business Critical tiers) uses technology similar to SQL Server Always On Availability Groups in a 3 to 4 node cluster. This does not suffer performance degradation during failures.
+   - Standard availability (used by the Basic, Standard and General Purpose tiers) relies on a stateless compute layer backed by Azure blob storage as a resilient data layer. Heavy workloads can suffer performance degradation during failure due to cold cache process starts.
+   - Premium availability (used by the Premium and Business Critical tiers) uses technology similar to SQL Server Always On Availability Groups in a 3 to 4 node cluster. This does not suffer performance degradation during failures.
 
     Contoso will need to choose the appropriate tier depending on their performance needs. For more information see [High availability for Azure SQL Database and SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla).
 
 *Can the SLA target be met?*
 
--  Azure Web Apps (at the Standard tier or above) provide a [99.95% availability SLA](https://azure.microsoft.com/support/legal/sla/app-service/v1_4/). No special configuration is required. Availability zones are not supported for Web Apps.
+- Azure Web Apps (at the Standard tier or above) provide a [99.95% availability SLA](https://azure.microsoft.com/support/legal/sla/app-service/v1_4/). No special configuration is required. Availability zones are not supported for Web Apps.
 
--  Azure SQL Database supports a [99.99% availability SLA](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) across a wide range of tiers (Basic, Standard, General Purpose, Premium, Business Critical). A 99.995% SLA is provided when using the Business Critical or Premium tiers configured with zone-redundant deployment.
+- Azure SQL Database supports a [99.99% availability SLA](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) across a wide range of tiers (Basic, Standard, General Purpose, Premium, Business Critical). A 99.995% SLA is provided when using the Business Critical or Premium tiers configured with zone-redundant deployment.
 
--  The composite SLA may therefore fall *just* short of the 99.95% demanded by the business. This should be negotiated with the business team defining the SLA requirement. If no compromise is possible, the [Web App may be run in an active-active configuration across both primary and secondary regions](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
+- The composite SLA may therefore fall *just* short of the 99.95% demanded by the business. This should be negotiated with the business team defining the SLA requirement. If no compromise is possible, the [Web App may be run in an active-active configuration across both primary and secondary regions](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
 *How will the PaaS solution recover from a complete failure of the primary Azure region?*
 
@@ -684,15 +680,15 @@ Yes. See table.
 
 *How is backup implemented and executed?*
 
--  The Web App is stateless; hence backup does not apply.
+- The Web App is stateless; hence backup does not apply.
 
--  Both SQL Database and SQL Managed Instance use SQL Server technology to create full backups every week, differential backups every 12-24 hours, and transaction log backups every 5 to 10 minutes. The frequency of transaction log backups is based on the compute size and the amount of database activity.
+- Both SQL Database and SQL Managed Instance use SQL Server technology to create full backups every week, differential backups every 12-24 hours, and transaction log backups every 5 to 10 minutes. The frequency of transaction log backups is based on the compute size and the amount of database activity.
 
--  When you restore a database, the service determines which full, differential, and transaction log backups need to be restored.
+- When you restore a database, the service determines which full, differential, and transaction log backups need to be restored.
 
--  These backups enable databases to restore to a point in time within the configured retention period. The backups are stored as RA-GRS storage blobs that are replicated to a paired region for protection against outages impacting backup storage in the primary region.
+- These backups enable databases to restore to a point in time within the configured retention period. The backups are stored as RA-GRS storage blobs that are replicated to a paired region for protection against outages impacting backup storage in the primary region.
 
--  If your data protection rules require that your backups are available for an extended time (up to 10 years), you can configure long-term retention for both single and pooled databases.
+- If your data protection rules require that your backups are available for an extended time (up to 10 years), you can configure long-term retention for both single and pooled databases.
 
 - For full details, see [Automated backups - Azure SQL Database & SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview).
 
@@ -700,9 +696,9 @@ Yes. See table.
 
 1. Provide an estimate of the costs associated with each aspect of your solution.
 
--  Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, VPN, and monitoring costs.
--  Include a comparison of the IaaS solution and the PaaS solution.
--  Have you included all appropriate cost-saving measures?
+- Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, VPN, and monitoring costs.
+- Include a comparison of the IaaS solution and the PaaS solution.
+- Have you included all appropriate cost-saving measures?
 
 **Solution**
 
@@ -744,9 +740,9 @@ Pricing Azure solutions is a complex task. The example solution below includes m
 | | | | |
 
 >**Note:**
->-  SQL Server Enterprise licensing is required for Always On Availability Groups
->-  Each SQL Server Enterprise license includes one additional license for a DR server. Hence of the 4 SQL VMs, only 2 need the SQL license. This is a substantial saving.
->-  Data between Availability Zones in the same region will be billed from Feb 1, 2021
+>- SQL Server Enterprise licensing is required for Always On Availability Groups
+>- Each SQL Server Enterprise license includes one additional license for a DR server. Hence of the 4 SQL VMs, only 2 need the SQL license. This is a substantial saving.
+>- Data between Availability Zones in the same region will be billed from Feb 1, 2021
 
 *PaaS Solution*
 
@@ -772,27 +768,26 @@ The PaaS implementation is roughly the same price. However, a cost-only comparis
 
 For the above estimates, note:
 
--  1 year reserved VM instances included (could extend to 3 years for extra savings).
--  Does not use Hybrid Benefit (check existing licenses, for both Windows and SQL).
--  Does not use Log Analytics [Capacity Reservation](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model).
--  PaaS solution does not include reservations. A 1-year reservation for the SQL Database would reduce monthly costs, but must be paid up-front.
+- 1 year reserved VM instances included (could extend to 3 years for extra savings).
+- Does not use Hybrid Benefit (check existing licenses, for both Windows and SQL).
+- Does not use Log Analytics [Capacity Reservation](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model).
+- PaaS solution does not include reservations. A 1-year reservation for the SQL Database would reduce monthly costs, but must be paid up-front.
 
 ## Checklist of preferred objection handling
 
-1.  Contoso are uncomfortable with any situation that assumes the cloud provider will handle their fail-over.
+1. Contoso are uncomfortable with any situation that assumes the cloud provider will handle their fail-over.
 
-    -  ASR provides full control over the failover process, including the ability to include custom steps.
-    -  For the PaaS implementation, some aspects (such as in-region HA) are handled natively by the platform. Cross-region DR can be managed either manually, or automatically using services such as Traffic Manager and Front Door for the customer endpoint and SQL Database auto-failover groups.
+    - ASR provides full control over the failover process, including the ability to include custom steps.
+    - For the PaaS implementation, some aspects (such as in-region HA) are handled natively by the platform. Cross-region DR can be managed either manually, or automatically using services such as Traffic Manager and Front Door for the customer endpoint and SQL Database auto-failover groups.
 
-2.  Contoso want to know their BCDR and backup solutions are secure.
+2. Contoso want to know their BCDR and backup solutions are secure.
 
-    -  All of the traffic and data used for all Azure BCDR features is secured both at rest and in-transit. As a result, there is no difference in this data and any other data that is running or stored in Azure.
+    - All of the traffic and data used for all Azure BCDR features is secured both at rest and in-transit. As a result, there is no difference in this data and any other data that is running or stored in Azure.
 
-3.  Contoso also want to be able to test both the BCDR and Backup solutions regularly.
+3. Contoso also want to be able to test both the BCDR and Backup solutions regularly.
 
-    -  ASR allows for non-disruptive test failovers to validate the failover process.
-    -  Backups can be restored to a parallel cloud environment to verify their availability and integrity.
-
+    - ASR allows for non-disruptive test failovers to validate the failover process.
+    - Backups can be restored to a parallel cloud environment to verify their availability and integrity.
 
 ## Customer quote (to be read back to the attendees at the end)
 

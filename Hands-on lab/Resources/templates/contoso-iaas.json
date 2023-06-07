@@ -190,11 +190,29 @@
             }
         },
         {
+            "type": "Microsoft.Resources/deploymentScripts",
+            "apiVersion": "2020-10-01",
+            "name": "waitForSQL",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/WebVM1"
+            ],
+            "kind": "AzurePowerShell",
+            "properties": {
+                "azPowerShellVersion": "6.4",
+                "scriptContent": "param([int]$waitInSeconds); Write-Output \"Holding for $waitInSeconds seconds to ensure AD start up complete...\"; Start-Sleep -Seconds $waitInSeconds; Write-Output 'Done.'",
+                "arguments": "[concat('-waitInSeconds', '900')]",
+                "timeout": "PT1H",
+                "cleanupPreference": "OnSuccess",
+                "retentionInterval": "P1D"
+            }
+        },
+        {
             "name": "SQLVM1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-09-01",
             "dependsOn": [
-                "Microsoft.Resources/deployments/VirtualNetworkWithDNS"
+                "Microsoft.Resources/deploymentScripts/waitForSQL"
             ],
             "properties": {
                 "mode": "Incremental",
