@@ -622,11 +622,11 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 6.  Once the **BCDRRSV** Recovery Service Vault has been created, open it in the Azure portal and select the **Site Recovery** tab.
 
-    ![Screenshot of the Backup / Site Recovery tabs with Site Recovery tab selected.](images1/E2T1S6.png "Backup / Site Recovery tabs")
+    ![Screenshot of the Backup / Site Recovery tabs with Site Recovery tab selected.](images1/ex2-task1-step6.png "Backup / Site Recovery tabs")
 
 7. This is your dashboard for Azure Site Recovery (ASR).
 
-    ![The Azure Site Recovery dashboard displays.](images1/E2T1S7.png "Azure Site Recovery dashboard")
+    ![The Azure Site Recovery dashboard displays.](images1/ex2-task1-step7.png "Azure Site Recovery dashboard")
 
 > **Important:** Next, you will set up the Azure Automation account that will be used to automate certain failover and fail-back tasks. This will require several PowerShell scripts to be imported as Azure Automation runbooks. **Be sure to execute the following steps from the LabVM, since that is where the scripts are located.**
 
@@ -1020,7 +1020,7 @@ In this task, you will use the Front Door approach to configure a highly availab
     - **Endpoint name**: `contosoiaas`
     - **Status**: Leave **Enable this endpoint** selected
 
-    ![Fields in the Add a frontend host pane are set to the previously defined settings.](images/EX2-T5-S5.png "Add a frontend host pane.")
+    ![Fields in the Add a frontend host pane are set to the previously defined settings.](images1/ex2-task5-step5.png "Add a frontend host pane.")
 
 6. Under **Routes** select **+ Add a route**.
 
@@ -1114,9 +1114,9 @@ Azure Backup and Azure Site Recovery are implemented using the same Azure resour
 
     > **Note:** This enables backups from the primary site to be restored in the DR site, if required.
 
-5.  Still in the BackupRSV Properties blade, under **Security Settings**, select **Update**. Under Soft Delete, select **Disabled**, then **Save** your changes and close the Security Settings panel.
+5.  Still in the BackupRSV Properties blade, under **Security and soft delete settings**, select **Update**. Under Soft Delete, select **Uncheck** the **Enable soft delete for cloud workloads** and** Enable soft delete and security settings for hybrid workloads**, then **Update** your changes and close the Security Settings panel.
 
-    ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images1/E3T1S5.png "Recovery Services Vault security properties")
+    ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images1/ex3-task1-step5.png "Recovery Services Vault security properties")
 
     > **Note:** In a production environment, you should leave Soft Delete enabled. However, for this lab, it is better to disable this feature, since leaving it enabled makes it more difficult to clean up your lab resources once the lab is complete.
 
@@ -1499,7 +1499,7 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
 
 5.  To restore WebVM1 from backup, Azure Backup requires that a 'staging' storage account be available. To create this account, in the Azure portal select **+ Create a resource**, then search for and select **Storage account**. Select **Create**.
 
-6.  Complete the 'Create storage account' form as follows, then select **Review + Create** followed by **Create**.
+6.  Complete the 'Create storage account' form as follows, then select **Review** followed by **Create**.
 
     -   **Resource group:** ContosoRG1
     -   **Storage account name:** Unique name starting with `backupstaging`.
@@ -1507,7 +1507,7 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
     -   **Performance:** Standard
     -   **Replication:** Locally-redundant storage (LRS)
 
-    ![Screenshot showing the 'Create storage account' blade in the Azure portal.](images1/E4T4S6.png "Create storage account")
+    ![Screenshot showing the 'Create storage account' blade in the Azure portal.](images1/ex4-task4-step6.png "Create storage account")
 
 7.  Before restoring a VM, the existing VM must be shut down. Use the Azure portal to shut down **WebVM1**.
 
@@ -1565,9 +1565,9 @@ In this task, you will validate the ability to restore the Contoso application d
 
     Choose any restore point and select **OK**.
 
-    ![Screenshot showing the options to select a restore point based on logs.](images1/E4T5S5.png "Select restore point - Logs")
+    ![Screenshot showing the options to select a restore point based on logs.](images1/ex4-task5-step5a.png "Select restore point - Logs")
 
-    ![Screenshot showing the options to select a restore point based on scheduled backups.](images1/E4T5S5.1.png "Select restore point - Full & Differential")
+    ![Screenshot showing the options to select a restore point based on scheduled backups.](images1/ex4-task5-step5b.png "Select restore point - Full & Differential")
 
 6.  Under 'Advanced Configuration', select **Configure**. Review the settings but don't change anything. Select **OK** to accept the default configuration
    
