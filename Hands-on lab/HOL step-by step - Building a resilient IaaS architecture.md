@@ -41,11 +41,11 @@ A template will be used to save time. You will configure each tier in subsequent
 
     Select **Review + Create** and then **Create** to deploy resources.
 
-    ![The custom deployment screen with ContosoRG1 as the resource group.](images/ha-deploy1.png "Custom deployment")
+    ![The custom deployment screen with ContosoRG1 as the resource group.](images/ha-deploy2.png "Custom deployment")
 
 3. While you wait for the HA resources to deploy, review the template contents. You can review the template by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and selecting any of the deployments, followed by **template**.
 
-    ![Screenshot of the Azure portal showing the HA template contents.](images/ha-template.png "Screenshot of the Azure portal showing the HA template contents.")
+    ![Screenshot of the Azure portal showing the HA template contents.](images/ha-template1.png "Screenshot of the Azure portal showing the HA template contents.")
 
     The template contains five child templates, containing the various resources required for:
 
@@ -57,7 +57,7 @@ A template will be used to save time. You will configure each tier in subsequent
 
 4. You can check the HA resource deployment status by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and checking the status of the deployments. Make sure the deployment status is **Succeeded** for all templates before proceeding to the next task.
 
-    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/ha-success.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
+    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/ha-success1.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
 
 
 ### Task 2: Configure HA for the Domain Controller tier
@@ -91,17 +91,17 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     - **Replication**: Zone-redundant storage (ZRS)
     - **Access tier (default)**: Hot
 
-    ![Fields in the Create storage account blade are set to the previously defined settings.](images/ha-storage.png "Create storage account blade")
+    ![Fields in the Create storage account blade are set to the previously defined settings.](images/ha-storage1.png "Create storage account blade")
 
 3. Switch to the **Advanced** tab. Change the **Minimum TLS version** to **Version 1.0**. Then select **Review + Create**, followed by **Create**.
 
-    ![The 'Advanced' tab of the Create storage account blade shows the minimum TLS version as 1.0.](images/ha-tls.png)
+    ![The 'Advanced' tab of the Create storage account blade shows the minimum TLS version as 1.0.](images/ha-tls1.png)
 
     > **Note**: To promote the use of the latest and most secure standards, by default, Azure storage accounts require TLS version 1.2. This storage account will be used as a Cloud Witness for our SQL Server cluster. SQL Server requires TLS version 1.0 for the Cloud Witness.
 
 4. Once the storage account is created, navigate to the storage account blade. Select **Access keys** under **Security + networking**. Toggle the **Show/Hide keys button** (Shown as hide keys in the screenshot), copy the **storage account name** and the **first access key**, and paste them into your text editor of choice - you will need these values later.
 
-    ![In the Storage account Access keys section, the Storage account name and key1 are called out.](images/ha-storagekey.png "Storage account section")
+    ![In the Storage account Access keys section, the Storage account name and key1 are called out.](images/ha-storagekey1.png "Storage account section")
 
 5. Return to the Azure portal and navigate to the **ContosoSQLLBPrimary** load balancer blade. Select **Backend pools** and open **BackEndPool1**.
 
