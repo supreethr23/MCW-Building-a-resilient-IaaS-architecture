@@ -87,6 +87,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     - **Resource group**: Use existing / ContosoRG1
     - **Storage account name**: contososqlwitness<inject key="DeploymentID" />
     - **Location**: Any location in your area that is **NOT** your Primary or Secondary site, for example **West US 3**.
+    - **Primary Service** : Leave it as default.
     - **Performance**: Standard
     - **Replication**: Zone-redundant storage (ZRS)
     - **Access tier (default)**: Hot
