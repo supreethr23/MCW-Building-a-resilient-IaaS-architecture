@@ -257,7 +257,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
 
-33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 19** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
+33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
     ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
 
