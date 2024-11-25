@@ -235,7 +235,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM1**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
 
-27. Launch SQL Server Management Studio, a new dialog box will open, Click on **Connect** to sign on to **SQLVM1**. 
+27. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
 
     > **Note**: The username for your lab should show **SQLVM1\demouser**.
 
