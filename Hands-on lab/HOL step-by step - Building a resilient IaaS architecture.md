@@ -16,25 +16,6 @@ The following diagram shows the highly resilient application architecture you wi
 
 ![Diagram showing the DR design for the Ordering application. Two sites, Central US and East US, each show the application footprint, each with web VMs, SQL VMs and domain controller VMs separated into availability zones within each site. Failover for the web VMs is shown using Azure Site Recovery. Failover for the SQL VMs is shown via SQL Server asynchronous replication. The Domain Controller VMs are running active-active..](images/solution-dr2.png "Solution architecture")
 
-
-## Requirements
-
-Complete the steps given in the [Before the HOL - Building a resilient IaaS architecture](https://github.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/blob/master/Hands-on%20lab/Before%20the%20HOL%20-%20Building%20a%20resilient%20IaaS%20architecture.md) guide before starting this lab.
-
-### Help references
-|    |            |
-|----------|:-------------:|
-| **Description** | **Links** |
-| Azure Resiliency Overview | <https://azure.microsoft.com/features/resiliency/> |
-| Always-On Availability Groups | <https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017> |
-| SQL Server Backup in Azure VMs | <https://docs.microsoft.com/azure/backup/backup-azure-sql-database> |
-| Azure Backup |  <https://azure.microsoft.com/services/backup/> |
-| Azure Site Recovery | https://docs.microsoft.com/en-us/azure/site-recovery/ |
-| | |
-
-
-
-
 ## Exercise 1: Enable High Availability for the Contoso application
 
 Duration: 60 minutes
