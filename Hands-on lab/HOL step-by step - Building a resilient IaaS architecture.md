@@ -684,6 +684,30 @@ This task comprises the following steps:
 -   Add SQLVM3 as an asynchronous replica in the existing Always On Availability Group
 -   Update the failover cluster with the Listener IP address
 
+1. In the Azure portal and open a Azure Bastion session to **SQLVM3**. use `demouser` as the username and use **Password**: `Demo!pass123`
+
+2. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM2**. 
+
+    > **Note**: The username for your lab should show **SQLVM2\demouser**.
+
+    ![Screenshot of the Connect to Server dialog box.](images1/E1T3S27.png "Connect to Server dialog box")
+    
+3. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM3\demouser` is listed.
+
+    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/E1T3S28.png)
+
+4. Right-click on **Logins** and then select **New Login...**
+
+    ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/E1T3S29.png)
+
+5. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
+
+    ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
+
+6. Check the box for **sysadmin** and select **OK**.
+
+    ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
+
 1. Return to the Azure portal and navigate to the **ContosoSQLLBSecondary** load balancer blade in **ContosoRG2**. Select **Backend pools** and open **BackEndPool1**. Note that the pool is connected to the **VNet2** virtual network. Select **+ Add**.
 
    ![Azure portal showing where to select Add on the ContosoSQLLBSecondary load balancer backend pool to add a new VM.](images/EX2-T3-S1.png "Backend pool")
