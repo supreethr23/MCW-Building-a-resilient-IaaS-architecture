@@ -74,6 +74,8 @@ In this task, you will reboot all the servers to ensure they have the latest DNS
 
 1. Restart the **ADVM1** and **ADVM2** virtual machines in the **ContosoRG1** resource group so they pick up the new DNS server settings.
    
+    ![Restart the VM.](images/restart.png "Custom deployment")
+
 2. Wait a minute or two for the domain controller VMs to fully boot, then restart the **WebVM1**, **WebVM2**, **SQLVM1** and **SQLVM2** virtual machines, so they also pick up the new DNS server settings.
 
 
