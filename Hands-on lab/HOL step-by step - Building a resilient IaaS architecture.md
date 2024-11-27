@@ -748,7 +748,7 @@ This task comprises the following steps:
 
 17. Under **Availability Groups**, right-click on **BCDRAOG (Primary)** and select **Add Replica..** to open the Add Replica wizard.
 
-    ![In Object Explorer, under Always On High Availability the BCDRAOG availability group is selected, and from its right-click menu, Add Replica is selected.](images1/E2T3S16.png "SQL Server Management Studio - Add Replica")
+    ![In Object Explorer, under Always On High Availability the BCDRAOG availability group is selected, and from its right-click menu, Add Replica is selected.](images1/E2T3S16up.png "SQL Server Management Studio - Add Replica")
 
 18. Select **Next** on the Wizard.
 
@@ -764,7 +764,7 @@ This task comprises the following steps:
 
 21. On the **Connect to Server** dialog box enter the Server Name of **SQLVM3** and select **Connect**.
 
-    ![Screenshot of the Connect to Server dialog box for SQLVM3.](images1/E2T3S20.png "Connect to Server dialog box")
+    ![Screenshot of the Connect to Server dialog box for SQLVM3.](images1/E2T3S20upd.png "Connect to Server dialog box")
 
 22. For **SQLVM3**, leave the default settings of 'Asynchronous commit' with 'Automatic Failover' disabled. Select **Next**.
 
