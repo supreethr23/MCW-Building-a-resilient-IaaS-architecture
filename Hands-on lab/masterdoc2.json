@@ -8,19 +8,19 @@
         "Order": 1
       },
       {
-        "RawFilePath": "https://raw.githubusercontent.com/supreethr23/MCW-Building-a-resilient-IaaS-architecture/refs/heads/prod/Hands-on%20lab/module-01.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/refs/heads/prod/Hands-on%20lab/module-01.md",
         "Order": 2
       },
       {
-        "RawFilePath": "https://raw.githubusercontent.com/supreethr23/MCW-Building-a-resilient-IaaS-architecture/refs/heads/prod/Hands-on%20lab/module-02.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/refs/heads/prod/Hands-on%20lab/module-02.md",
         "Order": 3
       },
       {
-        "RawFilePath": "https://raw.githubusercontent.com/supreethr23/MCW-Building-a-resilient-IaaS-architecture/refs/heads/prod/Hands-on%20lab/module-03.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/refs/heads/prod/Hands-on%20lab/module-03.md",
         "Order": 4
       },
       {
-        "RawFilePath": "https://raw.githubusercontent.com/supreethr23/MCW-Building-a-resilient-IaaS-architecture/refs/heads/prod/Hands-on%20lab/module-04.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/refs/heads/prod/Hands-on%20lab/module-04.md",
         "Order": 5
       }
     ]
