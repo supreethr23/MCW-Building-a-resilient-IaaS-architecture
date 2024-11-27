@@ -97,7 +97,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![Fields in the Create storage account blade are set to the previously defined settings.](images/ha-storage1.png "Create storage account blade")
 
-3.  Switch to the **Advanced** tab. Change the **Minimum TLS version** to **Version 1.0**. Then select **Review**, followed by **Create**.
+3.  Switch to the **Advanced** tab. Check the **Allow enabling anonymous access on individual containers** checkbox, change the **Minimum TLS version** to **Version 1.0** and Select **Review + create** and **Create**.
 
     ![The 'Advanced' tab of the Create storage account blade shows the minimum TLS version as 1.2](images/ha-tls1.png)
 
@@ -298,12 +298,15 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 1. Copy and **paste (1)** the following query and then click on **Execute (2)**.
 
     ```
+        USE master;
+        GO
         GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
         GO
         GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
         GO
         GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
         GO
+    
     ```    
 
     ![.](images/upd-8.png)
@@ -319,7 +322,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 36. Select **Next** on the Wizard.
 
-    ![On the New Availability Group Wizard begin page, Next is selected.](images/image175.png "New Availability Group Wizard ")
+    ![On the New Availability Group Wizard begin page, Next is selected.](images/p50upd.png "New Availability Group Wizard ")
 
 37. Provide the name **BCDRAOG** for the **Availability group name**, then select **Next**.
 
