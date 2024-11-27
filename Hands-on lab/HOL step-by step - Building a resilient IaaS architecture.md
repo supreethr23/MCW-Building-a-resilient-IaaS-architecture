@@ -500,11 +500,19 @@ In this exercise, you will enable a secondary DR site in East US 2. This site wi
 
 In this task, you will deploy the resources used by the DR environment. First, you will deploy a template which will create the network and virtual machines. You will then manually deploy the Recovery Services Vault and Azure Automation account used by Azure Site Recovery.
 
-1.  In a new browser tab, navigate to **https://shell.azure.com**. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted to do so.
+1. In a new browser tab, navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)**. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted to do so.
 
-    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/E2T1S1.png "Azure Cloud Shell")
+    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshell.png "Azure Cloud Shell")
 
-2.   Update the **-Location** parameter in each of the commands below to be a different location than **ContosoRG1**.Execute the following commands. These will create the DR resource group and deploy the DR resources. 
+2. In the getting started page, select **Mount storage account** (1) and choose the **Subscription** (2) and select **Apply**(3).
+
+   ![Screenshot of the Storage account storage.](images1/cloudshellstrg2.png "Azure Cloud Shell")
+
+3. In the Mount storage account page, select **We will create a storage account for you** (1) and select **Next**(2).
+
+   ![Screenshot of the Storage account storage.](images1/cloudshellstrg1.png "Azure Cloud Shell")
+
+4. Update the **-Location** parameter in each command below to specify a secondary location different from **ContosoRG1**. Then, execute the commands to create the disaster recovery (DR) resource group and deploy the DR resources. 
     You can proceed to the following tasks while the template deployment is in progress.
 
 ```powershell
@@ -521,7 +529,7 @@ New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.g
     -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
  ```
 
-3.  Take a few minutes to review the template while it deploys. To review the template and deployment progress, navigate to the Azure portal home page, select **Subscriptions**, then **Deployments**. Note that the template includes:
+5.  Take a few minutes to review the template while it deploys. To review the template and deployment progress, navigate to the Azure portal home page, select **Subscriptions**, then **Deployments**. Note that the template includes:
     -  A DR virtual network, which is connected using VNet peering to the existing virtual network
     -  Two additional domain controller VMs, **ADVM3** and **ADVM4**
     -  An additional SQL Server VM, **SQLVM3**
@@ -531,23 +539,25 @@ New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.g
     
 Next, you will create the Recovery Services Vault used to replicate the Web tier VMs and orchestrate the cross-site failover.
 
-4.  From the Azure portal, select **+Create a resource**, then search for and select **Backup and Site Recovery** then select **Create**.
+4.  From the Azure portal, search for **Recovery Services Vault** and then search for and select it.
 
-    ![](images/backup-create.png)
+    ![](images/rsvimg.png)
 
-5.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
+5. In the **Recovery Services Vault** page click on **Create**.
+
+6.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
 
     - **Resource Group**: ContosoRG2
     - **Name**: `BCDRRSV`
     - **Location**: your secondary region that you choose in step 2
 
-    ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/updated10.png "Backup and Site Recovery Screen Create Button")
+    ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/recoveryimg.png "Backup and Site Recovery Screen Create Button")
 
-6.  Once the **BCDRRSV** Recovery Service Vault has been created, open it in the Azure portal and select the **Site Recovery** tab.
+7.  Once the **BCDRRSV** Recovery Service Vault has been created, open it in the Azure portal and select the **Site Recovery** tab.
 
     ![Screenshot of the Backup / Site Recovery tabs with Site Recovery tab selected.](images1/ex2-task1-step6.png "Backup / Site Recovery tabs")
 
-7. This is your dashboard for Azure Site Recovery (ASR).
+8. This is your dashboard for Azure Site Recovery (ASR).
 
     ![The Azure Site Recovery dashboard displays.](images1/ex2-task1-step7.png "Azure Site Recovery dashboard")
 
@@ -555,20 +565,20 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 8.  From the Azure portal, select **+Create a resource**, followed by **IT & Management Tools**, then **Automation**.
 
-9.  Complete the **Add Automation Account** blade using the following inputs and then select **Create**:
+9.  Complete the **Add Automation Account** blade using the following inputs and then select **Create** (4):
 
     - **subscription**: Select the default subscription
-    - **Name**: Enter a Globally unique name starting with `BCDR-DID`.
-    - **Resource group**: Use existing / **ContosoRG2**
-    - **Location**: your secondary region that you choose in step 2
+    - **Resource group**: Use existing / **ContosoRG2** (1)
+    - **Name**: BCDR<inject key="DeploymentID" /> (2).
+    - **Location**: your secondary region that you choose in step 2 (3)
     
 
-    ![Fields in the Add Automation Account blade are set to the previously defined values.](images/updated11.png "Add Automation Account blade")
+    ![Fields in the Add Automation Account blade are set to the previously defined values.](images/updated111.png "Add Automation Account blade")
 
     > **Note:** Azure Automation accounts are only allowed to be created in certain Azure regions, but they can act on any region in Azure (except Government, China or Germany). It is not a requirement to have your Azure Automation account in the same region as the failover resources, but it **CANNOT** be in your primary region.
 
 
-10. In the **Azure Automation Account** blade and select **Runbooks**, then select **Import a runbook**.
+10. In the **Azure Automation Account** blade and select **Runbooks (1)**, then select **Import a runbook (1)**.
 
     ![The 'Import a runbook' button is highlighted in Azure Automation.](images1/E2T1S10.png "Import a runbook button")
 
@@ -649,7 +659,7 @@ The configuration of these domain controllers is fully automatic. In this task, 
 
 3.  Navigate to the **ContosoRG2** resource group. Click on network interface (NIC) **ADVM3NIC** resources for the ADVM3 and ADVM4 VMs to confirm their network settings include the static private IP addresses 10.1.3.100 and 10.1.3.101, respectively. On the left hand side Under Settings click on **IP configurations**         and then select ipconfig1 and also change the assignment as **Static** and also update the ip address.
 
-    ![Network interface configuration showing a static private IP address for ADVM3.](images1/E2T2S3.png "Static IPs")
+    ![Network interface configuration showing a static private IP address for ADVM3.](images1/ipconfig.png "Static IPs")
 
 4.  Navigate to the **VNet2** virtual network. Select **DNS servers** and confirm that the IP addresses for **ADVM3** and **ADVM4** are configured.
 
@@ -768,7 +778,7 @@ This task comprises the following steps:
 
 24. On the Summary page select **Finish**.
 
-    ![On the Summary page, the Finish button is selected.](images1/E2T3S24.png "Summary page")
+    ![On the Summary page, the Finish button is selected.](images1/E2T3S241.png "Summary page")
 
 25. Once the AOG is built, check each task was successful and select **Close**.
 
@@ -790,11 +800,11 @@ This task comprises the following steps:
     Start-ClusterResource -Name "BCDRAOG"
     ```
 
-    ![In the Windows PowerShell ISE window, the play button is selected. The script from the lab guide has been executed.](images1/E2T3S27.png "Windows PowerShell ISE window")
+    ![In the Windows PowerShell ISE window, the play button is selected. The script from the lab guide has been executed.](images1/E2T3S271.png "Windows PowerShell ISE window")
 
-28. Move back to Failover Cluster Manager on **SQLVM1**, and select **Roles**, then **BCDRAOG**.  Notice how the **Resources** tab shows that the new IP address **10.1.2.100** has been added, and is currently Offline.
+28. Move back to Failover Cluster Manager on **SQLVM1**, and select **Roles (1)**, then **BCDRAOG (2)**.  Notice how the **Resources (3)** tab shows that the new IP address **10.1.2.100** has been added, and is currently Offline.
 
-    ![In the Failover Cluster Manager tree view, Roles is selected. Under Roles, BCDRAOG is selected, and details of the role display.](images1/E2T3S28.png "Failover Cluster Manager")
+    ![In the Failover Cluster Manager tree view, Roles is selected. Under Roles, BCDRAOG is selected, and details of the role display.](images1/E2T3S281.png "Failover Cluster Manager")
 
 
 ### Task 4: Configure DR for the Web tier
@@ -811,32 +821,32 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![In the ASR blade, Getting Started is highlighted. Under For On-Premises Machines and Azure VMs, Step 1: Enable replication is selected.](images/dr-asr-1.png "Step 1 selected")
 
-3. On **Step 1 - Source** select the following inputs and then select **Next**:
+3. On **Step 1 - Source** select the following inputs and then select **Next (5)**:
 
-    - **Location**: Central US (or what you select as your Primary region).
-    - **Resource group**: ContosoRG1.
-    - **Virtual machine deployment model**: Resource Manager.
-    - **Disaster Recovery between Availability Zones?**: No (this option is for DR between availability zones *within* a region).
+    - **Location**: **<inject key="Region" enableCopy="false" />** (Primary region)(1).
+    - **Resource group**: ContosoRG1 (2).
+    - **Virtual machine deployment model**: Resource Manager (3).
+    - **Disaster Recovery between Availability Zones?**: No (this option is for DR between availability zones *within* a region) (4).
 
-    ![In the Source blade, fields are set to the previously defined settings.](images/EX2-T4-S3.png "Source blade")
+    ![In the Source blade, fields are set to the previously defined settings.](images/EX2-T4-S31.png "Source blade")
 
 4. On **Step 2 - Virtual Machines**, select **WebVM1** and **WebVM2** and then select **Next**.
 
     ![In the Select virtual machines blade, the check boxes for WebVM1 and WebVM2 are selected.](images/EX2-T4-S4.png "Select virtual machines blade")
 
-5. On the **step 3 - Replication settings** tab, select the following inputs and then select **Next**  
-   - **Target location**: East US 2 (or what you selected as your secondary site Azure region).
-   - **Target resource group**: ContosoRG2.
-   - **Failover virtual network**: VNet2.
+5. On the **step 3 - Replication settings** tab, select the following inputs and then select **Next (4)**  
+   - **Target location**: *Select the Secondary region which you had selected previously* (1).
+   - **Target resource group**: ContosoRG2 (2).
+   - **Failover virtual network**: VNet2 (3).
 
     ![In the Customize target settings blade, the Target location is set to East US 2 and the customize button highlighted](images/EX2-T5-S3.png "Configure settings blade")
 
-6.  On the **step 4 - Manage** tab, select the following inputs and then select **Next**.
+6.  On the **step 4 - Manage** tab, select the following inputs and then select **Next (3)**.
 
-    - **Update settings**: Allow ASR to manage .
-    - **Automation Account**: use your existing Automation Account.
+    - **Update settings**: Allow ASR to manage (1) .
+    - **Automation Account**: use your existing Automation Account (2).
     
-    ![The Replication Policy settings use default values.](images/EX2-T4-ns3.png "Replication policy")
+    ![The Replication Policy settings use default values.](images/EX2-T4-ns31.png "Replication policy")
 
 7. On the **step 5 - Review** tab, select **Enable replication**.
 
@@ -846,7 +856,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![A message is displayed indicating Enabling replication for two vm(s) has successfully completed.](images/image234.png "Enabling replication for two vm(s)")
 
-9. The **BCDRRSV** blade should still have the **Site Recovery** option (under 'Getting started') selected. Select **Step 2: Manage Recovery Plans**.
+9. The **BCDRRSV** blade should still have the **Site Recovery (1)** option (under 'Getting started') selected. Select **Step 2: Manage Recovery Plans (2)**.
 
     ![Click path to Manage Recovery Plans.](images/dr-asr-8.png "Manage Recovery Plans")
 
@@ -856,13 +866,13 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 11. Fill in the **Create recovery plan** blade as follows:
 
-    - **Name**: BCDRIaaSPlan.
-    - **Source**: East US 2 *(This is your primary region)*.
-    - **Target**: West US 2 *(This is your secondary region)*.
-    - **Allow items with deployment model**: Resource Manager.
+    - **Name**: BCDRIaaSPlan (1).
+    - **Source**: **<inject key="Region" enableCopy="false" />** *(This is your primary region)* (2).
+    - **Target**: *Secondary region that you had selected* (3).
+    - **Allow items with deployment model**: Resource Manager (4).
     - **Select Items**: Select **WebVM1** and **WebVM2**.
 
-        ![Fields in the Create recovery plan blade are set to the previously defined settings.](images1/E2T4S11.png "Create recovery plan blade")
+        ![Fields in the Create recovery plan blade are set to the previously defined settings.](images1/E2T4S111.png "Create recovery plan blade")
 
     > **Note:** It is **critical** to use the correct recovery plan name `BCDRIaaSPlan`. This must match the name of the Azure Automation variable you created in the first task in this exercise.
 
@@ -874,15 +884,15 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     You will now customize the recovery plan to trigger the SQL failover and configure the web tier load-balancer during the failover process, select **Customize**.
 
-    ![On the BCDSRV blade top menu, Customize is selected. Under Items in recovery plan, the source shows two and the VM icon.](images1/E2T4S13.png "BCDSRV blade")
+    ![On the BCDSRV blade top menu, Customize is selected. Under Items in recovery plan, the source shows two and the VM icon.](images1/E2T4S131.png "BCDSRV blade")
 
-14. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** next to **All groups failover**, then select **Add pre-action** from the context menu.
+14. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis (2)** next to **All groups failover (1)**, then select **Add pre-action (3)** from the context menu.
 
-    ![In the Recovery plan blade, the right-click menu for All groups failover displays and Add pre-action is selected.](images1/E2T4S14.png "Recovery plan blade")
+    ![In the Recovery plan blade, the right-click menu for All groups failover displays and Add pre-action is selected.](images1/E2T4S141.png "Recovery plan blade")
 
-15. On the **Insert action** blade, select **Script** and then provide the name `ASRSQLFailover`. Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRSQLFailover**. Select **OK**.
+15. On the **Insert action** blade, select **Script** and then provide the name **ASRSQLFailover (1)**. Ensure that your **Azure Automation account (2)** is selected and then choose the Runbook name: **ASRSQLFailover (3)**. Select **OK (4)**.
 
-    ![Fields in the Insert action blade are set to the ASRRunBookSQL script.](images/Ex-2-t3-step17.png "Insert action blade")
+    ![Fields in the Insert action blade are set to the ASRRunBookSQL script.](images/Ex-2-t3-step171.png "Insert action blade")
 
     > **Note:** As noted on the 'Insert action' blade, the ASRSQLFailover runbook will be executed on both failover and failback. The runbook has been written to support both scenarios.
 
@@ -890,9 +900,9 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![In the Recovery plan blade, the Group 1: Start right-click menu displays, and Add post action is selected.](images1/E2T4S16.png "Recovery plan blade")
 
-18. On the **Insert action** blade, select **Script** and then provide the name: **ASRWEBFailover.** Ensure that your Azure Automation account is selected and then choose the Runbook name: **ASRWEBFailover**. Select **OK**.
+18. On the **Insert action** blade, select **Script** and then provide the name: **ASRWEBFailover(1)** Ensure that your **Azure Automation account(2)** is selected and then choose the Runbook name: **ASRWEBFailover(3)**. Select **OK (4)**.
 
-    ![Fields in the Insert action blade are set to the ASRWebFailover script.](images/Ex2-t1-step19.png "Insert Action blade")
+    ![Fields in the Insert action blade are set to the ASRWebFailover script.](images/Ex2-t1-step191.png "Insert Action blade")
 
 19. Make sure that your **Pre-steps** are running under **All groups failover** and the **Post-steps** are running under **Group1: Start**. Select **Save**.
 
@@ -927,29 +937,29 @@ In this task, you will use the Front Door approach to configure a highly availab
 
     ![Screenshot showing compare offerings with Azure Front Door and Custom create both selected.](images1/E2T5S2.png "Azure Front Door Compare Offerings")
     
-3. Complete the **Basics** tab of the **Create a Front Door** blade using the following inputs, then select **Next: Secrets >**.
+3. Complete the **Basics** tab of the **Create a Front Door** blade using the following inputs, then select **Next: Secrets > (4)**.
 
-    - **Resource group**: Use existing / **ContosoRG1**
+    - **Resource group**: Use existing / **ContosoRG1 (1)**
     - **Location**: Automatically assigned based on the region of **ContosoRG1**.
-    - **Profile name**: ContosoFD1
-    - **Tier**: Standard
+    - **Profile name**: **ContosoFD1 (2)**
+    - **Tier**: **Standard (3)**
 
-    ![Fields in the Create a Front Door blade are set to the previously defined settings.](images/E2-t5-s3.png "Create Front Door 'basics' blade")
+    ![Fields in the Create a Front Door blade are set to the previously defined settings.](images/E2-t5-s31.png "Create Front Door 'basics' blade")
 
 4. Select **Next: Secrets >** leave it as default, and Select **Next: Endpoint >**
 
-5. Select **Add an endpoint** to set the hostname of Front Door. In the **Add an endpoint** pane, enter the following values, then select **Add**:
+5. Select **Add an endpoint** to set the hostname of Front Door. In the **Add an endpoint** pane, enter the following values, then select **Add (2)**:
 
-    - **Endpoint name**: `contosoiaas`
+    - **Endpoint name**: **contosoiaas (1)**
     - **Status**: Leave **Enable this endpoint** selected
 
-    ![Fields in the Add a frontend host pane are set to the previously defined settings.](images1/ex2-task5-step5.png "Add a frontend host pane.")
+    ![Fields in the Add a frontend host pane are set to the previously defined settings.](images1/ex2-task5-step5upd.png "Add a frontend host pane.")
 
 6. Under **Routes** select **+ Add a route**.
 
     ![Create a front door profile with options to create Routes and Security policies. Add a route is highlighted.](images1/E2T5S6.png "Create a front door profile")
     
-7. Select **Add a new origin group**.
+7. Under Add a route page, select **Add a new origin group**.
     
     ![Under Origin group on the Add a new route screen, the link to Add a new origin group is highlighted.](images1/E2T5S7.png "Add a route")
     
@@ -979,15 +989,15 @@ In this task, you will use the Front Door approach to configure a highly availab
 
     ![Showing the completed Add an origin group pane with all fields filled out and ready to select add.](images1/E2T5S12.png "Add an origin group")
     
-13. Enter the following values in **Add a route**. Leave all other values as default. Select **Add**
+13. Enter the following values in **Add a route**. Leave all other values as default. Select **Add (6)**
 
-    - Name: `ContosoRoute`
-    - Accepted protocols: HTTP only
-    - Redirect: Uncheck **Redirect all traffic to use HTTPS**
-    - Origin group: ensure **ContosoOrigins** is selected
-    - Forwarding protocol: HTTP only
+    - Name: **ContosoRoute (1)**
+    - Accepted protocols: **HTTP only (2)**
+    - Redirect: Uncheck **Redirect all traffic to use HTTPS (3)**
+    - Origin group: ensure **ContosoOrigins (4)** is selected
+    - Forwarding protocol: **HTTP only (5)**
 
-    ![Screenshot showing the completed add a route pane with all correct values read to select Add.](images1/E2T5S13.png "Add a route")
+    ![Screenshot showing the completed add a route pane with all correct values read to select Add.](images1/E2T5S131.png "Add a route")
     
 14. Select **Review + Create**. Once validation has been completed, select **Create** to provision the Front Door service.
 
@@ -1000,10 +1010,10 @@ In this task, you will use the Front Door approach to configure a highly availab
     ![The Contoso Insurance PolicyConnect webpage displays from a Front Door URL.](images1/E2T5S15.png "Contoso Insurance PolicyConnect webpage")
 
     > **Note:** Be sure to use **HTTP** to access the Azure Front Door **frontend host** URL. The lab configurations only support HTTP for Front Door since WebVM1 and WebVM2 are only set up for HTTP support, not HTTPS (no SSL\TLS).
+    
     > **Note:** If you get an "Our services aren't available right now" error (or a 404-type error) accessing the web application, then continue with the lab and come back to this later. Sometime this can take a ~10 minutes for the routing rules to publish before it's "live".
-    >
+    
     > If you continue to have this issue beyond 15 minutes, ensure that you are using the correct backend host header (Step 5) and using HTTP for both the routing rules and the health probes of the backend pools. (Step 4).
-    >
 
 ## Exercise 3: Enable Backup for the Contoso application
 
@@ -1021,9 +1031,9 @@ Azure Backup and Azure Site Recovery are implemented using the same Azure resour
 
 2.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
 
-    - **Resource Group**: ContosoRG1
-    - **Name**: `BackupRSV`
-    - **Location**: Central US *(your primary region)*
+    - **Resource Group**: **ContosoRG1 (1)**
+    - **Name**: **BackupRSV (2)**
+    - **Location**: **<inject key="Region" enableCopy="false" />** *(Primary Region)(3)*
 
     ![Azure portal screenshot showing the Create Recovery Services Vault blade, with the settings filled in as described.](images1/E3T1S2.png "Create Recovery Services Vault")
 
@@ -1037,7 +1047,7 @@ Azure Backup and Azure Site Recovery are implemented using the same Azure resour
 
     > **Note:** This enables backups from the primary site to be restored in the DR site, if required.
 
-5.  Still in the BackupRSV Properties blade, under **Security and soft delete settings**, select **Update**. Under Soft Delete, select **Uncheck** the **Enable soft delete for cloud workloads** and** Enable soft delete and security settings for hybrid workloads**, then **Update** your changes and close the Security Settings panel.
+5.  Still in the BackupRSV Properties blade, under **Soft Delete and security settings**, select **Update**. Under Soft Delete, select **Uncheck** the **Enable soft delete for cloud workloads** and** Enable soft delete and security settings for hybrid workloads**, then **Update** your changes and close the Security Settings panel.
 
     ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images1/ex3-task1-step5.png "Recovery Services Vault security properties")
 
@@ -1047,26 +1057,26 @@ Azure Backup and Azure Site Recovery are implemented using the same Azure resour
 
 In this task, you will configure Azure Backup for the Web tier virtual machines. Of course, if the Web VMs are stateless, backup  may not be required, so long as the VM image and/or application installation are protected.
 
-1.  From the **BackupRSV** Recovery Services vault blade, under 'Getting Started', select **Backup**. Under 'Where is your workload running?', select **Azure**. Under 'What do you want to backup?', select **Virtual machine**. Then select **Backup**.
+1.  From the **BackupRSV** Recovery Services vault blade, under 'Getting Started', select **Backup (1)**. Under 'Where is your workload running?', select **Azure(2)**. Under 'What do you want to backup?', select **Virtual machine(3)**. Then select **Backup(4)**.
 
     ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with Azure VMs selected.](images1/E3T2S1.png "Backup VMs")
 
 2.  On the 'Configure Backup' blade, Leave **Standard** selected and select **Create a new policy** and fill in the Create Policy blade as follows:
 
-    - **Policy name**: `WebVMPolicy`
-    - **Backup schedule**: Daily, 9pm, UTC
-    - **Retain instant recovery snapshots for**: 2 day(s)
-    - **Retention of daily backup point**: Enabled, 180 days
-    - **Retention of weekly backup point**: Enabled, Sunday, 12 weeks
-    - **Retention of monthly backup point**: Enabled, First Sunday, 24 months
-    - **Retention of yearly backup point**: Enabled, day-based, January 1, 5 years
-    - **Azure Backup Resource Group**: ContosoBackupRG
+    - **Policy name**: `WebVMPolicy`(1)
+    - **Backup schedule**: Daily, 9pm, UTC (2)
+    - **Retain instant recovery snapshots for**: 2 day(s) (3)
+    - **Retention of daily backup point**: Enabled, 180 days (4)
+    - **Retention of weekly backup point**: Enabled, Sunday, 12 weeks (5)
+    - **Retention of monthly backup point**: Enabled, First Sunday, 24 months (6)
+    - **Retention of yearly backup point**: Enabled, day-based, January 1, 5 years (7)
+    - **Azure Backup Resource Group**: ContosoBackupRG (8)
 
-    When finished, select **OK**.
+    When finished, select **OK** (9).
 
-    ![Azure portal screenshot showing the Backup Policy settings, completed as described.](images1/E3T2S2.png "Backup Policy")
+    ![Azure portal screenshot showing the Backup Policy settings, completed as described.](images1/E3T2S2upd.png "Backup Policy")
 
-3.  On the 'Backup' blade, under 'Virtual Machines', select **Add**. Select the **WebVM1** and **WebVM2** virtual machines, then **OK**.
+3.  On the 'Configure backup' blade, under 'Virtual Machines', select **Add (1)**. Select the **WebVM1** and **WebVM2** (2) virtual machines, then **OK (3)**.
 
     ![Azure portal screenshot showing the steps to add VMs to the backup.](images1/E3T2S3.png "Add VMs")
 
@@ -1113,7 +1123,7 @@ There are two approaches to backup for SQL Server running on Azure VMs. One uses
 
 Before enabling Azure Backup, you will first register the SQL Server VMs with the SQL VM resource provider. This resource provider installs the **SqlIaaSExtension** onto the virtual machine. Azure Backup uses this extension to configure the `NT SERVICE\AzureWLBackupPluginSvc` account with the necessary permissions to discover databases on the virtual machine.
 
-1. In a new browser tab, navigate to **https://shell.azure.com** and open a **PowerShell** session.
+1. In a new browser tab, navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)** and open a **PowerShell** session.
 
 2. Unless you have done so previously, you will need to register your Azure subscription to use the `Microsoft.SqlVirtualMachine` resource provider. In the Cloud Shell window, execute the following command:
 
@@ -1144,7 +1154,7 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
     New-AzSqlVM -Name 'SQLVM3' -ResourceGroupName 'ContosoRG2' -SqlManagementType Full -Location '[location2]' -LicenseType PAYG
     ```
     
-    > **Note:** Make sure you replace [location1] with the ContosoRG1 resource group and [location2] with the ContosoRG2 resource group.
+    > **Note:** Make sure you replace [location1] with the ContosoRG1 resource group location and [location2] with the ContosoRG2 resource group location.
     
     > **Note:** This lab uses SQL Server under a 'Developer' tier license. When using SQL Server in production at the 'Standard' or 'Enterprise' tier, you can specify `DR` as the license type for failover servers (each full-price server includes a license for 1 DR server). This reduces your licensing cost significantly. Check the SQL Server licensing documentation for full details.
 
@@ -1228,7 +1238,7 @@ In this exercise, you will validate the high availability, disaster recovery, an
 
 In this task we will validate high availability for both the Web and SQL tiers.
 
-1.  In the Azure portal, open the **ContosoRG1** resource group. Select the public IP address for the web tier load-balancer, **ContosoWebLBPrimary**. Select the **Overview** tab and copy the DNS name to the clipboard, and navigate to it in a different browser tab.
+1.  In the Azure portal, open the **ContosoRG1** resource group. Select the public IP address for the web tier load-balancer, **ContosoWebLBPrimaryIP**. Select the **Overview** tab and copy the DNS name to the clipboard, and navigate to it in a different browser tab.
 
 2.  The Contoso application is shown. Select **Current Policy Offerings** to view the policy list - this shows the database is accessible. As an additional check, edit an existing policy and save your changes, to show that the database is writable.
 
@@ -1273,16 +1283,8 @@ In this task, you will validate failover of the Contoso application from Central
 4. Select **Failover**.
 
     ![In the BCDRIaaSPlan blade, the Failover button is highlighted.](images1/E4T2S4.png "BCDRIaaSPlan blade")
-    
-5. If you face an error while performing the Failover then go to **Replicated items** under Protected items and select **WebVM1** and then click on **Cleanup test  failover**.
 
-      ![](images/updated14.png "Failover blade")
-      
-6. On the Test failover cleanup page, Enter notes as **Test Cleanup** and select the check box and click on **Ok**.
-
-      ![](images/updated13.png "Failover blade")
-      
-7. Performing the same step from step 5 to 7 as for **WebVM2**.
+   >**Note:** If u encounter an erorr then follow step 5 to step 7.
 
 5. Navigate back on Failover, select **I understand the risk, Skip test failover**.
 
@@ -1290,7 +1292,25 @@ In this task, you will validate failover of the Contoso application from Central
 
 6. Review the Failover direction. Notice that **From** is the **Primary** site, and **To** is the **Secondary** site. Select **OK**.
 
-    ![Call outs in the Failover blade point to the From and To fields.](images1/E4T2S9.png "Failover blade")
+    ![Call outs in the Failover blade point to the From and To fields.](images1/E4T2S9upd.png "Failover blade")
+  
+7. If you face an error while performing the Failover then go to **Replicated items** under Protected items and select **WebVM1** and then click on **Cleanup test  failover**.
+
+      ![](images/updated14.png "Failover blade")
+      
+8. On the Test failover cleanup page, Enter notes as **Test Cleanup** and select the check box and click on **Ok**.
+
+      ![](images/updated13.png "Failover blade")
+      
+9. Performing the same step from step 5 to 7 as for **WebVM2**.
+
+5. Navigate back on Failover, select **I understand the risk, Skip test failover**.
+
+    ![A warning displays that no test failover has been done in the past 180 days, and recommends that you do one before a failover. At the bottom, the I understand and skip test failover checkbox is selected.](images1/E4T2S8.png "Failover warning")
+
+6. Review the Failover direction. Notice that **From** is the **Primary** site, and **To** is the **Secondary** site. Select **OK**.
+
+    ![Call outs in the Failover blade point to the From and To fields.](images1/E4T2S9upd.png "Failover blade")
 
 7. After the Failover is initiated, close the Failover blade and navigate to **Site Recovery Jobs**. Select the **Failover** job to monitor the progress.
 
@@ -1322,7 +1342,7 @@ In this task, you will validate failover of the Contoso application from Central
 
 13. Move back to the **ContosoRG2** resource group and select the **ContosoWebLBSecondaryIP** Public IP address. Copy the DNS name and paste it into a new browser tab. The Contoso application is now responding from the **Secondary** site. Make sure to select the current Policy Offerings to ensure connectivity to the SQL Always-On group that was also failed over in the background.
 
-14. Return to the browser tab pointing to the Contoso application at the Front Door URL. Refresh the page. The site loads immediately, from the DR site. Web site users accessing the service via Front Door are automatically routed to the currently available site, so there is no change in how they access the site even though it is failed over. There **will** be downtime as the failover happens, but once the site is back online the experience for them will be no different than when it is running in the **Primary** site.
+14. Go back to the browser tab with the Contoso application open at the Front Door URL and refresh the page. The site should load quickly from the DR site. Users accessing the service via Front Door are automatically routed to the active site, ensuring seamless access despite the failover. While there may be some downtime during the failover process, once the site is back online, the user experience will remain the same as when it was running on the **Primary** site. If the page does not load immediately, wait for a few moments and try refreshing again.
 
     ![The Contoso Insurance PolicyConnect webpage displays. The URL is from Azure Front Door.](images1/E4T2S17.png "Contoso Insurance PolicyConnect webpage")
 
@@ -1356,13 +1376,13 @@ In this task, you will validate failover of the Contoso application from Central
 
 ### Task 3: Validate Disaster Recovery - Failback IaaS region to region
 
-In this task, you will failback the Contoso application from the DR site in West US 2 back to the primary site in East US 2.
+In this task, you will failback the Contoso application from the DR site in Secondary Site back to the Primary site.
 
 1.  Still in the **BCDRRSV** Recovery Services vault, select **Recovery Plans** and re-open the **BCDRIaaSPlan**. Notice that the VMs are still at the Target since they are failed over to the secondary site.
 
 2.  Select **Failover**. At the warning about No Test Failover, select **I understand the risk, Skip test failover**. Notice that **From** is the **Secondary** site and **To** is the **Primary** site. Select **OK**.
 
-    ![Screenshot of the Failover blade, from East US 2 to Central US.](images1/E4T3S2.png "Failover (failback)")
+    ![Screenshot of the Failover blade, from East US 2 to Central US.](images1/E4T2S9upd.png "Failover (failback)")
 
 3.  After the Failover is initiated close the blade and select **Site Recovery Jobs**, then select the **Failover** job to monitor the progress. Once the job has finished, it should show as successful for all tasks.
 
