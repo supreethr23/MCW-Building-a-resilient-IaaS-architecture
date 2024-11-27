@@ -203,15 +203,15 @@ This task comprises the following steps:
 
     > **Note**: The username for your lab should show **SQLVM3\demouser**.
 
-    ![Screenshot of the Connect to Server dialog box.](images1/E1T3S27.png "Connect to Server dialog box")
+    ![Screenshot of the Connect to Server dialog box.](images1/E1T3S27upd.png "Connect to Server dialog box")
     
 3. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM3\demouser` is listed.
 
-    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/E1T3S28.png)
+    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/E1T3S28upd.png)
 
 4. Right-click on **Logins** and then select **New Login...**
 
-    ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/E1T3S29.png)
+    ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/E1T3S29upd.png)
 
 5. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
 
