@@ -36,12 +36,12 @@ A template will be used to save time. You will configure each tier in subsequent
 
 2.  Complete the Custom deployment blade as follows:
 
-    - Resource Group: **ContosoRG1** (existing)
-    - Location: This should be same as the region of your *Contoso-RG1* resource group
+    - Resource Group: **ContosoRG1 (1)** (existing)
+    - Location: This should be same as the region of your *Contoso-RG1* resource group (2).
 
-    Select **Review + Create** and then **Create** to deploy resources.
+    Select **Review + Create (3)** and then **Create** to deploy resources.
 
-    ![The custom deployment screen with ContosoRG1 as the resource group.](images/deploy.png "Custom deployment")
+    ![The custom deployment screen with ContosoRG1 as the resource group.](images/deploy02.png "Custom deployment")
 
 3.  While you wait for the HA resources to deploy, take some time review the template contents. You can review the template by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and selecting any of the deployments, followed by **template**.
 
