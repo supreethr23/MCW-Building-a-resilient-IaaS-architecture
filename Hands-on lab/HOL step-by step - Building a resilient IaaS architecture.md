@@ -45,7 +45,7 @@ A template will be used to save time. You will configure each tier in subsequent
 
 3.  While you wait for the HA resources to deploy, take some time review the template contents. You can review the template by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and selecting any of the deployments, followed by **template**.
 
-    ![Screenshot of the Azure portal showing the HA template contents.](images/ha-template1.png "Screenshot of the Azure portal showing the HA template contents.")
+    ![Screenshot of the Azure portal showing the HA template contents.](images/Deployment02.png "Screenshot of the Azure portal showing the HA template contents.")
 
     Note that the template contains five child templates, containing the various resources required for:
 
@@ -57,7 +57,7 @@ A template will be used to save time. You will configure each tier in subsequent
 
 4.  You can check the HA resource deployment status by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and checking the status of the deployments. Make sure the deployment status is **Succeeded** for all templates before proceeding to the next task.
 
-    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/ha-success1.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
+    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/E1T1S4.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
 
 
 ### Task 2: Configure HA for the Domain Controller tier
