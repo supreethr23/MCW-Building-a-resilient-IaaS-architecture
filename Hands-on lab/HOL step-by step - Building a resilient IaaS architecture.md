@@ -748,7 +748,7 @@ This task comprises the following steps:
 
 17. Under **Availability Groups**, right-click on **BCDRAOG (Primary)** and select **Add Replica..** to open the Add Replica wizard.
 
-    ![In Object Explorer, under Always On High Availability the BCDRAOG availability group is selected, and from its right-click menu, Add Replica is selected.](images1/E2T3S16up.png "SQL Server Management Studio - Add Replica")
+    ![In Object Explorer, under Always On High Availability the BCDRAOG availability group is selected, and from its right-click menu, Add Replica is selected.](images1/E2T3S16upd.png "SQL Server Management Studio - Add Replica")
 
 18. Select **Next** on the Wizard.
 
