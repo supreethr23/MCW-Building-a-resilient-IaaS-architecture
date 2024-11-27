@@ -12,7 +12,7 @@ Contoso has asked you to deploy their infrastructure in a resilient manner to en
 
 ## Solution architecture
 
-The following diagram shows the highly resilient application architecture you will build in this lab. Starting with just WebVM1, SQLVM1 and DCVM1, you will first build out a fully-redundant, high-availability environment in Central US. You will then extend this environment to a disaster recovery site in East US 2 and add a backup solution for both the web tier and database tier.
+The following diagram shows the highly resilient application architecture you will build in this lab. Starting with just WebVM1, SQLVM1 and DCVM1, you will first build out a fully-redundant, high-availability environment in Primary Region. You will then extend this environment to a disaster recovery site in Secondary Region and add a backup solution for both the web tier and database tier.
 
 ![Diagram showing the DR design for the Ordering application. Two sites, Central US and East US, each show the application footprint, each with web VMs, SQL VMs and domain controller VMs separated into availability zones within each site. Failover for the web VMs is shown using Azure Site Recovery. Failover for the SQL VMs is shown via SQL Server asynchronous replication. The Domain Controller VMs are running active-active..](images/solution-dr4.png "Solution architecture")
 
@@ -20,7 +20,7 @@ The following diagram shows the highly resilient application architecture you wi
 
 Duration: 60 minutes
 
-The Contoso application has been deployed to the Central US region. This initial deployment does not have any redundancy - it uses a single web VM, a single database VM, and a single domain controller VM.
+The Contoso application has been deployed to the <inject key="Region" enableCopy="false" /> region. This initial deployment does not have any redundancy - it uses a single web VM, a single database VM, and a single domain controller VM.
 
 In this exercise, you will convert this deployment into a highly-availability architecture by adding redundancy to each tier.
 
@@ -489,7 +489,7 @@ In this task, you will configure a high-availability web tier. This comprises tw
 
 Duration: 90 minutes
 
-In this exercise, you will enable a secondary DR site in East US 2. This site will support each tier of the Contoso application, using a different technology in each case. The DR approach is summarized in the following table.
+In this exercise, you will enable a secondary DR site. This site will support each tier of the Contoso application, using a different technology in each case. The DR approach is summarized in the following table.
 
 |  Tier   |   DR Strategy   |
 |:--------|:----------------|
@@ -640,7 +640,7 @@ Next, you will create a variable in Azure Automation which contains settings (su
 
 ### Task 2: Inspect DR for the Domain Controller tier
 
-The failover site in East US 2 has been deployed with two additional domain controllers, **ADVM3** and **ADVM4**. These are integrated with the existing `contoso.com` domain hosted on **ADVM1** and **ADVM2** in the primary site. They run in a fully active-active configuration (there is therefore no failover required for this tier).
+The failover site in has been deployed with two additional domain controllers, **ADVM3** and **ADVM4**. These are integrated with the existing `contoso.com` domain hosted on **ADVM1** and **ADVM2** in the primary site. They run in a fully active-active configuration (there is therefore no failover required for this tier).
 
 The configuration of these domain controllers is fully automatic. In this task, you will simply review the rest of the configuration to confirm everything is as it should be.
 
@@ -1025,7 +1025,7 @@ In this exercise, you will use Azure Backup to enable backup for the Contoso app
 
 ### Task 1: Create the Azure Backup resources
 
-Azure Backup and Azure Site Recovery are implemented using the same Azure resource type, the Recovery Services Vault. However, for Azure Backup the vault must be deployed to the same region as the resources being protected, in this case the primary site in Central US. In contrast, for Azure Site Recovery the vault was deployed to the secondary region.  In this task, you will create the vault in the primary region for use by Azure Backup.
+Azure Backup and Azure Site Recovery are implemented using the same Azure resource type, the Recovery Services Vault. However, for Azure Backup the vault must be deployed to the same region as the resources being protected, in this case the primary site. In contrast, for Azure Site Recovery the vault was deployed to the secondary region.  In this task, you will create the vault in the primary region for use by Azure Backup.
 
 1.  From the Azure portal, select **+Create a resource**, then search for and select **Backup and Site Recovery** then select **Create**.
 
@@ -1268,7 +1268,7 @@ In this task we will validate high availability for both the Web and SQL tiers.
 
 ### Task 2: Validate Disaster Recovery - Failover IaaS region to region
 
-In this task, you will validate failover of the Contoso application from Central US to East US 2. The failover is orchestrated by Azure Site Recovery using the recovery plan you configured earlier. It includes failover of both the web tier (creating new Web VMs from the replicated data) and SQL Server tier (failure to the SQLVM3 asynchronous replica). The failover process is fully automated, with custom steps implemented using Azure Automation runbooks triggered by the Recovery Plan.
+In this task, you will validate failover of the Contoso application from Primary region to Secondary region. The failover is orchestrated by Azure Site Recovery using the recovery plan you configured earlier. It includes failover of both the web tier (creating new Web VMs from the replicated data) and SQL Server tier (failure to the SQLVM3 asynchronous replica). The failover process is fully automated, with custom steps implemented using Azure Automation runbooks triggered by the Recovery Plan.
 
 1.  Using the Azure portal, open the **ContosoRG1** resource group. Navigate to the Front Door resource, locate Frontend Host URL and open it in a new browser tab. Navigate to it to ensure that the application is up and running from the Primary Site.
 
@@ -1448,7 +1448,7 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
 
     -   **Resource group:** ContosoRG1
     -   **Storage account name:** Unique name starting with `backupstaging`.
-    -   **Location:** Central US *(this is your primary region)*
+    -   **Location:** <inject key="Region" enableCopy="false" /> *(this is your primary region)*
     -   **Performance:** Standard
     -   **Replication:** Locally-redundant storage (LRS)
 
