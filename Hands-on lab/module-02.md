@@ -199,9 +199,9 @@ This task comprises the following steps:
 
 1. In the Azure portal and open a Azure Bastion session to **SQLVM3**. use `demouser` as the username and use **Password**: `Demo!pass123`
 
-2. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM2**. 
+2. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM3**. 
 
-    > **Note**: The username for your lab should show **SQLVM2\demouser**.
+    > **Note**: The username for your lab should show **SQLVM3\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images1/E1T3S27.png "Connect to Server dialog box")
     
