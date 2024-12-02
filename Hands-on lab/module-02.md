@@ -32,7 +32,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
 ```powershell
 New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
-New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
+New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
 ```
 
    > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
@@ -265,7 +265,7 @@ This task comprises the following steps:
 
     ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
     
-12. Return to your session with **SQLVM1**. Open **Microsoft SQL Server Management Studio 19** and connect to the local instance of SQL Server.
+12. Return to your session with **SQLVM1**. Open **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server.
 
 13. Expand the **Always On High Availability** node. Under **Availability Group Listeners**, right-click on **BCDRAOG** and select **Properties**.
 
