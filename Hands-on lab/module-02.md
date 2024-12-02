@@ -470,8 +470,6 @@ In this task, you will use the Front Door approach to configure a highly availab
 
 1.  You will now build a Front Door to direct traffic to your Primary and Secondary Sites. From the Azure portal, select **+Create a resource**, then search for and select **Front Door and CDN profiles**. Select **Create**. 
 
-    ![Icon for Azure Front Door.](images1/E2T5S1.png "Azure Front Door icon")
-
 2. Select **Azure Front Door** and **Custom create**. Then select **Continue to create a  Front Door**.
 
     ![Screenshot showing compare offerings with Azure Front Door and Custom create both selected.](images1/E2T5S2.png "Azure Front Door Compare Offerings")
