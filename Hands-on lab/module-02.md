@@ -21,11 +21,11 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
 2. In the getting started page, select **Mount storage account** (1) and choose the **Subscription** (2) and select **Apply**(3).
 
-   ![Screenshot of the Storage account storage.](images1/cloudshellstrg2.png "Azure Cloud Shell")
+   ![Screenshot of the Storage account storage.](images1/cloudshellstrg1.png "Azure Cloud Shell")
 
 3. In the Mount storage account page, select **We will create a storage account for you** (1) and select **Next**(2).
 
-   ![Screenshot of the Storage account storage.](images1/cloudshellstrg1.png "Azure Cloud Shell")
+   ![Screenshot of the Storage account storage.](images1/cloudshellstrg2.png "Azure Cloud Shell")
 
 4. Update the **-Location** parameter in each command below to specify a secondary location different from **ContosoRG1**. Then, execute the commands to create the disaster recovery (DR) resource group and deploy the DR resources. 
     You can proceed to the following tasks while the template deployment is in progress.
