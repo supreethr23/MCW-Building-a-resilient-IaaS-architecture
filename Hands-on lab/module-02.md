@@ -17,7 +17,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
 1. In a new browser tab, navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)**. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted to do so.
 
-    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshell.png "Azure Cloud Shell")
+    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshellupd.png "Azure Cloud Shell")
 
 2. In the getting started page, select **Mount storage account** (1) and choose the **Subscription** (2) and select **Apply**(3).
 
@@ -40,7 +40,7 @@ New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.g
 ```powershell
     # Only run this command if the previous deployment failed with a error that size was not available
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR-SKU' `
-        -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
+        -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
     -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
  ```
 
