@@ -24,9 +24,9 @@ Azure Backup and Azure Site Recovery are implemented using the same Azure resour
 
     ![Azure portal screenshot showing the properties blade of the Recovery Services Vault.](images1/E3T1S3upd.png "Recovery Services Vault properties")
 
-4.  Under **Backup Configuration**, select **Update**. In the Backup Configuration blade, check that the storage replication type is set to **Geo-redundant** and set the Cross Region Restore option to **Enable** then **Save** your changes and close the Backup Configuration panel.
+4.  Under **Backup Configuration**, select **Update**. In the Backup Configuration blade, check that the storage replication type is set to **Geo-redundant** and set the Cross Region Restore option to **Enable** then **Apply** your changes and close the Backup Configuration panel.
 
-    ![Azure portal screenshot showing the backup properties blade of the Recovery Services Vault.](images1/E3T1S4upd.png "Recovery Services Vault backup properties")
+    ![Azure portal screenshot showing the backup properties blade of the Recovery Services Vault.](images1/E3T1S4upd1.png "Recovery Services Vault backup properties")
 
     > **Note:** This enables backups from the primary site to be restored in the DR site, if required.
 
