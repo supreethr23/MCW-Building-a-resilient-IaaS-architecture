@@ -63,7 +63,7 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 6.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
 
     - **Resource Group**: ContosoRG2
-    - **Name**: `BCDRRSV`
+    - **Name**: BCDRRSV<inject key="DeploymentID" />
     - **Location**: your secondary region that you choose in step 2
 
     ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/recoveryimg.png "Backup and Site Recovery Screen Create Button")
