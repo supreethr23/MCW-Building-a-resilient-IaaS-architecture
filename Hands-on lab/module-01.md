@@ -23,7 +23,7 @@ A template will be used to save time. You will configure each tier in subsequent
 
     Select **Review + Create (3)** and then **Create** to deploy resources.
 
-    ![The custom deployment screen with ContosoRG1 as the resource group.](images/deploy02.png "Custom deployment")
+    ![The custom deployment screen with ContosoRG1 as the resource group.](images/iaas-image1.png "Custom deployment")
 
 3.  While you wait for the HA resources to deploy, take some time review the template contents. You can review the template by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and selecting any of the deployments, followed by **template**.
 
@@ -39,7 +39,7 @@ A template will be used to save time. You will configure each tier in subsequent
 
 4.  You can check the HA resource deployment status by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and checking the status of the deployments. Make sure the deployment status is **Succeeded** for all templates before proceeding to the next task.
 
-    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/E1T1S4.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
+    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/iaas-image2.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
 
 
 ### Task 2: Configure HA for the Domain Controller tier
@@ -54,11 +54,18 @@ The HA resources template has added a second domain controller **ADVM2**, with s
 
 In this task, you will reboot all the servers to ensure they have the latest DNS settings.
 
-1. Restart the **ADVM1** and **ADVM2** virtual machines in the **ContosoRG1** resource group so they pick up the new DNS server settings.
-   
-    ![Restart the VM.](images/restart1.png "Custom deployment")
 
-2. Wait a minute or two for the domain controller VMs to fully boot, then restart the **WebVM1**, **WebVM2**, **SQLVM1** and **SQLVM2** virtual machines, so they also pick up the new DNS server settings.
+1. In Search resources, services, and docs (G+/) box at the top of the portal, enter **Virtual machine**, and then select **Virtual machine** from the results.
+
+     ![](images/iaas-image3.png "Screenshot of the Azure portal searching and selecting virtual machine")
+
+2. Restart the **ADVM1** and **ADVM2** virtual machines in the **ContosoRG1** resource group. When prompted with **Restart this Virtual Machine**, click **Yes** to ensure they pick up the new DNS server settings.
+   
+    ![Restart the VM.](images/iaas-image4.png "Custom deployment")
+
+    ![Restart the VM.](images/iaas-image5.png "Custom deployment")
+
+4. Wait a minute or two for the domain controller VMs to fully boot, then restart the **WebVM1**, **WebVM2**, **SQLVM1** and **SQLVM2** virtual machines, so they also pick up the new DNS server settings.
 
 
 ### Task 3: Configure HA for the SQL Server tier
