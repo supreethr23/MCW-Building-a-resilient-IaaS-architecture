@@ -83,7 +83,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 2. Complete the **Create storage account** form using the following details:
 
-    - **Resource group**: Use existing / ContosoRG1
+    - **Resource group**: ContosoRG1
     - **Storage account name:** contososqlwitness<inject key="DeploymentID" />
     - **Location**: Any location in your area that is **NOT** your Primary or Secondary site, for example **West US 2**
     - **Primary Service** : Azure Files.
@@ -98,21 +98,27 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     > **Note:** To promote use of the latest and most secure standards, by default Azure storage accounts require TLS version 1.2. This storage account will be used as a Cloud Witness for our SQL Server cluster. SQL Server requires TLS version 1.0 for the Cloud Witness.
 
-4.  Once the storage account is created, navigate to the storage account blade. Select **Access keys** under **Security + networking**. Select **Show keys** then copy the **storage account name** and the **first access key** and paste them into your text editor of choice - you will need these values later.
+4.  Once the storage account is created, navigate to the storage account blade. Expand **Security + networking (1)** and select **Access keys (2)**, then copy the **storage account name (3)** and click **Show keys** then copy the **key (4)** and paste values into your text editor of choice - you will need these values later.
 
-    ![In the Storage account Access keys section, the Storage account name and key1 are called out.](images/ha-storagekey1.png "Storage account section")
+    ![](images/iaas-image10.png)
 
-5.  Return to the Azure portal and navigate to the **ContosoSQLLBPrimary** load balancer blade. Select **Backend pools** and open **BackEndPool1**.
+1. Naviagte back to ContosoRG1 Resource group, and select the **ContosoSQLLBPrimary** load balancer.
 
-    ![Azure portal showing path to BackEndPool1 on ContosoSQLLBPrimary.](images/EX1-T3-S5.png "Backend pool")
+     ![](images/iaas-image11.png)
+
+1. On the **ContosoSQLLBPrimary** load balancer blade. Expand **Settings (1)** then select **Backend pools (2)** and open **BackEndPool1 (3)**.
+
+    ![](images/iaas-image12.png)
 
 6.  In the **BackendPool1** blade, select **+ Add**(1) and choose the two **SQL VMs**(2). Select **Add**(3) to close. Select **Save**(4) to add these SQL VMs to **BackEndPool1**.
 
-    ![Azure portal showing SQLVM1 and SQLVM2 being added to the backend pool](images/EX1-T3-S6.png "Backend pool VMs")
+    ![](images/iaas-image13.png)
+
+    ![](images/iaas-image14.png)
 
     > **Note:** The load-balancing rule in the load balancer has been created with **Floating IP (direct server return)** enabled. This is important when using the Azure load balancer for SQL Server AlwaysOn Availability Groups.
 
-7.  From the Azure portal, navigate to the **SQLVM1** virtual machine, select **Connect**, then choose **Bastion**. Connect to the machine using the following credentials:
+8.  From the Azure portal, navigate to the **SQLVM1** virtual machine, select **Connect**, then choose **Bastion**. Connect to the machine using the following credentials:
 
     - **Username**: `demouser@contoso.com`
     - **Password**: `Demo!pass123`
@@ -124,11 +130,11 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     ![Azure portal showing connection to SQLVM1 using Bastion.](images1/E1T3S7.png "Azure Bastion")
    
 
-8.  On **SQLVM1**, select **Start** and then choose **Windows PowerShell ISE**.
+9.  On **SQLVM1**, select **Start** and then choose **Windows PowerShell ISE**.
 
     ![Screenshot of the Windows PowerShell ISE icon.](images/image71.png "Windows PowerShell ISE icon")
 
-9.  Copy and paste  the following command into PowerShell ISE and execute it. This will create the Windows Failover Cluster and add all the SQL VMs as nodes in the cluster. It will also assign a static IP address of **10.0.2.99** to the new Cluster named **AOGCLUSTER**.
+10.  Copy and paste  the following command into PowerShell ISE and execute it. This will create the Windows Failover Cluster and add all the SQL VMs as nodes in the cluster. It will also assign a static IP address of **10.0.2.99** to the new Cluster named **AOGCLUSTER**.
 
     ```PowerShell
     New-Cluster -Name AOGCLUSTER -Node SQLVM1,SQLVM2 -StaticAddress 10.0.2.99
@@ -138,75 +144,75 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     >**Note:** It is possible to use a wizard for this task, but the resulting cluster will require additional configuration to set the static IP address in Azure.
 
-10. After the cluster has been created, select **Start** and then **Windows Administrative Tools**. Locate and open the **Failover Cluster Manager**.
+11. After the cluster has been created, select **Start** and then **Windows Administrative Tools**. Locate and open the **Failover Cluster Manager**.
 
     ![Screenshot of the Failover Cluster Manager shortcut icon.](images/image154.png "Failover Cluster Manager shortcut icon")
 
-11. When the cluster opens, select **Nodes** and the SQL Server VMs will show as nodes of the cluster and show their status as **Up**.
+12. When the cluster opens, select **Nodes** and the SQL Server VMs will show as nodes of the cluster and show their status as **Up**.
 
     ![In Failover Cluster Manager, Nodes is selected in the tree view, and two nodes display in the details pane.](images1/E1T3S11.png "Failover Cluster Manager")
 
-12. If you select **Roles**, you will notice that currently, there aren't any roles assigned to the cluster.
+13. If you select **Roles**, you will notice that currently, there aren't any roles assigned to the cluster.
 
     ![In Failover Cluster Manager, Roles is selected in the tree view, and zero roles display in the details pane.](images1/E1T3S12.png "Failover Cluster Manager")
 
-13. Select Networks, and you will see **Cluster Network 1** with status **Up**. If you navigate to the network, you will see the IP address space, and on the lower tab you can select **Network Connections** and review the nodes.
+14. Select Networks, and you will see **Cluster Network 1** with status **Up**. If you navigate to the network, you will see the IP address space, and on the lower tab you can select **Network Connections** and review the nodes.
 
     ![In Failover Cluster Manager, Networks is selected in the tree view, and the network displays in the details pane.](images1/E1T3S13.png "Failover Cluster Manager")
 
-14. Right-click **AOGCLUSTER,** then select **More Actions**, **Configure Cluster Quorum Settings**.
+15. Right-click **AOGCLUSTER,** then select **More Actions**, **Configure Cluster Quorum Settings**.
 
     ![In Failover Cluster Manager, a call out says to right-click the cluster name in the tree view, then select More Actions, and then select Configure Cluster Quorum Settings.](images/image159.png "Failover Cluster Manager")
 
-15. On the **Configure Cluster Quorum Wizard** select **Next**, then choose **Select the quorum witness**. Then, select **Next** again.
+16. On the **Configure Cluster Quorum Wizard** select **Next**, then choose **Select the quorum witness**. Then, select **Next** again.
 
     ![On the Select Quorum Configuration Option screen of the Configure Cluster Quorum Wizard, the radio button for Select the quorum witness is selected.](images/image160.png "Configure Cluster Quorum Wizard")
 
-16. Select **Configure a cloud witness** and **Next**.
+17. Select **Configure a cloud witness** and **Next**.
 
     ![On the Select Quorum Witness screen, the radio button for Configure a cloud witness is selected.](images/image161.png "Select Quorum Witness screen")
 
-17. Copy the **storage account name** and **storage account key** values which you noted earlier and paste them into their respective fields on the form. Leave the Azure Service endpoint as configured. Then, select **Next**.
+18. Copy the **storage account name** and **storage account key** values which you noted earlier and paste them into their respective fields on the form. Leave the Azure Service endpoint as configured. Then, select **Next**.
 
     ![Fields on the Configure cloud witness screen are set to the previously defined settings.](images1/E1T3S17.png "Configure cloud witness screen")
 
-18. Select **Next** on the Confirmation screen.
+19. Select **Next** on the Confirmation screen.
 
     ![On the Confirmation screen, the Next button is selected.](images/image163.png "Confirmation screen")
 
-19. Select **Finish**.
+20. Select **Finish**.
 
     ![Finish is selected on the Summary screen.](images/image164.png "Summary screen")
 
-20. Select the name of the Cluster again and the **Cloud Witness** should now appear in the **Cluster Resources**. It's important to always use a third data center, in your case here a third Azure Region to be your Cloud Witness.
+21. Select the name of the Cluster again and the **Cloud Witness** should now appear in the **Cluster Resources**. It's important to always use a third data center, in your case here a third Azure Region to be your Cloud Witness.
 
     ![Under Cluster Core Resources, the Cloud Witness status is Online.](images/image165.png "Cluster Core Resources section")
 
-21. Select **Start** and launch **SQL Server 2017 Configuration Manager**.
+22. Select **Start** and launch **SQL Server 2017 Configuration Manager**.
 
     ![Screenshot of the SQL Server 2017 Configuration Manager option on the Start menu.](images/image166.png "SQL Server 2017 Configuration Manager option")
 
-22. Select **SQL Server Services**, then right-click **SQL Server (MSSQLSERVER)** and select **Properties**.
+23. Select **SQL Server Services**, then right-click **SQL Server (MSSQLSERVER)** and select **Properties**.
 
     ![In SQL Server 2017 Configuration Manager, in the left pane, SQL Server Services is selected. In the right pane, SQL Server (MSSQLSERVER) is selected, and from its right-click menu, Properties is selected.](images/image167.png "SQL Server 2017 Configuration Manager")
 
-23. Select the **AlwaysOn High Availability** tab and check the box for **Enable Always OnAvailability Groups**. Select **Apply** and then select **OK** on the message that notifies you that changes won't take effect until after the server is restarted.
+24. Select the **AlwaysOn High Availability** tab and check the box for **Enable Always OnAvailability Groups**. Select **Apply** and then select **OK** on the message that notifies you that changes won't take effect until after the server is restarted.
 
     ![In the SQL Server Properties dialog box, on the AlwaysOn High Availability tab, the Enable Always OnAvailability Groups checkbox is checked and the Apply button is selected.](images/image168.png "SQL Server Properties dialog box")
 
     ![A pop-up warns that any changes made will not take effect until the service stops and restarts. The OK button is selected.](images/image169.png "Warning pop-up")
 
-24. On the **Log On** tab, change the service account to `contoso\demouser` with the password `Demo!pass123`. Select **OK** to accept the changes, and then select **Yes** to confirm the restart of the server.
+25. On the **Log On** tab, change the service account to `contoso\demouser` with the password `Demo!pass123`. Select **OK** to accept the changes, and then select **Yes** to confirm the restart of the server.
 
     ![In the SQL Server Properties dialog box, on the Log On tab, fields are set to the previously defined settings. The OK button is selected.](images1/E1T3S24.png "SQL Server Properties dialog box")
 
     ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
 
-25. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2**. Launch **SQL Server 2017 Configuration Manager** and repeat the steps from 21 to 24 above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
+26. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2**. Launch **SQL Server 2017 Configuration Manager** and repeat the steps from 21 to 24 above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
 
-26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
+27. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
 
-27. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM2**. 
+28. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM2**. 
 
     > **Note**: The username for your lab should show **SQLVM2\demouser**.
 
