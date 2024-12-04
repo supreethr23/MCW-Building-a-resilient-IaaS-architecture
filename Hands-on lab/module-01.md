@@ -126,12 +126,14 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     >**Note:** : When select **Allow** when See text and images copied to the clipboard prompted.
 
-    ![](images/iaas-image15.png)
+    ![](images/iaas-image16.png)
     
     > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in the format `user@domain-fqdn`, and **not** in the format `domain\user`.
 
     ![Azure portal showing connection to SQLVM1 using Bastion.](images1/E1T3S7.png "Azure Bastion")
-   
+
+    >**Note**: Please minimize the Server Manager window 
+
 1.  On **SQLVM1**, select **Start** and then choose **Windows PowerShell ISE**.
 
      ![](images/iaas-image17.png)
