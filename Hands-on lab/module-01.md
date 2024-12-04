@@ -73,10 +73,14 @@ In this task, you will reboot all the servers to ensure they have the latest DNS
 In this task, you will build a Windows Failover Cluster and configure SQL Always On Availability Groups to create a high-availability database tier.
 
 
-1. In the Azure portal's left navigation, select **+ Create a resource**, then search for and select **Storage account**, followed by **Create**.
+1. In Search resources, services, and docs (G+/) box at the top of the portal, enter **Storage account**, and then select **Storage account** from the results.
 
-   ![Screenshot of the Azure portal showing the create storage account navigation.](images/storage-create.png "Create storage account blade")
-   
+   ![](images/iaas-image6.png)
+
+1. Click on **Create**.   
+
+   ![](images/iaas-image7.png)
+
 2. Complete the **Create storage account** form using the following details:
 
     - **Resource group**: Use existing / ContosoRG1
@@ -86,11 +90,11 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     - **Performance**: Standard
     - **Replication**: Zone-redundant storage (ZRS).
 
-    ![Fields in the Create storage account blade are set to the previously defined settings.](images/ha-storage1.png "Create storage account blade")
+    ![](images/iaas-image8.png)
 
-3.  Switch to the **Advanced** tab. Check the **Allow enabling anonymous access on individual containers** checkbox, change the **Minimum TLS version** to **Version 1.0** and Select **Review + create** and **Create**.
+3.  Switch to the **Advanced** tab. Select the checkbox next to **Allow enabling anonymous access on individual containers**, change the **Minimum TLS version** to **Version 1.0** and Select **Review + create** and **Create**.
 
-    ![The 'Advanced' tab of the Create storage account blade shows the minimum TLS version as 1.2](images/ha-tls1.png)
+    ![](images/iaas-image9.png)
 
     > **Note:** To promote use of the latest and most secure standards, by default Azure storage accounts require TLS version 1.2. This storage account will be used as a Cloud Witness for our SQL Server cluster. SQL Server requires TLS version 1.0 for the Cloud Witness.
 
