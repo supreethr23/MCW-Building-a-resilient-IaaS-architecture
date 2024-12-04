@@ -54,18 +54,17 @@ The HA resources template has added a second domain controller **ADVM2**, with s
 
 In this task, you will reboot all the servers to ensure they have the latest DNS settings.
 
-
 1. In Search resources, services, and docs (G+/) box at the top of the portal, enter **Virtual machine**, and then select **Virtual machine** from the results.
 
      ![](images/iaas-image3.png "Screenshot of the Azure portal searching and selecting virtual machine")
 
-2. Restart the **ADVM1** and **ADVM2** virtual machines in the **ContosoRG1** resource group. When prompted with **Restart this Virtual Machine**, click **Yes** to ensure they pick up the new DNS server settings.
+1. Restart the **ADVM1** and **ADVM2** virtual machines in the **ContosoRG1** resource group. When prompted with **Restart this Virtual Machine**, click **Yes** to ensure they pick up the new DNS server settings.
    
     ![Restart the VM.](images/iaas-image4.png "Custom deployment")
 
     ![Restart the VM.](images/iaas-image5.png "Custom deployment")
 
-4. Wait a minute or two for the domain controller VMs to fully boot, then restart the **WebVM1**, **WebVM2**, **SQLVM1** and **SQLVM2** virtual machines, so they also pick up the new DNS server settings.
+1. Wait a minute or two for the domain controller VMs to fully boot, then restart the **WebVM1**, **WebVM2**, **SQLVM1** and **SQLVM2** virtual machines, so they also pick up the new DNS server settings.
 
 
 ### Task 3: Configure HA for the SQL Server tier
@@ -225,7 +224,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
    - Server name : **SQLVM2**
    - Authentication : **Windows Authentication**
-   - User name : **SQLVM2\demouser
+   - User name : **SQLVM2\demouser**
    - Ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM2**. 
 
     ![](images/iaas-image38.png)
@@ -234,31 +233,31 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     > **Note**: The username for your lab should show **SQLVM2\demouser**.
  
-30. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM2\demouser` is listed.
+1. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM2\demouser` is listed.
 
     ![](images/iaas-image40.png)
 
-31. Right-click on **Logins** and then select **New Login...**
+1. Right-click on **Logins** and then select **New Login...**
 
     ![](images/iaas-image41.png)
 
-32. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
+1. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
 
     ![](images/iaas-image42.png)
 
-33. Check the box for **sysadmin** and select **OK**.
+1. Check the box for **sysadmin** and select **OK**.
 
     ![](images/iaas-image43.png)
 
-26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM1**. This time use `demouser` as the username instead of `demouser@contoso.com` and  use **Password**: `Demo!pass123` then click on **Connect**.
+1. Return to the Azure portal and open a second Azure Bastion session to **SQLVM1**. This time use `demouser` as the username instead of `demouser@contoso.com` and  use **Password**: `Demo!pass123` then click on **Connect**.
 
    ![](images/iaas-image44.png)
 
-27. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
+1. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
 
      - Server name : **SQLVM1**
      - Authentication : **Windows Authentication**
-     - User name : **SQLVM1\demouser
+     - User name : **SQLVM1\demouser**
      - Ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
      
        ![](images/iaas-image38.png)
@@ -269,23 +268,23 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![Screenshot of the Connect to Server dialog box.](images1/sqlvm1.png "Connect to Server dialog box")
     
-29. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM1\demouser` is listed.
+1. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM1\demouser` is listed.
 
     ![](images/iaas-image46.png)
 
-30. Right-click on **Logins** and then select **New Login...**
+1. Right-click on **Logins** and then select **New Login...**
 
      ![](images/iaas-image47.png)
 
-31. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
+1. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
 
     ![](images/iaas-image48.png)
 
-32. Check the box for **sysadmin** and select **OK**. Close the bastion session.
+1. Check the box for **sysadmin** and select **OK**. Close the bastion session.
 
     ![](images/iaas-image43.png)
 
-33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
+1. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
     ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
 
