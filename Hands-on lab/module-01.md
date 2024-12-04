@@ -19,7 +19,7 @@ A template will be used to save time. You will configure each tier in subsequent
 2.  Complete the Custom deployment blade as follows:
 
     - Resource Group: **ContosoRG1 (1)** (existing)
-    - Location: This should be same as the region of your *Contoso-RG1* resource group (2).
+    - Location: **<inject key="Region" enableCopy="false"/>** (2).
 
     Select **Review + Create (3)** and then **Create** to deploy resources.
 
@@ -84,7 +84,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 1. Complete the **Create storage account** form using the following details:
 
     - **Resource group**: ContosoRG1
-    - **Storage account name:** contososqlwitness<inject key="DeploymentID" />
+    - **Storage account name:** contososqlwitness<inject key="DeploymentID" enableCopy="false"/> 
     - **Location**: Any location in your area that is **NOT** your Primary or Secondary site, for example **West US 2**
     - **Primary Service** : Azure Files.
     - **Performance**: Standard
@@ -197,53 +197,73 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. Select **Start** and launch **SQL Server 2017 Configuration Manager**.
 
-    ![Screenshot of the SQL Server 2017 Configuration Manager option on the Start menu.](images/image166.png "SQL Server 2017 Configuration Manager option")
+    ![](images/iaas-image31.png)
 
-24. Select **SQL Server Services**, then right-click **SQL Server (MSSQLSERVER)** and select **Properties**.
+1. Select **SQL Server Services**, then right-click **SQL Server (MSSQLSERVER)** and select **Properties**.
 
-    ![In SQL Server 2017 Configuration Manager, in the left pane, SQL Server Services is selected. In the right pane, SQL Server (MSSQLSERVER) is selected, and from its right-click menu, Properties is selected.](images/image167.png "SQL Server 2017 Configuration Manager")
+    ![](images/iaas-image32.png)
 
-25. Select the **AlwaysOn High Availability** tab and check the box for **Enable Always OnAvailability Groups**. Select **Apply** and then select **OK** on the message that notifies you that changes won't take effect until after the server is restarted.
+1. Select the **AlwaysOn High Availability (1)** tab and check the box for **Enable Always OnAvailability Groups (2)**. Select **Apply (3)** and then select **OK (4)** on the message that notifies you that changes won't take effect until after the server is restarted.
 
-    ![In the SQL Server Properties dialog box, on the AlwaysOn High Availability tab, the Enable Always OnAvailability Groups checkbox is checked and the Apply button is selected.](images/image168.png "SQL Server Properties dialog box")
+    ![](images/iaas-image33.png)
 
-    ![A pop-up warns that any changes made will not take effect until the service stops and restarts. The OK button is selected.](images/image169.png "Warning pop-up")
+    ![](images/iaas-image34.png)
 
-26. On the **Log On** tab, change the service account to `contoso\demouser` with the password `Demo!pass123`. Select **OK** to accept the changes, and then select **Yes** to confirm the restart of the server.
+1. Click on the **Log On (1)** tab, change the service account to `contoso\demouser` **(2)** with the password `Demo!pass123` **(3)**. Select **OK (4)** to accept the changes, and then select **Yes (5)** to confirm the restart of the server.
 
-    ![In the SQL Server Properties dialog box, on the Log On tab, fields are set to the previously defined settings. The OK button is selected.](images1/E1T3S24.png "SQL Server Properties dialog box")
+    ![](images/iaas-image35.png)
 
-    ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
+    ![](images/iaas-image36.png)
 
-27. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2**. Launch **SQL Server 2017 Configuration Manager** and repeat the steps from 21 to 24 above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
+1. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2** with Username: demouser@contoso.com and Password: Demo!pass123. Launch **SQL Server 2017 Configuration Manager** and repeat the steps from 21 to 24 above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
 
-28. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
+1. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and use **Password**: `Demo!pass123`
 
-29. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM2**. 
+    ![](images/iaas-image37.png)
+
+1. From the start menu Launch SQL Server Management Studio, a new dialog box will open. Verify the following values:
+
+   - Server name : **SQLVM2**
+   - Authentication : **Windows Authentication**
+   - User name : **SQLVM2\demouser
+   - Ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM2**. 
+
+    ![](images/iaas-image38.png)
+
+    ![](images/iaas-image39.png)
 
     > **Note**: The username for your lab should show **SQLVM2\demouser**.
-
-    ![Screenshot of the Connect to Server dialog box.](images1/E1T3S27.png "Connect to Server dialog box")
-    
+ 
 30. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM2\demouser` is listed.
 
-    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/E1T3S28.png)
+    ![](images/iaas-image40.png)
 
 31. Right-click on **Logins** and then select **New Login...**
 
-    ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/E1T3S29.png)
+    ![](images/iaas-image41.png)
 
 32. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
 
-    ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
+    ![](images/iaas-image42.png)
 
 33. Check the box for **sysadmin** and select **OK**.
 
-    ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
+    ![](images/iaas-image43.png)
 
-26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM1**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
+26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM1**. This time use `demouser` as the username instead of `demouser@contoso.com` and  use **Password**: `Demo!pass123` then click on **Connect**.
+
+   ![](images/iaas-image44.png)
 
 27. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
+
+     - Server name : **SQLVM1**
+     - Authentication : **Windows Authentication**
+     - User name : **SQLVM1\demouser
+     - Ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
+     
+       ![](images/iaas-image38.png)
+
+       ![](images/iaas-image45.png)
 
     > **Note**: The username for your lab should show **SQLVM1\demouser**.
 
@@ -251,19 +271,19 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     
 29. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM1\demouser` is listed.
 
-    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/sqlvm2.png)
+    ![](images/iaas-image46.png)
 
 30. Right-click on **Logins** and then select **New Login...**
 
-     ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/sqlvm3.png)
+     ![](images/iaas-image47.png)
 
 31. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
 
-    ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
+    ![](images/iaas-image48.png)
 
 32. Check the box for **sysadmin** and select **OK**. Close the bastion session.
 
-    ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
+    ![](images/iaas-image43.png)
 
 33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
