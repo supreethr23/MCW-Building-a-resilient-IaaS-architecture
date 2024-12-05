@@ -130,19 +130,18 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     
     ![](images/iaas-image15.png)
 
-    >**Note:** : When select **Allow** when See text and images copied to the clipboard prompted.
+    > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in the format `user@domain-fqdn`, and **not** in the format `domain\user`.
 
     ![](images/iaas-image16.png)
     
-    > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in the format `user@domain-fqdn`, and **not** in the format `domain\user`.
-
-    ![Azure portal showing connection to SQLVM1 using Bastion.](images1/E1T3S7.png "Azure Bastion")
-
-    >**Note**: Please minimize the Server Manager window 
+    >**Note:** : When select **Allow** when See text and images copied to the clipboard prompted.
 
 1.  On **SQLVM1**, select **Start** and then choose **Windows PowerShell ISE**.
 
      ![](images/iaas-image17.png)
+
+
+    >**Note**: Please minimize the Server Manager window 
 
 1.  Copy and paste  the following command into PowerShell ISE and execute it. This will create the Windows Failover Cluster and add all the SQL VMs as nodes in the cluster. It will also assign a static IP address of **10.0.2.99** to the new Cluster named **AOGCLUSTER**.
 
