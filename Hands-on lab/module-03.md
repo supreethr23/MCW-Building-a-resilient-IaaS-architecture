@@ -8,9 +8,9 @@ In this exercise, you will use Azure Backup to enable backup for the Contoso app
 
 Azure Backup and Azure Site Recovery are implemented using the same Azure resource type, the Recovery Services Vault. However, for Azure Backup the vault must be deployed to the same region as the resources being protected, in this case the primary site. In contrast, for Azure Site Recovery the vault was deployed to the secondary region.  In this task, you will create the vault in the primary region for use by Azure Backup.
 
-1.  From the Azure portal, select **+Create a resource**, then search for and select **Backup and Site Recovery** then select **Create**.
+1. From the Azure portal, search and select **Recovery Services Vault** then select **Create**.
 
-    ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images1/E3T1S1.png "Backup and Site Recovery Screen Create Button")
+    ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images1/E3T1S1upd.png "Backup and Site Recovery Screen Create Button")
 
 2.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
 
@@ -20,13 +20,13 @@ Azure Backup and Azure Site Recovery are implemented using the same Azure resour
 
     ![Azure portal screenshot showing the Create Recovery Services Vault blade, with the settings filled in as described.](images1/E3T1S2.png "Create Recovery Services Vault")
 
-3.  Once the deployment completes, navigate to the **BackupRSV** resource, and select **Properties**.
+3. Once the deployment completes, navigate to the **BackupRSV** resource, select **Properties** and **Backup Configuration**.
 
-    ![Azure portal screenshot showing the properties blade of the Recovery Services Vault.](images1/E3T1S3.png "Recovery Services Vault properties")
+    ![Azure portal screenshot showing the properties blade of the Recovery Services Vault.](images1/E3T1S3upd.png "Recovery Services Vault properties")
 
-4.  Under **Backup Configuration**, select **Update**. In the Backup Configuration blade, check that the storage replication type is set to **Geo-redundant** and set the Cross Region Restore option to **Enable** then **Save** your changes and close the Backup Configuration panel.
+4.  Under **Backup Configuration**, select **Update**. In the Backup Configuration blade, check that the storage replication type is set to **Geo-redundant** and set the Cross Region Restore option to **Enable** then **Apply** your changes and close the Backup Configuration panel.
 
-    ![Azure portal screenshot showing the backup properties blade of the Recovery Services Vault.](images1/E3T1S4.png "Recovery Services Vault backup properties")
+    ![Azure portal screenshot showing the backup properties blade of the Recovery Services Vault.](images1/E3T1S4upd1.png "Recovery Services Vault backup properties")
 
     > **Note:** This enables backups from the primary site to be restored in the DR site, if required.
 
