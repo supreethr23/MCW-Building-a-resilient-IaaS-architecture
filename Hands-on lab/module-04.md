@@ -142,56 +142,63 @@ In this task, you will validate failover of the Contoso application from Primary
     
 1. Once the jobs are completed, move to the **Replicated items** blade and wait for the **Status** to show as **Protected**. This status shows that the data synchronization is complete and the Web VMs are ready to failback.
     
-    ![In the Replicated items, WebVM1 and WebVM2 have status 'Protected'.](images1/E4T2S22.1.png "Replicated items")
-
+    ![](images/iaas-image55.png)
 
 ### Task 3: Validate Disaster Recovery - Failback IaaS region to region
 
 In this task, you will failback the Contoso application from the DR site in Secondary Site back to the Primary site.
 
-1.  Still in the **BCDRRSV** Recovery Services vault, select **Recovery Plans** and re-open the **BCDRIaaSPlan**. Notice that the VMs are still at the Target since they are failed over to the secondary site.
+1.  Back on **BCDRRSV** Recovery Services vault, select **Recovery Plans** and re-open the **BCDRIaaSPlan**. Notice that the VMs are still at the Target since they are failed over to the secondary site.
 
-2.  Select **Failover**. At the warning about No Test Failover, select **I understand the risk, Skip test failover**. Notice that **From** is the **Secondary** site and **To** is the **Primary** site. Select **OK**.
+     ![](images/iaas-image56.png)
 
-    ![Screenshot of the Failover blade, from East US 2 to Central US.](images1/E4T2S9upd.png "Failover (failback)")
+1.  Select **Failover**. At the warning about No Test Failover, select **I understand the risk, Skip test failover**. Notice that **From** is the **Secondary** site and **To** is the **Primary** site. Select **OK**.
 
-3.  After the Failover is initiated close the blade and select **Site Recovery Jobs**, then select the **Failover** job to monitor the progress. Once the job has finished, it should show as successful for all tasks.
+    ![](images/iaas-image57.png) 
 
-    ![](images1/E4T3S3.png "Job status")
+    ![](images/iaas-image58.png)
 
-4.  Confirm that the Contoso application is once again accessible via the **ContosoWebLBPrimaryIP** public IP address, and is **not** available at the **ContosoWebLBSecondaryIP** address. This test shows it has been returned to the primary site. Open the **Current Policy Offerings** and edit a policy, to confirm database access. 
+1.  After the Failover is initiated close the blade and select **Site Recovery Jobs** under **Monitoring** section, then select the **Failover** job to monitor the progress. Once the job has finished, it should show as successful for all tasks.
+
+    ![](images/iaas-image59.png)
+
+    ![](images/iaas-image60.png)
+
+1.  Confirm that the Contoso application is once again accessible via the **ContosoWebLBPrimaryIP** public IP address, and is **not** available at the **ContosoWebLBSecondaryIP** address. This test shows it has been returned to the primary site. Open the **Current Policy Offerings** and edit a policy, to confirm database access. 
 
     > **Note:** If you get a "Our services aren't available right now" error (or a 404-type error) accessing the web application, verify that you are utilizing the **ContosoWebLBPrimaryIP**.  If it does not come up within ~10 minutes, verify that the backend system is responding.
 
-5.  Confirm also that the Contoso application is also available via the Front Door URL.
+1.  Confirm also that the Contoso application is also available via the Front Door URL.
 
-6.  Now, that you have successfully failed back, you need to prep ASR for the Failover again. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Select Recovery Plans and open the **BCDRIaaSPlan**.
+1.  Now, that you have successfully failed back, you need to prep ASR for the Failover again. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Select Recovery Plans and open the **BCDRIaaSPlan**.
 
-7.  Notice that now 2 VMs are shown in the **Source**. Select **Re-protect**, review the configuration and select **OK**.
+1.  Notice that now 2 VMs are shown in the **Source**. Select **Re-protect**, review the configuration and select **OK**.
 
-    ![The recovery plan shows 2 VMs in the Source and 0 in the target. The 'Re-protect' button is highlighted.](images1/E4T3S7.png "BCDRIaaSPlan")
+    ![](images/iaas-image61.png)
 
-8.  As previously, the portal will submit a deployment. This process will take some time. You can proceed with the lab without waiting.
+    ![](images/iaas-image62.png)
 
-9.  Next, you need to reset the SQL Always On Availability Group environment to ensure a proper failover. Use Azure Bastion to connect to **SQLVM1** with username `demouser@contoso.com` and password `Demo!pass123`.
+1.  As previously, the portal will submit a deployment. This process will take some time. You can proceed with the lab without waiting.
 
-10. Once connected to **SQLVM1** open SQL Server Management Studio and Connect to **SQLVM1**. Expand the **Always On Availability Group**s and then right-click on **BCDRAOG** and then select **Show Dashboard**.
+1.  Next, you need to reset the SQL Always On Availability Group environment to ensure a proper failover. Use Azure Bastion to connect to **SQLVM1** with username `demouser@contoso.com` and password `Demo!pass123`.
 
-11. Notice that all the Replica partners are now Synchronous Commit with Automatic Failover Mode. You need to manually reset **SQLVM3** to be **Asynchronous** with **Manual Failover**.
+1. Once connected to **SQLVM1** open SQL Server Management Studio and Connect to **SQLVM1**. Expand the **Always On Availability Group**s and then right-click on **BCDRAOG** and then select **Show Dashboard**.
+
+1. Notice that all the Replica partners are now Synchronous Commit with Automatic Failover Mode. You need to manually reset **SQLVM3** to be **Asynchronous** with **Manual Failover**.
 
     ![The Availability group dashboard displays with SQLVM3 and its properties called out.](images/image400.png "Availability group dashboard")
 
-12. Right-click the **BCDRAOG** and select **Properties**.
+1. Right-click the **BCDRAOG** and select **Properties**.
 
-    ![In Object Explorer, the right-click menu for BCDRAOG displays with Properties selected.](images/image401.png "Object Explorer")
+    ![](images/iaas-image64.png)
 
-13. Change **SQLVM3** to **Asynchronous** and **Manual Failover** and select **OK**.
+1. Change **SQLVM3** to **Asynchronous** and **Manual Failover** and select **OK**.
 
-    ![In the Availability Group Properties window, under Availability Replicas, the SQLVM3 server role is secondary, availability mode is asynchronous commit, and failover mode is manual.](images/image402.png "Availability Group Properties window")
+    ![](images/iaas-image65.png)
 
-14. Show the Availability Group Dashboard again. Notice that they change has been made and that the AOG is now reset.
+1. Show the Availability Group Dashboard again. Notice that they change has been made and that the AOG is now reset.
 
-    ![The Availability group dashboard displays, with SQLVM3 and its properties called out.](images/image403.png "Availability group dashboard")
+    ![](images/iaas-image66.png)
 
     > **Note:** This task could have been done using the Azure Automation script during Failback, but most DBAs would prefer a clean failback and then do this manually once they are comfortable with the failback.
 
