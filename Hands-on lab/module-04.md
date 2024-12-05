@@ -329,3 +329,11 @@ In this task, you will validate the ability to restore the Contoso application d
     ![](images/iaas-image86.png)
 
     > **Note:** You can now either copy data from the restored database to the production database, or add this database to the Always On Availability Group and switch the Web tier to use the restored database.
+   
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+<validation step="a1948261-3fef-4f42-8f0c-051afcdfb6d5" />
+
+### You have successfully completed the lab
