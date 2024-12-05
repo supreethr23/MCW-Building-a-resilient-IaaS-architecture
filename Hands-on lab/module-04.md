@@ -54,7 +54,7 @@ In this task, you will validate failover of the Contoso application from Primary
 
     ![In the BCDRIaaSPlan blade, the Failover button is highlighted.](images1/E4T2S4.png "BCDRIaaSPlan blade")
 
-   >**Note:** If u encounter an erorr then follow step 5 to step 8.
+   >**Note:** If u encounter an error then follow step 5 to step 8.
 
 5. Navigate back on Failover, select **I understand the risk, Skip test failover**.
 
