@@ -318,7 +318,7 @@ In this task, you will validate the ability to restore the Contoso application d
    
 1.  Navigate to the **Backup Jobs** view. The ContosoInsurance job is 'In progress'. Use the **Refresh** button to monitor the progress and wait for the job to complete.
 
-    ![](images/iaas-image85.png)
+     ![](images/iaas-image85.png)
 
 1.  Navigate to **SQLVM1** and connect to the VM using Azure Bastion, using username `demouser@contoso.com` and password `Demo!pass123`.
 
