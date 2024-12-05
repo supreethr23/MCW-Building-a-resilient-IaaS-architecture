@@ -54,7 +54,7 @@ In this task, you will validate failover of the Contoso application from Primary
 
     ![In the BCDRIaaSPlan blade, the Failover button is highlighted.](images1/E4T2S4.png "BCDRIaaSPlan blade")
 
-   >**Note:** If u encounter an erorr then follow step 5 to step 7.
+   >**Note:** If u encounter an erorr then follow step 5 to step 8.
 
 5. Navigate back on Failover, select **I understand the risk, Skip test failover**.
 
@@ -72,7 +72,7 @@ In this task, you will validate failover of the Contoso application from Primary
 
       ![](images/updated13.png "Failover blade")
       
-9. Performing the same step from step 5 to 7 as for **WebVM2**.
+9. Performing the same step from step 5 to 8 as for **WebVM2**.
 
 5. Navigate back on Failover, select **I understand the risk, Skip test failover**.
 
