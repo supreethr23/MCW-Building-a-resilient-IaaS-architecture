@@ -56,7 +56,7 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 4.  From the Azure portal, search for **Recovery Services Vault** and then search for and select it.
 
-    ![](images/rsvimg1.png)
+    ![](images/E3T1S1upd.png)
 
 5. In the **Recovery Services Vault** page click on **Create**.
 
