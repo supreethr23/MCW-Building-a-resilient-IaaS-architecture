@@ -116,27 +116,29 @@ In this task, you will validate failover of the Contoso application from Primary
 
     > **Optional task**: You can log in to **SQLVM3** and open SQL Management Studio to review the Failed over **BCDRAOG**. You will see that **SQLVM3**, which is running in the **Secondary** site, is now the Primary Replica.
 
-1. Now that you have successfully tested failover, you need to configure ASR for failback. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Select **Recovery Plans** on the ASR dashboard. The **BCDRIaaSPlan** will show as **Failover completed.** 
+1. Now that you have successfully tested failover, you need to configure ASR for failback. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Expand **Manage (1)** and select **Recovery Plans (Site Recovery) (2)** on the ASR dashboard. The **BCDRIaaSPlan** will show as **Failover completed (3).** 
 
-    ![Recovery Plans list, with the 'Failover Completed' status of the BCDRIaaSPlan highlighted.](images1/E4T2S18.png "Recovery Plans")
+    ![](images/iaas-image49.png)
 
 1. Select the **BCDRIaaSPlan**. Notice that now two (2) VMs are shown in the **Target** tile.
 
-    ![In the Recovery blade, the Target tile has the number 2.](images1/E4T2S19.png "Recovery plan blade")
+    ![](images/iaas-image50.png)
+
+   ![](images/iaas-image51.png)
 
 1. Select **Re-protect**.
 
-    ![Recovery Plan blade with Re-protect button highlighted.](images1/E4T2S20.png "Re-protect button")
+    ![](images/iaas-image52.png)
 
 1. On the **Re-protect** screen, review the configuration and then select **OK**.
 
-    ![Screenshot of the Re-protect blade.](images1/E4T2S21.png "Re-protect blade")
+    ![](images/iaas-image53.png)
 
 1. The portal will submit a deployment. This process will take up to 30 minutes to commit the failover and then synchronize WebVM1 and WebVM2 with the Recovery Services Vault. Once this process is complete, you will be able to failback to the primary site.
 
-    > **Note:** You need to wait for the re-protect process to complete before continuing with the failback. You can check the status of the Re-protect using the Site Recovery Jobs area of the BCDRSRV.
+    > **Note:** You need to wait for the re-protect process to complete before continuing with the failback. You can check the status of the Re-protect. In left navigation pane of BCDRSRV expand **Monitoring** and select **Site Recovery jobs**.
     
-    ![In the Recovery blade, Re-protect has a status of In progress for two jobs, one for WebVM1 and one for WebVM2.](images1/E4T2S22.png "Site Recovery jobs")
+    ![](images/iaas-image54.png)
     
 1. Once the jobs are completed, move to the **Replicated items** blade and wait for the **Status** to show as **Protected**. This status shows that the data synchronization is complete and the Web VMs are ready to failback.
     
