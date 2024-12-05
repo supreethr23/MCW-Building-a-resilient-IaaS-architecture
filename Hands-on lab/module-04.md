@@ -318,7 +318,7 @@ In this task, you will validate the ability to restore the Contoso application d
    
 1.  Navigate to the **Backup Jobs** view. The ContosoInsurance job is 'In progress'. Use the **Refresh** button to monitor the progress and wait for the job to complete.
 
-    ![Screenshot showing the list of backup jobs with the database restore highlighted.](images1/E4T5S8.png "Database restore backup job")
+    ![](images/iaas-image85.png)
 
 1.  Navigate to **SQLVM1** and connect to the VM using Azure Bastion, using username `demouser@contoso.com` and password `Demo!pass123`.
 
@@ -326,6 +326,6 @@ In this task, you will validate the ability to restore the Contoso application d
 
 1. Note that the restored database is present on the server alongside the production database.
 
-    ![Screenshot showing the restored database in SQL Server Management Studio.](images1/E4T5S11.png "Restored database")
+    ![](images/iaas-image86.png)
 
     > **Note:** You can now either copy data from the restored database to the production database, or add this database to the Always On Availability Group and switch the Web tier to use the restored database.
