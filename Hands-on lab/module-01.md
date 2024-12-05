@@ -19,11 +19,11 @@ A template will be used to save time. You will configure each tier in subsequent
 2.  Complete the Custom deployment blade as follows:
 
     - Resource Group: **ContosoRG1 (1)** (existing)
-    - Location: This should be same as the region of your *Contoso-RG1* resource group (2).
+    - Location: **<inject key="Region" enableCopy="false"/>** (2).
 
     Select **Review + Create (3)** and then **Create** to deploy resources.
 
-    ![The custom deployment screen with ContosoRG1 as the resource group.](images/deploy02.png "Custom deployment")
+    ![The custom deployment screen with ContosoRG1 as the resource group.](images/iaas-image1.png "Custom deployment")
 
 3.  While you wait for the HA resources to deploy, take some time review the template contents. You can review the template by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and selecting any of the deployments, followed by **template**.
 
@@ -39,8 +39,14 @@ A template will be used to save time. You will configure each tier in subsequent
 
 4.  You can check the HA resource deployment status by navigating to the **ContosoRG1** resource group, selecting **Deployments** in the resource group left-nav, and checking the status of the deployments. Make sure the deployment status is **Succeeded** for all templates before proceeding to the next task.
 
-    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/E1T1S4.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
+    ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/iaas-image2.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
 
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+<validation step="ccb0033a-ade9-4c32-a114-01ddcf952476" />
 
 ### Task 2: Configure HA for the Domain Controller tier
 
@@ -54,11 +60,17 @@ The HA resources template has added a second domain controller **ADVM2**, with s
 
 In this task, you will reboot all the servers to ensure they have the latest DNS settings.
 
-1. Restart the **ADVM1** and **ADVM2** virtual machines in the **ContosoRG1** resource group so they pick up the new DNS server settings.
-   
-    ![Restart the VM.](images/restart1.png "Custom deployment")
+1. In Search resources, services, and docs (G+/) box at the top of the portal, enter **Virtual machine**, and then select **Virtual machine** from the results.
 
-2. Wait a minute or two for the domain controller VMs to fully boot, then restart the **WebVM1**, **WebVM2**, **SQLVM1** and **SQLVM2** virtual machines, so they also pick up the new DNS server settings.
+     ![](images/iaas-image3.png "Screenshot of the Azure portal searching and selecting virtual machine")
+
+1. Restart the **ADVM1** and **ADVM2** virtual machines in the **ContosoRG1** resource group. When prompted with **Restart this Virtual Machine**, click **Yes** to ensure they pick up the new DNS server settings.
+   
+    ![Restart the VM.](images/iaas-image4.png "Custom deployment")
+
+    ![Restart the VM.](images/iaas-image5.png "Custom deployment")
+
+1. Wait a minute or two for the domain controller VMs to fully boot, then restart the **WebVM1**, **WebVM2**, **SQLVM1** and **SQLVM2** virtual machines, so they also pick up the new DNS server settings.
 
 
 ### Task 3: Configure HA for the SQL Server tier
@@ -66,182 +78,221 @@ In this task, you will reboot all the servers to ensure they have the latest DNS
 In this task, you will build a Windows Failover Cluster and configure SQL Always On Availability Groups to create a high-availability database tier.
 
 
-1. In the Azure portal's left navigation, select **+ Create a resource**, then search for and select **Storage account**, followed by **Create**.
+1. In Search resources, services, and docs (G+/) box at the top of the portal, enter **Storage account**, and then select **Storage account** from the results.
 
-   ![Screenshot of the Azure portal showing the create storage account navigation.](images/storage-create.png "Create storage account blade")
-   
-2. Complete the **Create storage account** form using the following details:
+   ![](images/iaas-image6.png)
 
-    - **Resource group**: Use existing / ContosoRG1
-    - **Storage account name:** contososqlwitness<inject key="DeploymentID" />
+1. Click on **Create**.   
+
+   ![](images/iaas-image7.png)
+
+1. Complete the **Create storage account** form using the following details:
+
+    - **Resource group**: ContosoRG1
+    - **Storage account name:** contososqlwitness<inject key="DeploymentID" enableCopy="false"/> 
     - **Location**: Any location in your area that is **NOT** your Primary or Secondary site, for example **West US 2**
     - **Primary Service** : Azure Files.
     - **Performance**: Standard
     - **Replication**: Zone-redundant storage (ZRS).
 
-    ![Fields in the Create storage account blade are set to the previously defined settings.](images/ha-storage1.png "Create storage account blade")
+    ![](images/iaas-image8.png)
 
-3.  Switch to the **Advanced** tab. Check the **Allow enabling anonymous access on individual containers** checkbox, change the **Minimum TLS version** to **Version 1.0** and Select **Review + create** and **Create**.
+1.  Switch to the **Advanced** tab. Select the checkbox next to **Allow enabling anonymous access on individual containers**, change the **Minimum TLS version** to **Version 1.0** and Select **Review + create** and **Create**.
 
-    ![The 'Advanced' tab of the Create storage account blade shows the minimum TLS version as 1.2](images/ha-tls1.png)
+    ![](images/iaas-image9.png)
 
     > **Note:** To promote use of the latest and most secure standards, by default Azure storage accounts require TLS version 1.2. This storage account will be used as a Cloud Witness for our SQL Server cluster. SQL Server requires TLS version 1.0 for the Cloud Witness.
 
-4.  Once the storage account is created, navigate to the storage account blade. Select **Access keys** under **Security + networking**. Select **Show keys** then copy the **storage account name** and the **first access key** and paste them into your text editor of choice - you will need these values later.
+1.  Once the storage account is created, navigate to the storage account blade. Expand **Security + networking (1)** and select **Access keys (2)**, then copy the **storage account name (3)** and click **Show keys** then copy the **key (4)** and paste values into your text editor of choice - you will need these values later.
 
-    ![In the Storage account Access keys section, the Storage account name and key1 are called out.](images/ha-storagekey1.png "Storage account section")
+    ![](images/iaas-image10.png)
 
-5.  Return to the Azure portal and navigate to the **ContosoSQLLBPrimary** load balancer blade. Select **Backend pools** and open **BackEndPool1**.
+1. Naviagte back to ContosoRG1 Resource group, and select the **ContosoSQLLBPrimary** load balancer.
 
-    ![Azure portal showing path to BackEndPool1 on ContosoSQLLBPrimary.](images/EX1-T3-S5.png "Backend pool")
+     ![](images/iaas-image11.png)
 
-6.  In the **BackendPool1** blade, select **+ Add**(1) and choose the two **SQL VMs**(2). Select **Add**(3) to close. Select **Save**(4) to add these SQL VMs to **BackEndPool1**.
+1. On the **ContosoSQLLBPrimary** load balancer blade. Expand **Settings (1)** then select **Backend pools (2)** and open **BackEndPool1 (3)**.
 
-    ![Azure portal showing SQLVM1 and SQLVM2 being added to the backend pool](images/EX1-T3-S6.png "Backend pool VMs")
+    ![](images/iaas-image12.png)
+
+1.  In the **BackendPool1** blade, select **+ Add**(1) and choose the two **SQL VMs**(2). Select **Add**(3) to close. Select **Save**(4) to add these SQL VMs to **BackEndPool1**.
+
+    ![](images/iaas-image13.png)
+
+    ![](images/iaas-image14.png)
 
     > **Note:** The load-balancing rule in the load balancer has been created with **Floating IP (direct server return)** enabled. This is important when using the Azure load balancer for SQL Server AlwaysOn Availability Groups.
 
-7.  From the Azure portal, navigate to the **SQLVM1** virtual machine, select **Connect**, then choose **Bastion**. Connect to the machine using the following credentials:
+1.  From the Azure portal, navigate to the **SQLVM1** virtual machine. Expand **Connect (1)**, then choose **Bastion (2)**. Specify the following credentials then click on **Connect (5)**.
 
-    - **Username**: `demouser@contoso.com`
-    - **Password**: `Demo!pass123`
+    - **Username**: `demouser@contoso.com` (3)
+    - **Password**: `Demo!pass123` (4)
     
-    ![Azure portal showing connection to SQLVM1 using Bastion.](images/EX1-T3-S7.png)
+    ![](images/iaas-image15.png)
+
+    >**Note:** : When select **Allow** when See text and images copied to the clipboard prompted.
+
+    ![](images/iaas-image16.png)
     
     > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in the format `user@domain-fqdn`, and **not** in the format `domain\user`.
 
     ![Azure portal showing connection to SQLVM1 using Bastion.](images1/E1T3S7.png "Azure Bastion")
-   
 
-8.  On **SQLVM1**, select **Start** and then choose **Windows PowerShell ISE**.
+    >**Note**: Please minimize the Server Manager window 
 
-    ![Screenshot of the Windows PowerShell ISE icon.](images/image71.png "Windows PowerShell ISE icon")
+1.  On **SQLVM1**, select **Start** and then choose **Windows PowerShell ISE**.
 
-9.  Copy and paste  the following command into PowerShell ISE and execute it. This will create the Windows Failover Cluster and add all the SQL VMs as nodes in the cluster. It will also assign a static IP address of **10.0.2.99** to the new Cluster named **AOGCLUSTER**.
+     ![](images/iaas-image17.png)
 
-    ```PowerShell
-    New-Cluster -Name AOGCLUSTER -Node SQLVM1,SQLVM2 -StaticAddress 10.0.2.99
-    ```
+1.  Copy and paste  the following command into PowerShell ISE and execute it. This will create the Windows Failover Cluster and add all the SQL VMs as nodes in the cluster. It will also assign a static IP address of **10.0.2.99** to the new Cluster named **AOGCLUSTER**.
 
-    ![In the PowerShell ISE window, a call out points to AOGCLUSTER.](images1/E1T3S9.png "PowerShell ISE window")
+     ```PowerShell
+     New-Cluster -Name AOGCLUSTER -Node SQLVM1,SQLVM2 -StaticAddress 10.0.2.99
+     ```
 
-    >**Note:** It is possible to use a wizard for this task, but the resulting cluster will require additional configuration to set the static IP address in Azure.
+     ![](images/iaas-image18.png)
 
-10. After the cluster has been created, select **Start** and then **Windows Administrative Tools**. Locate and open the **Failover Cluster Manager**.
+     >**Note:** It is possible to use a wizard for this task, but the resulting cluster will require additional configuration to set the static IP address in Azure.
 
-    ![Screenshot of the Failover Cluster Manager shortcut icon.](images/image154.png "Failover Cluster Manager shortcut icon")
+1. On **SQLVM1**, after the cluster has been created, select **Start** and search and open the **Failover Cluster Manager**.
 
-11. When the cluster opens, select **Nodes** and the SQL Server VMs will show as nodes of the cluster and show their status as **Up**.
+    ![](images/iaas-image19.png)
 
-    ![In Failover Cluster Manager, Nodes is selected in the tree view, and two nodes display in the details pane.](images1/E1T3S11.png "Failover Cluster Manager")
+1. When the cluster opens, select **AOGCLUSTER.contoso.com (1)** > **Nodes (2)** and the SQL Server VMs will show as nodes of the cluster and show their status as **Up (3)**.
 
-12. If you select **Roles**, you will notice that currently, there aren't any roles assigned to the cluster.
+    ![](images/iaas-image20.png)
 
-    ![In Failover Cluster Manager, Roles is selected in the tree view, and zero roles display in the details pane.](images1/E1T3S12.png "Failover Cluster Manager")
+1. If you select **Roles**, you will notice that currently, there aren't any roles assigned to the cluster.
 
-13. Select Networks, and you will see **Cluster Network 1** with status **Up**. If you navigate to the network, you will see the IP address space, and on the lower tab you can select **Network Connections** and review the nodes.
+    ![](images/iaas-image21.png)
 
-    ![In Failover Cluster Manager, Networks is selected in the tree view, and the network displays in the details pane.](images1/E1T3S13.png "Failover Cluster Manager")
+1. Select **Networks (1)**, and you will see **Cluster Network 1** with status **Up**. If you navigate to the network **(2)**, you will see the IP address space, and on the lower tab you can select **Network Connections (3)** and review the nodes **(4)**.
 
-14. Right-click **AOGCLUSTER,** then select **More Actions**, **Configure Cluster Quorum Settings**.
+    ![](images/iaas-image22.png)
 
-    ![In Failover Cluster Manager, a call out says to right-click the cluster name in the tree view, then select More Actions, and then select Configure Cluster Quorum Settings.](images/image159.png "Failover Cluster Manager")
+1. Right-click **AOGCLUSTER,** then select **More Actions**, **Configure Cluster Quorum Settings**.
 
-15. On the **Configure Cluster Quorum Wizard** select **Next**, then choose **Select the quorum witness**. Then, select **Next** again.
+    ![](images/iaas-image23.png)
 
-    ![On the Select Quorum Configuration Option screen of the Configure Cluster Quorum Wizard, the radio button for Select the quorum witness is selected.](images/image160.png "Configure Cluster Quorum Wizard")
+1. On the **Before You Begin** wizard click **Next**.
 
-16. Select **Configure a cloud witness** and **Next**.
+    ![](images/iaas-image24.png)
+     
+1. On the **Select Quorum Configuration Option** wizard, choose **Select the quorum witness (1)**. Then, select **Next (2)** again.
 
-    ![On the Select Quorum Witness screen, the radio button for Configure a cloud witness is selected.](images/image161.png "Select Quorum Witness screen")
+    ![](images/iaas-image25.png)
 
-17. Copy the **storage account name** and **storage account key** values which you noted earlier and paste them into their respective fields on the form. Leave the Azure Service endpoint as configured. Then, select **Next**.
+1. On the **Select Quorum Witness** wizard, select **Configure a cloud witness** and **Next**.
 
-    ![Fields on the Configure cloud witness screen are set to the previously defined settings.](images1/E1T3S17.png "Configure cloud witness screen")
+    ![](images/iaas-image26.png)
 
-18. Select **Next** on the Confirmation screen.
+1. On the **Configure cloud witness** wizard copy the **storage account name** and **storage account key** values which you noted earlier and paste them into their respective fields on the form. Leave the Azure Service endpoint as configured. Then, select **Next**.
 
-    ![On the Confirmation screen, the Next button is selected.](images/image163.png "Confirmation screen")
+    ![](images/iaas-image27.png)
 
-19. Select **Finish**.
+1. Select **Next** on the Confirmation screen.
 
-    ![Finish is selected on the Summary screen.](images/image164.png "Summary screen")
+    ![](images/iaas-image28.png)
 
-20. Select the name of the Cluster again and the **Cloud Witness** should now appear in the **Cluster Resources**. It's important to always use a third data center, in your case here a third Azure Region to be your Cloud Witness.
+1. Select **Finish**.
 
-    ![Under Cluster Core Resources, the Cloud Witness status is Online.](images/image165.png "Cluster Core Resources section")
+    ![](images/iaas-image29.png)
 
-21. Select **Start** and launch **SQL Server 2017 Configuration Manager**.
+1. Select the name of the Cluster again and the **Cloud Witness** should now appear in the **Cluster Resources** (you may need to scroll down). It's important to always use a third data center, in your case here a third Azure Region to be your Cloud Witness.
 
-    ![Screenshot of the SQL Server 2017 Configuration Manager option on the Start menu.](images/image166.png "SQL Server 2017 Configuration Manager option")
+     ![](images/iaas-image30.png)
 
-22. Select **SQL Server Services**, then right-click **SQL Server (MSSQLSERVER)** and select **Properties**.
+1. Select **Start** and launch **SQL Server 2017 Configuration Manager**.
 
-    ![In SQL Server 2017 Configuration Manager, in the left pane, SQL Server Services is selected. In the right pane, SQL Server (MSSQLSERVER) is selected, and from its right-click menu, Properties is selected.](images/image167.png "SQL Server 2017 Configuration Manager")
+    ![](images/iaas-image31.png)
 
-23. Select the **AlwaysOn High Availability** tab and check the box for **Enable Always OnAvailability Groups**. Select **Apply** and then select **OK** on the message that notifies you that changes won't take effect until after the server is restarted.
+1. Select **SQL Server Services**, then right-click **SQL Server (MSSQLSERVER)** and select **Properties**.
 
-    ![In the SQL Server Properties dialog box, on the AlwaysOn High Availability tab, the Enable Always OnAvailability Groups checkbox is checked and the Apply button is selected.](images/image168.png "SQL Server Properties dialog box")
+    ![](images/iaas-image32.png)
 
-    ![A pop-up warns that any changes made will not take effect until the service stops and restarts. The OK button is selected.](images/image169.png "Warning pop-up")
+1. Select the **AlwaysOn High Availability (1)** tab and check the box for **Enable Always OnAvailability Groups (2)**. Select **Apply (3)** and then select **OK (4)** on the message that notifies you that changes won't take effect until after the server is restarted.
 
-24. On the **Log On** tab, change the service account to `contoso\demouser` with the password `Demo!pass123`. Select **OK** to accept the changes, and then select **Yes** to confirm the restart of the server.
+    ![](images/iaas-image33.png)
 
-    ![In the SQL Server Properties dialog box, on the Log On tab, fields are set to the previously defined settings. The OK button is selected.](images1/E1T3S24.png "SQL Server Properties dialog box")
+    ![](images/iaas-image34.png)
 
-    ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
+1. Click on the **Log On (1)** tab, change the service account to `contoso\demouser` **(2)** with the password `Demo!pass123` **(3)**. Select **OK (4)** to accept the changes, and then select **Yes (5)** to confirm the restart of the server.
 
-25. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2**. Launch **SQL Server 2017 Configuration Manager** and repeat the steps from 21 to 24 above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
+    ![](images/iaas-image35.png)
 
-26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
+    ![](images/iaas-image36.png)
 
-27. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM2**. 
+1. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2** with Username: demouser@contoso.com and Password: Demo!pass123. Launch **SQL Server 2017 Configuration Manager** and repeat the steps from 21 to 24 above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
+
+1. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and use **Password**: `Demo!pass123`
+
+    ![](images/iaas-image37.png)
+
+1. From the start menu Launch SQL Server Management Studio, a new dialog box will open. Verify the following values:
+
+   - Server name : **SQLVM2**
+   - Authentication : **Windows Authentication**
+   - User name : **SQLVM2\demouser**
+   - Ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM2**. 
+
+    ![](images/iaas-image38.png)
+
+    ![](images/iaas-image39.png)
 
     > **Note**: The username for your lab should show **SQLVM2\demouser**.
+ 
+1. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM2\demouser` is listed.
 
-    ![Screenshot of the Connect to Server dialog box.](images1/E1T3S27.png "Connect to Server dialog box")
-    
-29. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM2\demouser` is listed.
+    ![](images/iaas-image40.png)
 
-    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/E1T3S28.png)
+1. Right-click on **Logins** and then select **New Login...**
 
-30. Right-click on **Logins** and then select **New Login...**
+    ![](images/iaas-image41.png)
 
-    ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/E1T3S29.png)
+1. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
 
-31. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
+    ![](images/iaas-image42.png)
 
-    ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
+1. Check the box for **sysadmin** and select **OK**.
 
-32. Check the box for **sysadmin** and select **OK**.
+    ![](images/iaas-image43.png)
 
-    ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
+1. Return to the Azure portal and open a second Azure Bastion session to **SQLVM1**. This time use `demouser` as the username instead of `demouser@contoso.com` and  use **Password**: `Demo!pass123` then click on **Connect**.
 
-26. Return to the Azure portal and open a second Azure Bastion session to **SQLVM1**. This time use `demouser` as the username instead of `demouser@contoso.com` and       use **Password**: `Demo!pass123`
+   ![](images/iaas-image44.png)
 
-27. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
+1. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
+
+     - Server name : **SQLVM1**
+     - Authentication : **Windows Authentication**
+     - User name : **SQLVM1\demouser**
+     - Ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
+     
+       ![](images/iaas-image38.png)
+
+       ![](images/iaas-image45.png)
 
     > **Note**: The username for your lab should show **SQLVM1\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images1/sqlvm1.png "Connect to Server dialog box")
     
-29. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM1\demouser` is listed.
+1. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM1\demouser` is listed.
 
-    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/sqlvm2.png)
+    ![](images/iaas-image46.png)
 
-30. Right-click on **Logins** and then select **New Login...**
+1. Right-click on **Logins** and then select **New Login...**
 
-     ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/sqlvm3.png)
+     ![](images/iaas-image47.png)
 
-31. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
+1. In **Login name:**, type **contoso\demouser**, then select **Server Roles**.
 
-    ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
+    ![](images/iaas-image48.png)
 
-32. Check the box for **sysadmin** and select **OK**. Close the bastion session.
+1. Check the box for **sysadmin** and select **OK**. Close the bastion session.
 
-    ![The Server Roles tab is shown in the Login - New dialog box. In this dialog box, public remains checked, and a check is added to the sysadmin option.](images1/E1T3S31.png)
+    ![](images/iaas-image43.png)
 
-33. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
+1. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
     ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
 
