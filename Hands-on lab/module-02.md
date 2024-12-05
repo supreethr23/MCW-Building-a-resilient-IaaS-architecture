@@ -17,22 +17,22 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
 1. In a new browser tab, navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)**. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted to do so.
 
-    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshell.png "Azure Cloud Shell")
+    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshellupd.png "Azure Cloud Shell")
 
 2. In the getting started page, select **Mount storage account** (1) and choose the **Subscription** (2) and select **Apply**(3).
 
-   ![Screenshot of the Storage account storage.](images1/cloudshellstrg2.png "Azure Cloud Shell")
+   ![Screenshot of the Storage account storage.](images1/cloudshellstrg1.png "Azure Cloud Shell")
 
 3. In the Mount storage account page, select **We will create a storage account for you** (1) and select **Next**(2).
 
-   ![Screenshot of the Storage account storage.](images1/cloudshellstrg1.png "Azure Cloud Shell")
+   ![Screenshot of the Storage account storage.](images1/cloudshellstrg2.png "Azure Cloud Shell")
 
 4. Update the **-Location** parameter in each command below to specify a secondary location different from **ContosoRG1**. Then, execute the commands to create the disaster recovery (DR) resource group and deploy the DR resources. 
     You can proceed to the following tasks while the template deployment is in progress.
 
 ```powershell
 New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
-New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
+New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
 ```
 
    > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
@@ -40,7 +40,7 @@ New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.g
 ```powershell
     # Only run this command if the previous deployment failed with a error that size was not available
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR-SKU' `
-        -TemplateUri 'https://raw.githubusercontent.com/microsoft/MCW-Building-a-resilient-IaaS-architecture/master/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
+        -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
     -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
  ```
 
@@ -62,9 +62,9 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
 6.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
 
-    - **Resource Group**: ContosoRG2
-    - **Name**: `BCDRRSV`
-    - **Location**: your secondary region that you choose in step 2
+    - **Resource Group**: **ContosoRG2**
+    - **Name**: **BCDRRSV<inject key="DeploymentID" />**
+    - **Location**: your **secondary region** that you choose in step 2
 
     ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/recoveryimg.png "Backup and Site Recovery Screen Create Button")
 
@@ -265,7 +265,7 @@ This task comprises the following steps:
 
     ![A pop-up asks you to confirm that you want to make the changes and restart the service. The Yes button is selected.](images/image171.png "Confirm Account Change pop-up")
     
-12. Return to your session with **SQLVM1**. Open **Microsoft SQL Server Management Studio 19** and connect to the local instance of SQL Server.
+12. Return to your session with **SQLVM1**. Open **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server.
 
 13. Expand the **Always On High Availability** node. Under **Availability Group Listeners**, right-click on **BCDRAOG** and select **Properties**.
 
@@ -468,9 +468,7 @@ The redirection to the failover IP address can be achieved in either of two ways
 
 In this task, you will use the Front Door approach to configure a highly available endpoint that directs traffic to either your primary or secondary site, depending on which site is currently available.
 
-1.  You will now build a Front Door to direct traffic to your Primary and Secondary Sites. From the Azure portal, select **+Create a resource**, then search for and select **Front Door and CDN profiles**. Select **Create**. 
-
-    ![Icon for Azure Front Door.](images1/E2T5S1.png "Azure Front Door icon")
+1.  You will now build a Front Door to direct traffic to your Primary and Secondary Sites. From the Azure portal, select **+Create a resource**, then search for and select **Front Door and CDN profiles**. Select **Create**.
 
 2. Select **Azure Front Door** and **Custom create**. Then select **Continue to create a  Front Door**.
 
