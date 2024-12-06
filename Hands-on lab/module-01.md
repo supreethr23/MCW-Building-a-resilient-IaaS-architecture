@@ -154,7 +154,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
      ![](images/iaas-image18.png)
 
-     >**Note:** It is possible to use a wizard for this task, but the resulting cluster will require additional configuration to set the static IP address in Azure.
+    >**Note:** It is possible to use a wizard for this task, but the resulting cluster will require additional configuration to set the static IP address in Azure.
 
 1. On **SQLVM1**, after the cluster has been created, select **Start** and search and open the **Failover Cluster Manager**.
 
