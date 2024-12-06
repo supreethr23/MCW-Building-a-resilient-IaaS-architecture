@@ -30,8 +30,7 @@ In this high availability and disaster recovery architecture, **Azure resources*
 
 ## Architecture Diagram
 
-![](images/architecureiaas1.png)
-
+![](images/Ar.png)
 
 ## Explanation of Components
 The architecture for this lab involves the following key components:
