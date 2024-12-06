@@ -275,8 +275,6 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
        ![](images/iaas-image45upd.png)
 
     > **Note**: The username for your lab should show **SQLVM1\demouser**.
-
-    ![Screenshot of the Connect to Server dialog box.](images1/sqlvm1.png "Connect to Server dialog box")
     
 1. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM1\demouser` is listed.
 
