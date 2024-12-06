@@ -30,7 +30,7 @@ Participants should have a basic understanding of the following:
 In this migration architecture, SQL Server 2008 databases are assessed for compatibility with **Azure SQL Database** using the **Data Migration Assistant (DMA)**. Dependency visualization ensures smooth migration by mapping application components. The schema is then migrated from **SQLServer2008 VM** to **Azure SQL Database** using DMA. Advanced migration tasks include backups, creating SMB shares, and running an online data migration to **Azure SQL Managed Instance (SQL MI)**. After verifying transaction logs and completing the cutover, **Azure App Service** configurations are updated to connect to the new database endpoints.
 
 ## Architecture Diagram
-![](./images/migratearch.png)
+![](images/migratearch.png)
 
 
 
@@ -60,19 +60,19 @@ Your virtual machine is your workhorse throughout the workshop. The lab guide is
  
 To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
  
-![](./images/envdetails1.png)
+![](images/envdetails1.png)
  
 ## Utilizing the Split Window Feature
  
 For convenience, you can open the lab guide in a separate window by selecting the **Split Window** icon at the top right corner.
 
-![](./images/GS8.png)
+![](images/GS8.png)
  
 ## Managing Your Virtual Machine
  
 Feel free to start, stop, or restart your virtual machine as needed from the **Resources** tab. Your experience is in your hands!
  
-![](./images/GS5.png)
+![](images/GS5.png)
  
 ## Let's Get Started with Azure Portal
  
@@ -84,23 +84,23 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
  
    - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
  
-        ![](images/GS2.png "Enter Email")
+     ![](images/GS2.png "Enter Email")
  
 1. Next, provide your password:
  
    - **Password:** <inject key="AzureAdUserPassword"></inject>
  
-        ![](images/GS3.png "Enter Password")
+     ![](images/GS3.png "Enter Password")
 
 1. If you see the pop-up **Action Required**, keep default and then click on **Ask later**. If you see the pop-up Help us protect your account, click on **Skip for now**(14 days until this is required), and then click on **Next**.
 
-   ![](images/asklater.png "Enter Password")
+     ![](images/asklater.png "Enter Password")
 
    >**NOTE:** Do not enable MFA, select **Ask Later**.
  
 1. If prompted to stay signed in, you can click **No**.
 
-    ![](images/GS9.png "Enter Password")
+     ![](images/GS9.png "Enter Password")
  
 1. If a **Welcome to Microsoft Azure** pop-up window appears, simply click **Maybe Later** to skip the tour.
    
@@ -118,7 +118,7 @@ Now you're all set to explore the powerful world of technology. Feel free to rea
 
 Now, click on **Next** from the lower right corner to move to the next page.
 
-   ![](./images/GS4.png)
+   ![](images/GS4.png)
 
 
 ### Happy Learning!!
