@@ -42,7 +42,7 @@ The architecture for this lab involves the following key components:
 - **Azure App Service:** A fully managed platform for building, deploying, and scaling web apps and APIs.
 - **SMB Network Share:** A file-sharing protocol used to create shared folders for backups or data transfer in the migration process.
 
-## Getting Started with Your Migrate and Modernise SQL Servers to Azure Hands On Lab
+## Getting Started with Your Building a Resilient IaaS Architecture Hands On Lab
 Welcome to your Migrate and Modernise SQL Servers to Azure Hands On Lab! We've prepared a seamless environment for you to explore and learn about Azure services. Let's begin by making the most of this experience:
 
 ## Accessing Your Lab Environment
@@ -83,23 +83,23 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
  
    - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
  
-     ![](images/GS2.png "Enter Email")
+    ![](images/GS2.png "Enter Email")
  
 1. Next, provide your password:
  
    - **Password:** <inject key="AzureAdUserPassword"></inject>
  
-     ![](images/GS3.png "Enter Password")
+    ![](images/GS3.png "Enter Password")
 
 1. If you see the pop-up **Action Required**, keep default and then click on **Ask later**. If you see the pop-up Help us protect your account, click on **Skip for now**(14 days until this is required), and then click on **Next**.
 
-     ![](images/asklater.png "Enter Password")
+    ![](images/asklater.png "Enter Password")
 
    >**NOTE:** Do not enable MFA, select **Ask Later**.
  
 1. If prompted to stay signed in, you can click **No**.
 
-     ![](images/GS9.png "Enter Password")
+    ![](images/GS9.png "Enter Password")
  
 1. If a **Welcome to Microsoft Azure** pop-up window appears, simply click **Maybe Later** to skip the tour.
    
