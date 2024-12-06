@@ -59,6 +59,8 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
 1. In the **Recovery Services Vault** page click on **Create**.
 
+    ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/recoveryselect.png "Backup and Site Recovery Screen Create Button")
+
 1.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
 
     - **Resource Group**: **ContosoRG2**
@@ -94,7 +96,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
 1. In the **Azure Automation Account** blade and select **Runbooks (1)**, then select **Import a runbook (1)**.
 
-    ![The 'Import a runbook' button is highlighted in Azure Automation.](images1/E2T1S10.png "Import a runbook button")
+    ![The 'Import a runbook' button is highlighted in Azure Automation.](images1/E2T1S10upd.png "Import a runbook button")
 
    > **Note**: You must be connected to the **LABVM** to complete the next steps.
 
