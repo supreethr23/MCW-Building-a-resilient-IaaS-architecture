@@ -1,6 +1,6 @@
 # Exercise 4: Validate resiliency
 
-### Estimated Duration: 180 minutes
+### Estimated Duration: 150 minutes
 
 In this exercise, you will validate the high availability, disaster recovery, and backup solutions you have implemented in the earlier lab exercises.
 
