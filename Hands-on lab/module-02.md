@@ -69,7 +69,7 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
     ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/recoveryimg.png "Backup and Site Recovery Screen Create Button")
 
-1.  Once the **BCDRRSV** Recovery Service Vault has been created, open it in the Azure portal and select the **Site Recovery** tab.
+1.  Once the **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Service Vault has been created, open it in the Azure portal and select the **Site Recovery** tab.
 
     ![Screenshot of the Backup / Site Recovery tabs with Site Recovery tab selected.](images1/ex2-task1-step6.png "Backup / Site Recovery tabs")
 
@@ -353,7 +353,7 @@ The DR solution for the web tier uses Azure Site Recovery to continually replica
 
 Custom scripts in Azure Automation are called by Azure Site recovery to add the recovered web VMs to the load balancer, and failover the SQL Server.
 
-1. From the Azure portal on **LABVM**, open the **BCDRRSV** Recovery Services Vault located in the **ContosoRG2** resource group.
+1. From the Azure portal on **LABVM**, open the **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Services Vault located in the **ContosoRG2** resource group.
 
 1. Under **Getting Started**, select **Site Recovery**.  Next, select **Step 1: Enable replication** in the **For On-Premises Machines and Azure VMs** section. 
 
@@ -394,7 +394,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![A message is displayed indicating Enabling replication for two vm(s) has successfully completed.](images/image234.png "Enabling replication for two vm(s)")
 
-1. The **BCDRRSV** blade should still have the **Site Recovery (1)** option (under 'Getting started') selected. Select **Step 2: Manage Recovery Plans (2)**.
+1. The **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** blade should still have the **Site Recovery (1)** option (under 'Getting started') selected. Select **Step 2: Manage Recovery Plans (2)**.
 
     ![Click path to Manage Recovery Plans.](images/dr-asr-8.png "Manage Recovery Plans")
 
@@ -450,7 +450,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![The Updating recovery plan message shows that the update was successfully completed.](images/image253.png "Updating recovery plan message")
 
-1. Return to the Recovery Services Vault **BCDRRSV** blade and select the **Replicated Items** link under **Protected Items**. You should see **WebVM1** and **WebVM2**. The Replication Health should be **Healthy**. The Status will show the replication progress. Once both VMs show status **Protected**, replication is complete and you will be able to test the failover.
+1. Return to the Recovery Services Vault **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** blade and select the **Replicated Items** link under **Protected Items**. You should see **WebVM1** and **WebVM2**. The Replication Health should be **Healthy**. The Status will show the replication progress. Once both VMs show status **Protected**, replication is complete and you will be able to test the failover.
 
     ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/E2T4S20.png "Replicated Items")
 
