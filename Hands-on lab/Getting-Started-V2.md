@@ -30,7 +30,7 @@ In this high availability and disaster recovery architecture, **Azure resources*
 
 ## Architecture Diagram
 
-![](images/architecureiaas.png "Architecture Diagram")
+![](images/architecureiaas.png)
 
 
 ## Explanation of Components
