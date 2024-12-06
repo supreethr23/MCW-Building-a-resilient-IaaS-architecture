@@ -116,80 +116,89 @@ In this task, you will validate failover of the Contoso application from Primary
 
     > **Optional task**: You can log in to **SQLVM3** and open SQL Management Studio to review the Failed over **BCDRAOG**. You will see that **SQLVM3**, which is running in the **Secondary** site, is now the Primary Replica.
 
-1. Now that you have successfully tested failover, you need to configure ASR for failback. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Select **Recovery Plans** on the ASR dashboard. The **BCDRIaaSPlan** will show as **Failover completed.** 
+1. Now that you have successfully tested failover, you need to configure ASR for failback. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Expand **Manage (1)** and select **Recovery Plans (Site Recovery) (2)** on the ASR dashboard. The **BCDRIaaSPlan** will show as **Failover completed (3).** 
 
-    ![Recovery Plans list, with the 'Failover Completed' status of the BCDRIaaSPlan highlighted.](images1/E4T2S18.png "Recovery Plans")
+    ![](images/iaas-image49.png)
 
 1. Select the **BCDRIaaSPlan**. Notice that now two (2) VMs are shown in the **Target** tile.
 
-    ![In the Recovery blade, the Target tile has the number 2.](images1/E4T2S19.png "Recovery plan blade")
+    ![](images/iaas-image50.png)
+
+   ![](images/iaas-image51.png)
 
 1. Select **Re-protect**.
 
-    ![Recovery Plan blade with Re-protect button highlighted.](images1/E4T2S20.png "Re-protect button")
+    ![](images/iaas-image52.png)
 
 1. On the **Re-protect** screen, review the configuration and then select **OK**.
 
-    ![Screenshot of the Re-protect blade.](images1/E4T2S21.png "Re-protect blade")
+    ![](images/iaas-image53.png)
 
 1. The portal will submit a deployment. This process will take up to 30 minutes to commit the failover and then synchronize WebVM1 and WebVM2 with the Recovery Services Vault. Once this process is complete, you will be able to failback to the primary site.
 
-    > **Note:** You need to wait for the re-protect process to complete before continuing with the failback. You can check the status of the Re-protect using the Site Recovery Jobs area of the BCDRSRV.
+    > **Note:** You need to wait for the re-protect process to complete before continuing with the failback. You can check the status of the Re-protect. In left navigation pane of BCDRSRV expand **Monitoring** and select **Site Recovery jobs**.
     
-    ![In the Recovery blade, Re-protect has a status of In progress for two jobs, one for WebVM1 and one for WebVM2.](images1/E4T2S22.png "Site Recovery jobs")
+    ![](images/iaas-image54.png)
     
 1. Once the jobs are completed, move to the **Replicated items** blade and wait for the **Status** to show as **Protected**. This status shows that the data synchronization is complete and the Web VMs are ready to failback.
     
-    ![In the Replicated items, WebVM1 and WebVM2 have status 'Protected'.](images1/E4T2S22.1.png "Replicated items")
-
+    ![](images/iaas-image55.png)
 
 ### Task 3: Validate Disaster Recovery - Failback IaaS region to region
 
 In this task, you will failback the Contoso application from the DR site in Secondary Site back to the Primary site.
 
-1.  Still in the **BCDRRSV** Recovery Services vault, select **Recovery Plans** and re-open the **BCDRIaaSPlan**. Notice that the VMs are still at the Target since they are failed over to the secondary site.
+1.  Back on **BCDRRSV** Recovery Services vault, select **Recovery Plans** and re-open the **BCDRIaaSPlan**. Notice that the VMs are still at the Target since they are failed over to the secondary site.
 
-2.  Select **Failover**. At the warning about No Test Failover, select **I understand the risk, Skip test failover**. Notice that **From** is the **Secondary** site and **To** is the **Primary** site. Select **OK**.
+     ![](images/iaas-image56.png)
 
-    ![Screenshot of the Failover blade, from East US 2 to Central US.](images1/E4T2S9upd.png "Failover (failback)")
+1.  Select **Failover**. At the warning about No Test Failover, select **I understand the risk, Skip test failover**. Notice that **From** is the **Secondary** site and **To** is the **Primary** site. Select **OK**.
 
-3.  After the Failover is initiated close the blade and select **Site Recovery Jobs**, then select the **Failover** job to monitor the progress. Once the job has finished, it should show as successful for all tasks.
+    ![](images/iaas-image57.png) 
 
-    ![](images1/E4T3S3.png "Job status")
+    ![](images/iaas-image58.png)
 
-4.  Confirm that the Contoso application is once again accessible via the **ContosoWebLBPrimaryIP** public IP address, and is **not** available at the **ContosoWebLBSecondaryIP** address. This test shows it has been returned to the primary site. Open the **Current Policy Offerings** and edit a policy, to confirm database access. 
+1.  After the Failover is initiated close the blade and select **Site Recovery Jobs** under **Monitoring** section, then select the **Failover** job to monitor the progress. Once the job has finished, it should show as successful for all tasks.
+
+    ![](images/iaas-image59.png)
+
+    ![](images/iaas-image60.png)
+
+1.  Confirm that the Contoso application is once again accessible via the **ContosoWebLBPrimaryIP** public IP address, and is **not** available at the **ContosoWebLBSecondaryIP** address. This test shows it has been returned to the primary site. Open the **Current Policy Offerings** and edit a policy, to confirm database access. 
 
     > **Note:** If you get a "Our services aren't available right now" error (or a 404-type error) accessing the web application, verify that you are utilizing the **ContosoWebLBPrimaryIP**.  If it does not come up within ~10 minutes, verify that the backend system is responding.
 
-5.  Confirm also that the Contoso application is also available via the Front Door URL.
+1.  Confirm also that the Contoso application is also available via the Front Door URL.
 
-6.  Now, that you have successfully failed back, you need to prep ASR for the Failover again. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Select Recovery Plans and open the **BCDRIaaSPlan**.
+1.  Now, that you have successfully failed back, you need to prep ASR for the Failover again. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Select Recovery Plans and open the **BCDRIaaSPlan**.
 
-7.  Notice that now 2 VMs are shown in the **Source**. Select **Re-protect**, review the configuration and select **OK**.
+1.  Notice that now 2 VMs are shown in the **Source**. Select **Re-protect**, review the configuration and select **OK**.
 
-    ![The recovery plan shows 2 VMs in the Source and 0 in the target. The 'Re-protect' button is highlighted.](images1/E4T3S7.png "BCDRIaaSPlan")
+    ![](images/iaas-image61.png)
 
-8.  As previously, the portal will submit a deployment. This process will take some time. You can proceed with the lab without waiting.
+    ![](images/iaas-image62.png)
 
-9.  Next, you need to reset the SQL Always On Availability Group environment to ensure a proper failover. Use Azure Bastion to connect to **SQLVM1** with username `demouser@contoso.com` and password `Demo!pass123`.
+1.  As previously, the portal will submit a deployment. This process will take some time. You can proceed with the lab without waiting.
 
-10. Once connected to **SQLVM1** open SQL Server Management Studio and Connect to **SQLVM1**. Expand the **Always On Availability Group**s and then right-click on **BCDRAOG** and then select **Show Dashboard**.
+1.  Next, you need to reset the SQL Always On Availability Group environment to ensure a proper failover. Use Azure Bastion to connect to **SQLVM1** with username `demouser@contoso.com` and password `Demo!pass123`.
 
-11. Notice that all the Replica partners are now Synchronous Commit with Automatic Failover Mode. You need to manually reset **SQLVM3** to be **Asynchronous** with **Manual Failover**.
+1. Once connected to **SQLVM1** open SQL Server Management Studio and Connect to **SQLVM1**. Expand the **Always On Availability Group**s and then right-click on **BCDRAOG** and then select **Show Dashboard**.
+
+1. Notice that all the Replica partners are now Synchronous Commit with Automatic Failover Mode. You need to manually reset **SQLVM3** to be **Asynchronous** with **Manual Failover**.
 
     ![The Availability group dashboard displays with SQLVM3 and its properties called out.](images/image400.png "Availability group dashboard")
 
-12. Right-click the **BCDRAOG** and select **Properties**.
+1. Right-click the **BCDRAOG** and select **Properties**.
 
-    ![In Object Explorer, the right-click menu for BCDRAOG displays with Properties selected.](images/image401.png "Object Explorer")
+    ![](images/iaas-image64.png)
 
-13. Change **SQLVM3** to **Asynchronous** and **Manual Failover** and select **OK**.
+1. Change **SQLVM3** to **Asynchronous** and **Manual Failover** and select **OK**.
 
-    ![In the Availability Group Properties window, under Availability Replicas, the SQLVM3 server role is secondary, availability mode is asynchronous commit, and failover mode is manual.](images/image402.png "Availability Group Properties window")
+    ![](images/iaas-image65.png)
 
-14. Show the Availability Group Dashboard again. Notice that they change has been made and that the AOG is now reset.
+1. Show the Availability Group Dashboard again. Notice that they change has been made and that the AOG is now reset.
 
-    ![The Availability group dashboard displays, with SQLVM3 and its properties called out.](images/image403.png "Availability group dashboard")
+    ![](images/iaas-image66.png)
 
     > **Note:** This task could have been done using the Azure Automation script during Failback, but most DBAs would prefer a clean failback and then do this manually once they are comfortable with the failback.
 
@@ -197,61 +206,77 @@ In this task, you will failback the Contoso application from the DR site in Seco
 
 In this task, you will validate the backup for the Contoso application WebVMs. You will do this by removing several image files from **WebVM1**, breaking the Contoso application. You will then restore the VM from backup. 
 
-1.  From the Azure portal, locate and shut down **WebVM2**. This forces all traffic to be served by **WebVM1**, which making the backup/restore verification easier.
-   
-2.  Navigate to **WebVM1** and connect to the VM using Azure Bastion, using username `demouser@contoso.com` and password `Demo!pass123`.
+1.  From the Azure portal, search and select virtual machine and stop **WebVM2** when prompted click on **Yes**. This forces all traffic to be served by **WebVM1**, which making the backup/restore verification easier.
 
-3.  Open Windows Explorer and navigate to the `C:\inetpub\wwwroot\Content` folder. Select the three `.PNG` files and delete them.
+      ![](images/iaas-image67.png)
 
-    ![Windows Explorer is used to delete PNG files from the Contoso application.](images1/E4T4S3.png "Delete PNG files")
+1.  Navigate to **WebVM1** and connect to the VM using Azure Bastion, using username `demouser@contoso.com` and password `Demo!pass123`.
 
-4.  In the Azure portal, locate the **ContosoWebLBPrimaryIP** public IP address in **ContosoRG1**. Copy the DNS name and open it in a new browser tab. Hold down `CTRL` and refresh the browser, to reload the page without using your local browser cache. The Contoso application should be shown with images missing.
+1.  Open Windows Explorer and navigate to the `C:\inetpub\wwwroot\Content` folder. Select the three `.PNG` files and delete them.
 
-    ![Browser screenshot showing the Contoso application with missing images highlighted.](images1/E4T4S4.png "Contoso application with missing images")
+    ![](images/iaas-image68.png)
 
-5.  To restore WebVM1 from backup, Azure Backup requires that a 'staging' storage account be available. To create this account, in the Azure portal select **+ Create a resource**, then search for and select **Storage account**. Select **Create**.
+1.  In the Azure portal, locate the **ContosoWebLBPrimaryIP** public IP address in **ContosoRG1**. Copy the DNS name and open it in a new browser tab. Hold down `CTRL` and refresh the browser, to reload the page without using your local browser cache. The Contoso application should be shown with images missing.
 
-6.  Complete the 'Create storage account' form as follows, then select **Review** followed by **Create**.
+    ![](images/iaas-image69.png)
+
+    >**Note**: If you prompted with doesn't support a secure connection please select **Continue to site**.
+
+    ![](images/iaas-image70.png)
+
+1.  To restore WebVM1 from backup, Azure Backup requires that a 'staging' storage account be available. To create this account, in the Azure portal select **+ Create a resource**, then search for and select **Storage account**. Select **Create**.
+
+1.  Complete the 'Create storage account' form as follows, then select **Review** followed by **Create**.
 
     -   **Resource group:** ContosoRG1
-    -   **Storage account name:** Unique name starting with `backupstaging`.
+    -   **Storage account name:** backupstaging<inject key="DeploymentID" enableCopy="false"/>
     -   **Location:** <inject key="Region" enableCopy="false" /> *(this is your primary region)*
     -   **Performance:** Standard
     -   **Replication:** Locally-redundant storage (LRS)
 
-    ![Screenshot showing the 'Create storage account' blade in the Azure portal.](images1/ex4-task4-step6.png "Create storage account")
+    ![](images/iaas-image71.png)
 
-7.  Before restoring a VM, the existing VM must be shut down. Use the Azure portal to shut down **WebVM1**.
+1.  Before restoring a VM, the existing VM must be shut down. Use the Azure portal to shut down **WebVM1**.
 
     > **Note:** since WebVM2 is also shut down, this will break the Contoso application. In a real-world scenario, you would keep WebVM2 running while restoring WebVM1.
 
-8.  In the Azure portal, navigate to the **BackupRSV** Recovery Services Vault. Under 'Protected Items', select **Backup items**, then select **Azure Virtual Machine**.
+1.  In the Azure portal, navigate to the **BackupRSV** Recovery Services Vault. Under 'Protected Items', select **Backup items**, then select **Azure Virtual Machine**.
 
-    ![Screenshot showing the Recovery Services Vault, with the links to the Azure Virtual Machine backup item highlighted.](images1/E4T4S8.png "Backup items")
+    ![](images/iaas-image72.png)
 
-9.  On the Backup items page, select **View details** for **WebVM1**. On the **WebVM1** page, select **RestoreVM**.
+    ![](images/iaas-image73.png)
 
-    ![Screenshot showing the WebVM1 backup status page, with the 'Restore VM' button highlighted.](images1/E4T4S9.png "Restore VM button")
+1.  On the Backup items page, select **View details** for **WebVM1**. On the **WebVM1** page, select **RestoreVM**.
 
-10. Complete the Restore Virtual Machine page as follows, then select **Restore**.
+     ![](images/iaas-image74.png)
 
-    -   **Restore point:** Select the most recent restore point.
-    -   **Restore Configuration:** Replace existing
-    -   **Staging Location**: Choose the storage account you created earlier, starting with `backupstaging`.
+     ![](images/iaas-image75.png)
 
-    ![Screenshot showing settings to restore WebVM1, replacing the existing VM.](images1/E4T4S10.png "Restore VM options")
+1. Complete the Restore Virtual Machine page as follows, then select **Restore (6)**.
 
-11. In the **BackupRSV** vault, navigate to the **Backup Jobs** view. Note that two new jobs are shown as 'In progress', one to take a backup of the VM and a second to restore the VM.
+    -   **Restore point:** Click on **Select (1)** link then select the most recent restore point **(2)** and click on **OK (3)**.
+    -   **Restore Configuration:** Replace existing **(4)**
+    -   **Staging Location**: Choose the storage account you created earlier, starting with backupstaging<inject key="DeploymentID" enableCopy="false"/> **(5)**.
+
+        ![](images/iaas-image76.png)
+
+        ![](images/iaas-image77.png)
+
+        ![](images/iaas-image78.png)
+        
+1. In the **BackupRSV** vault, navigate to the **Backup Jobs** view. Note that two new jobs are shown as 'In progress', one to take a backup of the VM and a second to restore the VM.
 
     ![Screenshot showing both backup and restore jobs for WebVM1.](images1/E4T4S11.png "Restore VM Backup Jobs")
 
-12. It will take several minutes for the VM to be restored. Wait for the restore to complete before proceeding with the lab.
+1. It will take several minutes for the VM to be restored. Wait for the restore to complete before proceeding with the lab.
 
-13. Once the restore operation is complete, navigate to the **WebVM1** blade in the Azure portal, and **Start** the VM.
+1. Once the restore operation is complete, navigate to the **WebVM1** blade in the Azure portal, and **Start** the VM.
 
-14. Wait for the VM to start, then return to your browser tab showing the Contoso application with missing images. Hold down `CTRL` and select **Refresh** to reload the page. The application is displayed with the images restored, showing the restore from backup has been successful. (As an optional step, you can also open a Bastion connection to the VM and check the deleted .PNG files have been restored.)
+1. Wait for the VM to start, then return to your browser tab showing the Contoso application with missing images. Hold down `CTRL` and select **Refresh** to reload the page. The application is displayed with the images restored, showing the restore from backup has been successful. (As an optional step, you can also open a Bastion connection to the VM and check the deleted .PNG files have been restored.)
 
-15. Start **WebVM2**.
+     ![](images/iaas-image79.png)
+
+1. Start **WebVM2**.
 
 ### Task 5: Validate SQL Backup
 
@@ -261,19 +286,23 @@ In this task, you will validate the ability to restore the Contoso application d
 
     ![Screenshot showing the path to the SQL in Azure VMs in backup items in the Recovery Services Vault.](images1/E4T5S1.png "Backup items")
 
-2.  From the backup items list, select **View details** for the **contosoinsurance** database.
+1.  From the backup items list, select **View details** for the **contosoinsurance** database.
 
-3.  From the **contosoinsurance** blade, select **Restore**.
+      ![](images/iaas-image80.png)
+
+1.  From the **contosoinsurance** blade, select **Restore**.
     
-    ![Screenshot showing the restore button for the contosoinsurance database backup.](images1/E4T5S3.png "Restore button")
+    ![](images/iaas-image81.png)
 
-4.  Review the default settings on the **Restore** blade. By default, the backup will be restored to a new database alongside the existing database on SQLVM1.
+1.  Review the default settings on the **Restore** blade. By default, the backup will be restored to a new database alongside the existing database on SQLVM1.
 
-    ![Screenshot showing the settings to restore a SQL database from Azure Backup.](images1/E4T5S4.png "Restore database settings")
+     ![](images/iaas-image82.png)
 
     > **Note:** For an Always On Availability Group backup, the option to overwrite the existing database is not available. You must restore to a parallel location.
 
-5.  Select the option to choose your Restore Point. On the 'Select restore point' blade, explore the restore options. Note how the log-based option offers a point-in-time restore, whereas the full & differential option provides backup based on the backup schedule.
+1.  Select the option to choose your Restore Point. On the 'Select restore point' blade, explore the restore options. Note how the log-based option offers a point-in-time restore, whereas the full & differential option provides backup based on the backup schedule.
+
+    ![](images/iaas-image83.png)
 
     Choose any restore point and select **OK**.
 
@@ -281,20 +310,30 @@ In this task, you will validate the ability to restore the Contoso application d
 
     ![Screenshot showing the options to select a restore point based on scheduled backups.](images1/ex4-task5-step5b.png "Select restore point - Full & Differential")
 
-6.  Under 'Advanced Configuration', select **Configure**. Review the settings but don't change anything. Select **OK** to accept the default configuration
+1.  Under 'Advanced Configuration', select **Configure**. Review the settings but don't change anything. Select **OK** to accept the default configuration
+
+      ![](images/iaas-image84.png)
+
+1.  Select **OK** to start the restore process.
    
-7.  Select **OK** to start the restore process.
-   
-8.  Navigate to the **Backup Jobs** view. The ContosoInsurance job is 'In progress'. Use the **Refresh** button to monitor the progress and wait for the job to complete.
+1.  Navigate to the **Backup Jobs** view. The ContosoInsurance job is 'In progress'. Use the **Refresh** button to monitor the progress and wait for the job to complete.
 
-    ![Screenshot showing the list of backup jobs with the database restore highlighted.](images1/E4T5S8.png "Database restore backup job")
+     ![](images/iaas-image85.png)
 
-9.  Navigate to **SQLVM1** and connect to the VM using Azure Bastion, using username `demouser@contoso.com` and password `Demo!pass123`.
+1.  Navigate to **SQLVM1** and connect to the VM using Azure Bastion, using username `demouser@contoso.com` and password `Demo!pass123`.
 
-10. On SQLVM1, open **SQL Server Management Studio** and connect to SQLVM1.
+1. On SQLVM1, open **SQL Server Management Studio** and connect to SQLVM1.
 
-11. Note that the restored database is present on the server alongside the production database.
+1. Note that the restored database is present on the server alongside the production database.
 
-    ![Screenshot showing the restored database in SQL Server Management Studio.](images1/E4T5S11.png "Restored database")
+    ![](images/iaas-image86.png)
 
     > **Note:** You can now either copy data from the restored database to the production database, or add this database to the Always On Availability Group and switch the Web tier to use the restored database.
+   
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+<validation step="a1948261-3fef-4f42-8f0c-051afcdfb6d5" />
+
+### You have successfully completed the lab
