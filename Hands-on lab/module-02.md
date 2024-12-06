@@ -31,31 +31,29 @@ In this task, you will deploy the resources used by the DR environment. First, y
 1. Update the **-Location** parameter in each command below to specify a secondary location different from **ContosoRG1**. Then, execute the commands to create the disaster recovery (DR) resource group and deploy the DR resources. 
     You can proceed to the following tasks while the template deployment is in progress.
 
-```powershell
-New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
-New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
-```
+   ```powershell
+   New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
+   New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-      on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
+   ```
 
    > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
 
-```powershell
+   ```powershell
     # Only run this command if the previous deployment failed with a error that size was not available
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR-SKU' `
         -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
     -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
- ```
+    ```
 
-1.  Take a few minutes to review the template while it deploys. To review the template and deployment progress, navigate to the Azure portal home page, select **Subscriptions**, then **Deployments**. Note that the template includes:
+1.  Take a few minutes to review the template while it deploys. To review the template and deployment progress, navigate to the Azure portal home page, select **Resource Groups**, then **ContosoRG2** and**Deployments**. Note that the template includes:
     -  A DR virtual network, which is connected using VNet peering to the existing virtual network
     -  Two additional domain controller VMs, **ADVM3** and **ADVM4**
     -  An additional SQL Server VM, **SQLVM3**
     -  Azure Bastion, to enable VM access
 
     ![Screenshot of the disaster recovery resources for the Web application.](images1/E2T1S3.png "Successful deployment of Web DR resources")
-    
-Next, you will create the Recovery Services Vault used to replicate the Web tier VMs and orchestrate the cross-site failover.
 
-1.  From the Azure portal, search for **Recovery Services Vault** and then search for and select it.
+1. Now, you will create the Recovery Services Vault used to replicate the Web tier VMs and orchestrate the cross-site failover. From the Azure portal, search for **Recovery Services Vault** and then search for and select it.
 
     ![](images/E3T1S1upd.png)
 
