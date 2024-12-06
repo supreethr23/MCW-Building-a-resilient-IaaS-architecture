@@ -272,7 +272,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
      
        ![](images/iaas-image38.png)
 
-       ![](images/iaas-image45.png)
+       ![](images/iaas-image45upd.png)
 
     > **Note**: The username for your lab should show **SQLVM1\demouser**.
 
@@ -318,7 +318,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     
 1.  Right-click on **ContosoInsurance (1)** and select **Tasks (2)**, and then click on **Back Up... (3)**.
 
-    ![.](images/upd-4.png)
+    ![.](images/upd-41.png)
 
 1. On the Back Up Database - Contosolnsurance window, click on **Ok**.
 
@@ -355,19 +355,19 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. Right-click **Always On High Availability**, then select **New Availability Group Wizard**.
 
-    ![In Object Explorer, AlwaysOn High Availability is selected, and from its right-click menu, New Availability Group Wizard is selected.](images/image174.png "SQ Server Management Studio, Object Explorer")
+    ![In Object Explorer, AlwaysOn High Availability is selected, and from its right-click menu, New Availability Group Wizard is selected.](images/image174upd.png "SQ Server Management Studio, Object Explorer")
 
 1. Select **Next** on the Wizard.
 
-    ![On the New Availability Group Wizard begin page, Next is selected.](images/p50upd.png "New Availability Group Wizard ")
+    ![On the New Availability Group Wizard begin page, Next is selected.](images/p50upd1.png "New Availability Group Wizard ")
 
 1. Provide the name **BCDRAOG** for the **Availability group name**, then select **Next**.
 
-    ![The Specify availability group options form displays the previous availability group name.](images/image176.png "Specify availability group options page")
+    ![The Specify availability group options form displays the previous availability group name.](images/image176upd.png "Specify availability group options page")
 
 1. Select the **ContosoInsurance Database**, then select **Next**.
 
-    ![The ContosoInsurance database is selected from the user databases list.](images/image177.png "Select Databases page")
+    ![The ContosoInsurance database is selected from the user databases list.](images/image177upd.png "Select Databases page")
 
 1. On the **Specify Replicas** screen next to **SQLVM1**, select **Automatic Failover**.
 
@@ -375,11 +375,11 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. Select **Add Replica**.
 
-    ![Screenshot of the Add replica button.](images/image179.png "Add replica button")
+    ![Screenshot of the Add replica button.](images/image179upd1.png "Add replica button")
 
 1. On the **Connect to Server** dialog box enter the Server Name of **SQLVM2** and select **Connect**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
-    ![Screenshot of the Connect to Server dialog box for SQLVM2.](images1/E1T3S40.png "Connect to Server dialog box")
+    ![Screenshot of the Connect to Server dialog box for SQLVM2.](images1/E1T3S40upd.png "Connect to Server dialog box")
 
 1. For **SQLVM2**, select Automatic Failover and Availability Mode of Synchronous commit.
 
@@ -391,7 +391,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. Next, select **Listener**. Then, select the **Create an availability group listener**.
 
-    ![On the Listener tab, the radio button for Create an availability group listener is selected.](images/image185.png "Specify Listener screen")
+    ![On the Listener tab, the radio button for Create an availability group listener is selected.](images/image185upd.png "Specify Listener screen")
 
 1. Add the following details:
 
@@ -403,11 +403,11 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. Next, select **Add**.
 
-    ![The Add button is selected beneath an empty subnet table.](images/image187.png "Add button")
+    ![The Add button is selected beneath an empty subnet table.](images/image187upd.png "Add button")
 
 1. Select the Subnet of **10.0.2.0/24** and then add IPv4 **10.0.2.100** and select **OK**. This is the IP address of the Internal Load Balancer that is in front of the **SQLVM1** and **SQLVM2** in the **Data** subnet running in the **Primary** Site.
 
-    ![The Add IP Address dialog box fields are set to the previously defined settings.](images/image188.png "Add IP Address dialog box")
+    ![The Add IP Address dialog box fields are set to the previously defined settings.](images/image188upd.png "Add IP Address dialog box")
 
 1. Select **Next**.
 
@@ -415,7 +415,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. On the **Select Initial Data Synchronization** screen, make sure that **Automatic seeding** is selected and select **Next**.
 
-    ![On the Select Initial Data Synchronization screen, the radio button for Automatic seeding is selected. The Next button is selected at the bottom of the form.](images/image192.png "Select Initial Data Synchronization screen")
+    ![On the Select Initial Data Synchronization screen, the radio button for Automatic seeding is selected. The Next button is selected at the bottom of the form.](images/image192upd.png "Select Initial Data Synchronization screen")
 
 1. On the **Validation** screen, you should see all green. Select **Next**.
 
@@ -423,7 +423,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. On the Summary page select **Finish**.
 
-    ![On the Summary page, the Finish button is selected.](images/image194.png "Summary page")
+    ![On the Summary page, the Finish button is selected.](images/image194upd.png "Summary page")
 
 1. Once the AOG is built, check each task was successful and select **Close**.
 
@@ -439,15 +439,15 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. Next, select **Connect** and then **Database Engine** in SQL Management Studio.
 
-    ![Connect / Database Engine is selected in Object Explorer.](images/image200.png "Object Explorer")
+    ![Connect / Database Engine is selected in Object Explorer.](images/image200upd.png "Object Explorer")
 
 1. Enter **BCDRAOG** as the Server Name. This will be connected to the listener of the group that you created. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
-    ![In the Connect to Server Dialog box, Server name is BCDRAOG, and the connect button is selected.](images1/E1T3S55.png "Connect to Server Dialog box")
+    ![In the Connect to Server Dialog box, Server name is BCDRAOG, and the connect button is selected.](images1/E1T3S55upd.png "Connect to Server Dialog box")
 
 1. Once connected to the **BCDRAOG**, you can select **Databases** and will be able to see the database there. Notice that you have no knowledge directly of which server this is running on.
 
-    ![A call out points to ContosoInsurance (Synchronized) in SQL Management Studio.](images/image202.png "SQL Management Studio")
+    ![A call out points to ContosoInsurance (Synchronized) in SQL Management Studio.](images/image202upd.png "SQL Management Studio")
 
 1. Move back to **PowerShell ISE** on **SQLVM1**. Open a new file, paste in the following script, and select the **Play** button. This will update the Failover cluster with the IP address of the Listener that you created for the AOG.
 
@@ -465,11 +465,11 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. Move back to SQL Management Studio and select **Connect** and then **Database Engine**.
 
-    ![In Object Explorer, Connect / Database Engine is selected.](images/image200.png "Object Explorer")
+    ![In Object Explorer, Connect / Database Engine is selected.](images/image200upd.png "Object Explorer")
 
 1. This time, put the following into the IP address of the Internal Load balancer of the **Primary** Site AOG Load Balancer: **10.0.2.100**. You again will be able to connect to the server which is up and running as the master. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
-    ![Fields in the Connect to Server dialog box are set to the previously defined settings.](images1/E1T3S59.png "Connect to Server dialog box")
+    ![Fields in the Connect to Server dialog box are set to the previously defined settings.](images1/E1T3S59upd.png "Connect to Server dialog box")
 
 1. Once connected to **10.0.2.100**, you can select **Databases** and will be able to see the database there. Notice that you have no knowledge directly of which server this is running on.
 
@@ -494,6 +494,8 @@ In this task, you will configure a high-availability web tier. This comprises tw
 
 1.  In **WebVM1**, open Windows Explorer, navigate to **C:\inetpub\wwwroot** and open the **Web.config** file using Notepad.
 
+    ![notepad.](images1/notepad.png "Failover Cluster Manager")
+
     > **Note**: If the **Web.config** change does not run, go to **Start**, **Run** and type **iisreset /restart** from command line.
 
 1.  In the **Web.config** file, locate the **\<ConnectionStrings\>** element and replace **SQLVM1** with **BCDRAOG** in the data source. Remember to **Save** the file.
@@ -504,7 +506,7 @@ In this task, you will configure a high-availability web tier. This comprises tw
 
 1.  Return to the Azure portal and navigate to the **ContosoWebLBPrimary** load balancer blade. Select **Backend pools** and open **BackEndPool1**.
 
-    ![Azure portal showing path to BackEndPool1 on ContosoWebLBPrimary.](images1/E1T4S5.png "Backend pool select path")
+    ![Azure portal showing path to BackEndPool1 on ContosoWebLBPrimary.](images1/E1T4S5upd.png "Backend pool select path")
 
 1.  In the **BackendPool1** blade, select **VNet1 (ContosoRG1)** as the Virtual network. Then select **+ Add** and select the two web VMs. Select **Save**.
 
