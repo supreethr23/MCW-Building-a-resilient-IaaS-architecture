@@ -392,6 +392,9 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![A message is displayed indicating Enabling replication for two vm(s) has successfully completed.](images/image234.png "Enabling replication for two vm(s)")
 
+ > **Note:** If the replication status indicates failure, monitor the jobs. If all jobs are successful, you can move on to the next step.
+>  ![A message is displayed indicating replication failure.](images/failurerep.png "Enabling replication for two vm(s)")
+
 1. The **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** blade should still have the **Site Recovery (1)** option (under 'Getting started') selected. Select **Step 2: Manage Recovery Plans (2)**.
 
     ![Click path to Manage Recovery Plans.](images/dr-asr-8.png "Manage Recovery Plans")
