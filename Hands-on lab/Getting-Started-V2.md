@@ -19,15 +19,14 @@ The objective of this lab is to enhance the Contoso application’s reliability 
 
 Participants should have a basic understanding of the following:
 
-- **Azure Migrate:** Familiarity with Azure Migrate for assessing and migrating on-premises workloads.
-- **Azure SQL Database & SQL Managed Instance:** Basic knowledge of Azure SQL services and their features.
 - **Azure Portal Navigation:** Experience navigating the Azure portal for managing resources.
+- **Azure Site Recovery:** Understanding of Azure Site Recovery concepts and operations.
 - **SQL Server Management:** Understanding of SQL Server concepts and operations.
 - **Networking Basics:** Familiarity with creating SMB shares and managing network configurations.
-- **Web Application Deployment:** Basic knowledge of deploying Web Applications to Azure and configuring App Service settings.
+- **Azure Front Door:** Knowledge of Azure Front Door architecture, features, and operations.
 
 ## Architecture
-In this migration architecture, SQL Server 2008 databases are assessed for compatibility with **Azure SQL Database** using the **Data Migration Assistant (DMA)**. Dependency visualization ensures smooth migration by mapping application components. The schema is then migrated from **SQLServer2008 VM** to **Azure SQL Database** using DMA. Advanced migration tasks include backups, creating SMB shares, and running an online data migration to **Azure SQL Managed Instance (SQL MI)**. After verifying transaction logs and completing the cutover, **Azure App Service** configurations are updated to connect to the new database endpoints.
+In this high availability and disaster recovery architecture, **Azure resources** are deployed to configure **High Availability (HA)** for the **Domain Controller**, **SQL Server**, and **Web tiers**, ensuring resilience and fault tolerance. **Disaster Recovery (DR)** resources, such as **Azure Site Recovery**, are implemented to enable failover capabilities, while a public endpoint is configured using **Azure Front Door** for global accessibility. Additionally, **Azure Backup** resources are set up to protect data for the **Web tier** and **SQL Server tier**. Advanced tasks include validating HA configurations, performing region-to-region disaster recovery failback for **IaaS**, and verifying the integrity of **VM backups** and **SQL backups**, ensuring operational continuity and robust recovery mechanisms.
 
 ## Architecture Diagram
 
