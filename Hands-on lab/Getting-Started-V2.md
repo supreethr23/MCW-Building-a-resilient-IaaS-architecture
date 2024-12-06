@@ -58,7 +58,7 @@ Your virtual machine is your workhorse throughout the workshop. The lab guide is
  
 To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
  
-![](images/envdetails1.png)
+![](images/envdetails2.png)
  
 ## Utilizing the Split Window Feature
  
