@@ -8,7 +8,7 @@ In this exercise, you will validate the high availability, disaster recovery, an
 In this exercise, you will complete the following tasks:
    - Task 1: Validate High Availability.
    - Task 2: Validate Disaster Recovery - Failover IaaS region to region.
-   - Task 3: Validate Disaster Recovery - Failback IaaS region to region.
+   - Task 3: Validate Disaster Recovery - Failback region to IaaS region.
    - Task 4: Validate VM Backup.
    - Task 5: Validate SQL Backup.
 
@@ -18,29 +18,29 @@ In this task we will validate high availability for both the Web and SQL tiers.
 
 1.  In the Azure portal, open the **ContosoRG1** resource group. Select the public IP address for the web tier load-balancer, **ContosoWebLBPrimaryIP**. Select the **Overview** tab and copy the DNS name to the clipboard, and navigate to it in a different browser tab.
 
-2.  The Contoso application is shown. Select **Current Policy Offerings** to view the policy list - this shows the database is accessible. As an additional check, edit an existing policy and save your changes, to show that the database is writable.
+1.  The Contoso application is shown. Select **Current Policy Offerings** to view the policy list - this shows the database is accessible. As an additional check, edit an existing policy and save your changes, to show that the database is writable.
 
-3.  Open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica.
+1.  Open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica.
 
     ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica.](images1/E4T1S3.png "SQLVM1 as Primary")
 
-4.  Using the Azure portal, stop both **WebVM1** and **SQLVM1**. Wait a minute for the VMs to stop.
+1.  Using the Azure portal, stop both **WebVM1** and **SQLVM1**. Wait a minute for the VMs to stop.
 
-5.  Refresh the blade with the Contoso application. The application still works. Confirm again that the database is writable by changing one of the policies.
+1.  Refresh the blade with the Contoso application. The application still works. Confirm again that the database is writable by changing one of the policies.
 
-6.  Open an Azure Bastion session with **SQLVM2** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM2** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM2** as the primary replica, and there is a critical warning about **SQLVM1** not being available.
+1.  Open an Azure Bastion session with **SQLVM2** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM2** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM2** as the primary replica, and there is a critical warning about **SQLVM1** not being available.
 
     ![SQL Server Management Studio screenshot showing SQLVM2 as the primary replica, with warnings.](images1/E4T1S6.png "SQLVM2 as Primary")
 
-7.  Restart **WebVM1** and **SQLVM1**. **Wait a full two minutes** for the VMs to start - **this is important**, we don't want to test simultaneous failover of SQLVM1 and SQLVM2 at this stage. Then stop **WebVM2** and **SQLVM2**.
+1.  Restart **WebVM1** and **SQLVM1**. **Wait a full two minutes** for the VMs to start - **this is important**, we don't want to test simultaneous failover of SQLVM1 and SQLVM2 at this stage. Then stop **WebVM2** and **SQLVM2**.
 
-8.  Refresh the blade with the Contoso application. The application still works. Confirm again that the database is writable by changing one of the policies.
+1.  Refresh the blade with the Contoso application. The application still works. Confirm again that the database is writable by changing one of the policies.
 
-9.  Re-open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica, and there is a critical warning about **SQLVM2** not being available.
+1.  Re-open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica, and there is a critical warning about **SQLVM2** not being available.
 
     ![SQL Server Management Studio screenshot showing SQLVM1 as the primary replica, with warnings.](images1/E4T1S9.png "SQLVM1 as Primary")
 
-10. Re-start **SQLVM2** and **WebVM2**.
+1. Re-start **SQLVM2** and **WebVM2**.
 
 ### Task 2: Validate Disaster Recovery - Failover IaaS region to region
 
@@ -152,7 +152,7 @@ In this task, you will validate failover of the Contoso application from Primary
     
     ![](images/iaas-image55.png)
 
-### Task 3: Validate Disaster Recovery - Failback IaaS region to region
+### Task 3: Validate Disaster Recovery - Failback region to IaaS region
 
 In this task, you will failback the Contoso application from the DR site in Secondary Site back to the Primary site.
 
@@ -346,9 +346,6 @@ In this task, you will validate the ability to restore the Contoso application d
 
 ## Summary 
 
-In this exercise, you explored an Azure Migrate project and the default built-in tools for server assessment and server migration. You have also configured the Azure Migrate appliance in the on-premises Hyper-V environment and started the migration assessment discovery process using Azure Migrate.
-
-### You have successfully completed the lab
-Now, click on **Next** from the lower right corner to move to the next page.
+In this exercise, you validated high availability and disaster recovery by performing failover and failback between IaaS regions. Additionally, VM and SQL backups were validated to ensure the integrity and recoverability of critical resources.
 
 ### You have successfully completed the lab
