@@ -48,7 +48,7 @@ Welcome to your Building a Resilient IaaS Architecture Hands On Lab! We've prepa
  
 Once you're ready to dive in, your virtual machine and **Lab Guide** will be right at your fingertips within your web browser.
  
-![](images/labguide1upd.png "Lab Environment")
+![](images/labguide1upd1.png "Lab Environment")
 
 ## Virtual Machine & Lab Guide
  
@@ -64,7 +64,7 @@ To get a better understanding of your lab resources and credentials, navigate to
  
 For convenience, you can open the lab guide in a separate window by selecting the **Split Window** icon at the top right corner.
 
-![](images/GS8upd.png)
+![](images/GS8upd1.png)
  
 ## Managing Your Virtual Machine
  
