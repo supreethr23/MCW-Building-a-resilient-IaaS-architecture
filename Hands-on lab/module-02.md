@@ -93,12 +93,11 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
     > **Note:** Azure Automation accounts are only allowed to be created in certain Azure regions, but they can act on any region in Azure (except Government, China or Germany). It is not a requirement to have your Azure Automation account in the same region as the failover resources, but it **CANNOT** be in your primary region.
 
-
 1. In the **Azure Automation Account** blade and select **Runbooks (1)**, then select **Import a runbook (1)**.
 
-    ![The 'Import a runbook' button is highlighted in Azure Automation.](images1/E2T1S10upd.png "Import a runbook button")
+    ![The 'Import a runbook' button is highlighted in Azure Automation.](images1/E2T1S10upd1.png "Import a runbook button")
 
-   > **Note**: You must be connected to the **LABVM** to complete the next steps.
+    > **Note**: You must be connected to the **LABVM** to complete the next steps.
 
 1. Select the **Folder** icon on the Import blade and select the file **ASRRunbookSQL.ps1** from the `C:\HOL\` directory on the **LABVM**. The Runbook type should default to **PowerShell Workflow**. Change the name of the Workflow inside of the Runbook script to **ASRSQLFailover**. Select **Import**.
 
@@ -394,8 +393,8 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     ![A message is displayed indicating Enabling replication for two vm(s) has successfully completed.](images/image234.png "Enabling replication for two vm(s)")
 
- > **Note:** If the replication status indicates failure, monitor the jobs. If all jobs are successful, you can move on to the next step.
->  ![A message is displayed indicating replication failure.](images/failurerep.png "Enabling replication for two vm(s)")
+    > **Note:** If the replication status indicates failure, monitor the jobs. If all jobs are successful, you can move on to the next step.
+    >  ![A message is displayed indicating replication failure.](images/failurerep.png "Enabling replication for two vm(s)")
 
 1. The **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** blade should still have the **Site Recovery (1)** option (under 'Getting started') selected. Select **Step 2: Manage Recovery Plans (2)**.
 
@@ -460,7 +459,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 1. Return to the Recovery Services Vault **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** blade and select the **Replicated Items** link under **Protected Items**. You should see **WebVM1** and **WebVM2**. The Replication Health should be **Healthy**. The Status will show the replication progress. Once both VMs show status **Protected**, replication is complete and you will be able to test the failover.
 
-    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/E2T4S20upd.png "Replicated Items")
+    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/E2T4S20upd1.png "Replicated Items")
 
     > **Note**: It can take up to 30 minutes for the replication to complete.
 
