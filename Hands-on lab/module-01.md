@@ -92,7 +92,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 1. Complete the **Create storage account** form using the following details:
 
     - **Resource group**: ContosoRG1
-    - **Storage account name:** contososqlwitness<inject key="DeploymentID" enableCopy="false"/> 
+    - **Storage account name:** **contososqlwitness<inject key="DeploymentID" enableCopy="false"/>**
     - **Location**: Any location in your area that is **NOT** your Primary or Secondary site, for example **West US 2**
     - **Primary Service** : Azure Files.
     - **Performance**: Standard
