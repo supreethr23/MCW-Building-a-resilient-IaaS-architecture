@@ -36,14 +36,13 @@ In this high availability and disaster recovery architecture, **Azure resources*
 ## Explanation of Components
 The architecture for this lab involves the following key components:
 
-- **Azure Migrate:** A service that helps assess and migrate on-premises workloads to Azure, providing tools for discovery, assessment, and migration.
-- **Azure SQL Database:** A fully managed database service that provides scalability, security, and high availability for SQL workloads in the cloud.
-- **Azure SQL Managed Instance (SQL MI):** Offers near 100% compatibility with the SQL Server engine and is designed for easy migration of existing SQL Server workloads to Azure.
-- **Azure App Service:** A fully managed platform for building, deploying, and scaling web apps and APIs.
-- **SMB Network Share:** A file-sharing protocol used to create shared folders for backups or data transfer in the migration process.
+- **Azure Front Door:** A scalable and secure entry point for delivering global applications, providing features like load balancing, content delivery, SSL offloading, and application acceleration to optimize performance and ensure high availability.
+- **Azure Site Recovery:** A disaster recovery service that enables the replication, failover, and recovery of applications and workloads to Azure, ensuring business continuity in the event of a site failure. It supports a variety of environments, including VMware, Hyper-V, and physical servers.
+- **Azure Load Balancer:** A high-performance, scalable service that distributes incoming traffic across multiple virtual machines (VMs) to ensure high availability and reliability of applications.
+- **Backend Pools:** A collection of resources, typically virtual machines or application gateway servers, that receive and handle traffic from a load balancer or application gateway. In Azure, backend pools are used to distribute network traffic across multiple servers to ensure high availability and scalability.
 
 ## Getting Started with Your Building a Resilient IaaS Architecture Hands On Lab
-Welcome to your Migrate and Modernise SQL Servers to Azure Hands On Lab! We've prepared a seamless environment for you to explore and learn about Azure services. Let's begin by making the most of this experience:
+Welcome to your Building a Resilient IaaS Architecture Hands On Lab! We've prepared a seamless environment for you to explore and learn about Azure services. Let's begin by making the most of this experience:
 
 ## Accessing Your Lab Environment
  
