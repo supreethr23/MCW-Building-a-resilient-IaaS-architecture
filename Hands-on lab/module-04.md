@@ -1,8 +1,16 @@
-## Exercise 4: Validate resiliency
+# Exercise 4: Validate resiliency
 
-Duration: 90 minutes
+### Estimated Duration: 60 minutes
 
 In this exercise, you will validate the high availability, disaster recovery, and backup solutions you have implemented in the earlier lab exercises.
+
+### Objectives
+In this exercise, you will complete the following tasks:
+   - Task 1: Validate High Availability.
+   - Task 2: Validate Disaster Recovery - Failover IaaS region to region.
+   - Task 3: Validate Disaster Recovery - Failback IaaS region to region.
+   - Task 4: Validate VM Backup.
+   - Task 5: Validate SQL Backup.
 
 ### Task 1: Validate High Availability
 
@@ -335,5 +343,12 @@ In this task, you will validate the ability to restore the Contoso application d
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
 <validation step="a1948261-3fef-4f42-8f0c-051afcdfb6d5" />
+
+## Summary 
+
+In this exercise, you explored an Azure Migrate project and the default built-in tools for server assessment and server migration. You have also configured the Azure Migrate appliance in the on-premises Hyper-V environment and started the migration assessment discovery process using Azure Migrate.
+
+### You have successfully completed the lab
+Now, click on **Next** from the lower right corner to move to the next page.
 
 ### You have successfully completed the lab
