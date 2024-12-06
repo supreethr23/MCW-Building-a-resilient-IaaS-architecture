@@ -39,6 +39,7 @@ The architecture for this lab involves the following key components:
 - **Azure Site Recovery:** A disaster recovery service that enables the replication, failover, and recovery of applications and workloads to Azure, ensuring business continuity in the event of a site failure. It supports a variety of environments, including VMware, Hyper-V, and physical servers.
 - **Azure Load Balancer:** A high-performance, scalable service that distributes incoming traffic across multiple virtual machines (VMs) to ensure high availability and reliability of applications.
 - **Backend Pools:** A collection of resources, typically virtual machines or application gateway servers, that receive and handle traffic from a load balancer or application gateway. In Azure, backend pools are used to distribute network traffic across multiple servers to ensure high availability and scalability.
+- **SQL Server Management Studio (SSMS):** A comprehensive tool for managing SQL Server instances, enabling database administration, query execution, and performance monitoring in a user-friendly interface.
 
 ## Getting Started with Your Building a Resilient IaaS Architecture Hands On Lab
 Welcome to your Building a Resilient IaaS Architecture Hands On Lab! We've prepared a seamless environment for you to explore and learn about Azure services. Let's begin by making the most of this experience:
@@ -47,7 +48,7 @@ Welcome to your Building a Resilient IaaS Architecture Hands On Lab! We've prepa
  
 Once you're ready to dive in, your virtual machine and **Lab Guide** will be right at your fingertips within your web browser.
  
-![](images/labguide1.png "Lab Environment")
+![](images/labguide1upd.png "Lab Environment")
 
 ## Virtual Machine & Lab Guide
  
@@ -63,7 +64,7 @@ To get a better understanding of your lab resources and credentials, navigate to
  
 For convenience, you can open the lab guide in a separate window by selecting the **Split Window** icon at the top right corner.
 
-![](images/GS8.png)
+![](images/GS8upd.png)
  
 ## Managing Your Virtual Machine
  
