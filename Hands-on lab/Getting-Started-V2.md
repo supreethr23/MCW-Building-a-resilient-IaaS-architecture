@@ -1,5 +1,5 @@
 # Building a Resilient IaaS Architecture
-### Overall Estimated Duration: 7 Hours
+### Overall Estimated Duration: 6 Hours
 
 ## Overview
 Building a Resilient IaaS Architecture lab focuses on improving the reliability of the Contoso application by implementing Azure solutions for high availability, disaster recovery (DR), and data protection. High availability is achieved by adding redundancy across the web, database, and domain controller tiers. A secondary Disaster Recovery site is then configured using appropriate Azure technologies for each tier to ensure business continuity. Azure Backup is employed to safeguard the web tier virtual machines and the SQL Server database. Finally, the lab concludes by validating the high availability, Disaster Recovery, and backup configurations to ensure the application’s resiliency and preparedness for potential failures.
