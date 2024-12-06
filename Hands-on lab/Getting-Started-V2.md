@@ -1,15 +1,20 @@
-# Migrate and Modernise SQL Servers to Azure
-### Overall Estimated Duration: 4 Hours
+# Building a Resilient IaaS Architecture
+### Overall Estimated Duration: 8 Hours
 
 ## Overview
-Migrating and modernizing SQL Servers to Azure involves moving on-premises databases to cloud-based solutions like Azure SQL Database, Azure SQL Managed Instance, or SQL Server on Azure VMs. This process includes assessing existing workloads, choosing the appropriate migration approach, and leveraging Azure's cloud-native features for enhanced performance, security, and scalability. Post-migration, organizations benefit from automated backups, high availability, cost optimization, and continuous monitoring, all while reducing operational overhead and improving business continuity.
+Building a Resilient IaaS Architecture lab focuses on improving the reliability of the Contoso application by implementing Azure solutions for high availability, disaster recovery (DR), and data protection. High availability is achieved by adding redundancy across the web, database, and domain controller tiers. A secondary DR site is then configured using appropriate Azure technologies for each tier to ensure business continuity. Azure Backup is employed to safeguard the web tier virtual machines and the SQL Server database. Finally, the lab concludes by validating the high availability, DR, and backup configurations to ensure the application’s resiliency and preparedness for potential failures.
 
 ## Objective
-Migrate on-premises SQL Server databases and applications to Azure by creating an Azure Migrate project, assessing workloads, and executing database migrations to both Azure SQL Database and Azure SQL Managed Instance, while updating the web application for seamless integration.
+The objective of this lab is to enhance the Contoso application’s reliability by implementing high availability, disaster recovery (DR), and backup solutions in Azure. This includes adding redundancy, configuring a secondary DR site, and securing data with Azure Backup. The goal is to validate these solutions to ensure system resiliency and continuity.
 
-- **Migrate Windows and Linux Servers to Azure:** In this lab, you will learn how to use Azure Migrate service to assess the on-premises environment and migrate the servers to Azure. This will include selecting Azure Migrate tools, deploying the Azure Migrate appliance into the on-premises environment, creating a migration assessment, using the Azure Migrate dependency visualization, right-sizing of on-premises resources and finally migrating the servers to Azure with Azure Migrate resource which provide provides a simplified migration, modernization, and optimization service for Azure.
-- **Migrate the on-premises database to Azure SQL Database:** In this lab, you will use an Azure Migrate: Database Assessment tool called Microsoft Data Migration Assistant (DMA) to assess the PartsUnlimited database for migration to the Azure SQL Database. The assessment generates a report detailing any feature parity and compatibility issues between the on-premises database and Azure SQL Database. After the assessment, you will use an Azure Migrate: Database Migration service called Azure Database Migration Service (DMS). During the exercise, you will use a simulated on-premises environment hosted on virtual machines running on Azure.
-- **Migrate SQL to Azure SQL Managed Instance:** In this lab, you will connect to the WideWorldImporters database on the SqlServer2008 VM and perform assessments for migration to Azure SQL Database and Azure SQL Managed Instance. These assessments will help you understand the compatibility and readiness of your database for migration to Azure. You will evaluate the database schema, data, and performance to identify any potential issues and determine the best migration strategy. This process ensures a smooth transition to Azure’s cloud services, leveraging their scalability, security, and advanced features.
+- **Enable High Availability for the Contoso application:** In this exercise, you will deploy additional web, database and domain controller VMs you will convert this deployment into a highly-availability architecture by adding redundancy to each tier.
+
+- **Enable Disaster Recovery for the Contoso application:** In this exercise, you will enable a secondary DR site. This site will support each tier of the Contoso application, using a different technology in each case. The DR approach is summarized in the following table.
+
+- **Enable Backup for the Contoso application:** In this exercise, you will use Azure Backup to enable backup for the Contoso application. You will configure backup for both the web tier VMs and the SQL Server database.
+
+- **Validate resiliency:** In this exercise, you will validate the high availability, disaster recovery, and backup solutions you have implemented in the earlier lab exercises.
+
 ## Prerequisites
 
 Participants should have a basic understanding of the following:
