@@ -1,6 +1,6 @@
 # Exercise 3: Enable Backup for the Contoso application
 
-### Estimated Duration: 180 minutes
+### Estimated Duration: 90 minutes
 
 In this exercise, you will use Azure Backup to enable backup for the Contoso application. You will configure backup for both the web tier VMs and the SQL Server database.
 
