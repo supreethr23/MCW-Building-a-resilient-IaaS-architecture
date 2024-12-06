@@ -151,7 +151,7 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
 
 1. Select the **SQLVM1** virtual machine (the standard VM resource, not the SQL virtual machine resource). Then select **Extensions + application**. Note that the **SqlIaaSExtension** has been installed on the virtual machine.With the SQL virtual machine resources created and the SQL IaaS extension installed, you can now configure Azure Backup for virtual machines.
 
-    ![Azure portal screenshot showing the SqlIaaSExtension has been deployed to SQLVM1.](images1/E3T3S6upd.png "SqlIaaSExtension")
+    ![Azure portal screenshot showing the SqlIaaSExtension has been deployed to SQLVM1.](images1/E3T3S6upd1.png "SqlIaaSExtension")
 
 1. In the Azure portal, navigate to the **BackupRSV** Recovery Services Vault resource in **ContosoRG1**. Under 'Getting started', select **Backup**. Under 'Where is your workload running?', select **Azure**. Under 'What do you want to backup?', select **SQL Server in Azure VM**. Then select **Start Discovery**.
 
