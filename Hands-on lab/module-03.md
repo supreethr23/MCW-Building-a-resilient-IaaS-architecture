@@ -38,7 +38,7 @@ In this task, you will create the vault in the primary region for use by Azure B
 
 1.  Still in the BackupRSV<inject key="DeploymentID" enableCopy="false"/> Properties blade, under **Soft Delete and security settings**, select **Update**. Under Soft Delete, select **Uncheck** the **Enable soft delete for cloud workloads** and** Enable soft delete and security settings for hybrid workloads**, then **Update** your changes and close the Security Settings panel.
 
-    ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images1/ex3-task1-step5.png "Recovery Services Vault security properties")
+    ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images1/ex3-task1-step5upd.png "Recovery Services Vault security properties")
 
     > **Note:** In a production environment, you should leave Soft Delete enabled. However, for this lab, it is better to disable this feature, since leaving it enabled makes it more difficult to clean up your lab resources once the lab is complete.
 
@@ -151,7 +151,7 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
 
 1. Select the **SQLVM1** virtual machine (the standard VM resource, not the SQL virtual machine resource). Then select **Extensions + application**. Note that the **SqlIaaSExtension** has been installed on the virtual machine.With the SQL virtual machine resources created and the SQL IaaS extension installed, you can now configure Azure Backup for virtual machines.
 
-    ![Azure portal screenshot showing the SqlIaaSExtension has been deployed to SQLVM1.](images1/E3T3S6.png "SqlIaaSExtension")
+    ![Azure portal screenshot showing the SqlIaaSExtension has been deployed to SQLVM1.](images1/E3T3S6upd.png "SqlIaaSExtension")
 
 1. In the Azure portal, navigate to the **BackupRSV** Recovery Services Vault resource in **ContosoRG1**. Under 'Getting started', select **Backup**. Under 'Where is your workload running?', select **Azure**. Under 'What do you want to backup?', select **SQL Server in Azure VM**. Then select **Start Discovery**.
 
