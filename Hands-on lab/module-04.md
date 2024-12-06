@@ -52,7 +52,7 @@ In this task, you will validate failover of the Contoso application from Primary
 
     Keep this browser tab open, as you will return to it later in the lab.
 
-1. From a new browser tab, open the Azure portal, then navigate to the **BCDRRSV** Recovery Services Vault located in the **ContosoRG2** resource group.
+1. From a new browser tab, open the Azure portal, then navigate to the **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Services Vault located in the **ContosoRG2** resource group.
 
 1. Select **Recovery Plans (Site Recovery)** in the **Manage** area, then select **BCDRIaaSPlan**.
 
@@ -156,7 +156,7 @@ In this task, you will validate failover of the Contoso application from Primary
 
 In this task, you will failback the Contoso application from the DR site in Secondary Site back to the Primary site.
 
-1.  Back on **BCDRRSV** Recovery Services vault, select **Recovery Plans** and re-open the **BCDRIaaSPlan**. Notice that the VMs are still at the Target since they are failed over to the secondary site.
+1.  Back on **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Services vault, select **Recovery Plans** and re-open the **BCDRIaaSPlan**. Notice that the VMs are still at the Target since they are failed over to the secondary site.
 
      ![](images/iaas-image56.png)
 
@@ -248,7 +248,7 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
 
     > **Note:** since WebVM2 is also shut down, this will break the Contoso application. In a real-world scenario, you would keep WebVM2 running while restoring WebVM1.
 
-1.  In the Azure portal, navigate to the **BackupRSV** Recovery Services Vault. Under 'Protected Items', select **Backup items**, then select **Azure Virtual Machine**.
+1.  In the Azure portal, navigate to the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Services Vault. Under 'Protected Items', select **Backup items**, then select **Azure Virtual Machine**.
 
     ![](images/iaas-image72.png)
 
@@ -272,7 +272,7 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
 
         ![](images/iaas-image78.png)
         
-1. In the **BackupRSV** vault, navigate to the **Backup Jobs** view. Note that two new jobs are shown as 'In progress', one to take a backup of the VM and a second to restore the VM.
+1. In the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** vault, navigate to the **Backup Jobs** view. Note that two new jobs are shown as 'In progress', one to take a backup of the VM and a second to restore the VM.
 
     ![Screenshot showing both backup and restore jobs for WebVM1.](images1/E4T4S11.png "Restore VM Backup Jobs")
 
@@ -290,7 +290,7 @@ In this task, you will validate the backup for the Contoso application WebVMs. Y
 
 In this task, you will validate the ability to restore the Contoso application database from Azure Backup.
 
-1.  In the Azure portal, navigate to the **BackupRSV** in **ContosoRG1**. Under 'Protected items', select **Backup items**, then select **SQL in Azure VM**.
+1.  In the Azure portal, navigate to the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** in **ContosoRG1**. Under 'Protected items', select **Backup items**, then select **SQL in Azure VM**.
 
     ![Screenshot showing the path to the SQL in Azure VMs in backup items in the Recovery Services Vault.](images1/E4T5S1.png "Backup items")
 
