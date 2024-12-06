@@ -143,7 +143,6 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
      ![](images/iaas-image17.png)
 
-
     >**Note**: Please minimize the Server Manager window 
 
 1.  Copy and paste  the following command into PowerShell ISE and execute it. This will create the Windows Failover Cluster and add all the SQL VMs as nodes in the cluster. It will also assign a static IP address of **10.0.2.99** to the new Cluster named **AOGCLUSTER**.
