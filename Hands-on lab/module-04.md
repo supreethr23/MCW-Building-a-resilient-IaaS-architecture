@@ -110,7 +110,7 @@ In this task, you will validate failover of the Contoso application from Primary
 
     > **Note:** Do not select Start! The VM will be restarted automatically by ASR during failback.
 
-1. Move back to the Resource group and select the **ContosoWebLBPrimaryIP** Public IP address. Copy the DNS name and paste it into a new browser tab. The website will be unreachable at the Primary location, since the Web VMs at this location have been stopped by ASR during failover.
+1. Move back to the Resource group **ContosoRG1** and select the **ContosoWebLBPrimaryIP** Public IP address. Copy the DNS name and paste it into a new browser tab. The website will be unreachable at the Primary location, since the Web VMs at this location have been stopped by ASR during failover.
 
 1. In the Azure portal, move to the **ContosoRG2** resource group. Locate **WebVM1** in the resource group and select it to open. Notice that **WebVM1** is running in the **Secondary** site.
 
