@@ -1,6 +1,6 @@
 # Exercise 1: Enable High Availability for the Contoso application
 
-### Estimated Duration: 60 minutes
+### Estimated Duration: 90 minutes
 
 In this exercise, you will convert the Contoso application's deployment in the <inject key="Region" enableCopy="false" /> region into a highly-available architecture by adding redundancy to each tier, including the web, database, and domain controller VMs.
 
