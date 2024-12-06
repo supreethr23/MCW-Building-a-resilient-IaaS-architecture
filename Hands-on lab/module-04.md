@@ -122,7 +122,21 @@ In this task, you will validate failover of the Contoso application from Primary
 
     ![The Contoso Insurance PolicyConnect webpage displays. The URL is from Azure Front Door.](images1/E4T2S17.png "Contoso Insurance PolicyConnect webpage")
 
-    > **Optional task**: You can log in to **SQLVM3** and open SQL Management Studio to review the Failed over **BCDRAOG**. You will see that **SQLVM3**, which is running in the **Secondary** site, is now the Primary Replica.
+    > **Note**: If you donot see the webpage after 5 minutes, Follow Step 20 to Step 23
+    
+1. If the webpage is responding from the **Secondary** site, go to **ContosoWebLBSecondary** load balancer (1) and navigate to **Backend pools** (2) and select **Backend pools(1)** (3)
+
+    ![](images/webpageerror1.png)
+
+1. Under **Backend Pool(1)** pane select **Vnet2**(1) for Virtual Network and click on **Add**(2).
+
+    ![](images/webpageerror2.png)
+
+1. Under **Add IP configurations to backend pool** pane select **WebVM1** and **WebVM2** and click on **Add**.
+
+    ![](images/webpageerror3.png)
+
+1. You can now perform the Step 18 and Step 19 again.
 
 1. Now that you have successfully tested failover, you need to configure ASR for failback. Move back to the **BCDRSRV** Recovery Service Vault using the Azure portal. Expand **Manage (1)** and select **Recovery Plans (Site Recovery) (2)** on the ASR dashboard. The **BCDRIaaSPlan** will show as **Failover completed (3).** 
 
