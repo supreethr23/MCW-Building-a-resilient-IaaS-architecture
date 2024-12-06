@@ -152,6 +152,12 @@ Next, you will create the Recovery Services Vault used to replicate the Web tier
 
     ![The 'Contoso-IaaS-DR' template deployment shows as successful.](images1/E2T1S18.png "Template status")
 
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+   <validation step="1134d3fd-1557-47f5-89db-4b6eebd50650" />
+
 ### Task 2: Inspect DR for the Domain Controller tier
 
 In this task, you will simply review the rest of the configuration to confirm everything is as it should be.
@@ -450,6 +456,12 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     > **Note**: It can take up to 30 minutes for the replication to complete.
 
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+   <validation step="c1c13d12-b3c0-487b-a713-8b1534088520" />
+
 ### Task 5: Configure a public endpoint using Azure Front Door
 
 In this task, you will use the Front Door approach to configure a highly available endpoint that directs traffic to either your primary or secondary site, depending on which site is currently available.
@@ -537,6 +549,12 @@ In this task, you will use the Front Door approach to configure a highly availab
     > **Note:** If you get an "Our services aren't available right now" error (or a 404-type error) accessing the web application, then continue with the lab and come back to this later. Sometime this can take a ~10 minutes for the routing rules to publish before it's "live".
     
     > If you continue to have this issue beyond 15 minutes, ensure that you are using the correct backend host header (Step 5) and using HTTP for both the routing rules and the health probes of the backend pools. (Step 4).
+
+   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+   > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+   <validation step="0bdbfd04-f20a-4db0-abae-810ff8964a34" />
 
 ## Summary 
 
