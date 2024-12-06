@@ -48,7 +48,7 @@ In this task, you will validate failover of the Contoso application from Primary
 
 1. Using the Azure portal, open the **ContosoRG1** resource group. Navigate to the Front Door resource, locate the Frontend Host URL, and open it in a new browser tab. Navigate to it to ensure that the application is up and running from the Primary Site.
 
-    ![The Frontend host link is called out.](images1/E4T2S1.png "Frontend host")
+    ![The Frontend host link is called out.](images1/E4T2S1upd.png "Frontend host")
 
     Keep this browser tab open, as you will return to it later in the lab.
 
@@ -96,7 +96,7 @@ In this task, you will validate failover of the Contoso application from Primary
 
 1. You can monitor the progress of the Failover from this panel.
 
-    ![Output is selected on the Job blade, and information displays in the Output blade.](images1/E4T2S11.png "Job and Output blades")
+    ![Output is selected on the Job blade, and information displays in the Output blade.](images1/E4T2S11upd.png "Job and Output blades")
 
     > **Note:** Do not make any changes to your VMs in the Azure portal during this process. Allow ASR to take the actions and wait for the failover notification before moving on to the next step. You can open another portal view in a new browser tab and review the output of the Azure Automation Jobs, by opening the jobs and selecting Output.
 
