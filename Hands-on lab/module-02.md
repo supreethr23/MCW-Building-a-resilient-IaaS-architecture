@@ -120,7 +120,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
 1. In your Azure Automation account, select **Variables**, then **Add a variable**.
 
-    ![Azure portal showing variables pane in Azure Automation.](images1/E2T1S15.png "Add a variable")
+    ![Azure portal showing variables pane in Azure Automation.](images1/E2T1S15upd.png "Add a variable")
 
 1. In the **New Variable** blade, enter `BCDRIaaSPlan` as the variable name. The variable type should be **String**. Paste the following into the variable **Value**, then select **Create**.
 
@@ -142,15 +142,15 @@ In this task, you will deploy the resources used by the DR environment. First, y
     }
     ```
 
-    ![The 'New Variable' blade is filled in with the variable name and value.](images1/E2T1S16.png "New Variable")
+    ![The 'New Variable' blade is filled in with the variable name and value.](images1/E2T1S16upd.png "New Variable")
 
 1. Notice that the variable **BCDRIaaSPlan** has been created. 
 
-    ![The 'BCDRIaaSPlan' variable is shown in the Automation Account.](images1/E2T1S17.png "Automation Account variables")
+    ![The 'BCDRIaaSPlan' variable is shown in the Automation Account.](images1/E2T1S16upd1.png "Automation Account variables")
 
 1. Before continuing, check that the template deployment you started at the beginning of this task has been completed. From the Azure portal home page, select **Subscriptions**, select your subscription, then select **Deployments**. 
 
-    ![The 'Contoso-IaaS-DR' template deployment shows as successful.](images1/E2T1S18.png "Template status")
+    ![The 'Contoso-IaaS-DR' template deployment shows as successful.](images1/E2T1S18upd.png "Template status")
 
    > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
    > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
@@ -166,7 +166,7 @@ The failover site in has been deployed with two additional domain controllers, *
 
 1.  From the Azure portal home page, select **Subscriptions**, choose your subscription, and select **Deployments**, then open the **Contoso-IaaS-DR** deployment used for the DR site.
 
-    ![Click path to the 'Contoso-IaaS-DR' deployment.](images1/E2T2S1.png "DR deployment")
+    ![Click path to the 'Contoso-IaaS-DR' deployment.](images1/E2T2S1upd.png "DR deployment")
 
 1.  Select **Template** and review the template contents. Note the use of `dependsOn` to carefully control the deployment sequence. The resources are deployed as follows:
 
@@ -202,11 +202,11 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
     > **Note**: The username for your lab should show **SQLVM3\demouser**.
 
-    ![Screenshot of the Connect to Server dialog box.](images1/E1T3S27upd.png "Connect to Server dialog box")
+    ![Screenshot of the Connect to Server dialog box.](images1/E3T3S27upd1.png "Connect to Server dialog box")
     
 1. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM3\demouser` is listed.
 
-    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/E1T3S28upd.png)
+    ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/E2T3S28upd1.png)
 
 1. Right-click on **Logins** and then select **New Login...**
 
@@ -246,11 +246,11 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
 1.  On **SQLVM3**, select **Start** and launch **SQL Server 2017 Configuration Manager**.
 
-    ![Screenshot of the SQL Server 2017 Configuration Manager option on the Start menu.](images/image166.png "SQL Server 2017 Configuration Manager option")
+    ![Screenshot of the SQL Server 2017 Configuration Manager option on the Start menu.](images/image166upd.png "SQL Server 2017 Configuration Manager option")
 
 1.  Select **SQL Server Services**, then right-click **SQL Server (MSSQLSERVER)** and select **Properties**.
 
-    ![In SQL Server 2017 Configuration Manager, in the left pane, SQL Server Services is selected. In the right pane, SQL Server (MSSQLSERVER) is selected, and from its right-click menu, Properties is selected.](images/image167.png "SQL Server 2017 Configuration Manager")
+    ![In SQL Server 2017 Configuration Manager, in the left pane, SQL Server Services is selected. In the right pane, SQL Server (MSSQLSERVER) is selected, and from its right-click menu, Properties is selected.](images/image167upd.png "SQL Server 2017 Configuration Manager")
 
 1.  Select the **AlwaysOn High Availability** tab and check the box for **Enable AlwaysOn Availability Groups**. Select **Apply** and then select **OK** on the message that notifies you that changes won't take effect until after the server is restarted.
 
@@ -300,7 +300,7 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
 1. On the **Connect to Server** dialog box enter the Server Name of **SQLVM3** and select **Connect**.
 
-    ![Screenshot of the Connect to Server dialog box for SQLVM3.](images1/E2T3S20upd.png "Connect to Server dialog box")
+    ![Screenshot of the Connect to Server dialog box.](images1/E3T3S27upd1.png "Connect to Server dialog box")
 
 1. For **SQLVM3**, leave the default settings of 'Asynchronous commit' with 'Automatic Failover' disabled. Select **Next**.
 
@@ -324,7 +324,7 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
 1. Under Availability Groups, right-click **BCDRAOG (Primary)** and then select **Show Dashboard**. You should see that the **SQLVM3** node has been added and is synchronizing.
 
-    ![Screenshot of the BCDRAOG Dashboard showing SQLVM3 synchronizing.](images1/E2T3S26.png "BCDRAOG Dashboard")
+    ![Screenshot of the BCDRAOG Dashboard showing SQLVM3 synchronizing.](images1/E2T3S26upd.png "BCDRAOG Dashboard")
 
 1. Move back to **PowerShell ISE** on **SQLVM1**. Open a new file, paste in the following script, and select the **Play** button. This will update the Failover cluster with the new Listener IP address that you created.
 
@@ -357,7 +357,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 1. Under **Getting Started**, select **Site Recovery**.  Next, select **Step 1: Enable replication** in the **For On-Premises Machines and Azure VMs** section. 
 
-    ![In the ASR blade, Getting Started is highlighted. Under For On-Premises Machines and Azure VMs, Step 1: Enable replication is selected.](images/dr-asr-1.png "Step 1 selected")
+    ![In the ASR blade, Getting Started is highlighted. Under For On-Premises Machines and Azure VMs, Step 1: Enable replication is selected.](images/dr-asr-1upd.png "Step 1 selected")
 
 1. On **Step 1 - Source** select the following inputs and then select **Next (5)**:
 
@@ -403,7 +403,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 1. Select **+Recovery plan**.
 
-    ![On the Recovery Services vault blade top menu, Add a recovery plan is selected.](images1/E2T4S10.png "Add recovery plan")
+    ![On the Recovery Services vault blade top menu, Add a recovery plan is selected.](images1/E2T4S10upd.png "Add recovery plan")
 
 1. Fill in the **Create recovery plan** blade as follows:
 
@@ -436,6 +436,9 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
     ![Fields in the Insert action blade are set to the ASRRunBookSQL script.](images/Ex-2-t3-step171.png "Insert action blade")
 
     > **Note:** As noted on the 'Insert action' blade, the ASRSQLFailover runbook will be executed on both failover and failback. The runbook has been written to support both scenarios.
+    > 
+    > **Note:** If the **OK** button does not respond, click the cross icon in the top-right corner, then click **Ok** in the dialog box. This will confirm that the pre-action has been saved.
+    > ![issueimage.](images1/cancelbutton.png "Recovery plan blade")
 
 1. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** next to **Group 1: Start**, then select **Add post action** from the context menu.
 
@@ -444,6 +447,8 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 1. On the **Insert action** blade, select **Script** and then provide the name: **ASRWEBFailover(1)** Ensure that your **Azure Automation account(2)** is selected and then choose the Runbook name: **ASRWEBFailover(3)**. Select **OK (4)**.
 
     ![Fields in the Insert action blade are set to the ASRWebFailover script.](images/Ex2-t1-step191.png "Insert Action blade")
+
+      > **Note:** If the **OK** button does not respond, click the cross icon in the top-right corner, then click **Ok** in the dialog box. This will confirm that the post-action has been saved.
 
 1. Make sure that your **Pre-steps** are running under **All groups failover** and the **Post-steps** are running under **Group1: Start**. Select **Save**.
 
@@ -455,7 +460,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 1. Return to the Recovery Services Vault **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** blade and select the **Replicated Items** link under **Protected Items**. You should see **WebVM1** and **WebVM2**. The Replication Health should be **Healthy**. The Status will show the replication progress. Once both VMs show status **Protected**, replication is complete and you will be able to test the failover.
 
-    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/E2T4S20.png "Replicated Items")
+    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/E2T4S20upd.png "Replicated Items")
 
     > **Note**: It can take up to 30 minutes for the replication to complete.
 
@@ -470,6 +475,8 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 In this task, you will use the Front Door approach to configure a highly available endpoint that directs traffic to either your primary or secondary site, depending on which site is currently available.
 
 1.  You will now build a Front Door to direct traffic to your Primary and Secondary Sites. From the Azure portal, select **+Create a resource**, then search for and select **Front Door and CDN profiles**. Select **Create**.
+
+    ![frontdoor.](images/azfrontdoor.png "Replicated Items")
 
 1. Select **Azure Front Door** and **Custom create**. Then select **Continue to create a  Front Door**.
 
@@ -514,7 +521,7 @@ In this task, you will use the Front Door approach to configure a highly availab
     - Host name: ContosoWebLBPrimaryIP
     - Priority: 1
 
-    ![Screen shot showing the values entered into the Add an origin pane.](images1/E2T5S9.png "Add an origin")
+    ![Screen shot showing the values entered into the Add an origin pane.](images1/origin1.png "Add an origin")
 
 1. Repeat step 10 and change the values to the following.
 
@@ -522,6 +529,8 @@ In this task, you will use the Front Door approach to configure a highly availab
     - Origin type: Public IP Address
     - Host name : ContosoWebLBSecondaryIP
     - priority: 2  
+
+    ![Screen shot showing the values entered into the Add an origin pane.](images1/origin2.png "Add an origin")
 
 1. Update **Interval (in seconds)** to 30. Click Add
 
