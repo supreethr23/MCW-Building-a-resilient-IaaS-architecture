@@ -5,21 +5,18 @@
 Building a Resilient IaaS Architecture lab focuses on improving the reliability of the Contoso application by implementing Azure solutions for high availability, disaster recovery (DR), and data protection. High availability is achieved by adding redundancy across the web, database, and domain controller tiers. A secondary Disaster Recovery site is then configured using appropriate Azure technologies for each tier to ensure business continuity. Azure Backup is employed to safeguard the web tier virtual machines and the SQL Server database. Finally, the lab concludes by validating the high availability, Disaster Recovery, and backup configurations to ensure the application’s resiliency and preparedness for potential failures.
 
 ## Objective
-The objective of this lab is to enhance the Contoso application’s reliability by implementing high availability, disaster recovery (DR), and backup solutions in Azure. This includes adding redundancy, configuring a secondary disaster recovery site, and securing data with Azure Backup. The goal is to validate these solutions to ensure system resiliency and continuity.
+The goal of this lab is to improve the reliability of the Contoso application by implementing high availability, disaster recovery (DR), and backup solutions in Azure. By the end of this lab, participants will be able to:
 
-- **Enable High Availability for the Contoso application:** In this exercise, you will deploy additional web, database and domain controller VMs you will convert this deployment into a highly-availability architecture by adding redundancy to each tier.
-
-- **Enable Disaster Recovery for the Contoso application:** In this exercise, you will enable a secondary disaster recovery site. This site will support each tier of the Contoso application, using a different technology in each case. The disaster recovery approach is summarized in the following table.
-
-- **Enable Backup for the Contoso application:** In this exercise, you will use Azure Backup to enable backup for the Contoso application. You will configure backup for both the web tier VMs and the SQL Server database.
-
-- **Validate resiliency:** In this exercise, you will validate the high availability, disaster recovery, and backup solutions you have implemented in the earlier lab exercises.
+- **High Availability Configuration:** Learn to deploy additional web, database, and domain controller VMs for the Contoso application. This exercise will guide you in configuring redundancy across each tier to create a high-availability architecture, ensuring continuous service availability.
+- **Disaster Recovery Setup:** Learn to set up a secondary disaster recovery site to support all tiers of the Contoso application. This site will use different technologies for each tier to ensure seamless disaster recovery and business continuity.
+- **Backup Implementation:** Learn to use Azure Backup to configure backup solutions for the Contoso application. This exercise will cover backup setup for both the web tier VMs and the SQL Server database to secure critical data.
+- **Resiliency Validation:** Learn to validate the high availability, disaster recovery, and backup solutions implemented in the earlier exercises. This final step will ensure that the system is resilient and prepared for any disruptions.
 
 ## Prerequisites
 
 Participants should have a basic understanding of the following:
 
-- **Azure Portal Navigation:** Experience navigating the Azure portal for managing resources.
+- **Azure Portal and resources:** Experience in navigating the Azure portal and managing resources.
 - **Azure Site Recovery:** Understanding of Azure Site Recovery concepts and operations.
 - **SQL Server Management:** Understanding of SQL Server concepts and operations.
 - **Networking Basics:** Familiarity with creating SMB shares and managing network configurations.
