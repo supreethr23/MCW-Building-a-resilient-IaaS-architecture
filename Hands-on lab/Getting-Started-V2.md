@@ -16,7 +16,7 @@ The goal of this lab is to improve the reliability of the Contoso application by
 
 Participants should have a basic understanding of the following:
 
-- **Azure Portal Navigation:** Experience navigating the Azure portal for managing resources.
+- **Azure Portal and resources:** Experience in navigating the Azure portal and managing resources.
 - **Azure Site Recovery:** Understanding of Azure Site Recovery concepts and operations.
 - **SQL Server Management:** Understanding of SQL Server concepts and operations.
 - **Networking Basics:** Familiarity with creating SMB shares and managing network configurations.
