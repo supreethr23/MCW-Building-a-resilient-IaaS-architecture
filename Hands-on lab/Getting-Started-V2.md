@@ -90,7 +90,7 @@ Feel free to **start, stop, or restart (3)** your virtual machine as needed from
 
     ![](images/asklater.png "Enter Password")
 
-   >**NOTE:** Do not enable MFA, select **Ask Later**.
+   >**NOTE:** Do not enable MFA. Select **Ask Later**.
  
 1. If prompted to **Stay signed in**, you can click on **No**.
 
