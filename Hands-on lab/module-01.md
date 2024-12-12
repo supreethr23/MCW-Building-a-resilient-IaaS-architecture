@@ -85,7 +85,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
    ![](images/iaas-image6.png)
 
-1. Click on **Create**.   
+1. Click on **+Create**.   
 
    ![](images/iaas-image7.png)
 
@@ -199,11 +199,11 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image29.png)
 
-1. Select the name of the cluster again, and the **Cloud Witness** should now appear in the **Cluster Resources** section (you may need to scroll down). It is important to always use a third data center. In your case, here is a third Azure Region to be your Cloud Witness.
+1. Select the name of the cluster again, and the **Cloud Witness** should now appear in the **Cluster Resources** section (you may need to scroll down). It is important to always use a third data center. In your case, here is a third Azure Region that will be your Cloud Witness.
 
      ![](images/iaas-image30.png)
 
-1. Select **Start (1)**, **search SQL Server 2017 Configuration Manage (2)** and launch **SQL Server 2017 Configuration Manager (3)**.
+1. Select **Start (1)**, search **SQL Server 2017 Configuration Manage (2)** and launch **SQL Server 2017 Configuration Manager (3)**.
 
     ![](images/iaas-image31.png)
 
@@ -233,7 +233,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
    - Server name: **SQLVM2 (1)**
    - Authentication: **Windows Authentication (2)**
    - User name: **SQLVM2\demouser (3)**
-   - Ensure that the **Trust server certificate (4)** is selected and click on **Connect (5)** to sign on to **SQLVM2**. 
+   - Ensure that the **Trust server certificate (4)** is selected, and click on **Connect (5)** to sign on to **SQLVM2**. 
 
     ![](images/iaas-image38.png)
 
@@ -261,12 +261,12 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
    ![](images/iaas-image44.png)
 
-1. Click on **Start (1)**, search **ssms (2)** and launch **SQL Server Management Studio 20 (3)**. A new dialog box will open. Ensure that the **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
+1. Click on **Start (1)**, search **ssms (2)** and launch **SQL Server Management Studio 20 (3)**. A new dialog box will open. Ensure that the ** server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
 
      - Server name: **SQLVM1 (1)**
      - Authentication: **Windows Authentication**
      - User name: **SQLVM1\demouser**
-     - Ensure that the **Trust server certificate (2)** is selected and click on **Connect (3)** to sign on to **SQLVM1**. 
+     - Ensure that the ** server certificate (2)** is selected and click on **Connect (3)** to sign on to **SQLVM1**. 
      
        ![](images/iaas-image38.png)
 
@@ -294,7 +294,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
 
-1. Select the **Trust server certificate** and click on **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
+1. Select the ** server certificate** and click on **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images1/E1T3S33.png "Connect to Server dialog box")
     
@@ -373,11 +373,11 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![Screenshot of the Add replica button.](images/image179upd1.png "Add replica button")
 
-1. On the **Connect to Server** dialog box, enter the **server name (1)** of **SQLVM2**, enable **Trust server certificate (2)** check box and select **Connect (2)**. **Note**: The username for your lab should show **CONTOSO\demouser**.
+1. On the **Connect to Server** dialog box, enter the **Server name (1)** as **SQLVM2**, enable ** server certificate (2)** check box and select **Connect (2)**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![Screenshot of the Connect to Server dialog box for SQLVM2.](images1/E1T3S40upd.png "Connect to Server dialog box")
 
-1. For **SQLVM2**, select **Automatic Failover** and **Availability Mode of Synchronous** commit.
+1. For **SQLVM2**, select **Automatic Failover** and **Availability Mode** as **Synchronous commit.**
 
     ![On the Replicas tab, for SQLVM2, the checkbox for Automatic Failover (Up to 3) is selected, and availability mode is set to synchronous commit.](images/image181.png "Specify Replicas Screen")
 
@@ -385,7 +385,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![On the Endpoints tab, the three servers are listed.](images1/E1T3S42.png "Specify Endpoints screen")
 
-1. Next, select **Listener**. Then, select the **Create an availability group listener** option.
+1. Next, select **Listener (1)**. Then, select the **Create an availability group listener (2)** option.
 
     ![On the Listener tab, the radio button for Create an availability group listener is selected.](images/image185upd.png "Specify Listener screen")
 
@@ -401,7 +401,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![The Add button is selected beneath an empty subnet table.](images/image187upd.png "Add button")
 
-1. Select the subnet of **10.0.2.0/24** and then add IPv4 **10.0.2.100** and select **OK**. This is the IP address of the internal load balancer that is in front of the **SQLVM1** and **SQLVM2** in the **data** subnet running on the **primary** site.
+1. Select the subnet of **10.0.2.0/24** and then add IPv4 **10.0.2.0/24 (1)** and select **OK (2)**. This is the IP address of the internal load balancer in front of the **SQLVM1** and **SQLVM2** in the **data** subnet running on the **primary** site.
 
     ![The Add IP Address dialog box fields are set to the previously defined settings.](images/image188upd.png "Add IP Address dialog box")
 
@@ -409,11 +409,11 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![On the Listener tab, the Next button is selected.](images1/E1T3S47.png "Next button")
 
-1. On the **Select Initial Data Synchronization** screen, make sure that **Automatic Seeding** is selected and select **Next**.
+1. On the **Select Initial Data Synchronization** screen, make sure that **Automatic Seeding (1)** is selected and then click on **Next (2)**.
 
     ![On the Select Initial Data Synchronization screen, the radio button for Automatic seeding is selected. The Next button is selected at the bottom of the form.](images/image192upd.png "Select Initial Data Synchronization screen")
 
-1. On the **Validation** screen, you should see all green. Select **Next**.
+1. On the **Validation** screen, it should be green for all, with status'**Success**.' Now, select **Next**.
 
     ![The Validation screen displays a list of everything it is checking, and the results for each, which all display success. The Next button is selected.](images1/E1T3S49.png "Validation screen")
 
@@ -421,27 +421,27 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![On the Summary page, the Finish button is selected.](images/image194upd.png "Summary page")
 
-1. Once the AOG is built, check that each task was successful and select **Close**.
+1. Once the AOG is built, check that each task has a **Success** message written beside it. Now, select **Close**.
 
     ![On the New Availability Group Results page, a message says the wizard has completed successfully, and results for all steps is success. The Close button is selected.](images1/E1T3S51.png "New Availability Group Results page")
 
-1. Move back to **SQL Management Studio** on **SQLVM1** and expand the **AlwaysOn High Availability** item in the tree view. Under Availability Groups, expand the **BCDRAOG (Primary)** item.
+1. Move back to **SQL Management Studio** on **SQLVM1** and expand the **Always On High Availability** item in the tree view. Under Availability Groups, expand the **BCDRAOG (Primary)** item.
 
     ![In SQL Management Studio, Always On High Availability is expanded in the tree view.](images1/E1T3S52.png "SQL Management Studio")
 
-1. Right-click **BCDRAOG (Primary)** and then select **Show Dashboard**. You should see that all the nodes have been added and are now "**green.**"
+1. Right-click on **BCDRAOG (Primary)** and then select **Show Dashboard**. Ensure all the nodes have been added and are now "**green.**"
 
     ![Screenshot of the BCDRAOG Dashboard indicating the status of all SQL Server VMs as healthy.](images1/E1T3S53.png "BCDRAOG Dashboard")
 
-1. Next, select **Connect** and then **Database Engine** in **SQL Management Studio**.
+1. Next, select **Connect** and then **Database Engine (1)** in **SQL Management Studio**.
 
     ![Connect / Database Engine is selected in Object Explorer.](images/image200upd.png "Object Explorer")
 
-1. Enter **BCDRAOG** as the server name. This will be connected to the listener of the group that you created. **Note**: The username for your lab should show **CONTOSO\demouser**.
+1. Enter **BCDRAOG (1)** as the **Server name**. This will be connected to the listener of the group you created. Also, check the box **Trust server certificate (2)**, and click on **Connect (3)** **Note**: The username for your lab should be visible as **CONTOSO\demouser**.
 
     ![In the Connect to Server Dialog box, Server name is BCDRAOG, and the connect button is selected.](images1/E1T3S55upd.png "Connect to Server Dialog box")
 
-1. Once connected to the **BCDRAOG**, you can select **Databases** and will be able to see the database there. Notice that you have no knowledge directly of which server this is running on.
+1. Once connected to the **BCDRAOG**, you can select **Databases** and will be able to see the database there. Notice that you do not know directly which server this is running on.
 
     ![A call out points to ContosoInsurance (Synchronized) in SQL Management Studio.](images/image202upd.png "SQL Management Studio")
 
@@ -459,11 +459,11 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![In the Windows PowerShell ISE window, the play button is selected. The script from the lab guide has been executed.](images1/E1T3S57.png "Windows PowerShell ISE window")
 
-1. Move back to SQL Management Studio and select **Connect** and then **Database Engine**.
+1. Return to **SQL Management Studio** and select **Database Engine (1)** under **Connect**.
 
     ![In Object Explorer, Connect / Database Engine is selected.](images/image200upd.png "Object Explorer")
 
-1. This time, put the following into the IP address of the internal load balancer of the **Primary** site AOG load balancer: **10.0.2.100**. You again will be able to connect to the server, which is up and running as the master. **Note**: The username for your lab should show **CONTOSO\demouser**.
+1. This time, put the following into the IP address of the **Primary** site AOG load balancer's internal load balancer: **10.0.2.100**. You can connect to the server again, which is up and running as the master. **Note**: The username for your lab should be visible as **CONTOSO\demouser**.
 
     ![Fields in the Connect to Server dialog box are set to the previously defined settings.](images1/E1T3S59upd.png "Connect to Server dialog box")
 
@@ -471,9 +471,9 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![A call out points to the Databases folder in Object Explorer.](images1/E1T3S60.png "Object Explorer")
 
-    > **Note:** It could take a minute to connect the first time as this is going through the Azure Internal Load Balancer.
+    > **Note:** Connecting the first time could take a minute as this is going through the Azure Internal Load Balancer.
 
-1. Move back to Failover Cluster Manager on **SQLVM1**, and you can review the IP addresses that were added by selecting roles and **BCDRAOG** and viewing the resources. Notice how the **10.0.2.100** is online.
+1. Move back to **Failover Cluster Manager** on **SQLVM1**. You can review the added IP addresses by selecting **Roles (1)** and **BCDRAOG (2)**. Next, it is time to view the **Resources (3)**. Notice how the **10.0.2.100** is online (4).
 
     ![In the Failover Cluster Manager tree view, Roles is selected. Under Roles, BCDRAOG is selected, and details of the role display.](images1/E1T3S61.png "Failover Cluster Manager")
 
@@ -481,7 +481,7 @@ You have now successfully set up the SQL Server VMs to use Always On Availabilit
 
 ### Task 4: Configure HA for the Web tier
 
-In this task, you will configure a high-availability web tier. This comprises two web server VMs, which you will locate behind an Azure load balancer. You will also configure the VMs to access the database using the Always On Availability Group endpoint you created earlier.
+In this task, you will configure a High Availability web tier. This comprises two web server VMs, which you will locate behind an Azure load balancer. You will also configure the VMs to access the database using the Always On Availability Group endpoint you created earlier.
 
 1.  In the Azure portal, navigate to **WebVM1**, select **Connect** followed by **Bastion**, and connect to the VM using the following credentials:
 
@@ -498,21 +498,21 @@ In this task, you will configure a high-availability web tier. This comprises tw
 
     ![Notepad is editing the Web.config file. The data source is updated to BCDRAOG.contoso.com.](images1/E1T4S3.png "Web.config file")
 
-1.  Repeat the above steps to make the same change on **WebVM2**.
+1.  Repeat the above steps to make the exact change on **WebVM2**.
 
-1.  Return to the Azure portal and navigate to the **ContosoWebLBPrimary** load balancer blade. Select **Backend pools** and open **BackEndPool1**.
+1.  Return to the Azure portal and navigate to the **ContosoWebLBPrimary** load balancer blade. Select **Backend pools (1)** and open **BackEndPool1(1) (2)**.
 
     ![Azure portal showing path to BackEndPool1 on ContosoWebLBPrimary.](images1/E1T4S5upd.png "Backend pool select path")
 
-1.  In the **BackendPool1** blade, select **VNet1 (ContosoRG1)** as the virtual network. Then select **+ Add** and select the two web VMs. Select **Save**.
+1.  In the **BackEndPool1** blade, select **VNet1 (ContosoRG1) (1)** as the virtual network. Then click on **+ Add (2)** and **select the two (3)** web VMs. Moving on, click on **Save (4)**.
 
     ![Azure portal showing WebVM1 and WebVM2 being added to the backend pool.](images1/E1T4S6.1.png "Backend pool VMs")
 
-1.  You will now check that the Contoso sample application is working when accessed through the load balancer. In the Azure portal, navigate to the **ContosoWebLBPrimaryIP** resource. This is the public IP address attached to the web tier load balancer front end. Copy the **DNS name** to the clipboard.
+1.  Now check if the Contoso sample application works when accessed through the load balancer. In the Azure portal, navigate to the **ContosoWebLBPrimaryIP** resource. The public IP address is attached to the web tier load balancer front end. Copy the **DNS name** to the clipboard.
 
     ![Azure portal showing web load balancer public IP, with DNS name highlighted.](images1/E1T4S7.png "Public IP DNS name")
 
-1.  Open a new browser tab and paste the DNS name. The Contoso Insurance sample app is shown. 
+1.  Open a new browser tab and paste the DNS name. The Contoso Insurance sample app will appear as shown. 
 
     ![Browser screenshot showing the contoso sample application. The address bar shows the DNS name copied earlier.](images1/E1T4S8.png "Contoso app")
 
@@ -520,7 +520,7 @@ In this task, you will configure a high-availability web tier. This comprises tw
 
 ## Summary 
 
-In this exercise, you have deployed High Availability (HA) resources and configured HA for each tier, including the Domain Controller, SQL Server, and Web tiers. This ensured redundancy and fault tolerance across all critical application components.
+In this exercise, you deployed High Availability (HA) resources and configured HA for each tier, including the Domain Controller, SQL Server, and Web tiers. This ensured redundancy and fault tolerance across all critical application components.
 
 ### You have successfully completed the exercise.
 Now, click on **Next** from the lower right corner to move to the next page.
