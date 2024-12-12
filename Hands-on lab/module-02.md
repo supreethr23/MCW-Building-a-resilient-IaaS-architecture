@@ -1,26 +1,26 @@
 # Exercise 2: Enable Disaster Recovery for the Contoso application
 
-### Estimated Duration: 60 minutes
+### Estimated Duration: 60 Minutes
 
 In this exercise, you will enable a secondary DR site. This site will support each tier of the Contoso application, using a different technology in each case. The DR approach is summarized in the following table.
 
 ### Objectives
 In this exercise, you will complete the following tasks:
-   - Task 1: Deploy DR resources.
-   - Task 2: Inspect DR for the Domain Controller tier.
-   - Task 3: Configure DR for the SQL Server tier.
-   - Task 4: Configure DR for the Web tier.
-   - Task 5: Configure a public endpoint using Azure Front Door.
+   - **Task 1:** Deploy DR Resources
+   - **Task 2:** Inspect DR for the Domain Controller Tier
+   - **Task 3:** Configure DR for the SQL Server Tier
+   - **Task 4:** Configure DR for the Web Tier
+   - **Task 5:** Configure a Public Endpoint Using Azure Front Door
 
-### Task 1: Deploy DR resources
+### Task 1: Deploy DR Resources
 
-In this task, you will deploy the resources used by the DR environment. First, you will deploy a template which will create the network and virtual machines. You will then manually deploy the Recovery Services Vault and Azure Automation account used by Azure Site Recovery.
+In this task, you will deploy the resources the DR environment uses. First, you will deploy a template that creates the network and virtual machines. You will then manually deploy the Recovery Services Vault and Azure Automation account used by Azure Site Recovery.
 
-1. In a new browser tab, navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)**. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted to do so.
+1. In a new browser tab, navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)**. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted.
 
     ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshellupd.png "Azure Cloud Shell")
 
-1. In the getting started page, select **Mount storage account** (1) and choose the **Subscription** (2) and select **Apply**(3).
+1. In the **Getting started** page, select **Mount storage account (1)** and choose the **Subscription (2)** and click on **Apply (3)**.
 
    ![Screenshot of the Storage account storage.](images1/cloudshellstrg1.png "Azure Cloud Shell")
 
