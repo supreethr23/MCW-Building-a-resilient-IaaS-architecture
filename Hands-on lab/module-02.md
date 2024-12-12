@@ -20,16 +20,16 @@ In this task, you will deploy the resources the DR environment uses. First, you 
 
     ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshellupd.png "Azure Cloud Shell")
 
-1. In the **Getting started** page, select **Mount storage account (1)** and choose the **Subscription (2)** and click on **Apply (3)**.
+1. In the **Getting started** page, select **Mount storage account (1)**, choose the **Subscription (2)** and click on **Apply (3)**.
 
    ![Screenshot of the Storage account storage.](images1/cloudshellstrg1.png "Azure Cloud Shell")
 
-1. In the Mount storage account page, select **We will create a storage account for you** (1) and select **Next**(2).
+1. In the **Mount storage account** page, select **We will create a storage account for you (1)** and then click on **Next (2)**.
 
    ![Screenshot of the Storage account storage.](images1/cloudshellstrg2.png "Azure Cloud Shell")
 
-1. Update the **-Location** parameter in each command below to specify a secondary location different from **ContosoRG1**. Then, execute the commands to create the disaster recovery (DR) resource group and deploy the DR resources. 
-    You can proceed to the following tasks while the template deployment is in progress.
+1. Update the **-Location** parameter in each command below to specify a secondary location different from **ContosoRG1**. Then, execute the commands to create the Disaster Recovery (DR) resource group and deploy the DR resources. 
+   While the template deployment is in progress, you can proceed to the following tasks.
 
    ```powershell
    New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
@@ -45,61 +45,61 @@ In this task, you will deploy the resources the DR environment uses. First, you 
     -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
     ```
 
-1.  Take a few minutes to review the template while it deploys. To review the template and deployment progress, navigate to the Azure portal home page, select **Resource Groups**, then **ContosoRG2** and**Deployments**. Note that the template includes:
-    -  A DR virtual network, which is connected using VNet peering to the existing virtual network
-    -  Two additional domain controller VMs, **ADVM3** and **ADVM4**
-    -  An additional SQL Server VM, **SQLVM3**
-    -  Azure Bastion, to enable VM access
+1.  Take a few minutes to review the template while it is deployed. To review the template and deployment progress, navigate to the Azure portal home page, select **Resource Groups**, then **ContosoRG2**, and **Deployments**. Note that the template includes:
+    -  A DR virtual network, which is connected using VNet peering to the existing virtual network.
+    -  Two additional domain controller VMs, **ADVM3** and **ADVM4**.
+    -  An additional SQL Server VM, **SQLVM3**.
+    -  Azure Bastion, to enable VM access.
 
     ![Screenshot of the disaster recovery resources for the Web application.](images1/E2T1S3.png "Successful deployment of Web DR resources")
 
-1. Now, you will create the Recovery Services Vault used to replicate the Web tier VMs and orchestrate the cross-site failover. From the Azure portal, search for **Recovery Services Vault** and then search for and select it.
+1. Now, you will create the **Recovery Services vaults** used to replicate the web tier VMs and orchestrate the cross-site failover. From the Azure portal, search for **Recovery Services vaults (1)** and select **(2)** it.
 
     ![](images/E3T1S1upd.png)
 
-1. In the **Recovery Services Vault** page click on **Create**.
+1. On the **Recovery Services vaults** page, click on **+Create**.
 
     ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/recoveryselect.png "Backup and Site Recovery Screen Create Button")
 
-1.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
+1.  Complete the **Create Recovery Services vaults** page using the following inputs, then select **Review and Create (4)**:
 
-    - **Resource Group**: **ContosoRG2**
-    - **Name**: **BCDRRSV<inject key="DeploymentID" />**
-    - **Location**: your **secondary region** that you choose in step 2
+    - **Resource Group**: **ContosoRG2 (1)**
+    - **Name**: **BCDRRSV<inject key="DeploymentID" /> (2)**
+    - **Location**: Your **secondary region (3)** that you choose in step 2
 
     ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images/recoveryimg.png "Backup and Site Recovery Screen Create Button")
 
-1.  Once the **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Service Vault has been created, open it in the Azure portal and select the **Site Recovery** tab.
+1.  Once the **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Service vault has been created, open it in the Azure portal and select the **Site Recovery** tab.
 
     ![Screenshot of the Backup / Site Recovery tabs with Site Recovery tab selected.](images1/ex2-task1-step6.png "Backup / Site Recovery tabs")
 
-1. This is your dashboard for Azure Site Recovery (ASR).
+1. This is your dashboard for **Azure Site Recovery (ASR)**.
 
     ![The Azure Site Recovery dashboard displays.](images1/ex2-task1-step7.png "Azure Site Recovery dashboard")
 
-   > **Important:** Next, you will set up the Azure Automation account that will be used to automate certain failover and fail-back tasks. This will require several PowerShell scripts to be imported as Azure Automation runbooks. **Be sure to execute the following steps from the LabVM, since that is where the scripts are located.**
+   > **Important:** Next, you will set up the Azure Automation account that will be used to automate certain failover and fail-back tasks. This will require several PowerShell scripts to be imported as Azure Automation runbooks. **Make sure to execute the following steps from the LabVM, since that is where the scripts are located.**
 
 1.  From the Azure portal, select **+Create a resource**, followed by **IT & Management Tools**, then **Automation**.
 
-1.  Complete the **Add Automation Account** blade using the following inputs and then select **Create** (4):
+1.  Complete the **Create an Automation Account** page using the following inputs and then select **Review + Create (4)**:
 
-    - **subscription**: Select the default subscription
+    - **Subscription**: Select the default subscription
     - **Resource group**: Use existing / **ContosoRG2** (1)
-    - **Name**: BCDR<inject key="DeploymentID" /> (2).
-    - **Location**: your secondary region that you choose in step 2 (3)
+    - **Automation Account Name**: BCDR<inject key="DeploymentID" /> (2).
+    - **Region**: your secondary region that you choose in step 2 (3)
     
 
     ![Fields in the Add Automation Account blade are set to the previously defined values.](images/updated111.png "Add Automation Account blade")
 
-    > **Note:** Azure Automation accounts are only allowed to be created in certain Azure regions, but they can act on any region in Azure (except Government, China or Germany). It is not a requirement to have your Azure Automation account in the same region as the failover resources, but it **CANNOT** be in your primary region.
+    > **Note:** Azure Automation accounts are only allowed to be created in certain Azure regions, but they can act on any region in Azure (except Government of China and Germany). It is not a requirement to have your Azure Automation account in the same region as the failover resources, but it **CANNOT** be in your primary region.
 
-1. In the **Azure Automation Account** blade and select **Runbooks (1)**, then select **Import a runbook (1)**.
+1. In the **Azure Automation Account** page select **Runbooks (1)**, then click on **Import a runbook (2)**.
 
     ![The 'Import a runbook' button is highlighted in Azure Automation.](images1/E2T1S10upd1.png "Import a runbook button")
 
     > **Note**: You must be connected to the **LABVM** to complete the next steps.
 
-1. Select the **Folder** icon on the Import blade and select the file **ASRRunbookSQL.ps1** from the `C:\HOL\` directory on the **LABVM**. The Runbook type should default to **PowerShell Workflow**. Change the name of the Workflow inside of the Runbook script to **ASRSQLFailover**. Select **Import**.
+1. Select the **Folder** icon on the **Import a runbook** blade and click on the file **ASRRunbookSQL.ps1** from the `C:\HOL\` directory on **LABVM**. Leave the **Runbook type** as **PowerShell Workflow**. Change the name of the workflow inside of the **Runbook script** to **ASRSQLFailover** and select **Import**.
 
     ![Fields in the 'Import a runbook' blade are set to the previously defined values.](images/Ex2-t1-step15.png "Import a runbook")
 
