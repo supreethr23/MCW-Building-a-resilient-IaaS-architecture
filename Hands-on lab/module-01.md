@@ -16,13 +16,14 @@ In this exercise, you will complete the following tasks:
 In this task, you will deploy additional web, database and domain controller VMs.
 A template will be used to save time. You will configure each tier in subsequent exercises in this lab.
 
-1.  Copy the Link given below and paste it in in a browser inside the VM to launch the template deployment for the additional infrastructure components that will be used to enable high availability for the Contoso application. Log in to the Azure portal using your subscription credentials.
+1.  Copy the Link given below and paste it in in a browser inside the VM to launch the template deployment for the additional infrastructure components that will be used to enable high availability for the Contoso application. 
    
     [![Button to deploy the Contoso High Availability resource template to Azure.](https://aka.ms/deploytoazurebutton "Deploy the Contoso HA resources to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FCloudLabs-MCW%2FMCW-Building-a-resilient-IaaS-architecture%2Fprod%2FHands-on%20lab%2FResources%2Ftemplates%2Fcontoso-iaas-ha.json)
 
+1. If prompted to login to Azure, use the following credentials:
 
-
-
+   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
+   - **Password:** <inject key="AzureAdUserPassword"></inject>
 
 1.  Complete the Custom deployment blade as follows:
 
@@ -93,18 +94,18 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
    ![](images/iaas-image7.png)
 
-1. Complete the **Create storage account** form using the following details:
+1. Complete the **Create storage account** form using the following details and click **Next(7)**:
 
-    - **Resource group**: ContosoRG1
-    - **Storage account name:** **contososqlwitness<inject key="DeploymentID" enableCopy="false"/>**
-    - **Location**: Any location in your area that is **NOT** your Primary or Secondary site, for example **West US 2**
-    - **Primary Service** : Azure Files.
-    - **Performance**: Standard
-    - **Replication**: Zone-redundant storage (ZRS).
+    - **Resource group**: ContosoRG1 (1)
+    - **Storage account name:** contososqlwitness<inject key="DeploymentID" enableCopy="false"/> (2)
+    - **Location**: Any location in your area that is **NOT** your Primary or Secondary site, for example **West US 2**(3)
+    - **Primary Service** : Azure Files (4)
+    - **Performance**: Standard (5)
+    - **Replication**: Zone-redundant storage (ZRS) (6)
 
     ![](images/iaas-image8.png)
 
-1.  Switch to the **Advanced** tab. Select the checkbox next to **Allow enabling anonymous access on individual containers**, change the **Minimum TLS version** to **Version 1.0** and Select **Review + create** and **Create**.
+1.  In the **Advanced** tab, select the checkbox next to **Allow enabling anonymous access on individual containers**, change the **Minimum TLS version** to **Version 1.0** and select **Review + create** and **Create**.
 
     ![](images/iaas-image9.png)
 
@@ -138,10 +139,10 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
     ![](images/iaas-image15.png)
 
     > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in the format `user@domain-fqdn`, and **not** in the format `domain\user`.
-
-    ![](images/iaas-image16.png)
-    
+    > **Note:** Kindly Allow the pop-up from the browser window if you get an error while trying to login to the VM.
     >**Note:** : When select **Allow** when See text and images copied to the clipboard prompted.
+
+    > ![](images/iaas-image16.png)
 
 1.  On **SQLVM1**, select **Start** and then choose **Windows PowerShell ISE**.
 
@@ -227,7 +228,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     ![](images/iaas-image36.png)
 
-1. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2** with Username: demouser@contoso.com and Password: Demo!pass123. Launch **SQL Server 2017 Configuration Manager** and repeat the steps from 21 to 24 above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
+1. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2** with Username: demouser@contoso.com and Password: Demo!pass123. Launch **SQL Server 2017 Configuration Manager** and repeat the steps from 24 to 27 above to **Enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL Service.
 
 1. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time use `demouser` as the username instead of `demouser@contoso.com` and use **Password**: `Demo!pass123`
 
