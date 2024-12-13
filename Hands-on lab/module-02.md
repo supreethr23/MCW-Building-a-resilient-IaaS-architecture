@@ -29,7 +29,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
    ![Screenshot of the Storage account storage.](images1/cloudshellstrg2.png "Azure Cloud Shell")
 
 1. Update the **-Location** parameter in each command below to specify a secondary location different from **ContosoRG1**. Then, execute the commands to create the disaster recovery (DR) resource group and deploy the DR resources. 
-    You can proceed to the following tasks while the template deployment is in progress.
+  The deployment can take upto 20 minutes to complete.
 
    ```powershell
    New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
@@ -79,7 +79,9 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
    > **Important:** Next, you will set up the Azure Automation account that will be used to automate certain failover and fail-back tasks. This will require several PowerShell scripts to be imported as Azure Automation runbooks. **Be sure to execute the following steps from the LabVM, since that is where the scripts are located.**
 
-1.  From the Azure portal, select **+Create a resource**, followed by **IT & Management Tools**, then **Automation**.
+1.  From the Azure portal, search for and select **Automation**.
+   
+   ![Screenshot of the Backup / Site Recovery tabs with Site Recovery tab selected.](images1/build3.1.png "Backup / Site Recovery tabs")
 
 1.  Complete the **Add Automation Account** blade using the following inputs and then select **Create** (4):
 
@@ -97,8 +99,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
     ![The 'Import a runbook' button is highlighted in Azure Automation.](images1/E2T1S10upd1.png "Import a runbook button")
 
-    > **Note**: You must be connected to the **LABVM** to complete the next steps.
-
+    
 1. Select the **Folder** icon on the Import blade and select the file **ASRRunbookSQL.ps1** from the `C:\HOL\` directory on the **LABVM**. The Runbook type should default to **PowerShell Workflow**. Change the name of the Workflow inside of the Runbook script to **ASRSQLFailover**. Select **Import**.
 
     ![Fields in the 'Import a runbook' blade are set to the previously defined values.](images/Ex2-t1-step15.png "Import a runbook")
@@ -112,6 +113,8 @@ In this task, you will deploy the resources used by the DR environment. First, y
 1. Navigate back to **Runbooks**, and make sure that both Runbooks show as **Published**.
 
     ![Two runbooks have authoring status as published: ASRSQLFailover, and ASRWEBFailover.](images/updated12.png "Runbooks")
+
+   >**Note:** If the status of the runbook doesnt show as published, kindly import the runbooks and and publish it again.
 
    > **Note:** When you configure the ASR Recovery Plan for the IaaS deployment you will use the SQL Runbook as a Pre-Failover Action and the Web Runbook as a Post-Failover action. They will run both ways and have been written to take the "Direction", of the failover into account when running.
 
@@ -195,7 +198,7 @@ The failover site in has been deployed with two additional domain controllers, *
 
 In this task, you will extend the SQL Server Always On Availability Group you created earlier to include **SQLVM3** as an asynchronous replica running in the DR site.
 
-1. In the Azure portal and open a Azure Bastion session to **SQLVM3**. use `demouser` as the username and use **Password**: `Demo!pass123`
+1. In the Azure portal  open a Azure Bastion session to **SQLVM3** virtual machine which is present in ContosoRG2 resource group. Use `demouser` as the username and use **Password**: `Demo!pass123`
 
 1. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM3**. 
 
