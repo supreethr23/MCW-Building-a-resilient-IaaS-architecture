@@ -16,9 +16,13 @@ In this exercise, you will complete the following tasks:
 In this task, you will deploy additional web, database and domain controller VMs.
 A template will be used to save time. You will configure each tier in subsequent exercises in this lab.
 
-1.  Copy the Link given below and paste it in in a browser insite the VM to launch the template deployment for the additional infrastructure components that will be used to enable high availability for the Contoso application. Log in to the Azure portal using your subscription credentials.
+1.  Copy the Link given below and paste it in in a browser inside the VM to launch the template deployment for the additional infrastructure components that will be used to enable high availability for the Contoso application. Log in to the Azure portal using your subscription credentials.
    
     [![Button to deploy the Contoso High Availability resource template to Azure.](https://aka.ms/deploytoazurebutton "Deploy the Contoso HA resources to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FCloudLabs-MCW%2FMCW-Building-a-resilient-IaaS-architecture%2Fprod%2FHands-on%20lab%2FResources%2Ftemplates%2Fcontoso-iaas-ha.json)
+
+
+
+
 
 1.  Complete the Custom deployment blade as follows:
 
