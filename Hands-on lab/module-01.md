@@ -140,7 +140,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
     > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in the format `user@domain-fqdn`, and **not** in the format `domain\user`.
     > **Note:** Kindly Allow the pop-up from the browser window if you get an error while trying to login to the VM.
-    >**Note:** : When select **Allow** when See text and images copied to the clipboard prompted.
+    >**Note:** When select **Allow** when See text and images copied to the clipboard prompted.
 
     > ![](images/iaas-image16.png)
 
@@ -298,7 +298,7 @@ In this task, you will build a Windows Failover Cluster and configure SQL Always
 
 1. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
-    ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
+    ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/build2.png "Microsoft SQL Server Management Studio 18")
 
 1. Select **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
