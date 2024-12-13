@@ -14,7 +14,7 @@ In this exercise, you will complete the following tasks:
 
 ### Task 1: Deploy DR Resources
 
-In this task, you will deploy the resources the DR environment uses. First, you will deploy a template that creates the network and virtual machines. You will then manually deploy the Recovery Services Vault and Azure Automation account used by Azure Site Recovery.
+In this task, you will deploy the resources the DR environment uses. First, you will deploy a template that creates the network and virtual machines. Then, you will manually deploy the Recovery Services vaults and Azure Automation account used by Azure Site Recovery.
 
 1. In a new browser tab, navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)**. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted.
 
@@ -39,17 +39,17 @@ In this task, you will deploy the resources the DR environment uses. First, you 
    > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
 
    ```powershell
-    # Only run this command if the previous deployment failed with a error that size was not available
+    # Only run this command if the previous deployment failed with an error that size was not available
     New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR-SKU' `
         -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' `
     -Location '<Enter the location>' -skuSizeVM 'D2s_v5'
     ```
 
-1.  Take a few minutes to review the template while it is deployed. To review the template and deployment progress, navigate to the Azure portal home page, select **Resource Groups**, then **ContosoRG2**, and **Deployments**. Note that the template includes:
-    -  A DR virtual network, which is connected using VNet peering to the existing virtual network.
+1.  Take a few minutes to review the template while it is deployed. To review the template and deployment progress, navigate to the Azure portal home page, select **Resource Groups**, then **ContosoRG2** and **Deployments**. Note that the template includes:
+    -  A DR virtual network that is connected using VNet peering to the existing virtual network.
     -  Two additional domain controller VMs, **ADVM3** and **ADVM4**.
     -  An additional SQL Server VM, **SQLVM3**.
-    -  Azure Bastion, to enable VM access.
+    -  Azure Bastion to enable VM access.
 
     ![Screenshot of the disaster recovery resources for the Web application.](images1/E2T1S3.png "Successful deployment of Web DR resources")
 
@@ -93,35 +93,35 @@ In this task, you will deploy the resources the DR environment uses. First, you 
 
     > **Note:** Azure Automation accounts are only allowed to be created in certain Azure regions, but they can act on any region in Azure (except Government of China and Germany). It is not a requirement to have your Azure Automation account in the same region as the failover resources, but it **CANNOT** be in your primary region.
 
-1. In the **Azure Automation Account** page select **Runbooks (1)**, then click on **Import a runbook (2)**.
+1. On the **Azure Automation Account** page, select **Runbooks (1)**, then click on **Import a runbook (2)**.
 
     ![The 'Import a runbook' button is highlighted in Azure Automation.](images1/E2T1S10upd1.png "Import a runbook button")
 
     > **Note**: You must be connected to the **LABVM** to complete the next steps.
 
-1. Select the **Folder** icon on the **Import a runbook** blade and click on the file **ASRRunbookSQL.ps1** from the `C:\HOL\` directory on **LABVM**. Leave the **Runbook type** as **PowerShell Workflow**. Change the name of the workflow inside of the **Runbook script** to **ASRSQLFailover** and select **Import**.
+1. Select the **Folder** icon on the **Import a runbook** blade and click on the file **ASRRunbookSQL.ps1** from the `C:\HOL\` directory on **LABVM**. Leave the **Runbook type** as **PowerShell Workflow**. Change the workflow name inside the **Runbook script** to **ASRSQLFailover** and select **Import**.
 
     ![Fields in the 'Import a runbook' blade are set to the previously defined values.](images/Ex2-t1-step15.png "Import a runbook")
 
-1. Once the Runbook is imported, the runbook editor will load. If you wish, you can review the comments to better understand the runbook. Once you are ready, select **Publish**, followed by **Yes** at the confirmation prompt. This makes the runbook available for use.
+1. Once the runbook is imported, the runbook editor will load. You can review the comments to better understand the runbook. Once ready, select **Publish**, followed by **Yes** at the confirmation prompt. This makes the runbook available for use.
 
     ![On the top menu of the Edit PowerShell Workflow Runbook blade, Publish is selected.](images1/E2T1S12.png "Publish runbook")
 
-1. Repeat the above steps to import and publish the **ASRRunbookWEB.ps1** runbook and change the name of the Workflow inside the Runbook script to **ASRWEBFailover**
+1. Repeat the above steps to import and publish the **ASRRunbookWEB.ps1** runbook and change the name of the workflow inside the Runbook script to **ASRWEBFailover.**
 
-1. Navigate back to **Runbooks**, and make sure that both Runbooks show as **Published**.
+1. Navigate back to **Runbooks**, and make sure that both runbooks show as **Published**.
 
     ![Two runbooks have authoring status as published: ASRSQLFailover, and ASRWEBFailover.](images/updated12.png "Runbooks")
 
-   > **Note:** When you configure the ASR Recovery Plan for the IaaS deployment you will use the SQL Runbook as a Pre-Failover Action and the Web Runbook as a Post-Failover action. They will run both ways and have been written to take the "Direction", of the failover into account when running.
+   > **Note:** When configuring the ASR Recovery Plan for the IaaS deployment, you will use the SQL Runbook as a pre-failover action and the web runbook as a post-failover action. They will run both ways and have been written to take the "direction" of the failover into account when running.
 
-1. Next, you will create a variable in Azure Automation which contains settings (such as resource group names and VM names) which describe your environment. This information is required by the runbooks you imported. Using variables allows you to avoid hard-coding this information in the runbooks themselves.
+1. Next, you will create a variable in Azure Automation that contains settings (such as resource group names and VM names) describing your environment. The runbooks you imported require this information, and using variables allows you to avoid hard-coding it in the runbooks themselves.
 
-1. In your Azure Automation account, select **Variables**, then **Add a variable**.
+1. In your **Azure Automation Account** page, select **Variables (1)**, then **Add a variable (2)**.
 
     ![Azure portal showing variables pane in Azure Automation.](images1/E2T1S15upd.png "Add a variable")
 
-1. In the **New Variable** blade, enter `BCDRIaaSPlan` as the variable name. The variable type should be **String**. Paste the following into the variable **Value**, then select **Create**.
+1. In the **New Variable** blade, enter `BCDRIaaSPlan` **(1)** as the variable name. The variable type should be **String**. Paste the following into the variable **Value (2)**, then select **Create (3)**.
 
     ```json
     {
@@ -147,34 +147,34 @@ In this task, you will deploy the resources the DR environment uses. First, you 
 
     ![The 'BCDRIaaSPlan' variable is shown in the Automation Account.](images1/E2T1S16upd1.png "Automation Account variables")
 
-1. Before continuing, check that the template deployment you started at the beginning of this task has been completed. From the Azure portal home page, select **Subscriptions**, select your subscription, then select **Deployments**. 
+1. Before continuing, check that the template deployment you started at the beginning of this task has been completed. From the Azure portal home page, select **Subscriptions**, select your subscription, then click on **Deployments (1)**. 
 
     ![The 'Contoso-IaaS-DR' template deployment shows as successful.](images1/E2T1S18upd.png "Template status")
 
-   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-   > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+   > **Congratulations** on completing the task! Now, it is time to validate it. Here are the steps:
+   > - Click on the **Validate** button for the corresponding task. You can proceed to the next task if you receive a success message. 
    > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+   > - If you need any assistance, please contact us at **cloudlabs-support@spektrasystems.com**. We are available 24/7 to help.
    <validation step="1134d3fd-1557-47f5-89db-4b6eebd50650" />
 
-### Task 2: Inspect DR for the Domain Controller tier
+### Task 2: Inspect DR for the Domain Controller Tier
 
-In this task, you will simply review the rest of the configuration to confirm everything is as it should be.
+In this task, you will review the rest of the configuration to confirm everything is as it should be.
 
-The failover site in has been deployed with two additional domain controllers, **ADVM3** and **ADVM4**. These are integrated with the existing `contoso.com` domain hosted on **ADVM1** and **ADVM2** in the primary site. They run in a fully active-active configuration (there is therefore no failover required for this tier).The configuration of these domain controllers is fully automatic. 
+The failover site has been deployed with two additional domain controllers, **ADVM3** and **ADVM4**. These are integrated with the existing `contoso.com` domains hosted on **ADVM1** and **ADVM2** in the primary site. They run in a fully active-active configuration (there is therefore no failover required for this tier). The configuration of these domain controllers is fully automatic. 
 
-1.  From the Azure portal home page, select **Subscriptions**, choose your subscription, and select **Deployments**, then open the **Contoso-IaaS-DR** deployment used for the DR site.
+1. From the Azure portal home page, select **Subscriptions,** choose your subscription, and click on **Deployments (1)**. Then, open the **Contoso-IaaS-DR (2)** deployment used for the DR site.
 
     ![Click path to the 'Contoso-IaaS-DR' deployment.](images1/E2T2S1upd.png "DR deployment")
 
-1.  Select **Template** and review the template contents. Note the use of `dependsOn` to carefully control the deployment sequence. The resources are deployed as follows:
+1.  Select **Template** and review the template contents. Note the use of `dependsOn` to control the deployment sequence carefully. The resources are deployed as follows:
 
-    - The VNet2 virtual network is created
-    - VNet2 is peered with VNet1. This creates connectivity between the two networks
-    - The DNS settings in VNet2 are updated to point to the domain controllers in VNet1
-    - The new domain controllers, **ADVM3** and **ADVM4** are deployed to VNet2, with static private IP addresses. A custom script extension is used to configure these VMs as domain controllers.
+    - The VNet2 virtual network is created.
+    - VNet2 is peered with VNet1. This creates connectivity between the two networks.
+    - The DNS settings in VNet2 are updated to point to the domain controllers in VNet1.
+    - The new domain controllers, **ADVM3** and **ADVM4**, are deployed to VNet2 with static private IP addresses. A custom script extension configures these VMs as domain controllers.
     - The DNS settings in VNet2 are then updated to point to these new domain controllers.
-    - Other VMs (such as **SQLVM3**) are now able to be deployed
+    - Other VMs (such as **SQLVM3**) are now able to be deployed.
 
     ![Azure portal showing the Contoso-IaaS-DR template, with the deployment sequence highlighted.](images1/E2T2S2.png "DR template")
 
