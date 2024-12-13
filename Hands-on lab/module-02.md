@@ -462,7 +462,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
 1. Return to the Recovery Services Vault **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** blade and select the **Replicated Items** link under **Protected Items**. You should see **WebVM1** and **WebVM2**. The Replication Health should be **Healthy**. The Status will show the replication progress. Once both VMs show status **Protected**, replication is complete and you will be able to test the failover.
 
-    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/E2T4S20upd1.png "Replicated Items")
+    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/build4.png "Replicated Items")
 
     > **Note**: It can take up to 30 minutes for the replication to complete.
 
