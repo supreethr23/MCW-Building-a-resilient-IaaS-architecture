@@ -16,9 +16,9 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will deploy the resources used by the DR environment. First, you will deploy a template which will create the network and virtual machines. You will then manually deploy the Recovery Services Vault and Azure Automation account used by Azure Site Recovery.
 
-1. In a new browser tab, navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)**. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted to do so.
+1. In the Azure portal, navigate to Cloudshell as shown below and choose Powershell.
 
-    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshellupd.png "Azure Cloud Shell")
+    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/build1.png "Azure Cloud Shell")
 
 1. In the getting started page, select **Mount storage account** (1) and choose the **Subscription** (2) and select **Apply**(3).
 
@@ -33,7 +33,7 @@ In this task, you will deploy the resources used by the DR environment. First, y
 
    ```powershell
    New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
-   New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-      on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
+   New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
    ```
 
    > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available"`*, add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and run the command again:
