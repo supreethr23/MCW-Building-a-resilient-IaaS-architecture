@@ -439,7 +439,7 @@ Custom scripts in Azure Automation are called by Azure Site recovery to add the 
 
     > **Note:** As noted on the 'Insert action' blade, the ASRSQLFailover runbook will be executed on both failover and failback. The runbook has been written to support both scenarios.
     > 
-    > **Note:** If the **OK** button does not respond, click the cross icon in the top-right corner, then click **Ok** in the dialog box. This will confirm that the pre-action has been saved.
+    > **Note:** If the **OK** button does not respond, click the cross icon in the top-right corner, then click **Ok** in the dialog box. And verify in the **BCDRIaaSPlan** blade if the pre-action is coming up.
     > ![issueimage.](images1/cancelbutton.png "Recovery plan blade")
 
 1. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** next to **Group 1: Start**, then select **Add post action** from the context menu.
