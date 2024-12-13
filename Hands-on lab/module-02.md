@@ -154,16 +154,16 @@ In this task, you will deploy the resources the DR environment uses. First, you 
    > **Congratulations** on completing the task! Now, it is time to validate it. Here are the steps:
    > - Click on the **Validate** button for the corresponding task. You can proceed to the next task if you receive a success message. 
    > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   > - If you need any assistance, please contact us at **cloudlabs-support@spektrasystems.com**. We are available 24/7 to help.
+   > - If you need assistance, please contact us at **cloudlabs-support@spektrasystems.com**. We are available 24/7 to help.
    <validation step="1134d3fd-1557-47f5-89db-4b6eebd50650" />
 
 ### Task 2: Inspect DR for the Domain Controller Tier
 
 In this task, you will review the rest of the configuration to confirm everything is as it should be.
 
-The failover site has been deployed with two additional domain controllers, **ADVM3** and **ADVM4**. These are integrated with the existing `contoso.com` domains hosted on **ADVM1** and **ADVM2** in the primary site. They run in a fully active-active configuration (there is therefore no failover required for this tier). The configuration of these domain controllers is fully automatic. 
+The failover site has been deployed with two additional domain controllers, **ADVM3** and **ADVM4**. These are integrated with the existing `contoso.com` domains hosted on **ADVM1** and **ADVM2** in the primary site. They run in a fully active-active configuration (therefore, no failover is required for this tier). The configuration of these domain controllers is fully automatic. 
 
-1. From the Azure portal home page, select **Subscriptions,** choose your subscription, and click on **Deployments (1)**. Then, open the **Contoso-IaaS-DR (2)** deployment used for the DR site.
+1. From the Azure portal home page, select **Subscriptions,** choose your subscription, and click on **Deployments (1)**. Then, open the **Contoso-IaaS-DR (2)** deployment for the DR site.
 
     ![Click path to the 'Contoso-IaaS-DR' deployment.](images1/E2T2S1upd.png "DR deployment")
 
@@ -178,32 +178,32 @@ The failover site has been deployed with two additional domain controllers, **AD
 
     ![Azure portal showing the Contoso-IaaS-DR template, with the deployment sequence highlighted.](images1/E2T2S2.png "DR template")
 
-1.  Navigate to the **ContosoRG2** resource group. Click on network interface (NIC) **ADVM3NIC** resources for the ADVM3 and ADVM4 VMs to confirm their network settings include the static private IP addresses 10.1.3.100 and 10.1.3.101, respectively. On the left hand side Under Settings click on **IP configurations**         and then select ipconfig1 and also change the assignment as **Static** and also update the ip address.
+1.  Navigate to the **ContosoRG2** resource group. Click on the network interface (NIC) **ADVM3NIC** resources for the ADVM3 and ADVM4 VMs to confirm that their network settings include the static private IP addresses 10.1.3.100 and 10.1.3.101, respectively. On the left-hand side, under **Settings,** click on **IP configurations**, and then select **ipconfig1**. Also, change the assignment to **Static** and update the IP address.
 
     ![Network interface configuration showing a static private IP address for ADVM3.](images1/ipconfig.png "Static IPs")
 
-1.  Navigate to the **VNet2** virtual network. Select **DNS servers** and confirm that the IP addresses for **ADVM3** and **ADVM4** are configured.
+1. Navigate to the **VNet2** virtual network. Select **DNS servers** and confirm that the IP addresses for **ADVM3** and **ADVM4** are configured.
 
     ![The Azure portal shows the DNS settings for VNet2.](images1/E2T2S4.png "Template status")
 
-1.  Select **Peerings** and confirm that the network is peered with VNet1.
+1.  Select **Peerings** and confirm the network is peered with VNet1.
 
     ![The Azure portal shows VNet2 is peered with VNet1.](images1/E2T2S5.png "VNet peering")
 
 
-### Task 3: Configure DR for the SQL Server tier
+### Task 3: Configure DR for the SQL Server Tier
 
-In this task, you will extend the SQL Server Always On Availability Group you created earlier to include **SQLVM3** as an asynchronous replica running in the DR site.
+In this task, you will extend the SQL Server Always On Availability Group you created to include **SQLVM3** as an asynchronous replica running in the DR site.
 
-1. In the Azure portal and open a Azure Bastion session to **SQLVM3**. use `demouser` as the username and use **Password**: `Demo!pass123`
+1. Open an Azure Bastion session to **SQLVM3** in the Azure portal. Use `demouser` as the **username** and `Demo!pass123`as **password**.
 
-1. Launch SQL Server Management Studio, a new dialog box will open, ensure that **Trust server certificate** is selected and click on **Connect** to sign on to **SQLVM3**. 
+1. Launch **SQL Server Management Studio**. A new dialog box will open with **SQLVM3 (1)** as the server name. Ensure the **Trust server certificate (2)** is selected. Moving on, click on **Connect (3)** to sign on to **SQLVM3**. 
 
     > **Note**: The username for your lab should show **SQLVM3\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images1/E3T3S27upd1.png "Connect to Server dialog box")
     
-1. And then expand **Security** and then **Logins**. You'll notice that only `SQLVM3\demouser` is listed.
+1. Expand **Security** and then **Logins**. You will notice that only `SQLVM3\demouser` is listed.
 
     ![In SQL Server management studio, SQLVM2 is expanded, then Security is expanded, then Login is expanded. Only the SQLVM2\demouser account is seen.](images1/E2T3S28upd1.png)
 
@@ -211,7 +211,7 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
     ![The dialog box from the right-click on Logins is shown with an option to select New Login.](images1/E1T3S29upd.png)
 
-1. In **Login name:** type **contoso\demouser**, then select **Server Roles**.
+1. In **Login name: (1)** type **contoso\demouser**, then select **Server Roles (2)**.
 
     ![The Login-New dialog box is displayed. In the Login name: box, the username contoso\demouser has been typed in. From here, it shows you selected the Server Roles tab in the left side navigation.](images1/E1T3S30.png)
 
@@ -223,41 +223,41 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
    ![Azure portal showing where to select Add on the ContosoSQLLBSecondary load balancer backend pool to add a new VM.](images/EX2-T3-S1.png "Backend pool")
 
-1. Select **SQLVM3**. Select **Add**.  Select **Save** on **BackEndPool1** to save changes.
+1. Select **SQLVM3** and click on **Add**.  Select **Save** on **BackEndPool1** to save changes.
 
      ![Azure portal showing SQLVM3 being added to the ContosoSQLLBSecondary load balancer backend pool.](images1/E2T3S2.png "SQL VM added to backend pool")
 
-   >**Note:** For this lab, the DR site is configured with a single SQL Server VM. Using a load balancer is therefore not strictly required. However, it allows the DR site to be extended to include its own HA cluster if required.
+   >**Note:** For this lab, the DR site is configured with a single SQL Server VM. Therefore, using a load balancer is not strictly required. However, if necessary, it allows the DR site to be extended to include its own HA cluster.
 
-1. Return to your browser tab containing your Bastion session with **SQLVM1**. (If you have closed the tab, reconnect using Azure Bastion with username `demouser@contoso.com` and password `Demo!pass123`.)
+1. Return to your browser tab containing your Bastion session with **SQLVM1**. (If you have closed the tab, reconnect using Azure Bastion with the **username** `demouser@contoso.com` and **password** `Demo!pass123`.)
 
-1.  On **SQLVM1**, use **Windows PowerShell ISE** to execute the following command. This will add **SQLVM3** as a node in the existing Windows Server Failover Cluster.
+1. On **SQLVM1**, use **Windows PowerShell ISE** to execute the following command. This will add **SQLVM3** as a node in the Windows Server Failover Cluster.
 
     ```PowerShell
     Add-ClusterNode -Name SQLVM3
     ```
 
-1.  Select **Start** and then **Windows Administrative Tools**. Locate and open the **Failover Cluster Manager**. Expand the **AOGCLUSTER** and select **Nodes**. Note that SQLVM3 is now included in the list, with status **Up**.
+1. Select **Start** and then **Windows Administrative Tools**. Locate and open the **Failover Cluster Manager**. Expand **AOGCLUSTER** and select **Nodes**. Note that SQLVM3 is now included in the list, with the status **Up**.
 
     ![In Failover Cluster Manager, Nodes is selected in the tree view, and three nodes display in the details pane.](images/dr-fcm-3nodes.png "Failover Cluster Manager")
 
-1.  Return to the Azure portal. Locate **SQLVM3**, and connect to the VM using Azure Bastion with username `demouser@contoso.com` and password `Demo!pass123`.
+1.  Return to the Azure portal. Locate **SQLVM3** and connect to the VM using Azure Bastion with **username** `demouser@contoso.com` and **password** `Demo!pass123`.
 
 1.  On **SQLVM3**, select **Start** and launch **SQL Server 2017 Configuration Manager**.
 
     ![Screenshot of the SQL Server 2017 Configuration Manager option on the Start menu.](images/image166upd.png "SQL Server 2017 Configuration Manager option")
 
-1.  Select **SQL Server Services**, then right-click **SQL Server (MSSQLSERVER)** and select **Properties**.
+1.  Select **SQL Server Services (1)**, then right-click **SQL Server (MSSQLSERVER) (2)** and select **Properties (3)**.
 
     ![In SQL Server 2017 Configuration Manager, in the left pane, SQL Server Services is selected. In the right pane, SQL Server (MSSQLSERVER) is selected, and from its right-click menu, Properties is selected.](images/image167upd.png "SQL Server 2017 Configuration Manager")
 
-1.  Select the **AlwaysOn High Availability** tab and check the box for **Enable AlwaysOn Availability Groups**. Select **Apply** and then select **OK** on the message that notifies you that changes won't take effect until after the server is restarted.
+1.  Select the **AlwaysOn High Availability (1)** tab and check the box to **Enable AlwaysOn Availability Groups (2)**. Select **Apply (3)** and then click on **OK** on the message that notifies you that the changes will take effect after the server is restarted.
 
     ![In the SQL Server Properties dialog box, on the AlwaysOn High Availability tab, the Enable AlwaysOn Availability Groups checkbox is checked and the Apply button is selected.](images/image168.png "SQL Server Properties dialog box")
 
     ![A pop-up warns that any changes made will not take effect until the service stops and restarts. The OK button is selected.](images/image169.png "Warning pop-up")
 
-1. On the **Log On** tab, change the service account to `contoso\demouser` with the password `Demo!pass123`. Select **OK** to accept the changes, and then select **Yes** to confirm the restart of the server.
+1. On the **Log On** tab, change the service account to `contoso\demouser` using `Demo!pass123` as password. Select **OK** to accept the changes, and then select **Yes** to confirm the restart of the server.
 
     ![In the SQL Server Properties dialog box, on the Log On tab, fields are set to the previously defined settings. The OK button is selected.](images1/E2T3S10.png "SQL Server Properties dialog box")
 
@@ -269,15 +269,15 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
     ![On the BCDRAOG Listener context menu, 'Properties' is selected.](images1/E2T3S12.png "Listener properties")
 
-1. On the BCDRAOG Listener properties dialog, select **Add**.
+1. On the BCDRAOG Listener properties dialog box, select **Add**.
 
     ![On the BCDRAOG Listener properties dialog, 'Add' is selected.](images1/E2T3S13.png "Listener - Add")
 
-1. On the Add IP Address dialog, check the subnet is **10.1.2.0** (this is the Data subnet in VNet2). Enter the IP address **10.1.2.100** (this is the frontend IP of the SQL load balancer in VNet2). Select **OK**.
+1. On the Add IP Address dialog box, check the subnet is **10.1.2.0/24** (the Data subnet in VNet2). Enter the IP address **10.1.2.100** (the frontend IP of the SQL load balancer in VNet2). Select **OK**.
 
     ![On the BCDRAOG Listener Add IP Address dialog, the IP address is entered as specified.](images1/E2T3S14.png "Listener - IP")
 
-1. On the BCDRAOG Listener properties dialog, two IP addresses should now be shown. Select **OK** to close the dialog and commit the change.
+1. The **BCDRAOG Listener properties** dialogue box should now show two IP addresses. Select **OK** to close the box and commit the change.
 
     ![On the BCDRAOG Listener properties dialog, two IP addresses are shown. 'OK' is selected.](images1/E2T3S15.png "Listener - two IPs")
 
@@ -297,27 +297,27 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
     ![Screenshot of the Add replica button.](images1/E2T3S19.png "Add replica button")
 
-1. On the **Connect to Server** dialog box enter the Server Name of **SQLVM3** and select **Connect**.
+1. In the **Connect to Server** dialog box, enter the Server name as **SQLVM3 (1)**, check the box beside **Trust server certificate (2)**, and select **Connect (3)**.
 
     ![Screenshot of the Connect to Server dialog box.](images1/E3T3S27upd1.png "Connect to Server dialog box")
 
-1. For **SQLVM3**, leave the default settings of 'Asynchronous commit' with 'Automatic Failover' disabled. Select **Next**.
+1. For **SQLVM3**, leave the default settings of 'Asynchronous commit' with 'Automatic Failover' disabled. Then, select **Next**.
 
     ![The SQLVM3 replica settings are asynchronous commit with automatic failover disabled. The Next button is highlighted.](images1/E2T3S21.png "SQLVM3 replica settings")
 
-1. On the **Select Data Synchronization** page, make sure that **Automatic seeding** is selected and select **Next**.
+1. On the **Select Data Synchronization** page, make sure that **Automatic seeding** is selected and click on **Next**.
 
     ![On the Select Data Synchronization page, the radio button for Automatic seeding is selected. The Next button is selected at the bottom of the form.](images1/E2T3S22.png "Select Data Synchronization page")
 
-1. On the **Validation** screen, you should see all green, except for a warning for 'Checking the listener configuration'. This will be addressed later. Select **Next**.
+1. On the **Validation** screen, everything should be green except for a warning for 'Checking the listener configuration'. This will be addressed later. To proceed, select **Next**.
 
     ![The Validation screen displays a list of everything it is checking, and the results for each, which all display success except the last one. The Next button is selected.](images1/E2T3S23.png "Validation screen")
 
-1. On the Summary page select **Finish**.
+1. On the **Summary page**, select **Finish**.
 
     ![On the Summary page, the Finish button is selected.](images1/E2T3S241.png "Summary page")
 
-1. Once the AOG is built, check each task was successful and select **Close**.
+1. Once the AOG is built, check each task has "successful" written beside it and select **Close**.
 
     ![On the Results page, a message says the wizard has completed successfully, and results for all steps is success. The Close button is selected.](images1/E2T3S25.png "Results page")
 
