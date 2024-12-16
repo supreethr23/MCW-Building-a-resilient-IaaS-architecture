@@ -1,71 +1,71 @@
-# Exercise 3: Enable Backup for the Contoso application
+# Exercise 3: Enable Backup for the Contoso Application
 
-### Estimated Duration: 90 minutes
+### Estimated Duration: 90 Minutes
 
-In this exercise, you will use Azure Backup to enable backup for the Contoso application. You will configure backup for both the web tier VMs and the SQL Server database.
+In this exercise, you will use Azure Backup to enable backup for the Contoso application. You will configure a backup for the web tier VMs and the SQL Server database.
 
 ### Objectives
 In this exercise, you will complete the following tasks:
-   - Task 1: Create the Azure Backup resources.
-   - Task 2: Enable Backup for the Web tier.
-   - Task 3: Enable Backup for the SQL Server tier.
+   - **Task 1:** Create the Azure Backup Resources
+   - **Task 2:** Enable Backup for the Web Tier
+   - **Task 3:** Enable Backup for the SQL Server Tier
 
-### Task 1: Create the Azure Backup resources
+### Task 1: Create the Azure Backup Resources
 
 In this task, you will create the vault in the primary region for use by Azure Backup.
 
-1. From the Azure portal, search and select **Recovery Services Vault** then select **Create**.
+1. From the Azure portal, search **(1)** and select **Recovery Services vaults (2)** then click on **Create**.
 
     ![Screenshot of the Backup and Site Recovery Screen with the Create button selected.](images1/E3T1S1upd.png "Backup and Site Recovery Screen Create Button")
 
-1.  Complete the **Recovery Services Vault** blade using the following inputs, then select **Review and Create**, followed by **Create**:
+1.  Complete the **Recovery Services vaults** blade using the following inputs, then click on **Review and Create (4)** and **Create**:
 
-    - **Resource Group**: **ContosoRG1 (1)**
-    - **Name**: **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** (2)
-    - **Location**: **<inject key="Region" enableCopy="false" />** *(Primary Region)(3)*
+    - **Resource Group**: ContosoRG1 **(1)**
+    - **Name**: BackupRSV<inject key="DeploymentID" enableCopy="false"/> **(2)**
+    - **Location**: <inject key="Region" enableCopy="false" /> *(Primary Region)* **(3)**
 
     ![Azure portal screenshot showing the Create Recovery Services Vault blade, with the settings filled in as described.](images1/E3T1S2.png "Create Recovery Services Vault")
 
-1. Once the deployment completes, navigate to the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** resource, select **Properties** and **Backup Configuration**.
+1. Once the deployment completes, navigate to the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** resource page. Select **Properties (1)** and **Backup Configuration (2)**.
 
     ![Azure portal screenshot showing the properties blade of the Recovery Services Vault.](images1/E3T1S3upd.png "Recovery Services Vault properties")
 
-1.  Under **Backup Configuration**, select **Update**. In the Backup Configuration blade, check that the storage replication type is set to **Geo-redundant** and set the Cross Region Restore option to **Enable** then **Apply** your changes and close the Backup Configuration panel.
+1.  Under **Backup Configuration**, select **Update**. In the **Backup Configuration** blade, check that the storage replication type is set to **Geo-redundant (1)** and set the **Cross Region Restore** option to **Enabled (2)**. Then **Apply (3)** your changes and close the **Backup Configuration** panel.
 
     ![Azure portal screenshot showing the backup properties blade of the Recovery Services Vault.](images1/E3T1S4upd1.png "Recovery Services Vault backup properties")
 
     > **Note:** This enables backups from the primary site to be restored in the DR site, if required.
 
-1.  Still in the BackupRSV<inject key="DeploymentID" enableCopy="false"/> Properties blade, under **Soft Delete and security settings**, select **Update**. Under Soft Delete, select **Uncheck** the **Enable soft delete for cloud workloads** and** Enable soft delete and security settings for hybrid workloads**, then **Update** your changes and close the Security Settings panel.
+1.  Still in the **BackupRSV**<inject key="DeploymentID" enableCopy="false"/> Properties blade, under **Security and soft delete settings**, select **Update**. **Uncheck** the **Enable soft delete for cloud workloads (1)** check-box and select **Enable soft delete and security settings for hybrid workloads (2)**. Now, **Update (3)** your changes and close the **Security Settings** panel.
 
     ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images1/ex3-task1-step5upd.png "Recovery Services Vault security properties")
 
-    > **Note:** In a production environment, you should leave Soft Delete enabled. However, for this lab, it is better to disable this feature, since leaving it enabled makes it more difficult to clean up your lab resources once the lab is complete.
+    > **Note:** In a production environment, you should leave **Soft Delete** enabled. However, for this lab, it is better to disable this feature, since leaving it enabled makes it more difficult to clean up your lab resources once the lab is complete.
 
-### Task 2: Enable Backup for the Web tier
+### Task 2: Enable Backup for the Web Tier
 
-In this task, you will configure Azure Backup for the Web tier virtual machines. Of course, if the Web VMs are stateless, backup  may not be required, so long as the VM image and/or application installation are protected.
+In this task, you will configure Azure Backup for the web tier virtual machines. Of course, if the web VMs are stateless, backup  may not be required so long as the VM image and/or application installation are protected.
 
-1.  From the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Services vault blade, under 'Getting Started', select **Backup (1)**. Under 'Where is your workload running?', select **Azure(2)**. Under 'What do you want to backup?', select **Virtual machine(3)**. Then select **Backup(4)**.
+1.  On the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** **Recovery Services vault** blade, under 'Getting Started', select **Backup (1)**. Under **Where is your workload running?** select **Azure (2)**. Under **What do you want to backup?** select **Virtual machine (3)**. Then select **Backup (4)**.
 
     ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with Azure VMs selected.](images1/E3T2S1.png "Backup VMs")
 
-1.  On the 'Configure Backup' blade, Leave **Standard** selected and select **Create a new policy** and fill in the Create Policy blade as follows:
+1.  On the **Configure Backup** page, leave **Standard** selected, and click on **Create a new policy**. Fill in the **Create Policy** blade as follows:
 
-    - **Policy name**: `WebVMPolicy`(1)
-    - **Backup schedule**: Daily, 9pm, UTC (2)
-    - **Retain instant recovery snapshots for**: 2 day(s) (3)
-    - **Retention of daily backup point**: Enabled, 180 days (4)
-    - **Retention of weekly backup point**: Enabled, Sunday, 12 weeks (5)
-    - **Retention of monthly backup point**: Enabled, First Sunday, 24 months (6)
-    - **Retention of yearly backup point**: Enabled, day-based, January 1, 5 years (7)
-    - **Azure Backup Resource Group**: ContosoBackupRG (8)
+    - **Policy name**: `WebVMPolicy` **(1)**
+    - **Backup schedule**: Daily, 9 pm, UTC **(2)**
+    - **Retain instant recovery snapshots for**: 2 day(s) **(3)**
+    - **Retention of daily backup point**: Enabled, 180 days **(4)**
+    - **Retention of weekly backup point**: Enabled, Sunday, 12 weeks **(5)**
+    - **Retention of monthly backup point**: Enabled, first Sunday, 24 months **(6)**
+    - **Retention of yearly backup point**: Enabled, day-based, January 1, 5 years **(7)**
+    - **Azure Backup Resource Group**: ContosoBackupRG **(8)**
 
-    When finished, select **OK** (9).
+    When finished, select **OK (9).**
 
     ![Azure portal screenshot showing the Backup Policy settings, completed as described.](images1/E3T2S2upd.png "Backup Policy")
 
-1.  On the 'Configure backup' blade, under 'Virtual Machines', select **Add (1)**. Select the **WebVM1** and **WebVM2** (2) virtual machines, then **OK (3)**.
+1.  On the **Backup** blade, under **Virtual Machines,** click on **Add (1)**. Select **WebVM1** and **WebVM2 (2)** virtual machines, then **OK (3)**.
 
     ![Azure portal screenshot showing the steps to add VMs to the backup.](images1/E3T2S3.png "Add VMs")
 
@@ -73,7 +73,7 @@ In this task, you will configure Azure Backup for the Web tier virtual machines.
 
     ![Azure portal notification showing the VM backup deployment is complete.](images1/E3T2S4.png "Backup deployment complete")
 
-1.  From the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Services vault blade, under 'Protected items', select **Backup items**. The blade should show 2 Azure VMs protected.
+1.  On the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Services vault blade, under **Protected items**, select **Backup items**. The blade should show 2 Azure VMs protected.
 
     ![Azure portal screenshot showing how many protected items of various types are enabled. There are 2 Azure VMs protected.](images1/E3T2S5.png "Backup items")
 
