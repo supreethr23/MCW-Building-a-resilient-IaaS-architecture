@@ -13,7 +13,7 @@ In this exercise, you will complete the following tasks:
 
 ### Task 1: Deploy HA Resources
 
-In this task, you will deploy additional web, database, and domain controller VMs.
+You will deploy additional web, database, and domain controller VMs in this task.
 A template will be used to save time. You will configure each tier in subsequent exercises in this lab.
 
 1. Copy the link provided and paste it into a browser inside the VM. This will help you launch the template deployment for the additional infrastructure components, and that further will be used to enable high availability for the Contoso application. Log in to the Azure portal using your subscription credentials.
@@ -29,7 +29,7 @@ A template will be used to save time. You will configure each tier in subsequent
 
     ![The custom deployment screen with ContosoRG1 as the resource group.](images/iaas-image1.png "Custom deployment")
 
-1.  While you wait for the HA resources to get deployed, take some time to review the template contents. You can review the template by navigating to the **ContosoRG1** resource group. Click on **Deployments** in the resource group, and then select any of the deployments, followed by **template**.
+1.  While you wait for the HA resources to get deployed, take some time to review the template contents. You can review the template by navigating to the **ContosoRG1** resource group. Click on **Deployments** in the resource group, then select any deployments, followed by a **template**.
 
     ![Screenshot of the Azure portal showing the HA template contents.](images/Deployment02.png "Screenshot of the Azure portal showing the HA template contents.")
 
@@ -41,13 +41,13 @@ A template will be used to save time. You will configure each tier in subsequent
     -   Two load balancers, one for the web tier and one for the SQL tier.
     -   The virtual network with the proper DNS configuration in place.
 
-1.  You can check the HA resource deployment status by navigating to the **ContosoRG1** resource group. Select **Deployments** in the resource group and check the status of the deployments. Make sure the deployment status is marked as **Succeeded** for all available templates before proceeding to the next task.
+1.  You can check the HA resource deployment status by navigating to the **ContosoRG1** resource group. Select **Deployments** in the resource group and check the status of the deployments. Ensure the deployment status is marked as **Succeeded** for all available templates before proceeding to the next task.
 
     ![Screenshot of the Azure portal showing the template deployment status 'Succeeded' for each template.](images/iaas-image2.png "Screenshot of the Azure portal showing the template deployment status Succeeded for each template")
 
 
    > **Congratulations** on completing the task! Now, it is time to validate it. Here are the steps:
-   > - Click on the **Validate** button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+   > - Click on the **Validate** button for the corresponding task. You can proceed to the next task if you receive a success message. 
    > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
    > - If you need any assistance, please contact us at **cloudlabs-support@spektrasystems.com**. We are available 24/7 to help.
    <validation step="ccb0033a-ade9-4c32-a114-01ddcf952476" />
@@ -58,9 +58,9 @@ In this task, you will reboot all the virtual machines to ensure they receive th
 
 When using a domain controller VM in Azure, other VMs in the virtual network must be configured to use the domain controller as their DNS server. This is achieved by setting the DNS settings in the virtual network. These settings are then picked up by the VMs when they reboot or renew their DHCP lease.
 
-The initial deployment included a first domain controller VM, **ADVM1**, with a static private IP address **10.0.3.100**. Moving on, the IP address was configured in the VNet DNS settings.
+The initial deployment included a first domain controller VM, **ADVM1**, with a static private IP address **10.0.3.100**. Then, the IP address was configured in the VNet DNS settings.
 
-The HA resources template has added a second domain controller, **ADVM2**, with a static private IP address **10.0.3.101**. This server has already been promoted to be a domain controller using a CustomScriptExtension (you can review this script if you like, you will find it linked from the ADVM2 deployment template). The template also updated the DNS setting on the virtual network to include the IP address of the second domain controller.
+The HA resources template has added a second domain controller, **ADVM2**, with a static private IP address **10.0.3.101**. This server has already been promoted to a domain controller using a CustomScriptExtension (you can review this script if you like, and you will find it linked from the ADVM2 deployment template). The template also updated the DNS setting on the virtual network to include the IP address of the second domain controller.
 
 
 1. In the **search resources, services, and docs (G+/)** box at the top of the portal, enter **Virtual machines (1)** and then select **Virtual machines (2)** from the results.
@@ -104,13 +104,13 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image9.png)
 
-    > **Note:** To promote the use of the latest and most secure standards, by default Azure storage accounts require TLS version 1.2. This storage account will be used as a Cloud Witness for our SQL Server cluster. SQL Server requires TLS version 1.0 for the Cloud Witness.
+    > **Note:** Azure storage accounts require TLS version 1.2 by default to promote the latest and most secure standards. This storage account will be used as a Cloud Witness for our SQL Server cluster. SQL Server requires TLS version 1.0 for the Cloud Witness.
 
-1.  Once the storage account is created, navigate to the **Storage account** blade. Expand **Security + networking (1)** and select **Access keys (2)**, then copy the **Storage account name (3)** and click on **show keys**. Moving on, copy the **key (4)** and paste values into your text editor of choice - you will need these values later.
+1.  Once the storage account is created, navigate to the **Storage account** blade. Expand **Security + networking (1)** and select **Access keys (2)**, then copy the **Storage account name (3)** and click on **show keys**. Copy the **key (4)** and paste values into your text editor of choice - you will need these values later.
 
     ![](images/iaas-image10.png)
 
-1. Navigate back to the **ContosoRG1** Resource group, and select the **ContosoSQLLBPrimary** Load balancer.
+1. Navigate to the **ContosoRG1** Resource group and select the **ContosoSQLLBPrimary** Load balancer.
 
      ![](images/iaas-image11.png)
 
@@ -133,11 +133,11 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
     
     ![](images/iaas-image15.png)
 
-    > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in `user@domain-fqdn` format and **not** as `domain\user`.
+    > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in `user@domain-fqdn` format **not** as `domain\user`.
 
     ![](images/iaas-image16.png)
     
-    >**Note:**: Before selecting **Allow** make sure to recheck the text and images copied to the clipboard prompted.
+    >**Note:** Recheck the text and images copied to the clipboard prompt before selecting **Allow**.
 
 1.  On **SQLVM1**, select **Start (1)** and then choose **Windows PowerShell ISE (2)**.
 
@@ -145,7 +145,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     >**Note**: Please minimize the **Server Manager** window 
 
-1.  Copy and paste  the following command into **PowerShell ISE** and execute it. This will create the **Windows Failover Cluster** and add all the SQL VMs as nodes in the cluster. It will also assign a static IP address of **10.0.2.99** to the new cluster named **AOGCLUSTER**.
+1.  Copy and paste  the following command into **PowerShell ISE** and execute it. This will create the **Windows Failover Cluster** and add all the SQL VMs as nodes in the cluster. It will also assign a static IP address of **10.0.2.99** to the new **AOGCLUSTER** cluster.
 
      ```PowerShell
      New-Cluster -Name AOGCLUSTER -Node SQLVM1, SQLVM2 -StaticAddress 10.0.2.99
@@ -155,7 +155,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     >**Note:** It is possible to use a wizard for this task, but the resulting cluster will require additional configuration to set the static IP address in Azure.
 
-1. On **SQLVM1**, after the cluster has been created, select **Start (1)** and then **search (2) Failover**. Finally, open the **Failover Cluster Manager**.
+1. On **SQLVM1**, after creating the cluster, select **Start (1)** and then **search (2) Failover**. Finally, open the **Failover Cluster Manager**.
 
     ![](images/iaas-image19.png)
 
@@ -163,7 +163,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image20.png)
 
-1. If you select **Roles**, you will notice that currently, there aren't any roles assigned to the cluster.
+1. If you select **Roles**, you will notice that, that no roles are assigned to the cluster at the moment.
 
     ![](images/iaas-image21.png)
 
@@ -187,7 +187,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image26.png)
 
-1. On the **Configure Cloud Witness** wizard, copy the **Azure storage account name (1)** and **Azure storage account key (2)** values that you noted earlier. Now, paste them into their respective fields on the form. Leave the Azure service endpoint as configured. Then, select **Next (3)**.
+1. On the **Configure Cloud Witness** wizard, copy the **Azure storage account name (1)** and **Azure storage account key (2)** values you noted earlier. Now, paste them into their respective fields on the form. Leave the Azure service endpoint as configured. Then, select **Next (3)**.
 
     ![](images/iaas-image27.png)
 
@@ -199,11 +199,11 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image29.png)
 
-1. Select the name of the cluster again, and the **Cloud Witness** should now appear in the **Cluster Resources** section (you may need to scroll down). It is important to always use a third data center. In your case, here is a third Azure Region that will be your Cloud Witness.
+1. Select the name of the cluster again, and the **Cloud Witness** should now appear in the **Cluster Resources** section (you may need to scroll down). It is essential to always use a third data center. In your case, here is a third Azure Region that will be your Cloud Witness.
 
      ![](images/iaas-image30.png)
 
-1. Select **Start (1)**, search **SQL Server 2017 Configuration Manage (2)** and launch **SQL Server 2017 Configuration Manager (3)**.
+1. Select **Start (1)**, search **SQL Server 2017 Configuration Manage (2)** and, launch **SQL Server 2017 Configuration Manager (3)**.
 
     ![](images/iaas-image31.png)
 
@@ -211,7 +211,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image32.png)
 
-1. Select the **AlwaysOn High Availability (1)** tab and check the box for **Enable AlwaysOn Availability Groups (2)**. Select **Apply (3)** and then select **OK (4)** on the message that notifies you that changes won't take effect until the service is stopped and restarted.
+1. Select the **AlwaysOn High Availability (1)** tab and check the box for **Enable AlwaysOn Availability Groups (2)**. Select **Apply (3)** and **OK (4)** on the message, notifying you that changes won't occur until the service is stopped and restarted.
 
     ![](images/iaas-image33.png)
 
@@ -249,7 +249,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image41.png)
 
-1. In the **Login name,** type **contoso\demouser (1)**, then select **Server Roles (2)**.
+1. Type **contoso\demouser (1)**, in the **Login name,** and then select **Server Roles (2)**.
 
     ![](images/iaas-image42.png)
 
@@ -261,7 +261,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
    ![](images/iaas-image44.png)
 
-1. Click on **Start (1)**, search **ssms (2)** and launch **SQL Server Management Studio 20 (3)**. A new dialog box will open. Ensure that the ** server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
+1. Click on **Start (1)**, search **ssms (2),** and launch **SQL Server Management Studio 20 (3)**. A new dialog box will open. Ensure the **server certificate** is selected and click on **Connect** to sign on to **SQLVM1**. 
 
      - Server name: **SQLVM1 (1)**
      - Authentication: **Windows Authentication**
@@ -274,7 +274,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     > **Note**: The username for your lab should show **SQLVM1\demouser**.
     
-1. And then expand **Security (1)** and then **Logins (2)**. You will notice that only `SQLVM1\demouser` **(3)** is listed.
+1. Then expand **Security (1)** and **Logins (2)**. You will notice that only `SQLVM1\demouser` **(3)** is listed.
 
     ![](images/iaas-image46.png)
 
@@ -282,7 +282,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
      ![](images/iaas-image47.png)
 
-1. In the **Login name,** type **contoso\demouser (1)**, then select **Server Roles (2)**.
+1. Type **contoso\demouser (1)** in the **Login name,** then select **Server Roles (2)**.
 
     ![](images/iaas-image48.png)
 
@@ -294,13 +294,13 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
 
-1. Select the ** server certificate** and click on **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
+1. Select the **server certificate** and click **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![Screenshot of the Connect to Server dialog box.](images1/E1T3S33.png "Connect to Server dialog box")
     
 1. Expand databases and verify that the **ContosoInsurance** is present.  
 
-    > **Note:** Skip on to the step-49, if ContosoInsurance is already present.
+    > **Note:** Skip on to step-49 if ContosoInsurance is already present.
 
     ![.](images/upd-1.png)
     
@@ -308,7 +308,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![.](images/upd-2.png)
 
-1. On the **New Database** window, enter **ContosoInsurance (1)** as the **Database name** and then click on **OK (2)**.
+1. On the **New Database** window, enter **ContosoInsurance (1)** as the **Database name** and click on **OK (2)**.
 
     ![.](images/upd-3.png)
     
@@ -320,7 +320,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![.](images/upd-5.png)
 
-1. When prompted with **The backup of database 'Contosolnsurance' completed successfully** window, click on **OK**.
+1. When prompted with **The backup of database 'Contosolnsurance' completed successfully** window, click **OK**.
 
     ![.](images/upd-6.png)
 
@@ -328,7 +328,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![.](images/upd-7.png)
 
-1. **Copy and paste (1)** the following query and then click on **Execute (2)**.
+1. **Copy and paste (1)** the following query and then click **Execute (2)**.
 
     ```
         USE master;
@@ -373,7 +373,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![Screenshot of the Add replica button.](images/image179upd1.png "Add replica button")
 
-1. On the **Connect to Server** dialog box, enter the **Server name (1)** as **SQLVM2**, enable ** server certificate (2)** check box and select **Connect (2)**. **Note**: The username for your lab should show **CONTOSO\demouser**.
+1. On the **Connect to Server** dialog box, enter the **Server name (1)** as **SQLVM2**, enable **server certificate (2)** check box, and select **Connect (2)**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 
     ![Screenshot of the Connect to Server dialog box for SQLVM2.](images1/E1T3S40upd.png "Connect to Server dialog box")
 
@@ -421,7 +421,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![On the Summary page, the Finish button is selected.](images/image194upd.png "Summary page")
 
-1. Once the AOG is built, check that each task has a **Success** message written beside it. Now, select **Close**.
+1. Once the AOG is built, check that each task has a **Success** message beside it. Now, select **Close**.
 
     ![On the New Availability Group Results page, a message says the wizard has completed successfully, and results for all steps is success. The Close button is selected.](images1/E1T3S51.png "New Availability Group Results page")
 
@@ -433,11 +433,11 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![Screenshot of the BCDRAOG Dashboard indicating the status of all SQL Server VMs as healthy.](images1/E1T3S53.png "BCDRAOG Dashboard")
 
-1. Next, select **Connect** and then **Database Engine (1)** in **SQL Management Studio**.
+1. Next, select **Connect** and **Database Engine (1)** in **SQL Management Studio**.
 
     ![Connect / Database Engine is selected in Object Explorer.](images/image200upd.png "Object Explorer")
 
-1. Enter **BCDRAOG (1)** as the **Server name**. This will be connected to the listener of the group you created. Also, check the box **Trust server certificate (2)**, and click on **Connect (3)** **Note**: The username for your lab should be visible as **CONTOSO\demouser**.
+1. Enter **BCDRAOG (1)** as the **Server name**. This will be connected to the listener of the group you created. Also, check the box **Trust server certificate (2)** and click on **Connect (3)**. **Note**: The username for your lab should be visible as **CONTOSO\demouser**.
 
     ![In the Connect to Server Dialog box, Server name is BCDRAOG, and the connect button is selected.](images1/E1T3S55upd.png "Connect to Server Dialog box")
 
@@ -488,7 +488,7 @@ In this task, you will configure a High Availability web tier. This comprises tw
     - **Username**: `demouser@contoso.com`
     - **Password**: `Demo!pass123`
 
-1.  In **WebVM1**, open Windows Explorer, navigate to **C:\inetpub\wwwroot**, and open the **Web.config** file using Notepad.
+1.  In **WebVM1**, open Windows Explorer, navigate to **C:\inetpub\wwwroot** and open the **Web.config** file using Notepad.
 
     ![notepad.](images1/notepad.png "Failover Cluster Manager")
 
@@ -504,7 +504,7 @@ In this task, you will configure a High Availability web tier. This comprises tw
 
     ![Azure portal showing path to BackEndPool1 on ContosoWebLBPrimary.](images1/E1T4S5upd.png "Backend pool select path")
 
-1.  In the **BackEndPool1** blade, select **VNet1 (ContosoRG1) (1)** as the virtual network. Then click on **+ Add (2)** and **select the two (3)** web VMs. Moving on, click on **Save (4)**.
+1.  In the **BackEndPool1** blade, select **VNet1 (ContosoRG1) (1)** as the virtual network. Then click **+ Add (2)** and **select the two (3)** web VMs. Moving on, click on **Save (4)**.
 
     ![Azure portal showing WebVM1 and WebVM2 being added to the backend pool.](images1/E1T4S6.1.png "Backend pool VMs")
 
@@ -523,5 +523,5 @@ In this task, you will configure a High Availability web tier. This comprises tw
 In this exercise, you deployed High Availability (HA) resources and configured HA for each tier, including the Domain Controller, SQL Server, and Web tiers. This ensured redundancy and fault tolerance across all critical application components.
 
 ### You have successfully completed the exercise.
-Now, click on **Next** from the lower right corner to move to the next page.
+Click **Next** from the lower right corner to move to the next page.
 
