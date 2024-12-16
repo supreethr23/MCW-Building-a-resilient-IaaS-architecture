@@ -77,11 +77,11 @@ In this task, you will configure Azure Backup for the web tier virtual machines.
 
     ![Azure portal screenshot showing how many protected items of various types are enabled. There are 2 Azure VMs protected.](images1/E3T2S5.png "Backup items")
 
-1.  Select **Azure Virtual Machine**. The 'Backup Items (Azure Virtual Machine' blade loads, listing **WebVM1** and **WebVM2**. In both cases, the 'Last Backup Status is 'Warning (Initial backup pending)'.
+1.  Select **Azure Virtual Machine**. The **Backup Items (Azure Virtual Machine)** blade will load, listing **WebVM1** and **WebVM2**. In both cases, the **Last Backup Status** is: **'Warning (Initial backup pending)**.
 
     ![Azure portal screenshot showing WebVM1 and WebVM2 listed for backup, with initial backup pending.](images1/E3T2S6.png "Backup items (Azure Virtual Machine)")
 
-1.  Select **View details** for **WebVM1** to open the 'WebVM1' backup status blade. Select **Backup now**, leave the default backup retention, and select **OK**.
+1.  Select **View details** for **WebVM1** to open the **WebVM1 Backup Item** status blade. Select **Backup now**, continue with the default backup retention, and click on **OK**.
 
     ![Azure portal screenshot showing the WebVM1 backup status blade, with the 'Backup now' button highlighted.](images1/E3T2S7.png "Backup now")
 
@@ -89,28 +89,28 @@ In this task, you will configure Azure Backup for the web tier virtual machines.
 
     >**Note:** The backup policy created earlier determines the retention period for scheduled backups. For on-demand backups, the retention period is specified separately.
 
-1.  Close the WebVM1 backup status blade. Then, repeat the above step to trigger an on-demand backup for **WebVM2**.
+1.  Close the **WebVM1 Backup Item** status blade. Then, repeat the steps mentioned above to trigger an on-demand backup for **WebVM2**.
 
-1.  From the **BackupRSV<inject key="DeploymentID" enableCopy="false"/>** Recovery Services vault blade, under 'Monitoring', select **Backup Jobs** to load the Backup Jobs blade. This shows the current status of each backup job. The blade should show two completed jobs (configuring backup for WebVM1 and WebVM2), and two in-progress jobs (backup for WebVM1 and WebVM2).
+1.  On the **BackupRSV<inject key="DeploymentID" enableCopy="false"/> Recovery Services vault** blade, under **Monitoring**, select **Backup Jobs** to load the **Backup Jobs** blade. This shows the current **status** of each backup job. The blade should show two **completed** jobs (configuring backup for WebVM1 and WebVM2) and two **in-progress** jobs (backup for WebVM1 and WebVM2).
 
     ![Azure portal screenshot showing the backup jobs.](images1/E3T2S9.png "Backup Jobs")
 
-1.  Select **View Details** for **WebVM1** to open the backup job view. This backup job view shows the detailed status of the tasks within the backup job.
+1.  Select **View Details** for **WebVM1** to open the backup job view. You will get a detailed status of the tasks within the backup job.
 
       ![Azure portal screenshot showing the WebVM1 backup job detailed status. The 'Take snapshot' task is 'In progress' and the 'Transfer data to vault' task is 'Not started'.](images1/E3T2S10.png "Backup Job - WebVM1")
 
-      > **Note**: To restore from a backup, it suffices that the 'Take Snapshot' task is complete. Transferring the data to the vault does not need to be complete, since recent backups can be restored from the snapshot.
+      > **Note**: To restore from a backup, it suffices that the **Take Snapshot** task is complete. Transferring the data to the vault does not need to be complete, since recent backups can be restored from the snapshot.
 
    You can proceed to the next task without waiting for the backup jobs to complete.
 
 
-### Task 3: Enable Backup for the SQL Server tier
+### Task 3: Enable Backup for the SQL Server Tier
 
-In this task, you will configure backup for the SQL Server database.
+In this task, you will configure a backup for the SQL Server database.
 
 Before enabling Azure Backup, you will first register the SQL Server VMs with the SQL VM resource provider. This resource provider installs the **SqlIaaSExtension** onto the virtual machine. Azure Backup uses this extension to configure the `NT SERVICE\AzureWLBackupPluginSvc` account with the necessary permissions to discover databases on the virtual machine.
 
-1. In a new browser tab, navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)** and open a **PowerShell** session.
+1. In a new browser tab, navigate to **[Cloud Shell](https://portal.azure.com/#cloudshell/)** and open a **PowerShell** session.
 
 1. Unless you have done so previously, you will need to register your Azure subscription to use the `Microsoft.SqlVirtualMachine` resource provider. In the Cloud Shell window, execute the following command:
 
@@ -132,7 +132,7 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
     
     > **Note:** Make sure you replace [location] with the ContosoRG1 resource group location.
 
-    > **Note:** This will register the resource provider using the `Full` management mode. This causes the SQL service to restart, which may have an impact on production applications. To avoid this restart in production environments, you can alternatively register the resource provider in `LightWeight` mode, and upgrade later during a scheduled maintenance window.
+    > **Note:** This will register the resource provider using the `Full` management mode. Thus causing the SQL service to restart, which may have an impact on production applications. To avoid this restart in production environments, you can alternatively register the resource provider in `LightWeight` mode, and upgrade later during a scheduled maintenance window.
 
 1. Register **SQLVM2** and **SQLVM3** with the resource provider using the following commands. Ensure you specify the correct locations.
 
@@ -145,7 +145,7 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
     
     > **Note:** This lab uses SQL Server under a 'Developer' tier license. When using SQL Server in production at the 'Standard' or 'Enterprise' tier, you can specify `DR` as the license type for failover servers (each full-price server includes a license for 1 DR server). This reduces your licensing cost significantly. Check the SQL Server licensing documentation for full details.
 
-1. In the Azure portal, navigate to the **ContosoRG1** resource group. You should see that in addition to the SQLVM1 and SQLVM2 virtual machines, there are now parallel SQLVM1 and SQLVM2 resources of type 'SQL virtual machine' These additional resources provide additional management capabilities for SQL Server in Azure virtual machines. 
+1. In the Azure portal, navigate to the **ContosoRG1** resource group. You should see that in addition to the SQLVM1 and SQLVM2 virtual machines, there are now parallel SQLVM1 and SQLVM2 resources of type **SQL virtual machine**. These additional resources provide extra management capabilities for SQL Server in Azure virtual machines. 
 
     ![Azure portal screenshot showing the SQLVM1 and SQLVM2 SQL virtual machine resources.](images1/E3T3S5.png "SQL virtual machine resources")
 
@@ -153,11 +153,11 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
 
     ![Azure portal screenshot showing the SqlIaaSExtension has been deployed to SQLVM1.](images1/E3T3S6upd1.png "SqlIaaSExtension")
 
-1. In the Azure portal, navigate to the **BackupRSV** Recovery Services Vault resource in **ContosoRG1**. Under 'Getting started', select **Backup**. Under 'Where is your workload running?', select **Azure**. Under 'What do you want to backup?', select **SQL Server in Azure VM**. Then select **Start Discovery**.
+1. In the Azure portal, navigate to the **BackupRSV** Recovery Services Vault resource in **ContosoRG1**. Under **Getting started,** select **Backup**. Under **Where is your workload running?**, select **Azure**. Under** What do you want to backup?**, select **SQL Server in Azure VM**. Then click on **Start Discovery**.
 
    ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with 'SQL Server in Azure VM' selected.](images1/E3T3S7.png "Backup SQL Server in Azure VM")
 
-1. In the 'Select Virtual Machines' blade, select **SQLVM1** and **SQLVM2**, then select **Discover DBs**.
+1. In the **Select Virtual Machines** blade, select **SQLVM1** and **SQLVM2**, then click on **Discover DBs**.
 
     ![Azure portal screenshot showing the 'Select Virtual Machines' step of enabling backup for SQL Server in Azure VMs. SQLVM1 and SQLVM2 are selected.](images1/E3T3S8.png "Select VMs for SQL Server backup")
 
@@ -165,15 +165,15 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
 
     ![Azure portal screenshot showing the 'deployment succeeded' notification.](images1/E3T3S9.png "Success notification")
 
-1. On the 'BackupRSV<inject key="DeploymentID" enableCopy="false"/>' blade, select **Configure Backup**. 
+1. On the **BackupRSV**<inject key="DeploymentID" enableCopy="false"/> blade, select **Configure Backup**. 
 
     ![Azure portal screenshot showing the Backup 'Getting Started' settings in the Recovery Services Vault, with 'Configure Backup' highlighted.](images1/E3T3S10.png "Configure backup button")
 
-1. On the 'Backup' blade, select **Add**.
+1. On the **Backup** blade, select **Add**.
 
     ![Azure portal screenshot showing the Backup 'Backup' settings for the SQL backup, with 'Add' highlighted.](images1/E3T3S11.png "Add button")
 
-1. On the 'Select items to backup' blade, select the **\>** icon next to the `BCDRAOG\BCDRAOG` entry to show the databases. Note that the ContosoInsurance database is listed. Change the **AutoProtect** setting for BCDRAOG to **ON**, then select **OK**.
+1. On the **Select items to backup** blade, select the **\>** icon next to the `BCDRAOG\BCDRAOG` entry to show the databases. Note that the **ContosoInsurance** database is listed. Change the **AutoProtect** setting for **BCDRAOG** to **ON**, then select **OK**.
 
     ![Azure portal screenshot showing available databases to backup. For the BCDRAOG Always On Availability Group, AutoProtect is set to 'ON'.](images1/E3T3S12.png "Select items to backup")
 
@@ -199,7 +199,7 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
 
     ![Azure portal screenshot showing the backup status for the contosoinsurance database.](images1/E3T3S17.png "Backup status")
 
-1. Select **View details** on the **contosoinsurance** database and select **Backup now**
+1. Select **View details** on the **contosoinsurance** database and select **Backup now.**
 
       ![Azure portal screenshot showing the backup now button for the contosoinsurance database.](images1/E3T3S18.png "Backup now")
 
@@ -213,15 +213,15 @@ Before enabling Azure Backup, you will first register the SQL Server VMs with th
 
     > **Note:** You can continue to the next step in the lab without waiting for the backup job to complete.
 
-   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-   > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+   > **Congratulations** on completing the task! Now, it is time to validate it. Here are the steps:
+   > - Click on the **Validate** button for the corresponding task. If you receive a success message, you can proceed to the next task. 
    > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+   > - If you need any assistance, please contact us at **cloudlabs-support@spektrasystems.com**. We are available 24/7 to help
    <validation step="7098dae2-eaf0-4683-b0d8-171c745b9f81" />
 
 ## Summary 
 
 In this exercise, you created Azure Backup resources and enabled backup for both the Web and SQL Server tiers, ensuring data protection and recovery capabilities for critical application components.
 
-### You have successfully completed the exercise
+### You have successfully completed the exercise.
 Now, click on **Next** from the lower right corner to move to the next page.
