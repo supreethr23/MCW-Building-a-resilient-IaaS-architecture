@@ -98,7 +98,11 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
  
 1. If a **Welcome to Microsoft Azure** pop-up window appears, simply click **Maybe Later** to skip the tour.
    
+1. Please note that for all exercises, we will be logging into the virtual machines via Bastion. To use the copy-paste functionality, click the arrow to copy the content to your clipboard, and then paste it as needed.
 
+   ![](images/build5.png "Enter Password")
+
+   ![](images/build6.png "Enter Password")
 
 ## Support Contact
 The CloudLabs support team is available 24/7, 365 days a year, via email and live chat to ensure seamless assistance at any time. We offer dedicated support channels tailored specifically for both learners and instructors, ensuring that all your needs are promptly and efficiently addressed.
