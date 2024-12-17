@@ -413,7 +413,7 @@ Azure Site Recovery calls custom scripts in Azure Automation to add the recovere
 
         ![Fields in the Create recovery plan blade are set to the previously defined settings.](images1/E2T4S111.png "Create recovery plan blade")
 
-    > **Note:** Using the correct recovery plan name `BCDRIaaSPlan`, is **critical**. This must match the name of the Azure Automation variable you had created earlier as part of the first task in this exercise.
+    > **Note:** Using the correct recovery plan name `BCDRIaaSPlan` is **critical**. This must match the name of the Azure Automation variable you had created earlier as part of the first task in this exercise.
 
 1. Select **OK** to create the recovery plan. After a moment, the **BCDRIaaSPlan** recovery plan will appear. Select it to review.
 
