@@ -34,9 +34,9 @@ In this task, you will create a vault in the primary region for Azure Backup.
 
     ![Azure portal screenshot showing the backup properties blade of the Recovery Services Vault.](images1/E3T1S4upd1.png "Recovery Services Vault backup properties")
 
-    > **Note:** This enables backups from the primary site to get restored in the DR site if required.
+    > **Note:** This enables backups from the primary site to be restored to the DR site if required.
 
-1.  On the **BackupRSV | Properties**<inject key="DeploymentID" enableCopy="false"/> blade, select **Update**. For the **Security and soft delete settings** page, **uncheck** the **Enable soft delete for cloud workloads (1)** check-box and select **Enable soft delete and security settings for hybrid workloads (2)**. Now, **Update (3)** your changes and close the **Security Settings** panel.
+1.  On the **BackupRSV | Properties**<inject key="DeploymentID" enableCopy="false"/> blade, select **Update**. For the **Security and soft delete settings** page, **uncheck** the **Enable soft delete for cloud workloads (1)** checkbox and select **Enable soft delete and security settings for hybrid workloads (2)**. Now, **Update (3)** your changes and close the **Security Settings** panel.
 
     ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images1/ex3-task1-step5upd.png "Recovery Services Vault security properties")
 
@@ -46,7 +46,7 @@ In this task, you will create a vault in the primary region for Azure Backup.
 
 You will configure Azure Backup for the web tier virtual machines in this task. Of course, if the web VMs are stateless, backup  may not be required so long as the VM image and/or application installation are protected.
 
-1.  On the **BackupRSV | Backup<inject key="DeploymentID" enableCopy="false"/>** **Recovery Services vault** blade, under **Getting Started**, select **Backup (1)**. Under **Where is your workload running?** select **Azure (2)**. Under **What do you want to backup?** select **Virtual machine (3)**. Then, choose **Backup (4)**.
+1.  On the **BackupRSV | Backup<inject key="DeploymentID" enableCopy="false"/>** **Recovery Services vault** blade, under **Getting Started**, select **Backup (1)**. Under **Where is your workload running?** select **Azure (2)**. Under **What do you want to back up?** select **Virtual machine (3)**. Then, choose **Backup (4)**.
 
     ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with Azure VMs selected.](images1/E3T2S1.png "Backup VMs")
 
@@ -89,7 +89,7 @@ You will configure Azure Backup for the web tier virtual machines in this task. 
 
     >**Note:** The backup policy created earlier determines the retention period for scheduled backups. For on-demand backups, the retention period is specified separately.
 
-1.  Close the **WebVM1 Backup Item** status blade. Then, repeat the above mentioned steps to trigger an on-demand backup for **WebVM2**.
+1.  Close the **WebVM1 Backup Item** status blade. Then, repeat the above-mentioned steps to trigger an on-demand backup for **WebVM2**.
 
 1.  On the **BackupRSV<inject key="DeploymentID" enableCopy="false"/> Recovery Services vault** blade, under **Monitoring**, select **Backup Jobs** to load the **Backup Jobs** blade. This shows the current **status** of each backup job. The blade should show two **completed** jobs (configuring backup for WebVM1 and WebVM2) and two **in-progress** jobs (backup for WebVM1 and WebVM2).
 
@@ -112,7 +112,7 @@ Before enabling Azure Backup, you will register the SQL Server VMs with the SQL 
 
 1. In a new browser tab, navigate to **[Cloud Shell](https://portal.azure.com/#cloudshell/)** and open a **PowerShell** session.
 
-1. Unless you have done so, you must register your Azure subscription to use `Microsoft.SqlVirtualMachine` resource provider. In the Cloud Shell window, execute the following command:
+1. Unless you have done so, you must register your Azure subscription to use the `Microsoft.SqlVirtualMachine` resource provider. In the Cloud Shell window, execute the following command:
 
     ```PowerShell
     Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
@@ -145,15 +145,15 @@ Before enabling Azure Backup, you will register the SQL Server VMs with the SQL 
     
     > **Note:** This lab uses a 'Developer' tier license for SQL Server. When using SQL Server in production at the 'Standard' or 'Enterprise' tier, you can specify `DR` as the license type for failover servers (each full-price server includes a license for 1 DR server). This reduces your licensing cost significantly. Check the SQL Server licensing documentation for complete details.
 
-1. In the Azure portal, navigate to the **ContosoRG1** resource group. You will find that beside SQLVM1 and SQLVM2 virtual machines, there are now parallel SQLVM1 and SQLVM2 resources of type **SQL virtual machine** added. These additional resources provide extra management capabilities for SQL Server in Azure virtual machines. 
+1. In the Azure portal, navigate to the **ContosoRG1** resource group. You will find that besides SQLVM1 and SQLVM2 virtual machines, there are now parallel SQLVM1 and SQLVM2 resources of type **SQL virtual machine** added. These additional resources provide extra management capabilities for SQL Server in Azure virtual machines. 
 
     ![Azure portal screenshot showing the SQLVM1 and SQLVM2 SQL virtual machine resources.](images1/E3T3S5.png "SQL virtual machine resources")
 
-1. Select the **SQLVM1** virtual machine (the standard VM resource, not the SQL virtual machine resource). Then select **Extensions + applications (1)**. Note that the **SqlIaaSExtension (2)** has been installed on the virtual machine. You can now configure Azure Backup for virtual machines, with the SQL virtual machine resources created and the SQL IaaS extension installed.
+1. Select the **SQLVM1** virtual machine (the standard VM resource, not the SQL virtual machine resource). Then select **Extensions + applications (1)**. Note that the **SqlIaaSExtension (2)** has been installed on the virtual machine. You can now configure Azure Backup for virtual machines with the SQL virtual machine resources created and the SQL IaaS extension installed.
 
     ![Azure portal screenshot showing the SqlIaaSExtension has been deployed to SQLVM1.](images1/E3T3S6upd1.png "SqlIaaSExtension")
 
-1. In the Azure portal, navigate to the **BackupRSV | Backup** **Recovery Services Vault** resource in **ContosoRG1**. Under **Getting started,** select **Backup (1)**. Under **Where is your workload running?** select **Azure (2)**. Under **What do you want to backup?** select **SQL Server in Azure VM (3)**. Then click on **Start Discovery (4)**.
+1. In the Azure portal, navigate to the **BackupRSV | Backup** **Recovery Services Vault** resource in **ContosoRG1**. Under **Getting started,** select **Backup (1)**. Under **Where is your workload running?** select **Azure (2)**. Under **What do you want to back up?** select **SQL Server in Azure VM (3)**. Then click on **Start Discovery (4)**.
 
    ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with 'SQL Server in Azure VM' selected.](images1/E3T3S7.png "Backup SQL Server in Azure VM")
 
@@ -177,7 +177,7 @@ Before enabling Azure Backup, you will register the SQL Server VMs with the SQL 
 
     ![Azure portal screenshot showing available databases to backup. For the BCDRAOG Always On Availability Group, AutoProtect is set to 'ON'.](images1/E3T3S12.png "Select items to backup")
 
-    > **Note:** Using AutoProtect backups up the current and future databases on this Always On Availability Group.
+    > **Note:** Using AutoProtect backups the current and future databases on this Always On Availability Group.
 
     > **Note:** You may also want to backup system databases on each SQL server.
 
@@ -195,7 +195,7 @@ Before enabling Azure Backup, you will register the SQL Server VMs with the SQL 
 
     ![Screenshot showing the path to the SQL in Azure VMs in backup items in the Recovery Services Vault.](images1/E3T3S16.png "Backup items")
 
-1. From the backup items list, note that the **contosoinsurance** database has a status **Warning (Initial backup pending)**.
+1. From the backup items list, note that the **contosoinsurance** database has a status of **Warning (Initial backup pending)**.
 
     ![Azure portal screenshot showing the backup status for the contosoinsurance database.](images1/E3T3S17.png "Backup status")
 
@@ -221,7 +221,7 @@ Before enabling Azure Backup, you will register the SQL Server VMs with the SQL 
 
 ## Summary 
 
-In this exercise, you created Azure Backup resources and enabled backup for both the Web and SQL Server tiers, ensuring critical application components' data protection and recovery capabilities.
+In this exercise, you created Azure Backup resources and enabled backup for the Web and SQL Server tiers, ensuring critical application components' data protection and recovery capabilities.
 
 ### You have successfully completed the exercise.
 Click **Next** from the lower right corner to move to the next page.
