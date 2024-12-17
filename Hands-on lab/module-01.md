@@ -2,7 +2,7 @@
 
 ### Estimated Duration: 90 Minutes
 
-In this exercise, you will convert the Contoso application's deployment in the <inject key="Region" enableCopy="false" /> region into a highly available architecture by adding redundancy to each tier, including the web, database, and domain controller VMs.
+In this exercise, you will convert the Contoso application's deployment in the <inject key="Region" enableCopy="false" /> region into a Highly Available architecture by adding redundancy to each tier, including the web, database, and domain controller VMs.
 
 ### Objectives
 In this exercise, you will complete the following tasks:
@@ -16,7 +16,7 @@ In this exercise, you will complete the following tasks:
 You will deploy additional web, database, and domain controller VMs in this task.
 A template will be used to save time. You will configure each tier in subsequent exercises in this lab.
 
-1. Copy the link provided and paste it into a browser inside the VM. This will help you launch the template deployment for the additional infrastructure components, and that further will be used to enable high availability for the Contoso application. Log in to the Azure portal using your subscription credentials.
+1. Copy the link provided and paste it into a browser inside the VM. This will help you launch the template deployment for the additional infrastructure components, which will further be used to enable high availability for the Contoso application. Log in to the Azure portal using your subscription credentials.
    
     [![Button to deploy the Contoso High Availability resource template to Azure.](https://aka.ms/deploytoazurebutton "Deploy the Contoso HA resources to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FCloudLabs-MCW%2FMCW-Building-a-resilient-IaaS-architecture%2Fprod%2FHands-on%20lab%2FResources%2Ftemplates%2Fcontoso-iaas-ha.json)
 
@@ -106,7 +106,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     > **Note:** Azure storage accounts require TLS version 1.2 by default to promote the latest and most secure standards. This storage account will be used as a Cloud Witness for our SQL Server cluster. SQL Server requires TLS version 1.0 for the Cloud Witness.
 
-1.  Once the storage account is created, navigate to the **Storage account** blade. Expand **Security + networking (1)** and select **Access keys (2)**, then copy the **Storage account name (3)** and click on **show keys**. Copy the **key (4)** and paste values into your text editor of choice - you will need these values later.
+1.  Once the storage account is created, navigate to the **Storage account** blade. Expand **Security + networking (1)** and select **Access keys (2)**, then copy the **Storage account name (3)** and click on **show keys**. Copy the **key (4)** and paste the values into your text editor of choice—you will need these values later.
 
     ![](images/iaas-image10.png)
 
@@ -126,14 +126,14 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     > **Note:** The load balancing rule in the load balancer has been created with **Floating IP (direct server return)** enabled. This is important when using the Azure Load Balancer for SQL Server AlwaysOn Availability Groups.
 
-1.  From the Azure portal, navigate to the **SQLVM1** Virtual machine. Expand **Connect (1)**, then choose **Bastion (2)**. Specify the following credentials and then click on **Connect (5)**.
+1.  From the Azure portal, navigate to the **SQLVM1** virtual machine. Expand **Connect (1)**, then choose **Bastion (2)**. Specify the following credentials and then click on **Connect (5)**.
 
     - **Username**: `demouser@contoso.com` (3)
     - **Password**: `Demo!pass123` (4)
     
     ![](images/iaas-image15.png)
 
-    > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in `user@domain-fqdn` format **not** as `domain\user`.
+    > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in `user@domain-fqdn` format, **not** as `domain\user`.
 
     ![](images/iaas-image16.png)
     
@@ -163,7 +163,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image20.png)
 
-1. If you select **Roles**, you will notice that, that no roles are assigned to the cluster at the moment.
+1. If you select **Roles**, you will notice that no roles are assigned to the cluster at the moment.
 
     ![](images/iaas-image21.png)
 
@@ -199,11 +199,11 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image29.png)
 
-1. Select the name of the cluster again, and the **Cloud Witness** should now appear in the **Cluster Resources** section (you may need to scroll down). It is essential to always use a third data center. In your case, here is a third Azure Region that will be your Cloud Witness.
+1. Select the name of the cluster again, and the **Cloud Witness** should now appear in the **Cluster Resources** section (you may need to scroll down). It is essential to always use a third data center. In your case, here is a third Azure region that will be your Cloud Witness.
 
      ![](images/iaas-image30.png)
 
-1. Select **Start (1)**, search **SQL Server 2017 Configuration Manage (2)** and, launch **SQL Server 2017 Configuration Manager (3)**.
+1. Select **Start (1)**, search **SQL Server 2017 Configuration Manage (2)**, and launch **SQL Server 2017 Configuration Manager (3)**.
 
     ![](images/iaas-image31.png)
 
@@ -249,7 +249,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image41.png)
 
-1. Type **contoso\demouser (1)**, in the **Login name,** and then select **Server Roles (2)**.
+1. Type **contoso\demouser (1)** in the **Login name,** and then select **Server Roles (2)**.
 
     ![](images/iaas-image42.png)
 
@@ -266,7 +266,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
      - Server name: **SQLVM1 (1)**
      - Authentication: **Windows Authentication**
      - User name: **SQLVM1\demouser**
-     - Ensure that the ** server certificate (2)** is selected and click on **Connect (3)** to sign on to **SQLVM1**. 
+     - Ensure that the **server certificate (2)** is selected and click on **Connect (3)** to sign on to **SQLVM1**. 
      
        ![](images/iaas-image38.png)
 
@@ -274,7 +274,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     > **Note**: The username for your lab should show **SQLVM1\demouser**.
     
-1. Then expand **Security (1)** and **Logins (2)**. You will notice that only `SQLVM1\demouser` **(3)** is listed.
+1. Then, expand **Security (1)** and **Logins (2)**. You will notice that only `SQLVM1\demouser` **(3)** is listed.
 
     ![](images/iaas-image46.png)
 
@@ -320,7 +320,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![.](images/upd-5.png)
 
-1. When prompted with **The backup of database 'Contosolnsurance' completed successfully** window, click **OK**.
+1. When prompted with the **The backup of database 'Contosolnsurance' completed successfully** window, click **OK**.
 
     ![.](images/upd-6.png)
 
@@ -413,7 +413,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![On the Select Initial Data Synchronization screen, the radio button for Automatic seeding is selected. The Next button is selected at the bottom of the form.](images/image192upd.png "Select Initial Data Synchronization screen")
 
-1. On the **Validation** screen, it should be green for all, with status'**Success**.' Now, select **Next**.
+1. On the **Validation** screen, it should be green for all, with the status '**Success**.' Now, select **Next**.
 
     ![The Validation screen displays a list of everything it is checking, and the results for each, which all display success. The Next button is selected.](images1/E1T3S49.png "Validation screen")
 
@@ -467,7 +467,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![Fields in the Connect to Server dialog box are set to the previously defined settings.](images1/E1T3S59upd.png "Connect to Server dialog box")
 
-1. Once connected to **10.0.2.100**, you can select **Databases** and will be able to see the database there. Notice that you do not know directly which server this is running on.
+1. Once connected to **10.0.2.100**, you can select **Databases** and see the database there. Notice that you do not know directly which server this is running on.
 
     ![A call out points to the Databases folder in Object Explorer.](images1/E1T3S60.png "Object Explorer")
 
@@ -488,7 +488,7 @@ In this task, you will configure a High Availability web tier. This comprises tw
     - **Username**: `demouser@contoso.com`
     - **Password**: `Demo!pass123`
 
-1.  In **WebVM1**, open Windows Explorer, navigate to **C:\inetpub\wwwroot** and open the **Web.config** file using Notepad.
+1.  In **WebVM1**, open Windows Explorer, navigate to **C:\inetpub\wwwroot**, and open the **Web.config** file using Notepad.
 
     ![notepad.](images1/notepad.png "Failover Cluster Manager")
 
