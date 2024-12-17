@@ -2,14 +2,14 @@
 ### Overall Estimated Duration: 6 Hours
 
 ## Overview
-Building a Resilient IaaS Architecture lab focuses on improving the reliability of the Contoso application by implementing Azure solutions for high availability, disaster recovery (DR), and data protection. High availability is achieved by adding redundancy across the web, database, and domain controller tiers. A secondary disaster recovery site is then configured using appropriate Azure technologies for each tier to ensure business continuity. Azure Backup is employed to safeguard the web tier virtual machines and the SQL Server database. Finally, the lab concludes by validating the high availability, disaster recovery, and backup configurations to ensure the application’s resiliency and preparedness for potential failures.
+Building a Resilient IaaS Architecture lab focuses on improving the reliability of the Contoso application by implementing Azure solutions for high availability, disaster recovery (DR), and data protection. High availability is achieved by adding redundancy across the web, database, and domain controller tiers. A secondary disaster recovery site is configured using appropriate Azure technologies for each tier to ensure business continuity. Azure Backup is employed to safeguard the web tier virtual machines and the SQL Server database. Finally, the lab concludes by validating the high availability, disaster recovery, and backup configurations to ensure the application’s resiliency and preparedness for potential failures.
 
 ## Objective
 The goal of this lab is to improve the reliability of the Contoso application by implementing high availability, disaster recovery (DR), and backup solutions in Azure. By the end of this lab, participants will be able to:
 
 - **High Availability Configuration:** Learn to deploy additional web, database, and domain controller VMs for the Contoso application. The exercise will guide them in configuring redundancy across each tier to create a high-availability architecture, ensuring continuous service availability.
 - **Disaster Recovery Setup:** Learn to set up a secondary disaster recovery site to support all tiers of the Contoso application. This site will use different technologies for each tier to ensure seamless disaster recovery and business continuity.
-- **Backup Implementation:** Learn to use Azure Backup to configure backup solutions for the Contoso application. This exercise will also cover backup setup for both the web tier VMs and the SQL Server database to secure critical data.
+- **Backup Implementation:** Learn to use Azure Backup to configure backup solutions for the Contoso application. This exercise will also cover backup setup for the web tier VMs and the SQL Server database to secure critical data.
 - **Resiliency Validation:** Learn to validate the high availability, disaster recovery, and backup solutions implemented in the earlier exercises. This final step will ensure that the system is resilient and prepared for any disruptions.
 
 ## Prerequisites
@@ -42,7 +42,7 @@ Welcome to your Building a Resilient IaaS Architecture Hands-On Lab! We have pre
 
 ## Accessing Your Lab Environment
  
-Once you are ready to dive in, your **virtual machine** and **Lab Guide** will be right at your fingertips within the web browser.
+Once you are ready to dive in, your **virtual machine** and **Lab Guide** will be at your fingertips within the web browser.
  
 ![](images/labguide1upd1.png "Lab Environment")
 
@@ -86,7 +86,7 @@ Feel free to **start, stop, or restart (3)** your virtual machine as needed from
  
     ![](images/GS3.png "Enter Password")
 
-1. If you see the pop-up **Action Required**, leave it as default and then click on **Ask later**. Next, if you happen to notice the pop-up **Help us protect your account**, click on **Skip for now** (14 days until this is required), and then click on **Next**.
+1. If you see the pop-up **Action Required**, leave it as default and then click on **Ask later**. Next, on the **Help us protect your account** pop-up click on **Skip for now** (14 days until this is required), and then select **Next**.
 
     ![](images/asklater.png "Enter Password")
 
@@ -110,7 +110,7 @@ Learner Support Contacts:
    
 Now, you are all set to explore the powerful world of technology. Feel free to reach out if you have any questions along the way. Enjoy your workshop! 
 
-Now, click on **Next** from the lower right corner to move to the next page.
+Now, click **Next** from the lower right corner to move to the next page.
 
    ![](images/GS4.png)
 
