@@ -1,4 +1,4 @@
-# Exercise 2: Enable Disaster Recovery for the Contoso application
+# Exercise 2: Enable Disaster Recovery for the Contoso Application
 
 ### Estimated Duration: 60 Minutes
 
@@ -16,7 +16,7 @@ In this exercise, you will complete the following tasks:
 
 In this task, you will deploy the resources the DR environment uses. First, you will deploy a template that creates the network and virtual machines. Then, you will manually deploy the Recovery Services vaults and Azure Automation account used by Azure Site Recovery.
 
-1. Navigate to **[Cloudshell](https://portal.azure.com/#cloudshell/)** in a new browser tab. Open a **PowerShell** session, and create a Cloud Shell storage account if prompted.
+1. Navigate to **[Cloud Shell](https://portal.azure.com/#cloudshell/)** in a new browser tab. Open a **PowerShell** session and create a Cloud Shell storage account if prompted.
 
     ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshellupd.png "Azure Cloud Shell")
 
@@ -226,7 +226,7 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
      ![Azure portal showing SQLVM3 being added to the ContosoSQLLBSecondary load balancer backend pool.](images1/E2T3S2.png "SQL VM added to backend pool")
 
-   >**Note:** The DR site is configured with a single SQL Server VM for this lab,. Therefore, using a load balancer is not strictly required. However, if necessary, it allows the DR site to be extended to include its own HA cluster.
+   >**Note:** The DR site is configured with a single SQL Server VM for this lab. Therefore, using a load balancer is not strictly required. However, if necessary, it allows the DR site to be extended to include its own HA cluster.
 
 1. Return to your browser tab containing your Bastion session with **SQLVM1**. (If you have closed the tab, reconnect using Azure Bastion with the **username** `demouser@contoso.com` and **password** `Demo!pass123`.)
 
@@ -272,7 +272,7 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
     ![On the BCDRAOG Listener properties dialog, 'Add' is selected.](images1/E2T3S13.png "Listener - Add")
 
-1. On the Add IP Address dialog box, check the subnet is **10.1.2.0/24** (the Data subnet in VNet2). Enter the IP address **10.1.2.100** (the frontend IP of the SQL load balancer in VNet2). Select **OK**.
+1. On the Add IP Address dialog box, check that the subnet is **10.1.2.0/24** (the Data subnet in VNet2). Enter the IP address **10.1.2.100** (the frontend IP of the SQL load balancer in VNet2). Select **OK**.
 
     ![On the BCDRAOG Listener Add IP Address dialog, the IP address is entered as specified.](images1/E2T3S14.png "Listener - IP")
 
@@ -288,7 +288,7 @@ In this task, you will extend the SQL Server Always On Availability Group you cr
 
     ![On the Add Replica Wizard 'Introduction' page, Next is selected.](images1/E2T3S17.png "Add Replica wizard")
 
-1. Select **Connect** to connect to SQLVM2, then **Connect** again on the 'Connect to Server' prompt, and then click **Next**.
+1. Select **Connect** to connect to SQLVM2, then **Connect** again on the 'Connect to Server' prompt, and click **Next**.
 
     ![On the Add Replica Wizard 'Connect to Replicas' page, SQLVM2 is connected and Next is selected.](images1/E2T3S18.png "Connect to Replicas page")
 
@@ -384,7 +384,7 @@ Azure Site Recovery calls custom scripts in Azure Automation to add the recovere
     
     ![The Replication Policy settings use default values.](images/EX2-T4-ns31.png "Replication policy")
 
-1. Next in **Step 5** in the **Review** tab, select **Enable replication**.
+1. Next, in **Step 5** in the **Review** tab, select **Enable replication**.
 
     ![Screenshot of the Enable replication button.](images/EX2-T3-S9.png "Enable replication button")
 
@@ -413,7 +413,7 @@ Azure Site Recovery calls custom scripts in Azure Automation to add the recovere
 
         ![Fields in the Create recovery plan blade are set to the previously defined settings.](images1/E2T4S111.png "Create recovery plan blade")
 
-    > **Note:** Using the correct recovery plan name `BCDRIaaSPlan` is **critical**. This must match the name of the Azure Automation variable you had created earlier as part of the first task in this exercise.
+    > **Note:** Using the correct recovery plan name `BCDRIaaSPlan`, is **critical**. This must match the name of the Azure Automation variable you had created earlier as part of the first task in this exercise.
 
 1. Select **OK** to create the recovery plan. After a moment, the **BCDRIaaSPlan** recovery plan will appear. Select it to review.
 
@@ -446,7 +446,7 @@ Azure Site Recovery calls custom scripts in Azure Automation to add the recovere
 
     ![Fields in the Insert action blade are set to the ASRWebFailover script.](images/Ex2-t1-step191.png "Insert Action blade")
 
-      > **Note:** If the **OK** button does not respond, click the **cross icon** in the top-right corner, then click **Ok** in the dialog box. This will confirm that the post-action has been saved.
+      > **Note:** If the **OK** button does not respond, click the **cross icon** in the top-right corner, then click **OK** in the dialog box. This will confirm that the post-action has been saved.
 
 1. Ensure that your **Pre-steps** are running under **All groups failover** and the **Post-steps** are running under **Group 1: Start**. Select **Save**.
 
