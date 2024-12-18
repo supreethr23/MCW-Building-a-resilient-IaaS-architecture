@@ -472,7 +472,7 @@ Azure Site Recovery calls custom scripts in Azure Automation to add the recovere
 
 In this task, you will use the Front Door approach to configure a highly available endpoint that directs traffic to your primary or secondary site, depending on availability.
 
-1.  You will build a front door to direct traffic to your primary and secondary sites. From the Azure portal, select **+Create a resource**, then search for and select **Front Door and CDN profiles (2)**. Select **Create**.
+1.  You will build a front door to direct traffic to your primary and secondary sites. From the Azure portal, select **+Create a resource**, then search for and select **Front Door and CDN profiles (1)**. Select **Create (2)**.
 
     ![frontdoor.](images/azfrontdoor.png "Replicated Items")
 
