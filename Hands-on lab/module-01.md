@@ -100,6 +100,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image8.png)
 
+
 1.  Switch to the **Advanced** tab. Select the checkbox next to **Allow enabling anonymous access on individual containers (1)**, change the **Minimum TLS version** to **Version 1.0 (2)**, and select **Review + create (3)**, followed by clicking on the **Create** option.
 
     ![](images/iaas-image9.png)
@@ -133,11 +134,12 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
     
     ![](images/iaas-image15.png)
 
+
     > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in `user@domain-fqdn` format, **not** as `domain\user`.
 
     ![](images/iaas-image16.png)
     
-    >**Note:** Recheck the text and images copied to the clipboard prompt before selecting **Allow**.
+    > **Note:** Recheck the text and images copied to the clipboard prompt before selecting **Allow**.
 
 1.  On **SQLVM1**, select **Start (1)** and then choose **Windows PowerShell ISE (2)**.
 
@@ -292,7 +294,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
 1. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
-    ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/image172.png "Microsoft SQL Server Management Studio 18")
+    ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/build2.png "Microsoft SQL Server Management Studio 18")
 
 1. Select the **server certificate** and click **Connect** to sign on to **SQLVM1**. **Note**: The username for your lab should show **CONTOSO\demouser**.
 

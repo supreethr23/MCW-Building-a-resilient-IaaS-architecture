@@ -193,7 +193,7 @@ Before enabling Azure Backup, you will register the SQL Server VMs with the SQL 
 
 1. Select **Backup items**, then select **SQL in Azure VM**.
 
-    ![Screenshot showing the path to the SQL in Azure VMs in backup items in the Recovery Services Vault.](images1/E3T3S16.png "Backup items")
+    ![Screenshot showing the path to the SQL in Azure VMs in backup items in the Recovery Services Vault.](images1/build7.png "Backup items")
 
 1. From the backup items list, note that the **contosoinsurance** database has a status of **Warning (Initial backup pending)**.
 

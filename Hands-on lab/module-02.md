@@ -18,7 +18,7 @@ In this task, you will deploy the resources the DR environment uses. First, you 
 
 1. Navigate to **[Cloud Shell](https://portal.azure.com/#cloudshell/)** in a new browser tab. Open a **PowerShell** session and create a Cloud Shell storage account if prompted.
 
-    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/cloudshellupd.png "Azure Cloud Shell")
+    ![Screenshot of the Azure Cloud Shell with URL and PowerShell mode highlighted.](images1/build1.png "Azure Cloud Shell")
 
 1. In the **Getting started** page, select **Mount storage account (1)**, choose the **subscription (2)**, and click on **Apply (3)**.
 
@@ -32,7 +32,7 @@ In this task, you will deploy the resources the DR environment uses. First, you 
 
    ```powershell
    New-AzResourceGroup -Name 'ContosoRG2' -Location '<Enter the location>'
-   New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-      on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
+   New-AzSubscriptionDeployment -Name 'Contoso-IaaS-DR' -TemplateUri 'https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-a-resilient-IaaS-architecture/prod/Hands-on%20lab/Resources/templates/contoso-iaas-dr.json' -Location '<Enter the location>'
    ```
 
    > **Note:** If your deployment fails with an error *`"The requested size for resource '<resourceID>' is currently not available,"`* add the parameter `-skuSizeVM 'D2s_v5'` to the end of the `New-AzSubscriptionDeployment` and rerun the command:
@@ -78,7 +78,9 @@ In this task, you will deploy the resources the DR environment uses. First, you 
 
    > **Important:** Next, you will set up the Azure Automation account that will be used to automate certain failover and failback tasks. This will require several PowerShell scripts to be imported as Azure Automation runbooks. **Ensure that the following steps are executed from the LabVM since that is where the scripts are located.**
 
-1.  From the Azure portal, select **+Create a resource**, followed by **IT & Management Tools**, then **Automation**.
+1.  From the Azure portal, search for and select **Automation**.
+   
+   ![Screenshot of the Backup / Site Recovery tabs with Site Recovery tab selected.](images1/build3.1.png "Backup / Site Recovery tabs")
 
 1.  Complete the **Create an Automation Account** page using the following inputs and then select **Review + Create (4)**:
 
@@ -436,6 +438,7 @@ Azure Site Recovery calls custom scripts in Azure Automation to add the recovere
     > **Note:** As noted on the 'Insert action' blade, the ASRSQLFailover runbook will be executed on both failover and failback. The runbook has been written to support both scenarios.
     > 
     > **Note:** If the **OK (2)** button does not respond, click the **cross icon (1)** in the top-right corner, then click **OK** in the dialog box. This will confirm that the pre-action has been saved.
+
     > ![issueimage.](images1/cancelbutton.png "Recovery plan blade")
 
 1. Once the **BCDRIaaSPlan** blade loads, select the **ellipsis** icon next to **Group 1: Start**, then select **Add post action** from the context menu.
@@ -458,7 +461,7 @@ Azure Site Recovery calls custom scripts in Azure Automation to add the recovere
 
 1. Return to the Recovery Services vault **BCDRRSV<inject key="DeploymentID" enableCopy="false"/>** blade and select the **Replicated Items** link under **Protected Items**. You should see **WebVM1** and **WebVM2**. The replication health should be **healthy**. The **Status** will show the replication progress. Once both VMs show the status as **Protected**, replication is complete, and you can test the failover.
 
-    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/E2T4S20upd1.png "Replicated Items")
+    ![Under Replicated Items, the status for WebVM1 is 97% Synchronized and WebVM2 is now Protected.](images1/build4.png "Replicated Items")
 
     > **Note**: It can take up to 30 minutes for the replication to complete.
 

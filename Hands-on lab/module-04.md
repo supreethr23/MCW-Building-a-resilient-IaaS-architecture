@@ -26,7 +26,7 @@ In this task, we will validate the high availability for both the Web and SQL ti
 
 1.  Using the Azure portal, stop both **WebVM1** and **SQLVM1**. Wait a minute for the VMs to stop.
 
-1.  Refresh the blade with the Contoso application. The application still works. Confirm again that the database is writable by changing one of the policies.
+1.  Refresh the blade with the Contoso application. The application still works. 
 
 1.  Open an Azure Bastion session with **SQLVM2** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM2** using Windows Authentication. Locate the BCDRAOG (Primary)availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM2** as the primary replica, and there is a critical warning about **SQLVM1** not being available.
 
@@ -34,7 +34,7 @@ In this task, we will validate the high availability for both the Web and SQL ti
 
 1.  Restart **WebVM1** and **SQLVM1**. **Wait a full two minutes** for the VMs to start - **this is important**, we don't want to test simultaneous failover of SQLVM1 and SQLVM2 at this stage. Then stop **WebVM2** and **SQLVM2**.
 
-1.  Refresh the blade with the Contoso application. The application still works. Confirm again that the database is writable by changing one of the policies.
+1.  Refresh the blade with the Contoso application. The application still works.
 
 1.  Re-open an Azure Bastion session with **SQLVM1** (with username `demouser@contoso.com` and password `Demo!pass123`). Open **SQL Server Management Studio** and connect to **SQLVM1** using Windows Authentication. Locate the BCDRAOG availability group, right-click and select **Show Dashboard**. Note that the dashboard shows **SQLVM1** as the primary replica, and there is a critical warning about **SQLVM2** not being available.
 
@@ -72,11 +72,11 @@ In this task, you will validate the failover of the Contoso application from the
 
    >**Note:** If you encounter an error, then follow steps 7 and 8.
 
-1. If you face an error while performing the Failover, go to **Replicated items** under Protected items, select **WebVM1**, and then click on **Cleanup test failover**.
+    - If you face an error while performing the Failover, go to **Replicated items** under Protected items, select **WebVM1**, and then click on **Cleanup test failover**.
 
       ![](images/updated14.png "Failover blade")
       
-1. On the Test failover cleanup page, enter notes as **Test Cleanup**, select the check box, and click on **OK**.
+    - On the Test failover cleanup page, enter notes as **Test Cleanup**, select the check box, and click on **OK**.
 
       ![](images/updated13.png "Failover blade")
       
@@ -117,6 +117,8 @@ In this task, you will validate the failover of the Contoso application from the
     ![In the Virtual Machine blade, a call out points to the status of WebVM1, which is now running.](images1/E4T2S15.png "Virtual Machine blade")
 
 1. Move back to the **ContosoRG2** resource group and select the **ContosoWebLBSecondaryIP** Public IP address. Copy the DNS name and paste it into a new browser tab. The Contoso application is now responding from the **Secondary** site. Make sure to select the current Policy Offerings to ensure connectivity to the SQL Always-On group that failed over in the background.
+
+  >**Note:** It might take sometime for the page to spin up.
 
 1. Go back to the browser tab with the Contoso application open at the Front Door URL and refresh the page. The site should load quickly from the DR site. Users accessing the service via Front Door are automatically routed to the active site, ensuring seamless access despite the failover. While there may be some downtime during the failover process, once the site is back online, the user experience will remain the same as when it was running on the **Primary** site. If the page does not load immediately, wait for a few moments and try refreshing again.
 
@@ -186,7 +188,7 @@ In this task, you will failback the Contoso application from the DR site in the 
 
     ![](images/iaas-image60.png)
 
-1.  Confirm that the Contoso application is once again accessible via the **ContosoWebLBPrimaryIP** public IP address, and is **not** available at the **ContosoWebLBSecondaryIP** address. This test shows it has been returned to the primary site. Open the **Current Policy Offerings** and edit a policy, to confirm database access. 
+1.  Confirm that the Contoso application is once again accessible via the **ContosoWebLBPrimaryIP** public IP address, and is **not** available at the **ContosoWebLBSecondaryIP** address. This test shows it has been returned to the primary site. 
 
     > **Note:** If you get an "Our services aren't available right now" error (or a 404-type error) accessing the web application, verify that you are utilizing the **ContosoWebLBPrimaryIP**.  If it does not come up within ~10 minutes, verify that the backend system is responding.
 
@@ -204,7 +206,7 @@ In this task, you will failback the Contoso application from the DR site in the 
 
 1.  Next, you need to reset the SQL Always On Availability Group environment to ensure a proper failover. Use Azure Bastion to connect to **SQLVM1** with username `demouser@contoso.com` and password `Demo!pass123`.
 
-1. Once connected to **SQLVM1** open SQL Server Management Studio and Connect to **SQLVM1**. Expand the **Always On Availability Group**s and then right-click on **BCDRAOG** and then select **Show Dashboard**.
+1. Once connected to **SQLVM1** open SQL Server Management Studio and Connect to **SQLVM1**. Expand the **Always On High Availability Group**s and then right-click on **BCDRAOG** and then select **Show Dashboard**.
 
 1. Notice that all the Replica partners are now Synchronous Commit with Automatic Failover Mode. You need to manually reset **SQLVM3** to be **Asynchronous** with **Manual Failover**.
 
