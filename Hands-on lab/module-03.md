@@ -63,7 +63,7 @@ You will configure Azure Backup for the web tier virtual machines in this task. 
 
     When finished, select **OK (9).**
 
-    ![Azure portal screenshot showing the Backup Policy settings, completed as described.](images1/E3T2S2upd.png "Backup Policy")
+    ![Azure portal screenshot showing the Backup Policy settings, completed as described.](images1/E3T2S2upd1.png "Backup Policy")
 
 1.  On the **Backup** blade, click on **Add (1)** under **Virtual Machines**. Select **WebVM1** and **WebVM2 (2)** virtual machines, then **OK (3)**.
 
