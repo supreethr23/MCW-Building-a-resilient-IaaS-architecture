@@ -1,6 +1,6 @@
 # Exercise 2: Enable Disaster Recovery for the Contoso Application
 
-### Estimated Duration: 60 Minutes
+### Estimated Duration: 120 Minutes
 
 In this exercise, you will enable a secondary DR site. This site will support each tier of the Contoso application, using a different technology in each case. The DR approach is summarized in the following table.
 
