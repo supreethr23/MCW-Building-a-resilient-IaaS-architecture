@@ -102,7 +102,7 @@ To adjust the zoom level for the environment page, click the **A↕ : 100%** ico
 
     ![](images/GS9.png "Enter Password")
  
-1. If a **Welcome to Microsoft Azure** pop-up window appears, simply click on **Maybe Later** to skip the tour.
+1. If a **Welcome to Microsoft Azure** pop-up window appears, simply click on **Cancel** to skip the tour.
    
 1. Please note that for all exercises, we will be logging into the virtual machines via Bastion. To use the copy-paste functionality, click the arrow to copy the content to your clipboard, and then paste it as needed.
 
