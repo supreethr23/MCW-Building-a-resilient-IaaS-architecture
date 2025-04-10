@@ -134,12 +134,11 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
     
     ![](images/iaas-image15.png)
 
+> **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in `user@domain-fqdn` format, **not** as `domain\user`.
 
-    > **Note:** When using Azure Bastion to connect to a VM using domain credentials, the username must be specified in `user@domain-fqdn` format, **not** as `domain\user`.
-
-    ![](images/iaas-image16.png)
+![](images/iaas-image16.png)
     
-    > **Note:** Recheck the text and images copied to the clipboard prompt before selecting **Allow**.
+> **Note:** Recheck the text and images copied to the clipboard prompt before selecting **Allow**.
 
 1.  On **SQLVM1**, select **Start (1)** and then choose **Windows PowerShell ISE (2)**.
 
@@ -225,7 +224,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image36.png)
 
-1. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2** with **Username:** demouser@contoso.com and **Password**: Demo!pass123. Launch **SQL Server 2017 Configuration Manager** and repeat steps 21 to 24, mentioned above, to **enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL service.
+1. Return to the Azure portal and open a new Azure Bastion session to **SQLVM2** with **Username:** demouser@contoso.com and **Password**: Demo!pass123. Launch **SQL Server 2017 Configuration Manager** and repeat steps 15 to 18, mentioned above, to **enable SQL AlwaysOn** and change the **Log On** username. Make sure that you have restarted the SQL service.
 
 1. Return to the Azure portal and open a second Azure Bastion session to **SQLVM2**. This time, use `demouser` as the **username (1)** instead of `demouser@contoso.com` and use **Password (2)**: `Demo!pass123`. Finally, click on **Connect (3)**.
     ![](images/iaas-image37.png)
@@ -272,9 +271,9 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
      
        ![](images/iaas-image38.png)
 
-       ![](images/iaas-image45upd.png)
+       ![](images/iaas-image45upd-1.png)
 
-    > **Note**: The username for your lab should show **SQLVM1\demouser**.
+        > **Note**: The username for your lab should show **SQLVM1\demouser**.
     
 1. Then, expand **Security (1)** and **Logins (2)**. You will notice that only `SQLVM1\demouser` **(3)** is listed.
 
@@ -292,7 +291,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![](images/iaas-image43.png)
 
-1. Return to your session with **SQLVM1**. Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
+1. Return to your session with **SQLVM1**( with username **demouser@contoso.com**). Use the Start menu to launch **Microsoft SQL Server Management Studio 20** and connect to the local instance of SQL Server. (Located in the Microsoft SQL Server Tools folder).
 
     ![Screenshot of Microsoft SQL Server Management Studio 18 on the Start menu.](images/build2.png "Microsoft SQL Server Management Studio 18")
 
@@ -302,7 +301,7 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
     
 1. Expand databases and verify that the **ContosoInsurance** is present.  
 
-    > **Note:** Skip on to step-49 if ContosoInsurance is already present.
+    > **Note:** Skip on to step-43 if ContosoInsurance is already present.
 
     ![.](images/upd-1.png)
     
@@ -403,9 +402,9 @@ In this task, you will build a **Windows Failover Cluster** and configure **SQL 
 
     ![The Add button is selected beneath an empty subnet table.](images/image187upd.png "Add button")
 
-1. Select the subnet of **10.0.2.0/24** and then add IPv4 **10.0.2.0/24 (1)** and select **OK (2)**. This is the IP address of the internal load balancer in front of the **SQLVM1** and **SQLVM2** in the **data** subnet running on the **primary** site.
+1. Select the subnet of **10.0.2.0/24** and then add IPv4 **10.0.2.100 (1)** and select **OK (2)**. This is the IP address of the internal load balancer in front of the **SQLVM1** and **SQLVM2** in the **data** subnet running on the **primary** site.
 
-    ![The Add IP Address dialog box fields are set to the previously defined settings.](images/image188upd.png "Add IP Address dialog box")
+    ![The Add IP Address dialog box fields are set to the previously defined settings.](images/image188upd-1.png "Add IP Address dialog box")
 
 1. Select **Next**.
 
