@@ -61,7 +61,7 @@
     },
     "resourceFolder": {
       "type": "string",
-      "defaultValue": "prod/Hands-on%20lab/Resources/scripts/"
+      "defaultValue": "prod/Hands-on%20lab/Resources/"
     },
     "baseUri": {
       "type": "string",
