@@ -61,7 +61,7 @@
     },
     "resourceFolder": {
       "type": "string",
-      "defaultValue": "prod/Hands-on%20lab/Resources/"
+      "defaultValue": "prod/Hands-on%20lab/Resources/scripts/"
     },
     "baseUri": {
       "type": "string",
@@ -197,7 +197,7 @@
             "settings": {
               "Name": "[parameters('domainToJoin')]",
               "OUPath": "[variables('domainOUPath')]",
-              "User": "[concat(parameters('domainToJoin'), '\\', parameters('adminUsername'))]",
+              "User": "[concat(parameters('domainToJoin'), '\\\\', parameters('adminUsername'))]",
               "Restart": "true",
               "Options": "[variables('domainJoinOptions')]"
             },
@@ -209,6 +209,5 @@
       ]
     }
   ],
-  "outputs": {
-  }
+  "outputs": {}
 }
