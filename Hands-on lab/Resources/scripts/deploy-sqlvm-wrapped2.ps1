@@ -10,7 +10,7 @@ Start-Transcript "C:\deploy-sqlvm-log2.txt"
 # See also: https://support.microsoft.com/en-sg/help/811889/how-to-troubleshoot-the-cannot-generate-sspi-context-error-message
 Write-Output "Resetting SPNs"
 
-$computer = $env:COMPUTERNAM
+$computer = $env:COMPUTERNAME
 $dnsDomain = $env:USERDOMAIN
 $user = $env:USERNAME
 
