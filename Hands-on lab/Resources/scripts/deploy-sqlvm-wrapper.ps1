@@ -5,6 +5,7 @@ Start-Transcript "C:\deploy-sql-wrapper-log.txt"
 Write-Output "User $user"
 Write-Output "Domain $domain"
 
+$dnsDomain = $domain
 
 # Get the second script
 If (Test-Path "D:") {
@@ -27,7 +28,7 @@ $localUser = $env:COMPUTERNAME + "\" + $user
 $domainUser = ($user + "@" + $domain)
 Write-Host $domainUser
 $localCred = New-Object System.Management.Automation.PSCredential($localUser,$securePwd)
-$domainCred = New-Object System.Management.Automation.PSCredential("demouser@contoso.com",$securePwd)
+$domainCred = New-Object System.Management.Automation.PSCredential($domainUser,$securePwd)
 
 Write-Output "Local Cred"
 Write-Output $localCred
