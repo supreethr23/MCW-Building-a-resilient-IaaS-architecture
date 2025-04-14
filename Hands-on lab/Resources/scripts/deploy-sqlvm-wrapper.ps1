@@ -34,7 +34,7 @@ Write-Output $localCred
 
 # Need to create apprpriate argumentLists
 $ArgumentList = @($password, $dbsource)
-$ArgumentList2 = $ArgumentList = @($password, $dbsource, $dnsDomain)
+$ArgumentList2 = @($password, $dbsource, $dnsDomain)
 
 Write-Output "Enable remoting and invoke"
 Enable-PSRemoting -force
