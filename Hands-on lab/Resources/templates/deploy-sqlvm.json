@@ -197,7 +197,7 @@
             "settings": {
               "Name": "[parameters('domainToJoin')]",
               "OUPath": "[variables('domainOUPath')]",
-              "User": "[concat(parameters('domainToJoin'), '\\\\', parameters('adminUsername'))]",
+              "User": "[concat(parameters('domainToJoin'), '\\', parameters('adminUsername'))]",
               "Restart": "true",
               "Options": "[variables('domainJoinOptions')]"
             },
