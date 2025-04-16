@@ -26,7 +26,7 @@ In this task, you will create a vault in the primary region for Azure Backup.
 
     ![Azure portal screenshot showing the Create Recovery Services Vault blade, with the settings filled in as described.](images1/E3T1S2.png "Create Recovery Services Vault")
 
-1. Once the deployment is complete, navigate to the **BackupRSV | Properties <inject key="DeploymentID" enableCopy="false"/>** resource page. Select **Properties (1)** and **Backup Configuration (2)**.
+1. Once the deployment is complete, navigate to the **BackupRSV <inject key="DeploymentID" enableCopy="false"/> | Properties** resource page. Select **Properties (1)** and **Backup Configuration (2)**.
 
     ![Azure portal screenshot showing the properties blade of the Recovery Services Vault.](images1/E3T1S3upd.png "Recovery Services Vault properties")
 
@@ -36,7 +36,7 @@ In this task, you will create a vault in the primary region for Azure Backup.
 
     > **Note:** This enables backups from the primary site to be restored to the DR site if required.
 
-1.  On the **BackupRSV | Properties**<inject key="DeploymentID" enableCopy="false"/> blade, select **Update**. For the **Security and soft delete settings** page, **uncheck** the **Enable soft delete for cloud workloads (1)** checkbox and select **Enable soft delete and security settings for hybrid workloads (2)**. Now, **Update (3)** your changes and close the **Security Settings** panel.
+1.  On the **BackupRSV <inject key="DeploymentID" enableCopy="false"/> | Properties** blade, under **Soft Delete and security settings**, select **Update**. In the **Security and soft delete settings** page, **uncheck** the **Enable soft delete for cloud workloads (1)** checkbox and select **Enable soft delete and security settings for hybrid workloads (2)**. Now, **Update (3)** your changes and close the **Security Settings** panel.
 
     ![Azure portal screenshot showing the security properties blade of the Recovery Services Vault.](images1/ex3-task1-step5upd.png "Recovery Services Vault security properties")
 
@@ -46,11 +46,11 @@ In this task, you will create a vault in the primary region for Azure Backup.
 
 You will configure Azure Backup for the web tier virtual machines in this task. Of course, if the web VMs are stateless, backup  may not be required so long as the VM image and/or application installation are protected.
 
-1.  On the **BackupRSV | Backup<inject key="DeploymentID" enableCopy="false"/>** **Recovery Services vault** blade, under **Getting Started**, select **Backup (1)**. Under **Where is your workload running?** select **Azure (2)**. Under **What do you want to back up?** select **Virtual machine (3)**. Then, choose **Backup (4)**.
+1.  On the **BackupRSV <inject key="DeploymentID" enableCopy="false"/> | Backup Recovery Services vault** blade, under **Getting Started**, select **Backup (1)**. Under **Where is your workload running?** select **Azure (2)**. Under **What do you want to back up?** select **Virtual machine (3)**. Then, choose **Backup (4)**.
 
     ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with Azure VMs selected.](images1/E3T2S1.png "Backup VMs")
 
-1.  On the **Configure Backup** page, select **Standard**, and click on **Create a new policy**. Fill in the **Create Policy** blade as follows:
+1.  On the **Configure Backup** page, select **Standard** for Policy sub type, and click on **Create a new policy**. Fill in the **Create Policy** blade as follows:
 
     - **Policy name**: `WebVMPolicy` **(1)**
     - **Backup schedule**: Daily, 9 pm, UTC **(2)**
@@ -73,7 +73,7 @@ You will configure Azure Backup for the web tier virtual machines in this task. 
 
     ![Azure portal notification showing the VM backup deployment is complete.](images1/E3T2S4.png "Backup deployment complete")
 
-1.  On the **BackupRSV | Back up items <inject key="DeploymentID" enableCopy="false"/>** **Recovery Services vault** blade, under **Protected items**, select **Backup items**. The blade should show 2 Azure VMs as protected.
+1.  On the **BackupRSV <inject key="DeploymentID" enableCopy="false"/> | Back up items Recovery Services vault** blade, under **Protected items**, select **Backup items**. The blade should show 2 Azure VMs as protected.
 
     ![Azure portal screenshot showing how many protected items of various types are enabled. There are 2 Azure VMs protected.](images1/E3T2S5.png "Backup items")
 
@@ -153,7 +153,7 @@ Before enabling Azure Backup, you will register the SQL Server VMs with the SQL 
 
     ![Azure portal screenshot showing the SqlIaaSExtension has been deployed to SQLVM1.](images1/E3T3S6upd1.png "SqlIaaSExtension")
 
-1. In the Azure portal, navigate to the **BackupRSV | Backup** **Recovery Services Vault** resource in **ContosoRG1**. Under **Getting started,** select **Backup (1)**. Under **Where is your workload running?** select **Azure (2)**. Under **What do you want to back up?** select **SQL Server in Azure VM (3)**. Then click on **Start Discovery (4)**.
+1. In the Azure portal, navigate to the **BackupRSV <inject key="DeploymentID" enableCopy="false"/> | Backup Recovery Services Vault** resource in **ContosoRG1**. Under **Getting started,** select **Backup (1)**. Under **Where is your workload running?** select **Azure (2)**. Under **What do you want to back up?** select **SQL Server in Azure VM (3)**. Then click on **Start Discovery (4)**.
 
    ![Azure portal screenshot showing the Getting Started - Backup blade of the Azure Portal, with 'SQL Server in Azure VM' selected.](images1/E3T3S7.png "Backup SQL Server in Azure VM")
 
@@ -173,9 +173,9 @@ Before enabling Azure Backup, you will register the SQL Server VMs with the SQL 
 
     ![Azure portal screenshot showing the Backup 'Backup' settings for the SQL backup, with 'Add' highlighted.](images1/E3T3S11.png "Add button")
 
-1. Select the check box next to `BCDRAOG\BCDRAOG` to show the databases on the **Select items to backup** blade. Note that the **ContosoInsurance** database is listed. Change the **AutoProtect** setting for **BCDRAOG** to **ON**, then select **OK**.
+1. Select the check box next to `BCDRAOG\BCDRAOG` to show the databases on the **Select items to backup** blade. Note that the **ContosoInsurance** database is listed. Keep the **AutoProtect** setting for **BCDRAOG** to **OFF**, then select **OK**.
 
-    ![Azure portal screenshot showing available databases to backup. For the BCDRAOG Always On Availability Group, AutoProtect is set to 'ON'.](images1/E3T3S12.png "Select items to backup")
+    ![Azure portal screenshot showing available databases to backup. For the BCDRAOG Always On Availability Group, AutoProtect is set to 'ON'.](images1/E3T3S12-1.png "Select items to backup")
 
     > **Note:** Using AutoProtect backups the current and future databases on this Always On Availability Group.
 
@@ -183,9 +183,9 @@ Before enabling Azure Backup, you will register the SQL Server VMs with the SQL 
 
 1. On the **Configure Backup** blade, note that **BCDRAOG\BCDRAOG** is now listed for backup. Leave the policy as the default `HourlyLogBackup` policy. Select **Enable backup** and wait for the deployment to complete.
 
-    ![Azure portal screenshot showing the BCDRAOG database listed for backup, and the HourlyLogBackup settings. The 'Enable Backup' button is highlighted.](images1/E3T3S13.png "Enable Backup button")
+    ![Azure portal screenshot showing the BCDRAOG database listed for backup, and the HourlyLogBackup settings. The 'Enable Backup' button is highlighted.](images1/E3T3S13-1.png "Enable Backup button")
 
-1. On the **BackupRSV | Backup Jobs <inject key="DeploymentID" enableCopy="false"/>** **Recovery Service vault**, navigate to the **Backup Jobs** view. You should see a backup configuration job in progress for the **ContosoInsurance** database. (If this job does not show immediately, wait a minute and select **Refresh**.)
+1. On the **BackupRSV <inject key="DeploymentID" enableCopy="false"/> | Backup Jobs Recovery Service vault**, navigate to the **Backup Jobs** view. You should see a backup configuration job in progress for the **ContosoInsurance** database. (If this job does not show immediately, wait a minute and select **Refresh**.)
 
     ![Azure portal screenshot showing the backup configuration job for the ContosoInsurance database.](images1/E3T3S14.png "Backup configuration job")
 

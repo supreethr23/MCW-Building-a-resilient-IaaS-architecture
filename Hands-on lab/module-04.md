@@ -118,7 +118,7 @@ In this task, you will validate the failover of the Contoso application from the
 
 1. Move back to the **ContosoRG2** resource group and select the **ContosoWebLBSecondaryIP** Public IP address. Copy the DNS name and paste it into a new browser tab. The Contoso application is now responding from the **Secondary** site. Make sure to select the current Policy Offerings to ensure connectivity to the SQL Always-On group that failed over in the background.
 
-  >**Note:** It might take sometime for the page to spin up.
+    >**Note:** It might take sometime for the page to spin up.
 
 1. Go back to the browser tab with the Contoso application open at the Front Door URL and refresh the page. The site should load quickly from the DR site. Users accessing the service via Front Door are automatically routed to the active site, ensuring seamless access despite the failover. While there may be some downtime during the failover process, once the site is back online, the user experience will remain the same as when it was running on the **Primary** site. If the page does not load immediately, wait for a few moments and try refreshing again.
 
